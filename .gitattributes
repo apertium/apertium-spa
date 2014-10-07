@@ -6,6 +6,7 @@
 /NEWS -text
 /README -text
 /apertium-spa.pc.in -text
+/apertium-spa.post-spa.dix -text
 /apertium-spa.spa.acx -text
 /apertium-spa.spa.dix -text
 /apertium-spa.spa.rlx -text
