@@ -7,6 +7,10 @@ VERSION=0.1.0
 LANG1=spa
 BASENAME=apertium-$(LANG1)
 
+# This include defines goals for install-modes, .deps/.d and .mode files:
+@ap_include@
+
+
 TARGETS_COMMON = $(LANG1).automorf.bin $(LANG1).autogen.bin \
 	$(LANG1).automorf.att.gz $(LANG1).autogen.att.gz \
         $(LANG1).rlx.bin
