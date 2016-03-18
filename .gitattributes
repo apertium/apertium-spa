@@ -10,6 +10,7 @@
 /apertium-spa.spa.acx -text
 /apertium-spa.spa.dix -text
 /apertium-spa.spa.rlx -text
+/apertium-spa.spa.tsx -text
 /autogen.sh -text
 /configure.ac -text
 /modes.xml -text
@@ -18,3 +19,4 @@ texts/feudalismo-1.raw.txt -text
 texts/feudalismo-1.tagged.porsi98.txt -text
 texts/feudalismo-2.raw.txt -text
 texts/feudalismo-2.tagged.porsi98.txt -text
+texts/miscellaneous.tagged.txt -text
