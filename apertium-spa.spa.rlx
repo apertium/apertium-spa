@@ -254,7 +254,7 @@ SELECT:subj5 PRS (*-1 ("ser") LINK 1 Adv_PreAdv LINK 1 A LINK 1 ("que")) (0C Ver
 # reflexivo
 # (decido que todos los posesivos en 3a persona, si el verbo está en 3a persona, son reflexivos)
 #
-SUBSTITUTE:ref_1 ("suyo") ("suyo_ref") TARGET ("suyo") IF (0 ("suyo")) (*-1 (vblex p3) BARRIER >>> OR CnjSub OR CnjAdv OR Rel) ;
+#SUBSTITUTE:ref_1 ("suyo") ("suyo_ref") TARGET ("suyo") IF (0 ("suyo")) (*-1 (vblex p3) BARRIER >>> OR CnjSub OR CnjAdv OR Rel) ;
 
 #
 # comparaciones
