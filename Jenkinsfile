@@ -6,5 +6,5 @@ node {
    sh "./autogen.sh && make clean && make"
 
    stage 'Validate Tagger Specification (tsx)'
-   sh "apertium-validate-tagger apertium-spa-spa.tsx"
+   sh "apertium-validate-tagger apertium-spa.spa.tsx"
 }
