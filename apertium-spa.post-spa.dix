@@ -73,12 +73,7 @@
     </pardef>
 
     <pardef n="el">
-   <!--   <e>
-        <p>
-          <l><a/>el<b/></l> 
-          <r>l<b/></r>
-        </p>
-      </e> -->
+  
       <e>
         <p>
           <l>el<b/></l>
@@ -180,20 +175,17 @@
   </pardefs>
 
   <section id="main" type="standard">
-      <e>
+ 
+     <e>
         <p>
           <l><a/>de<b/></l>
           <r>de</r>
         </p>
         <par n="el"/>
       </e>
-      <e>
-        <p>
-          <l><a/>de</l>
-          <r>de</r>
-        </p>
-        <par n="el"/>
-      </e>
+ 
+
+     
       <e>
         <p>
           <l><a/>a<b/></l>
@@ -201,14 +193,17 @@
         </p>
         <par n="el"/>
       </e>
+
+
       <e>
         <p>
-          <l><a/>a</l>
-          <r>a</r>
+          <l><a/>DE<b/></l>
+          <r>DE</r>
         </p>
-        <par n="el"/>
-      </e>      
-
+        <par n="EL"/>
+      </e>
+     
+  
       <e>
         <p>
           <l><a/>A<b/></l>
@@ -216,14 +211,7 @@
         </p>
         <par n="EL"/>
       </e>
-      <e>
-        <p>
-          <l><a/>A</l>
-          <r>A</r>
-        </p>
-        <par n="EL"/>
-      </e>      
-
+     
 
 
       <e>
@@ -231,19 +219,26 @@
           <l><a/>y<b/>i</l>
           <r>e<b/>i</r>
         </p>
-      </e>     
+      </e>  
+
+
+   
       <e>
         <p>
           <l><a/>y<b/>hie</l>
           <r>y<b/>hie</r>
         </p>
-      </e>    
+      </e>   
+
+ 
       <e>
         <p>
           <l><a/>y<b/>hi</l>
           <r>e<b/>hi</r>
         </p>
       </e>
+
+
       <e>
         <p>
           <l><a/>o<b/>o</l>
@@ -256,11 +251,15 @@
           <r>u<b/>ho</r>
         </p>
       </e>
+
+
       <e>
         <par n="pr"/>
         <i>agua</i>
         <par n="la"/>
       </e>
+
+
       <e>
         <par n="pr"/>
         <i>hada</i>
@@ -356,6 +355,7 @@
         <i>aya</i>
         <par n="la"/>
       </e>
+
       <e>
         <p>
           <l><a/>le<b/></l>
@@ -363,6 +363,7 @@
         </p>
         <par n="le"/>
       </e>
+
       <e>
         <p>
           <l><a/>les<b/></l>
