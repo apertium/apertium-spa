@@ -1,0 +1,9 @@
+<rules>
+  <rule>
+    <or>
+      <match surface="unos"/>
+      <match surface="los"/>
+    </or>
+    <match surface="cortes"><select lemma="corte" tags="n.m.*"/></match>
+  </rule>
+</rules>

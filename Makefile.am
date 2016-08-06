@@ -13,7 +13,8 @@ TARGETS_COMMON =			\
 	$(LANG1).autogen.bin		\
 	$(LANG1).autogen.att.gz		\
 	$(LANG1).autopgen.bin		\
-	$(LANG1).rlx.bin
+	$(LANG1).rlx.bin		\
+	$(LANG1).lrx.bin
 
 # Use this goal for creating .deps, otherwise make -j2 will give problems:
 @ap_include@
@@ -40,6 +41,13 @@ $(LANG1).autopgen.bin: $(BASENAME).post-$(LANG1).dix
 	lt-comp lr $< $@
 
 ###############################################################################
+## Morph disambiguation rules 
+###############################################################################
+
+$(LANG1).lrx.bin: $(BASENAME).$(LANG1).lrx 
+	lrx-comp $< $@
+
+###############################################################################
 ## Disambiguation rules 
 ###############################################################################
 
@@ -53,6 +61,7 @@ EXTRA_DIST=$(BASENAME).$(LANG1).dix		\
 	   $(BASENAME).post-$(LANG1).dix	\
 	   $(BASENAME).$(LANG1).acx		\
 	   $(BASENAME).$(LANG1).rlx		\
+	   $(BASENAME).$(LANG1).lrx		\
            $(LANG1).prob			\
 	   modes.xml
 
