@@ -1,0 +1,3 @@
+Known issues that could be solved with CG or a slightly more powerfull version of LRX used as a morph disambiguator
+
+- <vblex> + aparte	->	aparte should probably be tagged as an adverb. apertium-tagger tags it as a vblex instead.
