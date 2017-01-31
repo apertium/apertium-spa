@@ -6,4 +6,11 @@
     </or>
     <match surface="cortes"><select lemma="corte" tags="n.m.*"/></match>
   </rule>
+    <rule>
+    <or>
+      <match surface="uno"/>
+      <match surface="el"/>
+    </or>
+    <match surface="aparte"><select lemma="aparte" tags="n.*"/></match>
+  </rule>
 </rules>
