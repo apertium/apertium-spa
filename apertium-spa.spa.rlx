@@ -164,6 +164,7 @@ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) ;
 REMOVE:r_como_1 Vblex (0 ("como") OR ("Como")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 #REMOVE:r_como_2 Vblex (0 ("como") OR ("Como")) (*1 Vblex BARRIER Cnj_Rel) ;
 REMOVE:r_para_1 Vblex (0 ("para") OR ("Para")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
+REMOVE:r_para_4 Vblex (0 ("para") OR ("Para")) (*-1 Copula BARRIER Cnj_Rel);
 REMOVE:r_para_2 Vblex (0 ("para") OR ("Para")) (*1 Vblex BARRIER Cnj_Rel) ;
 SELECT:r_para_3 Prep (0 ("para") OR ("Para")) (1 Inf) ;
 REMOVE:r_salvo_1 Vblex (0 ("salvo") OR ("Salvo")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
