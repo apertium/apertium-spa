@@ -68,7 +68,7 @@ SET Pers = (p1) OR (p2) OR (p3) ;
 
 SET Ref = (prn pro ref) ;
 SET Pro = (prn pro) ;
-SET PrnTnPrs = (prn tn 1p) OR (prn tn 2p) OR (prn tn 3p) ;
+SET PrnTnPrs = (prn tn p1) OR (prn tn p2) OR (prn tn p3) ;
 
 SET Ant = (np ant) ;
 SET Cog = (np cog) ;
