@@ -68,6 +68,7 @@ SET Pers = (p1) OR (p2) OR (p3) ;
 
 SET Ref = (prn pro ref) ;
 SET Pro = (prn pro) ;
+SET PrnTnPrs = (prn tn 1p) OR (prn tn 2p) OR (prn tn 3p) ;
 
 SET Ant = (np ant) ;
 SET Cog = (np cog) ;
@@ -158,6 +159,9 @@ SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 # se referirán, desde entonces, a los indígenas del Magreb como pueblos líbicos, aunque
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) ;
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
+
+# prn + verbo/nombre
+SELECT:prn_vb_n Vblex IF (0 Vblex) (0 N) (-1 PrnTnPrs) ;
 
 # preposiciones / verbos
 # no tratamos "cabo" porque es muy infrecuente (+ nombre!, como "bajo", que también es adj)
