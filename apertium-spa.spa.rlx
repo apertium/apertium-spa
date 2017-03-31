@@ -129,12 +129,19 @@ SET VerboSubj = ("querer") OR ("Querer") OR ("desear") OR ("Desear") OR ("propon
 # verbos Vblex que típicamente tienen predicativo
 SET VPred = ("considerar") OR ("Considerar") OR ("creer") OR ("Creer") OR ("opinar") OR ("Opinar") OR ("sentir") OR ("Sentir") OR ("hallar") OR ("Hallar") OR ("permanecer") OR ("Permanecer") OR ("continuar") OR ("Continuar") OR ("mantener") OR ("Mantener") OR ("resultar") OR ("Resultar") OR ("volver") OR ("Volver") ;
 
+SET AdjItgM = (adj itg m) ;
+SET PrnItgM = (adj itg m) ;
+
+SET Deber = ("deber") OR ("Deber");
 
 ###############################################################################
 #  Morphological disambiguation
 #
 
 SECTION
+
+REMOVE:r_cuanto_vblex_1 N IF (0 Vblex) (0 (n f)) (-1 AdjItgM) (-1 PrnItgM);
+SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1 (vblex inf)) (NOT 1 N);
 
 REMOVE:r_cog_1 Cog IF (-1 DetDef) (0 Cog) ;
 REMOVE:r_cog_2 Cog IF (-1 DetInd) (0 Cog) ;
