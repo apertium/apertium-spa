@@ -302,6 +302,9 @@ SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
 SELECT:estado_3 N IF (-1 ("[a-záéíóúñ].*"r)) (0 ("Estado")) ;	# "Estado" (con mayúscula) va precedido de una palabra con minúscula inicial
 
+SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
+
+
 # la tierra como medio de vida
 
 # vía pr/n
