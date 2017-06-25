@@ -2,8 +2,8 @@
 ## Makefile for apertium-spa
 ###############################################################################
 
-RELEASE=1.0
-VERSION=1.0.0
+RELEASE=1.1
+VERSION=1.1.0
 LANG1=spa
 BASENAME=apertium-$(LANG1)
 

@@ -3,7 +3,7 @@
 
 AC_PREREQ(2.52)
 
-AC_INIT([Apertium Spanish], [1.0.0], [francis.tyers@gmail.com], [apertium-spa], [http://wiki.apertium.org/wiki/Apertium-spa])
+AC_INIT([Apertium Spanish], [1.1.0], [francis.tyers@gmail.com], [apertium-spa], [http://wiki.apertium.org/wiki/Apertium-spa])
 AM_INIT_AUTOMAKE
 
 AC_PROG_LN_S
