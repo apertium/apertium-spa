@@ -86,6 +86,7 @@ SET Adv_PreAdv = Adv OR PreAdv ;
 
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
 SET Verb_Prep = Verb OR Prep ;
+SET Verb_Adv = Verb OR Adv ;
 SET Cnj_Rel = CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 SET Cnj_Rel_End = >>> OR CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 
@@ -134,6 +135,9 @@ SET PrnItgM = (adj itg m) ;
 
 SET Deber = ("deber") OR ("Deber");
 
+SET Entrar = ("entrar") OR ("Entrar");
+SET Entrabar = ("entrabar") OR ("Entrabar");
+
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -169,6 +173,14 @@ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) ;
 
 # prn + verbo/nombre
 SELECT:prn_vb_n Vblex IF (0 Vblex) (0 N) (-1 PrnTnPrs) ;
+
+# al/del + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
+SELECT:prep_det_vb_n N IF (0 Vblex) (0 (n m sg)) (-1 (det def m sg));
+#los acuerdo, los cazo, las cazo > Verbo
+SELECT:detpl_vb_nsg Vblex IF (0 Vblex) (0 (n sg)) (-1 (prn pl)); 
+
+#como (no preposición en: como el que, como los que...)
+SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel) 
 
 # preposiciones / verbos
 # no tratamos "cabo" porque es muy infrecuente (+ nombre!, como "bajo", que también es adj)
@@ -252,6 +264,8 @@ SELECT:adj_adv_5_fp A (-2C N + $$FemPl) (-1C Adv) (0 A + $$FemPl) ;
 # eliminación del imperativo en competición con el presente del indicativo
 REMOVE:imp_1 Imp IF (0 (vblex pri p3 sg) LINK 0 (vblex imp p2 sg)) ;
 REMOVE:imp_2 Imp IF (-1 ("que")) (0 Verb) ;
+REMOVE:imp_3 Imp IF (0 (vbmod pri p3 sg) LINK 0 (vbmod imp p2 sg)) ;
+REMOVE:imp_4 Imp IF (-1 Rel) (0 Verb) ; # lo que puede él
 
 # elección de subjuntivo después de "que"
 SELECT:subj1 PRS (*-1 ("que") OR ("Que") BARRIER (Cnj_Rel_End)) (*-1 VerboSubj) (0C Verb) ;
@@ -303,7 +317,11 @@ SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
 SELECT:estado_3 N IF (-1 ("[a-záéíóúñ].*"r)) (0 ("Estado")) ;	# "Estado" (con mayúscula) va precedido de una palabra con minúscula inicial
 
 SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
+#SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
 
+SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) ; # siempre tarde, llegan tarde
+
+SELECT:entrabar Entrar IF (0 Entrar) (0 Entrabar); # entrar es más frequente. 
 
 # la tierra como medio de vida
 
