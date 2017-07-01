@@ -174,8 +174,9 @@ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) ;
 # prn + verbo/nombre
 SELECT:prn_vb_n Vblex IF (0 Vblex) (0 N) (-1 PrnTnPrs) ;
 
-# al/del + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
-SELECT:prep_det_vb_n N IF (0 Vblex) (0 (n m sg)) (-1 (det def m sg));
+# prep + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
+SELECT:prep_VbN N IF (0 Vblex) (0 N) (-1/* Prep);
+SELECT:prep_det_VbN N IF (0 Vblex) (0 N) (-2 Prep) (-1 Det); # se puede mejorar comprobando la concordancia det+nom
 #los acuerdo, los cazo, las cazo > Verbo
 SELECT:detpl_vb_nsg Vblex IF (0 Vblex) (0 (n sg)) (-1 (prn pl)); 
 
