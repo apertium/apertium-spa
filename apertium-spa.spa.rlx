@@ -138,6 +138,10 @@ SET Deber = ("deber") OR ("Deber");
 SET Entrar = ("entrar") OR ("Entrar");
 SET Entrabar = ("entrabar") OR ("Entrabar");
 
+SET MangoFruitWords = ("aguacate"i) OR ("alimentario"i) OR ("alimenticio"i) OR ("aloe"i) OR ("anacardo"i) OR ("ananás"i) OR ("anchoa"i) OR ("arroz"i) OR ("atún"i) OR ("azúcar"i) OR ("banano"i) OR ("boniato"i) OR ("brocheta"i) OR ("cacahuete"i) OR ("cacao"i) OR ("caramelizar"i) OR ("caramelo"i) OR ("carpaccio"i) OR ("cereal"i) OR ("chirimoya"i) OR ("chocolate"i) OR ("chutney"i) OR ("clima"i) OR ("coco"i) OR ("cocotero"i) OR ("codorniz"i) OR ("comer"i) OR ("comercial"i) OR ("comida"i) OR ("cosecha"i) OR ("crema"i) OR ("cultivar"i) OR ("cultivo"i) OR ("cítrico"i) OR ("dátil"i) OR ("ensalada"i) OR ("exportación"i) OR ("foie"i) OR ("fruta"i) OR ("fruto"i) OR ("gamba"i) OR ("gazpacho"i) OR ("guayaba"i) OR ("helado"i) OR ("hortaliza"i) OR ("ingrediente"i) OR ("jamón"i) OR ("jarabe"i) OR ("jardín"i) OR ("jengibre"i) OR ("judía"i) OR ("langosta"i) OR ("langostino"i) OR ("lechuga"i) OR ("legumbre"i) OR ("maduro"i) OR ("mandarina"i) OR ("mandioca"i) OR ("manzana"i) OR ("maní"i) OR ("maracuyá"i) OR ("maíz"i) OR ("melocotón"i) OR ("mono"i) OR ("naranja"i) OR ("naranjo"i) OR ("orquídea"i) OR ("orégano"i) OR ("palma"i) OR ("palmera"i) OR ("papaya"i) OR ("parmesano"i) OR ("patata"i) OR ("piscina"i) OR ("piña"i) OR ("plantación"i) OR ("pollo"i) OR ("probar"i) OR ("rodaja"i) OR ("ron"i) OR ("salsa"i) OR ("sorgo"i) OR ("subsistencia"i) OR ("sésamo"i) OR ("tabaco"i) OR ("tempura"i) OR ("tomate"i) OR ("trigo"i) OR ("triturar"i) OR ("tropical"i) OR ("tubérculo"i) OR ("vainilla"i) OR ("vinagre"i) OR ("yogur"i) OR ("África") ;
+
+SET MangoNotFruitWords = ("cuchillo"i) OR ("puerta"i) OR ("largo"i) OR ("corto"i) OR ("espada"i) OR ("puñal"i) OR ("navaja"i);
+
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -330,6 +334,9 @@ SELECT:pronto_adv Adv IF (0 ("pronto")) (-1 Verb_Adv) ; # mucho más frecuente a
 
 SELECT:estrella_nom N IF (0 ("estrella")) (-1 N) (NOT 1 Det); #actriz estrella
 SELECT:estrella_nom N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella del espectáculo
+
+SUBSTITUTE:mango ("mango"i) ("mango¹") TARGET ("mango"i) IF (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
+
 
 # la tierra como medio de vida
 
