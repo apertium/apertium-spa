@@ -343,6 +343,9 @@ SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex); #seguir/pasar/tirar ade
 
 # la tierra como medio de vida
 
+# pronombre + verbo
+SELECT:pronombre_verbo Vblex IF (-1 ("se"i)) (0 (vblex p3)); #se impaciente
+
 # vía pr/n
 REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
 REMOVE:via2 Prep IF (0 ("vía") + $$FemSg) (1 A + $$FemSg) ;
