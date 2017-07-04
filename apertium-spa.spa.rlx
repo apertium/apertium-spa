@@ -337,6 +337,7 @@ SELECT:estrella_nom N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella de
 
 SELECT:mango ("mango¹"i) IF (0 ("mango¹"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
 
+SELECT:ser_ir Ir IF (0 Ser) (0 Ir) (1 Ger); #fueron subiendo = ir, no ser
 
 # la tierra como medio de vida
 
