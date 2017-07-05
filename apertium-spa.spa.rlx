@@ -343,6 +343,8 @@ SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex); #seguir/pasar/tirar ade
 
 SELECT:vela_n N IF (0 ("vela"i)); #vela (nombre), raro: ve + la (pron.)
 
+SELECT:cual_rel (rel an mf sg) IF (0 ("cual"i)) (-1 (det def m sg)) ; #del cual (relativo)
+
 # la tierra como medio de vida
 
 # pronombre + verbo
