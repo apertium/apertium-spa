@@ -346,6 +346,8 @@ SELECT:vela_n N IF (0 ("vela"i)); #vela (nombre), raro: ve + la (pron.)
 
 SELECT:cual_rel (rel an mf sg) IF (0 ("cual"i)) (-1 (det def m sg)) ; #del cual (relativo)
 
+SELECT:vengar_1 ("vengar") IF (-1 ("<se>"i)) (0 ("<venga>") OR ("<vengan>")) ; #no infalible, pero más frecuente
+
 # la tierra como medio de vida
 
 # pronombre + verbo
