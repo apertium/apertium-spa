@@ -348,6 +348,8 @@ SELECT:cual_rel (rel an mf sg) IF (0 ("cual"i)) (-1 (det def m sg)) ; #del cual 
 
 SELECT:vengar_1 ("vengar") IF (-1 ("<se>"i)) (0 ("<venga>") OR ("<vengan>")) ; #no infalible, pero más frecuente
 
+SELECT:sed_nom N IF (0 ("<sed>"i)) (NOT 1 (adj pl)) (NOT 1 (n pl));  # Sed valientes (adj); hambre y sed (n)
+
 # la tierra como medio de vida
 
 # pronombre + verbo
