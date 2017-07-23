@@ -357,9 +357,16 @@ SELECT:pronombre_verbo Vblex IF (-1 ("se"i)) (0 (vblex p3)); #se impaciente
 REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
 REMOVE:via2 Prep IF (0 ("vía") + $$FemSg) (1 A + $$FemSg) ;
 
-SELECT:media_1 N IF (-3C Num) (-2 N) (-1 CnjCoo) (0 ("media")) ;
-SUBSTITUTE:media_2 ("media") ("media_duono") TARGET ("media") IF (-3C Num) (-2 N) (-1 CnjCoo) (0 ("media")) ;
+#SELECT:media_1 N IF (-3C Num) (-2 N) (-1 CnjCoo) (0 ("media")) ;
+#SUBSTITUTE:media_2 ("media") ("media_duono") TARGET ("media") IF (-3C Num) (-2 N) (-1 CnjCoo) (0 ("media")) ;
 	# dos veces y media > kaj duono
+
+# dos veces y media; dos años y medio
+SELECT:y_medio_adj A IF (-2 (n f)) (-1 CnjCoo) (0 ("medio")) (0 (adj f sg));
+SELECT:y_media_adj A IF (-2 (n m)) (-1 CnjCoo) (0 ("medio")) (0 (adj m sg));
+SUBSTITUTE:y_medio ("medio") ("medio¹") TARGET ("medio") IF (-2 (n f)) (-1 CnjCoo) (0 ("medio")) (0 (adj f sg));
+SUBSTITUTE:y_media ("medio") ("medio¹") TARGET ("medio") IF (-2 (n m)) (-1 CnjCoo) (0 ("medio")) (0 (adj m sg));
+
 SELECT:si_ja_1 Adv IF (0 ("sí") OR ("Sí")) (1C Verb) (NOT -1 Prep) ;
 SUBSTITUTE:si_ja_2 ("sí") ("sí_ja") TARGET ("sí") IF (0 ("sí") OR ("Sí")) (1C Verb) (NOT -1 Prep) ;
 	# sí comentó
