@@ -1,0 +1,14 @@
+/*.bin
+/*.gz
+/*.m4
+/*.pc
+/INSTALL
+/Makefile
+/Makefile.in
+/autom4te.cache
+/config.log
+/config.status
+/configure
+/install-sh
+/missing
+/modes
