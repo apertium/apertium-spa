@@ -5,6 +5,7 @@
 /INSTALL
 /Makefile
 /Makefile.in
+/ap_include.am
 /autom4te.cache
 /config.log
 /config.status
