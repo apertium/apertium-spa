@@ -369,6 +369,7 @@ SELECT:sed_nom N IF (0 ("<sed>"i)) (NOT 1 (adj pl)) (NOT 1 (n pl));  # Sed valie
 SELECT:vino_nom N IF (0 ("vino")) (-1 VinoWords); # beber vino (n)
 
 SELECT:pasar_verb Vblex IF (0 ("pasar"i)) (1 ("a")); # pasa (v) a ser 
+SELECT:dar_verb Vblex IF (0 ("dar"i)) (1 ("de")) (2 ("<alta>") OR ("<baja>")); # dado (participio, no nombre) de alta
 
 # la tierra como medio de vida
 
