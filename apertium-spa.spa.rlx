@@ -228,6 +228,9 @@ SELECT:pr_cnjadv_1 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR
 SELECT:pr_cnjadv_2 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C A) ;
 SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C Inf OR Enc) ;
 
+SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv ("ben" en catalán)
+REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron); #Evita PreAdv ("ben" en catalán)
+
 SELECT:que_1 CnjSub (0 ("que")) (-1C Inf OR Enc) ;
 SELECT:que_2 CnjSub (0 ("que")) (-1C Vblex LINK NOT 0 PP) ;
 SELECT:que_3 CnjSub (0 ("que")) (-2C Vblex LINK NOT 0 PP) (-1C Adv);
@@ -406,6 +409,7 @@ REMOVE:creer_crear PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
 SELECT:ser_ir_1 Ser (0 Ser LINK 0 Ir) (1C PP) ; # no sempre funciona, però sí de costum
 SELECT:ser_ir_1 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
 SELECT:fundar_fundir_1 Fundar (0 Fundar) (-1C Ref) ; # se non è vero...
+REMOVE:parecido_adj Vblex (0 ("parecido")) (NOT -1 Vbhaver) ; #Sin el verbo haber, es nombre o adjetivo, no participio.
 
 # lenguas (eo)
 
