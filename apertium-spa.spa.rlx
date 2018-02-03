@@ -281,7 +281,8 @@ REMOVE:imp_3 Imp IF (0 (vbmod pri p3 sg) LINK 0 (vbmod imp p2 sg)) ;
 REMOVE:imp_4 Imp IF (-1 Rel) (0 Verb) ; # lo que puede él
 
 # elección de subjuntivo después de "que"
-SELECT:subj1 PRS (*-1 ("que") OR ("Que") BARRIER (Cnj_Rel_End)) (*-1 VerboSubj) (0C Verb) ;
+SELECT:subj1 PRS (*-1 ("que") OR ("Que") BARRIER (Cnj_Rel_End)) (*-1 VerboSubj LINK NOT 1 Inf) (0C Verb) ;
+
 #REMOVE:subj2 PRS (*-1 >>> BARRIER CnjAdv OR CnjSub OR Rel) (NOT -1 ("no") OR ("No") OR ("nunca") OR ("Nunca")) (0C Verb) ;
 SELECT:subj3 PRS (*-1 ("ser# .*"r) LINK 1 ("que")) (0C Verb) ;
 SELECT:subj4 PRS (*-1 ("ser") LINK 1 A LINK 1 ("que")) (0C Verb) ;
