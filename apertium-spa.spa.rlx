@@ -347,8 +347,8 @@ SELECT:pronto_adv Adv IF (0 ("pronto")) (-1 Verb_Adv) ; # mucho más frecuente a
 SELECT:estrella_nom_1 N IF (0 ("estrella")) (-1 N) (NOT 1 Det); #actriz estrella
 SELECT:estrella_nom_2 N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella del espectáculo
 
-SELECT:mango_1 ("mango¹"i) IF (0 ("mango¹"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
-REMOVE:mango_0 ("mango¹"i) IF (0 ("mango"i)) (0 ("mango¹"i)) ;
+SELECT:mango_fruta ("mango_fruta"i) IF (0 ("mango_fruta"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
+REMOVE:mango_0 ("mango_fruta"i) IF (0 ("mango"i)) (0 ("mango_fruta"i)) ;
 
 #entendimiento = acuerdo (entre, con); buscar el entendimiento = acuerdo
 SELECT:entendimiento_1 ("entendimiento¹"i) IF (0 ("entendimiento¹"i)) (1 EntreCon);   
