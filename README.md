@@ -1,1 +1,1 @@
-/tmp/apertium-spa/README
+README
