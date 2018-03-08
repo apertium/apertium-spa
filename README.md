@@ -38,7 +38,9 @@ can use it directly from this directory.
 If you are installing this language package as a prerequisite for an
 Apertium translation pair, then do (typically as root / with sudo):
 
+```
 # make install
+```
 
 You can give a `--prefix` to `./configure` to install as a non-root user,
 but make sure to use the same prefix when installing the translation
