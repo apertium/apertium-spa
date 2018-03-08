@@ -363,9 +363,9 @@ SELECT:cuarto_hab6 ("cuarto_habitación"i) IF (0 ("cuarto_habitación"i)) (1 A) 
 REMOVE:cuarto_0 ("cuarto_habitación"i) IF (0 ("cuarto"i)) (0 ("cuarto_habitación"i)) ;
 
 #entendimiento = acuerdo (entre, con); buscar el entendimiento = acuerdo
-SELECT:entendimiento_1 ("entendimiento¹"i) IF (0 ("entendimiento¹"i)) (1 EntreCon);   
-SELECT:entendimiento_2 ("entendimiento¹"i) IF (0 ("entendimiento¹"i)) (-2 EntendimientoWords);
-REMOVE:entendimiento_0 ("entendimiento¹"i) IF (0 ("entendimiento"i)) (0 ("entendimiento¹"i)) ;
+SELECT:entendimiento_1 ("entendimiento_acuerdo"i) IF (0 ("entendimiento_acuerdo"i)) (1 EntreCon);   
+SELECT:entendimiento_2 ("entendimiento_acuerdo"i) IF (0 ("entendimiento_acuerdo"i)) (-2 EntendimientoWords);
+REMOVE:entendimiento_0 ("entendimiento_acuerdo"i) IF (0 ("entendimiento"i)) (0 ("entendimiento_acuerdo"i)) ;
 
 SELECT:ser_ir_ger Ir IF (0 Ser) (0 Ir) (1 Ger); #fueron subiendo = ir, no ser
 
