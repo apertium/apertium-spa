@@ -14,3 +14,5 @@
 /missing
 /modes
 /*.mode
+/.d
+/.deps
