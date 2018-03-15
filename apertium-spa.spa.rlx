@@ -360,6 +360,7 @@ SELECT:cuarto_hab3 ("cuarto_habitación"i) IF (0 ("cuarto_habitación"i)) (1/* (
 SELECT:cuarto_hab4 ("cuarto_habitación"i) IF (0 ("cuarto_habitación"i)) (1 ("de")) (2 Det) (3 CuartoDeHabitacionWords) ; #cuarto de los niños
 SELECT:cuarto_hab5 ("cuarto_habitación"i) IF (0 ("cuarto_habitación"i)) (0*/* CuartoHabitacionWords) ; # Se durmieron en el cuarto. 
 SELECT:cuarto_hab6 ("cuarto_habitación"i) IF (0 ("cuarto_habitación"i)) (1 A) (NOT 1 N); # cuarto contiguo
+SELECT:cuarto_adj1 A IF (0 ("cuarto"i)) (1 ("<puesto>"i) OR ("<clasificado>"i)); # cuarto puesto
 REMOVE:cuarto_0 ("cuarto_habitación"i) IF (0 ("cuarto"i)) (0 ("cuarto_habitación"i)) ;
 
 #entendimiento = acuerdo (entre, con); buscar el entendimiento = acuerdo
