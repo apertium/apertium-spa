@@ -377,6 +377,9 @@ SELECT:entendimiento_1 ("entendimiento_acuerdo"i) IF (0 ("entendimiento_acuerdo"
 SELECT:entendimiento_2 ("entendimiento_acuerdo"i) IF (0 ("entendimiento_acuerdo"i)) (-2 EntendimientoWords);
 REMOVE:entendimiento_0 ("entendimiento_acuerdo"i) IF (0 ("entendimiento"i)) (0 ("entendimiento_acuerdo"i)) ;
 
+SELECT:cuenta_1 Verb IF (0 ("contar"i)) (1 ("conmigo"i) OR ("contigo"i) OR ("consigo"i));
+SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 ("con"i)) (NOT -1 Det);
+
 SELECT:ser_ir_ger Ir IF (0 Ser) (0 Ir) (1 Ger); #fueron subiendo = ir, no ser
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex); #seguir/pasar/tirar adelante 
