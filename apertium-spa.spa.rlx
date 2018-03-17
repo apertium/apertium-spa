@@ -399,6 +399,8 @@ SELECT:dar_verb Vblex IF (0 ("dar"i)) (1 ("de")) (2 ("<alta>") OR ("<baja>")); #
 
 SELECT:gestiones N IF (0 ("Gestiones") OR ("Relaciones") OR ("Expediente")); # en mayúsculas son sustantivos
 
+SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); #propiamente dicha
+
 # la tierra como medio de vida
 
 # pronombre + verbo
