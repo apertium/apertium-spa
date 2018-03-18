@@ -152,6 +152,8 @@ SET CuartoDeHabitacionWords = ("matrimonio"i)  OR ("colada"i) OR ("juego"i) OR (
 
 SET DirecciónPostalWords = ("apellido"i) OR ("remitente"i) OR ("destinatario"i) OR ("carnet"i) OR ("carné"i) OR ("libreta"i) OR ("<IP>") OR ("<http>"i) OR ("electrónico"i) OR ("Facebook"i) OR ("Skype"i) OR ("<gmail>") OR ("<hotmail>") OR ("actualizar"i) OR ("identidad"i) OR ("DNI") OR ("verificar"i) OR ("verificación"i) OR ("domicilio"i) OR ("teléfono"i) OR ("fax"i) OR ("Internet"i) OR ("postal"i) OR ("blog"i) OR ("mail"i) OR ("correo"i) OR ("escribir"i) OR ("sobre"i) OR ("bolígrafo"i) OR ("carta"i) OR ("agenda"i) OR ("cartero"i) OR ("destino"i) OR ("calle"i) OR ("avenida"i) OR ("paseo"i) OR ("web"i) OR ("<www>"i) OR ("nº"i) OR ("entrega"i) OR ("facturación"i) OR ("factura"i);
 
+SET RayoMeteoroWords = ("trueno"i) OR ("tempestad"i) OR ("tormenta"i) OR ("Zeus"i) OR ("dios"i) OR ("fulminar"i) OR ("pararrayos") OR ("rápido"i) OR ("correr"i) OR ("granizada"i) OR ("temporal"i) OR ("divino"i) OR ("lluvia"i) OR ("llover"i) OR ("tronar"i);
+
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -355,6 +357,9 @@ SELECT:estrella_nom_2 N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella 
 
 SELECT:mango_fruta ("mango_fruta"i) IF (0 ("mango_fruta"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
 REMOVE:mango_0 ("mango_fruta"i) IF (0 ("mango"i)) (0 ("mango_fruta"i)) ;
+
+SELECT:rayo_meteoro ("rayo_meteoro"i) IF (0 ("rayo_meteoro"i)) (0*/* RayoMeteoroWords) ;
+REMOVE:rayo_0 ("rayo_meteoro"i) IF (0 ("rayo"i)) (0 ("rayo_meteoro"i)) ;
 
 REMOVE:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("en"i)) ; # en dirección
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)) ; # dirección desconocida
