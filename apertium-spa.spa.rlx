@@ -401,6 +401,8 @@ SELECT:gestiones N IF (0 ("Gestiones") OR ("Relaciones") OR ("Expediente")); # e
 
 SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); #propiamente dicha
 
+SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
+
 # la tierra como medio de vida
 
 # pronombre + verbo
