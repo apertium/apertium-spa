@@ -156,6 +156,9 @@ SET RayoMeteoroWords = ("trueno"i) OR ("tempestad"i) OR ("tormenta"i) OR ("Zeus"
 
 SET CuboMatematicasWords = ("cuadrado"i) OR ("octaedro"i) OR ("plano"i) OR ("<Rubik>") OR ("nodo"i) OR ("esfera"i) OR ("longitud") OR ("paralelepípedo"i) OR ("potencia"i) OR ("vértice"i) OR ("diagonal"i) OR ("duplicación"i) OR ("volumen"i) OR ("dimensión"i) OR ("geométrico"i) OR ("geometría"i) OR ("matemático"i) OR ("perfecto"i) OR ("simetría"i) OR ("arista"i) OR ("centímetro"i) OR ("metro"i) OR ("decímetro"i) OR ("cilindro"i) OR ("cono"i) OR ("eje"i) OR ("espacio"i) OR ("poliedro"i) OR ("triángulo"i) OR ("área"i) OR ("dodecaedro"i) OR ("figura"i) OR ("icosaedro"i) OR ("pirámide"i) OR ("rectángulo"i) OR ("tetraedro"i) OR ("unidad"i) OR ("cúbico"i) OR ("paralelo"i) OR ("mínimo"i) OR ("máximo"i) OR ("intersección"i) OR ("unitario"i) OR ("lado"i) OR ("lateral"i) OR ("cara"i);
 
+SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) OR ("lluvia"i) OR ("pared"i) OR ("decorar") OR ("separar"i) OR ("portal"i) OR ("nido"i) OR ("decoración"i) OR ("luz"i) OR ("calle"i) OR ("saliente"i) OR ("cama"i) OR ("hiedra"i) OR ("yedra"i) OR ("habitación"i) OR ("viga"i) OR ("resguardar"i) OR ("escalera"i) OR ("sur"i) OR ("norte"i) OR ("fachada"i) OR ("golondirna"i) OR ("llover"i) OR ("agua"i) OR ("gota"i) OR ("mansión"i) OR ("dintel"i) OR ("pájaro"i);
+
+
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -364,7 +367,10 @@ SELECT:rayo_meteoro ("rayo_meteoro"i) IF (0 ("rayo_meteoro"i)) (0*/* RayoMeteoro
 REMOVE:rayo_0 ("rayo_meteoro"i) IF (0 ("rayo"i)) (0 ("rayo_meteoro"i)) ;
 
 SELECT:cubo_matematicas ("cubo_matemáticas"i) IF (0 ("cubo_matemáticas"i)) (0*/* CuboMatematicasWords) ;
-REMOVE:rayo_0 ("cubo_matemáticas"i) IF (0 ("cubo"i)) (0 ("cubo_matemáticas"i)) ;
+REMOVE:cubo_0 ("cubo_matemáticas"i) IF (0 ("cubo"i)) (0 ("cubo_matemáticas"i)) ;
+
+SELECT:alero_1 ("alero"i) IF (0 ("alero"i)) (0*/* AleroTejadoWords) ;
+REMOVE:alero_2 ("alero"i) IF (0 ("alero"i)) (0 ("alero_baloncesto"i)) ;
 
 REMOVE:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("en"i)) ; # en dirección
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)) ; # dirección desconocida
