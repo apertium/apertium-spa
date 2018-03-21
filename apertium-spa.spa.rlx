@@ -158,6 +158,8 @@ SET CuboMatematicasWords = ("cuadrado"i) OR ("octaedro"i) OR ("plano"i) OR ("<Ru
 
 SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) OR ("lluvia"i) OR ("pared"i) OR ("decorar") OR ("separar"i) OR ("portal"i) OR ("nido"i) OR ("decoración"i) OR ("luz"i) OR ("calle"i) OR ("saliente"i) OR ("cama"i) OR ("hiedra"i) OR ("yedra"i) OR ("habitación"i) OR ("viga"i) OR ("resguardar"i) OR ("escalera"i) OR ("sur"i) OR ("norte"i) OR ("fachada"i) OR ("golondirna"i) OR ("llover"i) OR ("agua"i) OR ("gota"i) OR ("mansión"i) OR ("dintel"i) OR ("pájaro"i);
 
+SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i);
+
 
 ###############################################################################
 #  Morphological disambiguation
@@ -368,6 +370,9 @@ REMOVE:rayo_0 ("rayo_meteoro"i) IF (0 ("rayo"i)) (0 ("rayo_meteoro"i)) ;
 
 SELECT:cubo_matematicas ("cubo_matemáticas"i) IF (0 ("cubo_matemáticas"i)) (0*/* CuboMatematicasWords) ;
 REMOVE:cubo_0 ("cubo_matemáticas"i) IF (0 ("cubo"i)) (0 ("cubo_matemáticas"i)) ;
+
+SELECT:vela_1 ("vela_cirio"i) IF (0 ("vela_cirio"i)) (0*/* VelaCirioWords) ;
+REMOVE:vela_2 ("vela_cirio"i) IF (0 ("vela"i)) (0 ("vela_cirio"i)) ;
 
 SELECT:alero_1 ("alero"i) IF (0 ("alero"i)) (0*/* AleroTejadoWords) ;
 REMOVE:alero_2 ("alero"i) IF (0 ("alero"i)) (0 ("alero_baloncesto"i)) ;
