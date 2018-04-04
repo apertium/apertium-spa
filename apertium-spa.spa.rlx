@@ -196,11 +196,12 @@ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) ;
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
 
 # prn + verbo/nombre
-SELECT:prn_vb_n Vblex IF (0 Vblex) (0 N) (-1 PrnTnPrs) ;
-
+SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
+ 
 # prep + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
-SELECT:prep_VbN N IF (0 Vblex) (0 N) (-1/* Prep);
-SELECT:prep_det_VbN N IF (0 Vblex) (0 N) (-2 Prep) (-1 Det); # se puede mejorar comprobando la concordancia det+nom
+SELECT:prep_VbN N IF (0C Vblex OR N) (-1/* Prep);
+SELECT:prep_det_VbN N IF (0C Vblex OR N) (-2 Prep) (-1 Det); # se puede mejorar comprobando la concordancia det+nom
+SELECT:prep_VbhavN Vbhaver IF (0 ("haber") LINK 0 Vbhaver OR N) (-1 ("de")) (1 PP);	# de haber sabido
 #los acuerdo, los cazo, las cazo > Verbo
 SELECT:detpl_vb_nsg Vblex IF (0 Vblex) (0 (n sg)) (-1 (prn pl)); 
 
