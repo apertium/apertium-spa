@@ -200,6 +200,7 @@ SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
  
 # prep + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
 SELECT:prep_VbN N IF (0C Vblex OR N) (-1/* Prep);
+REMOVE:prep_VbN2 Verb + Pers IF (0 Verb + Pers) (-1C/* Prep);
 SELECT:prep_det_VbN N IF (0C Vblex OR N) (-2 Prep) (-1 Det); # se puede mejorar comprobando la concordancia det+nom
 SELECT:prep_VbhavN Vbhaver IF (0 ("haber") LINK 0 Vbhaver OR N) (-1 ("de")) (1 PP);	# de haber sabido
 #los acuerdo, los cazo, las cazo > Verbo
