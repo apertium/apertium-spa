@@ -73,7 +73,7 @@
     </pardef>
 
     <pardef n="el">
-  
+
       <e>
         <p>
           <l>el<b/></l>
@@ -92,7 +92,7 @@
     <pardef n="EL">
    <!--   <e>
         <p>
-          <l><a/>EL<b/></l> 
+          <l><a/>EL<b/></l>
           <r>L<b/></r>
         </p>
       </e> -->
@@ -113,7 +113,7 @@
 
 
 
-   
+
     <pardef n="pr">
       <e>
         <p>
@@ -168,14 +168,14 @@
           <l>los<b/></l>
           <r>se<b/>los<b/></r>
         </p>
-      </e>      
+      </e>
     </pardef>
-  
+
 
   </pardefs>
 
   <section id="main" type="standard">
- 
+
      <e>
         <p>
           <l><a/>de<b/></l>
@@ -183,9 +183,9 @@
         </p>
         <par n="el"/>
       </e>
- 
 
-     
+
+
       <e>
         <p>
           <l><a/>a<b/></l>
@@ -202,8 +202,8 @@
         </p>
         <par n="EL"/>
       </e>
-     
-  
+
+
       <e>
         <p>
           <l><a/>A<b/></l>
@@ -211,7 +211,7 @@
         </p>
         <par n="EL"/>
       </e>
-     
+
 
 
       <e>
@@ -219,18 +219,18 @@
           <l><a/>y<b/>i</l>
           <r>e<b/>i</r>
         </p>
-      </e>  
+      </e>
 
 
-   
+
       <e>
         <p>
           <l><a/>y<b/>hie</l>
           <r>y<b/>hie</r>
         </p>
-      </e>   
+      </e>
 
- 
+
       <e>
         <p>
           <l><a/>y<b/>hi</l>
@@ -255,39 +255,32 @@
 
       <e>
         <par n="pr"/>
+        <i>acta</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>afta</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
         <i>agua</i>
         <par n="la"/>
       </e>
-
-
       <e>
         <par n="pr"/>
-        <i>hada</i>
+        <i>ala</i>
         <par n="la"/>
       </e>
-       <e>
+      <e>
         <par n="pr"/>
-        <i>habla</i>
+        <i>alga</i>
         <par n="la"/>
       </e>
       <e>
         <par n="pr"/>
         <i>alta</i>
-        <par n="la"/>
-      </e>
-     <e>
-        <par n="pr"/>
-        <i>águila</i>
-        <par n="la"/>
-      </e>
-      <e>
-        <par n="pr"/>
-        <i>acta</i>        
-        <par n="la"/>
-      </e>
-      <e>
-        <par n="pr"/>
-        <i>área</i>
         <par n="la"/>
       </e>
       <e>
@@ -307,17 +300,22 @@
       </e>
       <e>
         <par n="pr"/>
-        <i>álgebra</i>
-        <par n="la"/>
-      </e>
-      <e>
-        <par n="pr"/>
         <i>alma</i>
         <par n="la"/>
       </e>
       <e>
         <par n="pr"/>
+        <i>alza</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
         <i>anca</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>ancla</i>
         <par n="la"/>
       </e>
       <e>
@@ -337,6 +335,16 @@
       </e>
       <e>
         <par n="pr"/>
+        <i>arma</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>asa</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
         <i>asma</i>
         <par n="la"/>
       </e>
@@ -352,7 +360,74 @@
       </e>
       <e>
         <par n="pr"/>
-        <i>aya</i>
+        <i>aula</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>aura</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>ave</i>
+        <par n="la"/>
+      </e>
+
+      <e>
+        <par n="pr"/>
+        <i>ágata</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>ágora</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>álgebra</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>águila</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>área</i>
+        <par n="la"/>
+      </e>
+
+      <e>
+        <par n="pr"/>
+        <i>haba</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>habla</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>hacha</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>hada</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>hambre</i>
+        <par n="la"/>
+      </e>
+      <e>
+        <par n="pr"/>
+        <i>haya</i>
         <par n="la"/>
       </e>
 
