@@ -365,15 +365,13 @@ SELECT:pronto_adv Adv IF (0 ("pronto")) (-1 Verb_Adv) ; # mucho más frecuente a
 SELECT:estrella_nom_1 N IF (0 ("estrella")) (-1 N) (NOT 1 Det); #actriz estrella
 SELECT:estrella_nom_2 N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella del espectáculo
 
-REMOVE:empleo_ocupacion0 ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) (0 Pl); # por defecto: empleos=ocupaciones
-REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-1 EmpleoOcupacionLeftWords);              # excepciones para "empleo de=uso de"
-REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-2 EmpleoOcupacionLeftWords);              # excepciones para "empleo de=uso de"
-REMOVE:empleo_ocupacion2 ("empleo_uso"i) IF (2 EmpleoOcupacionRightWords);              # excepciones para "empleo de=uso de"
-REMOVE:empleo_ocupacion2 ("empleo_uso"i) IF (3 EmpleoOcupacionRightWords);              # excepciones para "empleo de=uso de"
-REMOVE:empleo_ocupacion3 ("empleo_uso"i) IF (2 NP OR (acr));                            # excepciones para "empleo de=uso de"
-REMOVE:empleo_ocupacion3 ("empleo_uso"i) IF (3 NP OR (acr));                            # excepciones para "empleo de=uso de"
-REMOVE:empleo_uso0       ("empleo"i)     IF (0 ("empleo_uso"i)) (1/* ("de"i)) ;         # empleo de=uso de
-REMOVE:empleo_ocupacion  ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) ;       # por defecto: empleo=ocupación
+REMOVE:empleo_ocupacion0 ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) (0 Pl);   # por defecto: empleos=ocupaciones
+REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-1 EmpleoOcupacionLeftWords);                # excepciones para "empleo de=uso de"
+REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-2 EmpleoOcupacionLeftWords);                # excepciones para "empleo de=uso de"
+REMOVE:empleo_ocupacion2 ("empleo_uso"i) IF (2 EmpleoOcupacionRightWords OR NP OR (acr)); # excepciones para "empleo de=uso de"
+REMOVE:empleo_ocupacion2 ("empleo_uso"i) IF (3 EmpleoOcupacionRightWords OR NP OR (acr)); # excepciones para "empleo de=uso de"
+REMOVE:empleo_uso0       ("empleo"i)     IF (0 ("empleo_uso"i)) (1/* ("de"i)) ;           # empleo de=uso de
+REMOVE:empleo_ocupacion  ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) ;         # por defecto: empleo=ocupación
 
 SELECT:mango_fruta ("mango_fruta"i) IF (0 ("mango_fruta"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
 REMOVE:mango_0 ("mango_fruta"i) IF (0 ("mango"i)) (0 ("mango_fruta"i)) ;
