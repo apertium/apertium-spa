@@ -160,7 +160,7 @@ SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) 
 
 SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i);
 
-SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i);
+SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i);;
 SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("región"i) OR ("comunidad"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
 
 ###############################################################################
@@ -371,6 +371,7 @@ REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-2 EmpleoOcupacionLeftWords);      
 REMOVE:empleo_ocupacion2 ("empleo_uso"i) IF (2 EmpleoOcupacionRightWords OR NP OR (acr)); # excepciones para "empleo de=uso de"
 REMOVE:empleo_ocupacion2 ("empleo_uso"i) IF (3 EmpleoOcupacionRightWords OR NP OR (acr)); # excepciones para "empleo de=uso de"
 REMOVE:empleo_uso0       ("empleo"i)     IF (0 ("empleo_uso"i)) (1/* ("de"i)) ;           # empleo de=uso de
+REMOVE:empleo_uso1       ("empleo"i)     IF (0 ("empleo_uso"i)) (-1 ("<su>"i)) ;          # su empleo=su uso
 REMOVE:empleo_ocupacion  ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) ;         # por defecto: empleo=ocupación
 
 SELECT:mango_fruta ("mango_fruta"i) IF (0 ("mango_fruta"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
