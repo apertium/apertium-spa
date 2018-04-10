@@ -442,6 +442,9 @@ SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); #propiamente dicha
 
 SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
 
+REMOVE:usted_unidad1 N IF (0 ("<Ud.>")); #Ud.=usted ud.=unidad
+REMOVE:usted_unidad2 Pron IF (0 ("<ud.>"));
+
 # la tierra como medio de vida
 
 # pronombre + verbo
