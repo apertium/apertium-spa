@@ -445,6 +445,11 @@ SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
 REMOVE:usted_unidad1 N IF (0 ("<Ud.>")); #Ud.=usted ud.=unidad
 REMOVE:usted_unidad2 Pron IF (0 ("<ud.>"));
 
+
+REMOVE:nata_adj N IF (-1 N + Fem + Sg) (0 ("<nata>"i));  # artista nata
+REMOVE:nata_adj N IF (-1 N + Fem + Pl) (0 ("<natas>"i)); # artistas natas
+SELECT:nata_nom N IF (0 ("nata"i));                      # resto: helado de nata
+
 # la tierra como medio de vida
 
 # pronombre + verbo
