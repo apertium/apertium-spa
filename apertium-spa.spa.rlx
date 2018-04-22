@@ -477,6 +477,9 @@ SELECT:nata_nom N IF (0 ("nata"i));                      # resto: helado de nata
 
 REMOVE:se_suma ("sumir") IF (-1 ("<se>"i)) (0 ("<suma>"i)); # sumirse es possible pero raro 
 
+SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1/* ("a"i)); 
+SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1 Adv) (2/* ("a"i)); 
+
 # la tierra como medio de vida
 
 # pronombre + verbo
