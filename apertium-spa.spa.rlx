@@ -158,7 +158,7 @@ SET CuboMatematicasWords = ("cuadrado"i) OR ("octaedro"i) OR ("plano"i) OR ("<Ru
 
 SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) OR ("lluvia"i) OR ("pared"i) OR ("decorar") OR ("separar"i) OR ("portal"i) OR ("nido"i) OR ("decoración"i) OR ("luz"i) OR ("calle"i) OR ("saliente"i) OR ("cama"i) OR ("hiedra"i) OR ("yedra"i) OR ("habitación"i) OR ("viga"i) OR ("resguardar"i) OR ("escalera"i) OR ("sur"i) OR ("norte"i) OR ("fachada"i) OR ("golondirna"i) OR ("llover"i) OR ("agua"i) OR ("gota"i) OR ("mansión"i) OR ("dintel"i) OR ("pájaro"i);
 
-SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i);
+SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i) OR ("soplar"i);
 
 SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i);;
 SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("región"i) OR ("comunidad"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
@@ -345,6 +345,23 @@ SUBSTITUTE:dob_neg_4 ("ninguno") ("alguno") TARGET ("ninguno") IF (*-2 AdvNeg BA
 	# no hay ningún
 	# nunca hay ningún
 	# nunca hay nadie
+
+#
+# NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
+#
+
+SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
+SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
+SELECT:times NP IF (0 ("Times"));
+SELECT:time NP IF (0 ("Time"));
+SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
+
+SELECT:nom_propio0 NP IF (0 NP) (-1 >>>) (1 Verb + Pers);
+SELECT:nom_propio1 NP IF (0 NP) (-1 >>>) (1 Pron) (2 Verb + Pers);
+SELECT:nom_propio2 NP IF (0 NP) (-1 >>>) (1 Adv) (2 Verb + Pers);
+SELECT:nom_propio3 NP IF (0 NP) (-1 >>>) (1 Adv) (2 Pron) (3 Verb + Pers);
+
+REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
 #
 # PALABRAS PARTICULARES
