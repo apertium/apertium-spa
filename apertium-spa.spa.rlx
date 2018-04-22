@@ -118,7 +118,9 @@ SET Fundir = ("fundir") OR ("Fundir") ;
 
 SET Ser = ("ser") OR ("Ser") ;
 SET Estar = ("estar") OR ("Estar");
-SET Haber = ("haber") OR ("Haber") ;
+SET Haber = ("haber") OR ("Haber");
+SET Parecer = ("parecer") OR ("Parecer");
+SET SerEstarParecer = Ser OR Estar OR Parecer;
 
 # adjetivos ambíguos que sólo pueden anteceder el nombre ("gran" o "buen" no son ambiguos)
 SET PreAdj = ("mal") OR ("Mal") ;
@@ -356,13 +358,17 @@ SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
 
-SELECT:nom_propio0 NP IF (0 NP) (-1 >>>) (1 Verb + Pers);
-SELECT:nom_propio1 NP IF (0 NP) (-1 >>>) (1 Pron) (2 Verb + Pers);
-SELECT:nom_propio2 NP IF (0 NP) (-1 >>>) (1 Adv) (2 Verb + Pers);
-SELECT:nom_propio3 NP IF (0 NP) (-1 >>>) (1 Adv) (2 Pron) (3 Verb + Pers);
-SELECT:nom_propio4 NP IF (0 NP) (-1 >>>) (1 NP);
-SELECT:nom_propio4 NP IF (0 NP) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
-SELECT:nom_propio4 NP IF (0 NP) (-1 >>>) (1 CnjCoo) (2 NP);
+SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
+SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
+SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
+
+SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers);
+SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
+SELECT:nom_propio2 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Verb + Pers);
+SELECT:nom_propio3 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Pron) (3 Verb + Pers);
+SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 NP);
+SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
+SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
