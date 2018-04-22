@@ -360,6 +360,9 @@ SELECT:nom_propio0 NP IF (0 NP) (-1 >>>) (1 Verb + Pers);
 SELECT:nom_propio1 NP IF (0 NP) (-1 >>>) (1 Pron) (2 Verb + Pers);
 SELECT:nom_propio2 NP IF (0 NP) (-1 >>>) (1 Adv) (2 Verb + Pers);
 SELECT:nom_propio3 NP IF (0 NP) (-1 >>>) (1 Adv) (2 Pron) (3 Verb + Pers);
+SELECT:nom_propio4 NP IF (0 NP) (-1 >>>) (1 NP);
+SELECT:nom_propio4 NP IF (0 NP) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
+SELECT:nom_propio4 NP IF (0 NP) (-1 >>>) (1 CnjCoo) (2 NP);
 
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
