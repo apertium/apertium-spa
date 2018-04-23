@@ -354,9 +354,12 @@ SUBSTITUTE:dob_neg_4 ("ninguno") ("alguno") TARGET ("ninguno") IF (*-2 AdvNeg BA
 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
+SELECT:marzo_mes N IF (0 ("Marzo")) (1/* ("de")) (2 (num));
+SELECT:marzo_mes N IF (0 ("Marzo")) (-1/* ("de")) (-2 (num));
 SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
+
 
 SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
 SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
