@@ -482,6 +482,9 @@ SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1 Adv) (2/* ("a"i));
 
 SELECT:ave_tren (acr) IF (0 ("AVE") OR ("IBAN"));
 
+SELECT:ir_verb Ir IF (0 Ir) (1 ("a"i)) (2/* Inf); #Fuimos a cantar. 
+
+
 # la tierra como medio de vida
 
 # pronombre + verbo
