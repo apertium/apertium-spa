@@ -372,6 +372,10 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
+#  antropónimos
+SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
+SELECT:apellido1 (ant) IF (0 (ant)) (-1 ("i"i)) (-2 (ant));
+
 #
 # PALABRAS PARTICULARES
 #
@@ -445,7 +449,11 @@ REMOVE:entendimiento_0 ("entendimiento_acuerdo"i) IF (0 ("entendimiento"i)) (0 (
 SELECT:cuenta_1 Verb IF (0 ("contar"i)) (1 ("conmigo"i) OR ("contigo"i) OR ("consigo"i));
 SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 ("con"i)) (NOT -1 Det);
 
-SELECT:ser_ir_ger Ir IF (0 Ser) (0 Ir) (1 Ger); #fueron subiendo = ir, no ser
+REMOVE:ir_ger Ser IF (0 Ser) (0 Ir) (1 Ger); #fueron subiendo = ir, no ser
+
+SELECT:lo_que_fuera_para Ser IF (0 Ser) (0 Ir) (-1 Rel) (1 ("para") OR ("por")); # lo que fuera = ser, no ir
+REMOVE:lo_que_fuera Ir IF (0 Ser) (0 Ir) (-1 Rel) (NOT 1/* ("a")); # lo que fuera = ser, no ir
+
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex); #seguir/pasar/tirar adelante 
 
