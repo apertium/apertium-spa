@@ -364,6 +364,7 @@ SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
 SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
 SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
 SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
+REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 
 SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers);
 SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
