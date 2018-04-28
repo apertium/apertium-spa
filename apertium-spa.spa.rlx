@@ -514,9 +514,10 @@ REMOVE:via2 Prep IF (0 ("vía") + $$FemSg) (1 A + $$FemSg) ;
 	# dos veces y media > kaj duono
 
 # dos veces y media; dos años y medio
-SELECT:y_medio_adj ("medio¹") IF (-2 (n f)) (-1 CnjCoo) (0 ("medio¹")) (0 (adj f sg));
-SELECT:y_media_adj ("medio¹") IF (-2 (n m)) (-1 CnjCoo) (0 ("medio¹")) (0 (adj m sg));
-REMOVE:medio_0 ("medio") IF (0 ("medio")) (NOT 0 ("medio¹"));
+SELECT:y_medio_adj A IF (-2 (n f)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj f sg));
+SELECT:y_media_adj A IF (-2 (n m)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj m sg));
+
+SELECT:medio_adv PreAdv IF (0 ("<medio>"i)) (1 A) (NOT -1 Det);
 
 SELECT:si_ja_1 Adv IF (0 ("sí") OR ("Sí")) (1C Verb) (NOT -1 Prep) ;
 SUBSTITUTE:si_ja_2 ("sí") ("sí_ja") TARGET ("sí") IF (0 ("sí") OR ("Sí")) (1C Verb) (NOT -1 Prep) ;
