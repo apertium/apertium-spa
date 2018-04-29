@@ -91,6 +91,10 @@ SET Verb_Adv = Verb OR Adv ;
 SET Cnj_Rel = CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 SET Cnj_Rel_End = >>> OR CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 
+LIST unknown = ("\\*.*"r) ;
+LIST unknownMajIni = ("\\*[A-ZÀÁÈÉíÒÓÚÜÇ].*"r) ;
+LIST MajIni = ("<[A-ZÀÁÈÉíÒÓÚÜÇ].*>"r) ;
+
 SET Barrera_Final_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Verb OR Rel OR Pro ;	# Verb és perillós per la ambigüitat, però en general, prolífic
 SET Barrera_Final_Estrict_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Rel OR Pro ;
 SET Barrera_Inicial_SN = >>> OR Prep OR CnjSub OR CnjAdv OR Verb OR Rel ;	# Verb és perillós per la ambigüitat, però en general, prolífic
@@ -172,7 +176,7 @@ SET NadarWords = ("agua"i) OR ("mar"i) OR ("piscina"i) OR ("río"i) OR ("lago"i)
 
 SET NadaPronWords = ("añadir"i) OR ("aportar"i) OR ("tener"i) OR ("contener"i) OR ("esperar"i);
 
-SET NadaPronWords2 = ("<más>"i) OR ("<menos>"i) OR ("<mejor>"i) OR ("<peor>"i) OR ("<nuevo>"i);
+SET NadaPronWords2 = ("<más>"i) OR ("<menos>"i) OR ("<mejor>"i) OR ("<peor>"i) OR ("<nuevo>"i) OR ("<parecido>"i);
 
 ###############################################################################
 #  Morphological disambiguation
@@ -347,9 +351,11 @@ SET AdvNeg = ("nunca") OR ("Nunca") OR ("jamás") OR ("Jamás") ;
 SET PronNeg = ("nada") OR ("Nada") OR ("nadie") OR ("Nadie") OR ("ninguno") OR ("Ninguno") ;
 SET DetNeg = ("ninguno") OR ("Ninguno") ;
 REMOVE:dob_neg_1 No IF (0 No) (1 Verb) (*2 AdvNeg OR PronNeg BARRIER Cnj_Rel) ;
-SUBSTITUTE:dob_neg_2 ("nada") ("algo") TARGET ("nada") IF (*-2 AdvNeg BARRIER Cnj_Rel LINK 1 Verb) (0 ("nada")) ;
-SUBSTITUTE:dob_neg_3 ("nadie") ("alguien") TARGET ("nadie") IF (*-2 AdvNeg BARRIER Cnj_Rel LINK 1 Verb) (0 ("nadie")) ;
-SUBSTITUTE:dob_neg_4 ("ninguno") ("alguno") TARGET ("ninguno") IF (*-2 AdvNeg BARRIER Cnj_Rel LINK 1 Verb) (0 ("ninguno")) ;
+
+#No sirve para todas las lenguas!!
+#SUBSTITUTE:dob_neg_2 ("nada") ("algo") TARGET ("nada") IF (*-2 AdvNeg BARRIER Cnj_Rel LINK 1 Verb) (0 ("nada")) ;
+#SUBSTITUTE:dob_neg_3 ("nadie") ("alguien") TARGET ("nadie") IF (*-2 AdvNeg BARRIER Cnj_Rel LINK 1 Verb) (0 ("nadie")) ;
+#SUBSTITUTE:dob_neg_4 ("ninguno") ("alguno") TARGET ("ninguno") IF (*-2 AdvNeg BARRIER Cnj_Rel LINK 1 Verb) (0 ("ninguno")) ;
 	# no hay ningún
 	# nunca hay ningún
 	# nunca hay nadie
@@ -382,9 +388,17 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
-#  antropónimos
+#  ANTROPÓNIMOS
 SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
 SELECT:apellido1 (ant) IF (0 (ant)) (-1 ("i"i)) (-2 (ant));
+
+# Evita traducir nombres propios
+#SUBSTITUTE:nom_propi1 (".*"r) ("$1"v) TARGET ("<(.*)>"r) IF (-1 (ant)) (NOT -1/* Prep OR Det) (0 Verb OR N) (0 MajIni) (NOT 0 NP OR A);
+#REPLACE:nom_propi2 (np) Verb OR N OR A IF  (-1 (ant)) (NOT -1/* Prep OR Det) (0 Verb OR N) (0 MajIni) (NOT 0 NP OR A);
+## Amb adjectius calen més precaucions!!
+#SUBSTITUTE:nom_propi1 (".*"r) ("$1"v) TARGET ("<(.*)>"r) IF (-1 (ant)) (0 A) (0 MajIni);
+#REPLACE:nom_propi2 (np) A IF  (-1 (ant)) (0 A) (0 MajIni);
+
 
 #
 # PALABRAS PARTICULARES
