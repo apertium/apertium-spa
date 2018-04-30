@@ -340,8 +340,8 @@ SELECT:subj5 PRS (*-1 ("ser") LINK 1 Adv_PreAdv LINK 1 A LINK 1 ("que")) (0C Ver
 SELECT:pp_1 PP IF (-1 Haber) (0 PP) ;
 SELECT:pp_2 PP IF (-1 Ser) (0 PP) (*1 ("por") BARRIER (Cnj_Rel_End)) ;
 
-SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 (vblex pp m sg)); #las había dicho
-SELECT:haber_vblex Vblex IF (0 Haber) (NOT 1 (vblex pp m sg)); #las había en cantidad
+SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Verb + (pp m sg)); #las había dicho
+SELECT:haber_vblex Vblex IF (0 Haber) (NOT 1 Verb + (pp m sg)); #las había en cantidad
 
 # seguir, estar + ger
 SELECT:ger Ger IF (-1 ("estar") OR ("Estar") OR ("seguir") OR ("Seguir")) (0 Ger) ;
@@ -529,6 +529,13 @@ REMOVE:nada_0 Adv IF (0 ("nada"i)) (4 NadaPronWords);
 REMOVE:nada_1 Verb IF (0 ("<nada>"i)) (NOT 0*/* NadarWords) (NOT -1 (ant));     #Probabilidad de "nada" (nadar) = 0.1%
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 ("<que>"i));
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
+
+
+SELECT:algo1 PreAdv IF (0 ("algo")) (-1 N + MascSg) (1C A + MascSg);
+SELECT:algo2 PreAdv IF (0 ("algo")) (-1 N + MascPl) (1C A + MascPl);
+SELECT:algo3 PreAdv IF (0 ("algo")) (-1 N + FemSg) (1C A + FemSg);
+SELECT:algo4 PreAdv IF (0 ("algo")) (-1 N + FemPl) (1C A + FemPl);
+REMOVE:algo5 PreAdv IF (0 ("algo"i));
 
 # la tierra como medio de vida
 
