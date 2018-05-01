@@ -537,6 +537,7 @@ SELECT:algo4 PreAdv IF (0 ("algo")) (-1 N + FemPl) (1C A + FemPl);
 REMOVE:algo5 PreAdv IF (0 ("algo"i));
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
+REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 
 # la tierra como medio de vida
 
