@@ -541,6 +541,8 @@ REMOVE:algo5 PreAdv IF (0 ("algo"i));
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>")) (-1 >>>) ; # Quisiera (condicional). Se puede ampliar.
+
 # la tierra como medio de vida
 
 # pronombre + verbo
