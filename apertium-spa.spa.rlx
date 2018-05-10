@@ -159,7 +159,9 @@ SET CuartoDeHabitacionWords = ("matrimonio"i)  OR ("colada"i) OR ("juego"i) OR (
 
 SET DirecciónPostalWords = ("apellido"i) OR ("remitente"i) OR ("destinatario"i) OR ("carnet"i) OR ("carné"i) OR ("libreta"i) OR ("<IP>") OR ("<http>"i) OR ("electrónico"i) OR ("Facebook"i) OR ("Skype"i) OR ("<gmail>") OR ("<hotmail>") OR ("actualizar"i) OR ("identidad"i) OR ("DNI") OR ("verificar"i) OR ("verificación"i) OR ("domicilio"i) OR ("teléfono"i) OR ("fax"i) OR ("Internet"i) OR ("postal"i) OR ("blog"i) OR ("mail"i) OR ("correo"i) OR ("escribir"i) OR ("sobre"i) OR ("bolígrafo"i) OR ("carta"i) OR ("agenda"i) OR ("cartero"i) OR ("destino"i) OR ("calle"i) OR ("avenida"i) OR ("paseo"i) OR ("web"i) OR ("<www>"i) OR ("nº"i) OR ("entrega"i) OR ("facturación"i) OR ("factura"i);
 
-SET RayoMeteoroWords = ("trueno"i) OR ("tempestad"i) OR ("tormenta"i) OR ("Zeus"i) OR ("dios"i) OR ("fulminar"i) OR ("pararrayos") OR ("rápido"i) OR ("correr"i) OR ("granizada"i) OR ("temporal"i) OR ("divino"i) OR ("lluvia"i) OR ("llover"i) OR ("tronar"i) OR ("caer"i);
+SET RayoMeteoroWords = ("trueno"i) OR ("tempestad"i) OR ("tormenta"i) OR ("Zeus"i) OR ("dios"i) OR ("fulminar"i) OR ("pararrayos") OR ("rápido"i) OR ("correr"i) OR ("granizada"i) OR ("temporal"i) OR ("divino"i) OR ("lluvia"i) OR ("llover"i) OR ("tronar"i) OR ("caer"i) OR ("caída"i);
+
+SET RayoNoMeteoroWords = ("gama"i) OR ("infrarrojo"i) OR ("ultravioleta"i) OR ("cósmico"i) OR ("directo"i) OR ("emergente"i) OR ("extraordinario"i) OR ("incidente"i) OR ("ordinario"i) OR ("paraxial"i) OR ("reflejar"i) OR ("refractar"i) OR ("corpuscular"i) OR ("X"i) OR ("F"i) OR ("verde"i) OR ("crepuscular"i);
 
 SET CuboMatematicasWords = ("cuadrado"i) OR ("octaedro"i) OR ("plano"i) OR ("<Rubik>") OR ("nodo"i) OR ("esfera"i) OR ("longitud") OR ("paralelepípedo"i) OR ("potencia"i) OR ("vértice"i) OR ("diagonal"i) OR ("duplicación"i) OR ("volumen"i) OR ("dimensión"i) OR ("geométrico"i) OR ("geometría"i) OR ("matemático"i) OR ("perfecto"i) OR ("simetría"i) OR ("arista"i) OR ("centímetro"i) OR ("metro"i) OR ("decímetro"i) OR ("cilindro"i) OR ("cono"i) OR ("eje"i) OR ("espacio"i) OR ("poliedro"i) OR ("triángulo"i) OR ("área"i) OR ("dodecaedro"i) OR ("figura"i) OR ("icosaedro"i) OR ("pirámide"i) OR ("rectángulo"i) OR ("tetraedro"i) OR ("unidad"i) OR ("cúbico"i) OR ("paralelo"i) OR ("mínimo"i) OR ("máximo"i) OR ("intersección"i) OR ("unitario"i) OR ("lado"i) OR ("lateral"i) OR ("cara"i);
 
@@ -436,6 +438,7 @@ REMOVE:empleo_ocupacion  ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) 
 SELECT:mango_fruta ("mango_fruta"i) IF (0 ("mango_fruta"i)) (0*/* MangoFruitWords) (NOT 0* MangoNotFruitWords) ;
 REMOVE:mango_0 ("mango_fruta"i) IF (0 ("mango"i)) (0 ("mango_fruta"i)) ;
 
+SELECT:rayo_no_meteoro ("rayo"i) IF (0 ("rayo"i)) (1 RayoNoMeteoroWords) ;
 SELECT:rayo_meteoro ("rayo_meteoro"i) IF (0 ("rayo_meteoro"i)) (0*/* RayoMeteoroWords) ;
 REMOVE:rayo_0 ("rayo_meteoro"i) IF (0 ("rayo"i)) (0 ("rayo_meteoro"i)) ;
 
@@ -520,7 +523,7 @@ SELECT:rellena ("rellenar") IF (0 ("rellenar"i)) (1 Det); # Rellena el formulari
 
 REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (NOT -1 Det + (m)) (NOT -1 ("número"i)); # uno (no es sustantivo si no está determinado)
 
-REMOVE:uno_unir Vblex IF (0 ("uno"i)) (1/* ("de"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
+REMOVE:uno_unir Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
 
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
