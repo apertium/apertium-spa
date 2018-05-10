@@ -585,6 +585,8 @@ REMOVE:sentir_sentar_3 Sentar (0 Sentar) (1 A) ; # me siento feliz
 REMOVE:sentir_sentar_4 Sentar (0 Sentar) (1 Det) ; # siento una cosa (pero: me siento los domingos)
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que")) ;
+REMOVE:creer_crear_3 Crear (0 Crear) (1C A) ; # creer necesario/oportuno...
+REMOVE:creer_crear_3 Crear (0 Crear) (1C (prn) + (tn)) (2C A) ; # creer él/tú necesario/oportuno...
 REMOVE:creer_crear PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
 SELECT:ser_ir_1 Ser (0 Ser LINK 0 Ir) (1C PP) ; # no sempre funciona, però sí de costum
 SELECT:ser_ir_1 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
