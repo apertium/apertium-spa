@@ -376,6 +376,7 @@ SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
 SELECT:bienvenida A IF (-1 >>>) (0 ("Bienvenida")) (NOT 1 (np));
 SELECT:pascual_np NP IF (0 ("Pascual")) (0 MajIni);
+SELECT:pascual_np A IF (0 ("Pascual")) (-1 ("Vigilia") OR ("Cordero") OR ("Triduo"));
 
 SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
 SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
