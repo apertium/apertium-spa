@@ -152,7 +152,7 @@ SET MangoNotFruitWords = ("acero"i) OR ("azada"i) OR ("levantar"i) OR ("alzar"i)
 
 SET VinoWords = ("beber") OR ("Beber") OR ("tomar") OR ("Tomar") OR ("comprar") OR ("Comprar") OR ("vender") OR ("Vender");
 SET EntreCon = ("entre"i) OR ("con"i);
-SET EntendimientoWords = ("vía"i) OR ("camino"i) OR ("falta"i) OR ("buscar"i) OR ("intentar"i) OR ("encontrar"i);
+SET EntendimientoWords = ("vía"i) OR ("camino"i) OR ("falta"i) OR ("buscar"i) OR ("intentar"i) OR ("encontrar"i) OR ("cauce"i);
 
 SET CuartoHabitacionWords = ("dormir"i) OR ("jugar"i) OR  ("decorar"i) OR ("pintar"i) ;
 SET CuartoDeHabitacionWords = ("matrimonio"i)  OR ("colada"i) OR ("juego"i) OR ("juguete"i) OR ("niño"i) OR ("bebé"i) OR ("plancha"i) OR ("niñera"i) OR ("trasto"i) OR ("muchacho"i) OR ("invitar"i) OR ("huésped"i) OR ("primo"i) OR ("abuelo"i) OR ("padre"i) OR ("madre"i) OR ("hermano"i) OR ("tío"i) OR ("lectura"i);
@@ -377,6 +377,7 @@ SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
 SELECT:bienvenida A IF (-1 >>>) (0 ("Bienvenida")) (NOT 1 (np));
 SELECT:pascual_adj A IF (0 ("pascual")) (-1 ("vigilia") OR ("cordero") OR ("triduo"));
 SELECT:pascual_np NP IF (0 ("Pascual")) (0 MajIni);
+SELECT:luis_np NP IF (0 ("Luis")) (0 MajIni);
 
 SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
 SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
@@ -419,6 +420,7 @@ SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) ; # siempre tarde, llegan ta
 SELECT:entrabar Entrar IF (0 Entrar) (0 Entrabar); # entrar es más frecuente. 
 
 SELECT:placer_nom N IF (0 ("placer")) ; # mucho más frecuente nombre 
+SELECT:colegio_nom N IF (0 ("colegio")) (NOT -1 Pron); # mucho más frecuente nombre 
 
 SELECT:pronto_adv Adv IF (0 ("pronto")) (-1 Verb_Adv) ; # mucho más frecuente adv 
 
@@ -553,7 +555,7 @@ SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>")) (-1 >>>) ; # Quisiera 
 # la tierra como medio de vida
 
 # pronombre + verbo
-SELECT:pronombre_verbo Vblex IF (-1 ("se"i)) (0 (vblex p3)); #se impaciente
+SELECT:pronombre_verbo Vblex IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
 
 # vía pr/n
 REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
