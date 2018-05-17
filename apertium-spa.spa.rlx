@@ -222,6 +222,8 @@ SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
 REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* Prep) (NOT -1 ("hasta"i));
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1C Det); # se puede mejorar comprobando la concordancia det+nom
 
+REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
+
 #los acuerdo, los cazo, las cazo > Verbo
 SELECT:detpl_vb_nsg Vblex IF (0 Vblex) (0 (n sg)) (-1 (prn pl)); 
 
@@ -369,8 +371,8 @@ REMOVE:dob_neg_1 No IF (0 No) (1 Verb) (*2 AdvNeg OR PronNeg BARRIER Cnj_Rel) ;
 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
-SELECT:marzo_mes N IF (0 ("Marzo")) (1/* ("de")) (2 (num));
-SELECT:marzo_mes N IF (0 ("Marzo")) (-1/* ("de")) (-2 (num));
+SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
+SELECT:marzo_mes N IF (0 ("Julio")) (NOT 1/* NP);
 SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
