@@ -220,7 +220,7 @@ SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
  
 # prep + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
 REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* Prep) (NOT -1 ("hasta"i));
-REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1C Det); # se puede mejorar comprobando la concordancia det+nom
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det); # se puede mejorar comprobando la concordancia det+nom
 
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
@@ -366,13 +366,14 @@ REMOVE:dob_neg_1 No IF (0 No) (1 Verb) (*2 AdvNeg OR PronNeg BARRIER Cnj_Rel) ;
 	# nunca hay nadie
 
 #
-# NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
+# AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
-SELECT:marzo_mes N IF (0 ("Julio")) (NOT 1/* NP);
+SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
+SELECT:julio_mes N IF (0 ("Valle")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
 SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
@@ -385,6 +386,10 @@ SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
 SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
 SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
 REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
+
+#
+# NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
+#
 
 SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers);
 SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
@@ -557,7 +562,15 @@ REMOVE:algo5 PreAdv IF (0 ("algo"i));
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 
-SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>")) (-1 >>>) ; # Quisiera (condicional). Se puede ampliar.
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>) ; # Quisiera (condicional). Se puede ampliar.
+
+SELECT:puesto N IF (0 ("puesto"i)) (-1 (ord m));
+
+#ordinales (el tagger no detecta els ordinals)
+SELECT:ordinal A IF (0 (ord) + MascSg) (1 N + MascSg);
+SELECT:ordinal A IF (0 (ord) + MascPl) (1 N + MascPl);
+SELECT:ordinal A IF (0 (ord) + FemSg) (1 N + FemSg);
+SELECT:ordinal A IF (0 (ord) + FemPl) (1 N + FemPl);
 
 # la tierra como medio de vida
 
