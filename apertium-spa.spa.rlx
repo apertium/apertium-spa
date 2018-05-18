@@ -572,6 +572,8 @@ SELECT:ordinal A IF (0 (ord) + MascPl) (1 N + MascPl);
 SELECT:ordinal A IF (0 (ord) + FemSg) (1 N + FemSg);
 SELECT:ordinal A IF (0 (ord) + FemPl) (1 N + FemPl);
 
+SELECT:probar_a Vblex IF (0 ("probar"i)) (1 ("a")) (2 Inf);
+
 # la tierra como medio de vida
 
 # pronombre + verbo
