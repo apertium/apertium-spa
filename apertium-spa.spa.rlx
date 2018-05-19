@@ -205,7 +205,7 @@ SELECT:este_2 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 A + $$MascSg) (2 N + $$
 SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 	# Este estado
 
-REMOVE:este N IF (0 ("este")) (-1 Prep);	
+REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i));	
 
 # Tio estas ligita al la (mis)difinoj de accionista__n, albañil__n, gilipollas__n kaj reh/én__n
 #SELECT:n_mf_1 Masc IF (0C N LINK NOT 0 Defensa) (-1C Vblex OR Prep OR ("como")) (NOT -1 PP) (1 <<< OR Prep) ;
@@ -214,7 +214,7 @@ REMOVE:este N IF (0 ("este")) (-1 Prep);
 	## cogieron tres rehenes.
 
 # se referirán, desde entonces, a los indígenas del Magreb como pueblos líbicos, aunque
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) ;
+ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber);
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
 
 # prn + verbo/nombre
@@ -352,6 +352,7 @@ SELECT:pp_1 PP IF (-1 Haber) (0 PP) ;
 SELECT:pp_2 PP IF (-1 Ser) (0 PP) (*1 ("por") BARRIER (Cnj_Rel_End)) ;
 
 SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Verb + (pp m sg)); #las había dicho
+SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Adv) (2 Verb + (pp m sg)); #las había siempre visto
 SELECT:haber_vblex Vblex IF (0 Haber) (NOT 1 Verb + (pp m sg)); #las había en cantidad
 
 # seguir, estar + ger
