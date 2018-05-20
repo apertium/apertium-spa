@@ -357,7 +357,7 @@ SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Adv) (2 Verb + (pp m sg)); #las hab
 SELECT:haber_vblex Vblex IF (0 Haber) (NOT 1 Verb + (pp m sg)); #las había en cantidad
 
 # seguir, estar + ger
-SELECT:ger Ger IF (-1 ("estar") OR ("Estar") OR ("seguir") OR ("Seguir")) (0 Ger) ;
+SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
 
 # doble negación (eo)
 SET No = ("no") OR ("No") ;
@@ -375,11 +375,13 @@ REMOVE:dob_neg_1 No IF (0 No) (1 Verb) (*2 AdvNeg OR PronNeg BARRIER Cnj_Rel) ;
 	# nunca hay nadie
 
 # grados-ordinales: puesto 38º.
-SET GradosWords = ("temperatura"i) OR ("ángulo"i) OR ("girar"i) OR ("giro"i);
-SET OrdinalesWords = ("puesto"i);
+SET GradosWords = ("temperatura"i) OR ("bajo cero"i) OR ("cero"i) OR ("grado"i) OR ("sol"i) OR ("ángulo"i) OR ("girar"i) OR ("giro"i) OR ("rumbo"i) OR ("latitud"i) OR ("longitud"i) OR ("<N>") OR ("<S>") OR ("<W>") OR ("<E>") OR ("norte"i) OR ("sur"i) OR ("oeste"i) OR ("inclinación"i) OR ("periodo"i) OR ("descenso"i) OR ("aumento"i);
+SET OrdinalesWords = ("puesto") OR ("apartado") OR ("ap.") OR ("punto") OR ("planta") OR ("art.") OR ("artículo") OR ("párrafo");
 
-SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num) (0*/* OrdinalesWords) (NOT 0*/* GradosWords);
-SELECT:grado_ordinal1 Num IF (0 Ord) (0 Num) (NOT 0*/* OrdinalesWords) (0*/* GradosWords);
+SELECT:grado_ordinal1 Num IF (0 Ord) (0 Num) (0*/* GradosWords) (NOT 0*/* OrdinalesWords);
+SELECT:grado_ordinal2 Num IF (0 Ord) (0 Num) (-1 ("entre")) (1 CnjCoo) (2 Num);
+SELECT:grado_ordinal3 Num IF (0 Ord) (0 Num) (-1 CnjCoo) (-2 Num) (-3 ("entre"));
+SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num);
 
 #
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
