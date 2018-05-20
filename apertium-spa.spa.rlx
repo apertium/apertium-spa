@@ -22,6 +22,7 @@ LIST Pos = (pos) ;
 LIST Pron = (prn) ;
 LIST Prep = (pr) ;
 LIST CnjCoo = (cnjcoo) ;
+LIST Ord = (ord) ;
 # quantes vegades s'executa cada regla?
 # había sido inventado por los griegos mientras que los españoles aseguraban
 # elimina españoles adj, però no griegos adj; si se suprimeix la segona part de la frase, sí se suprimeix griegos adj
@@ -373,6 +374,13 @@ REMOVE:dob_neg_1 No IF (0 No) (1 Verb) (*2 AdvNeg OR PronNeg BARRIER Cnj_Rel) ;
 	# nunca hay ningún
 	# nunca hay nadie
 
+# grados-ordinales: puesto 38º.
+SET GradosWords = ("temperatura"i) OR ("ángulo"i) OR ("girar"i) OR ("giro"i);
+SET OrdinalesWords = ("puesto"i);
+
+SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num) (0*/* OrdinalesWords) (NOT 0*/* GradosWords);
+SELECT:grado_ordinal1 Num IF (0 Ord) (0 Num) (NOT 0*/* OrdinalesWords) (0*/* GradosWords);
+
 #
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
@@ -431,6 +439,8 @@ SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el dí
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
 
 SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) ; # siempre tarde, llegan tarde
+
+SELECT:mucho_det Det IF (0 ("<mucho>"i)) (1 N + MascSg) (-1 ("hay"i)); # hay mucho interés (el tagger falla)
 
 SELECT:entrabar Entrar IF (0 Entrar) (0 Entrabar); # entrar es más frecuente. 
 
@@ -573,10 +583,10 @@ SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) 
 SELECT:puesto N IF (0 ("puesto"i)) (-1 (ord m));
 
 #ordinales (el tagger no detecta els ordinals)
-SELECT:ordinal A IF (0 (ord) + MascSg) (1 N + MascSg) (NOT 0 ("primo"i));
-SELECT:ordinal A IF (0 (ord) + MascPl) (1 N + MascPl) (NOT 0 ("primo"i));
-SELECT:ordinal A IF (0 (ord) + FemSg) (1 N + FemSg) (NOT 0 ("primo"i));
-SELECT:ordinal A IF (0 (ord) + FemPl) (1 N + FemPl) (NOT 0 ("primo"i));
+SELECT:ordinal A IF (0 Ord + MascSg) (1 N + MascSg) (NOT 0 ("primo"i));
+SELECT:ordinal A IF (0 Ord + MascPl) (1 N + MascPl) (NOT 0 ("primo"i));
+SELECT:ordinal A IF (0 Ord + FemSg) (1 N + FemSg) (NOT 0 ("primo"i));
+SELECT:ordinal A IF (0 Ord + FemPl) (1 N + FemPl) (NOT 0 ("primo"i));
 
 SELECT:probar_a Vblex IF (0 ("probar"i)) (1 ("a")) (2 Inf);
 
