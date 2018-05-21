@@ -300,6 +300,12 @@ REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")
 SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
 SELECT:precisar Vblex IF (0 ("precisar")) (1 Inf);
 SELECT:ir_a Ir IF (0 Ir) (1 ("a")) (2/* Inf);
+REMOVE:ir_ger Ser IF (0 Ser) (0 Ir) (1/* Ger); #fueron subiendo = ir, no ser
+SELECT:lo_que_fuera_para Ser IF (0 Ser) (0 Ir) (-1 Rel) (1 ("para") OR ("por")); # lo que fuera = ser, no ir
+REMOVE:lo_que_fuera Ir IF (0 Ser) (0 Ir) (-1 Rel) (NOT 1/* ("a")); # lo que fuera = ser, no ir
+SELECT:me_fui Ir IF (0 Ser) (0 Ir + (p1)) (-1 Pro + (p1));
+SELECT:te_fuiste Ir IF (0 Ser) (0 Ir + (p2)) (-1 Pro + (p2));
+
 
 SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); #propiamente dicha (excepción a las reglas siguientes)
 
@@ -377,8 +383,8 @@ REMOVE:dob_neg_1 No IF (0 No) (1 Verb) (*2 AdvNeg OR PronNeg BARRIER Cnj_Rel) ;
 	# nunca hay nadie
 
 # grados-ordinales: puesto 38º.
-SET GradosWords = ("temperatura"i) OR ("bajo cero"i) OR ("cero"i) OR ("grado"i) OR ("sol"i) OR ("ángulo"i) OR ("girar"i) OR ("giro"i) OR ("rumbo"i) OR ("latitud"i) OR ("longitud"i) OR ("<N>") OR ("<S>") OR ("<W>") OR ("<E>") OR ("norte"i) OR ("sur"i) OR ("oeste"i) OR ("inclinación"i) OR ("periodo"i) OR ("descenso"i) OR ("aumento"i);
-SET OrdinalesWords = ("puesto") OR ("apartado") OR ("ap.") OR ("punto") OR ("planta") OR ("art.") OR ("artículo") OR ("párrafo");
+SET GradosWords = ("temperatura"i) OR ("bajo cero"i) OR ("cero"i) OR ("sol"i) OR ("ángulo"i) OR ("girar"i) OR ("giro"i) OR ("rumbo"i) OR ("latitud"i) OR ("longitud"i) OR ("<N>") OR ("<S>") OR ("<W>") OR ("<E>") OR ("norte"i) OR ("sur"i) OR ("oeste"i) OR ("inclinación"i) OR ("descenso"i) OR ("aumento"i) OR ("talud"i);
+SET OrdinalesWords = ("puesto") OR ("apartado") OR ("ap.") OR ("punto") OR ("planta") OR ("art.") OR ("artículo") OR ("párrafo") OR ("batallón") OR ("ejército") OR ("cuerpo") OR ("escuadrón");
 
 SELECT:grado_ordinal1 Num IF (0 Ord) (0 Num) (0*/* GradosWords) (NOT 0*/* OrdinalesWords);
 SELECT:grado_ordinal2 Num IF (0 Ord) (0 Num) (-1 ("entre")) (1 CnjCoo) (2 Num);
@@ -513,13 +519,6 @@ SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("de"i)) (2 ("este"i)); # ??
 SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("de"i)) (2 ("forma"i) OR ("manera"i)) (3 A);
 SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR ("interés"i));
 SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("<del>"i));
-
-REMOVE:ir_ger Ser IF (0 Ser) (0 Ir) (1/* Ger); #fueron subiendo = ir, no ser
-SELECT:lo_que_fuera_para Ser IF (0 Ser) (0 Ir) (-1 Rel) (1 ("para") OR ("por")); # lo que fuera = ser, no ir
-REMOVE:lo_que_fuera Ir IF (0 Ser) (0 Ir) (-1 Rel) (NOT 1/* ("a")); # lo que fuera = ser, no ir
-SELECT:ir_verb Ir IF (0 Ir) (1 ("a"i)) (2/* Inf); #Fuimos a cantar. 
-SELECT:me_fui Ir IF (0 Ser) (0 Ir + (p1)) (-1 Pro + (p1));
-SELECT:te_fuiste Ir IF (0 Ser) (0 Ir + (p2)) (-1 Pro + (p2));
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex); #seguir/pasar/tirar adelante 
 
