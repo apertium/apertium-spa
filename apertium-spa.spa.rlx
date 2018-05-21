@@ -296,6 +296,11 @@ REMOVE:nom_verb2 N (NOT -2 Verb) (NOT -2 Prep) (-1C Pro) (0 N LINK 0 Verb) ;
 REMOVE:tanto_como_1 A (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
 REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")) ;
 
+# seguir, estar + ger
+SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
+SELECT:precisar Vblex IF (0 ("precisar")) (1 Inf);
+SELECT:ir_a Ir IF (0 Ir) (1 ("a")) (2/* Inf);
+
 SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); #propiamente dicha (excepción a las reglas siguientes)
 
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) ;
@@ -355,9 +360,6 @@ SELECT:pp_2 PP IF (-1 Ser) (0 PP) (*1 ("por") BARRIER (Cnj_Rel_End)) ;
 SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Verb + (pp m sg)); #las había dicho
 SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Adv) (2 Verb + (pp m sg)); #las había siempre visto
 SELECT:haber_vblex Vblex IF (0 Haber) (NOT 1 Verb + (pp m sg)); #las había en cantidad
-
-# seguir, estar + ger
-SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
 
 # doble negación (eo)
 SET No = ("no") OR ("No") ;
@@ -534,9 +536,11 @@ SELECT:vino_nom N IF (0 ("vino")) (-1 VinoWords); # beber vino (n)
 SELECT:pasar_verb Vblex IF (0 ("pasar"i)) (1 ("a")); # pasa (v) a ser 
 SELECT:dar_verb Vblex IF (0 ("dar"i)) (1 ("de")) (2 ("<alta>") OR ("<baja>")); # dado (participio, no nombre) de alta
 
-SELECT:gestiones N IF (0 ("Gestiones") OR ("Relaciones") OR ("Expediente")); # en mayúsculas son sustantivos
+#SELECT:gestiones N IF (0 ("<Gestiones>") OR ("<Relaciones>") OR ("<Expediente>") OR ("<Expedientes>")); # en mayúsculas son sustantivos
 
-SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
+#SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
+
+SELECT:listo A IF (0 ("listo")) (-1 SerEstarParecer);
 
 REMOVE:usted_unidad1 N IF (0 ("<Ud.>")); #Ud.=usted ud.=unidad
 REMOVE:usted_unidad2 Pron IF (0 ("<ud.>"));
