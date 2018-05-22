@@ -298,6 +298,7 @@ REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")
 
 # seguir, estar + ger
 SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
+SELECT:preciso A IF (0 ("preciso")) (-1 Ser);
 SELECT:precisar Vblex IF (0 ("precisar")) (1 Inf);
 SELECT:ir_a Ir IF (0 Ir) (1 ("a")) (2/* Inf);
 REMOVE:ir_ger Ser IF (0 Ser) (0 Ir) (1/* Ger); #fueron subiendo = ir, no ser
