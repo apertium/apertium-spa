@@ -209,6 +209,7 @@ SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
 REMOVE:este N IF (0 ("este")) (1 SerEstarParecer);
 REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=ser)
+SELECT:como Vblex IF (0 ("comer")) (-1 Pro);
 
 # Tio estas ligita al la (mis)difinoj de accionista__n, albañil__n, gilipollas__n kaj reh/én__n
 #SELECT:n_mf_1 Masc IF (0C N LINK NOT 0 Defensa) (-1C Vblex OR Prep OR ("como")) (NOT -1 PP) (1 <<< OR Prep) ;
