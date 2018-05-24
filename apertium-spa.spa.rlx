@@ -158,7 +158,7 @@ SET EntendimientoWords = ("vía"i) OR ("camino"i) OR ("falta"i) OR ("buscar"i) O
 SET CuartoHabitacionWords = ("dormir"i) OR ("jugar"i) OR  ("decorar"i) OR ("pintar"i) ;
 SET CuartoDeHabitacionWords = ("matrimonio"i)  OR ("colada"i) OR ("juego"i) OR ("juguete"i) OR ("niño"i) OR ("bebé"i) OR ("plancha"i) OR ("niñera"i) OR ("trasto"i) OR ("muchacho"i) OR ("invitar"i) OR ("huésped"i) OR ("primo"i) OR ("abuelo"i) OR ("padre"i) OR ("madre"i) OR ("hermano"i) OR ("tío"i) OR ("lectura"i);
 
-SET DirecciónPostalWords = ("apellido"i) OR ("remitente"i) OR ("destinatario"i) OR ("carnet"i) OR ("carné"i) OR ("libreta"i) OR ("<IP>") OR ("<http>"i) OR ("electrónico"i) OR ("Facebook"i) OR ("Skype"i) OR ("<gmail>") OR ("<hotmail>") OR ("actualizar"i) OR ("identidad"i) OR ("DNI") OR ("verificar"i) OR ("verificación"i) OR ("domicilio"i) OR ("teléfono"i) OR ("fax"i) OR ("Internet"i) OR ("postal"i) OR ("blog"i) OR ("mail"i) OR ("correo"i) OR ("escribir"i) OR ("sobre"i) OR ("bolígrafo"i) OR ("carta"i) OR ("agenda"i) OR ("cartero"i) OR ("destino"i) OR ("calle"i) OR ("avenida"i) OR ("paseo"i) OR ("web"i) OR ("<www>"i) OR ("nº"i) OR ("entrega"i) OR ("facturación"i) OR ("factura"i);
+SET DirecciónPostalWords = ("apellido"i) OR ("remitente"i) OR ("destinatario"i) OR ("carnet"i) OR ("carné"i) OR ("libreta"i) OR ("<IP>") OR ("<http>"i) OR ("electrónico"i) OR ("Facebook"i) OR ("Skype"i) OR ("<gmail>") OR ("<hotmail>") OR ("actualizar"i) OR ("identidad"i) OR ("DNI") OR ("verificar"i) OR ("verificación"i) OR ("domicilio"i) OR ("teléfono"i) OR ("fax"i) OR ("Internet"i) OR ("postal"i) OR ("blog"i) OR ("mail"i) OR ("correo"i) OR ("escribir"i) OR ("bolígrafo"i) OR ("carta"i) OR ("agenda"i) OR ("cartero"i) OR ("destino"i) OR ("calle"i) OR ("avenida"i) OR ("paseo"i) OR ("web"i) OR ("<www>"i) OR ("nº"i) OR ("entrega"i) OR ("facturación"i) OR ("factura"i); # OR ("sobre"i) 
 
 SET RayoMeteoroWords = ("trueno"i) OR ("tempestad"i) OR ("tormenta"i) OR ("Zeus"i) OR ("dios"i) OR ("fulminar"i) OR ("pararrayos") OR ("rápido"i) OR ("correr"i) OR ("granizada"i) OR ("temporal"i) OR ("divino"i) OR ("lluvia"i) OR ("llover"i) OR ("tronar"i) OR ("caer"i) OR ("caída"i);
 
@@ -209,7 +209,6 @@ SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
 REMOVE:este N IF (0 ("este")) (1 SerEstarParecer);
 REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=ser)
-SELECT:como Vblex IF (0 ("comer")) (-1 Pro);
 
 # Tio estas ligita al la (mis)difinoj de accionista__n, albañil__n, gilipollas__n kaj reh/én__n
 #SELECT:n_mf_1 Masc IF (0C N LINK NOT 0 Defensa) (-1C Vblex OR Prep OR ("como")) (NOT -1 PP) (1 <<< OR Prep) ;
@@ -445,6 +444,8 @@ REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant)) (0C Verb OR N OR A) (0 Maj
 # PALABRAS PARTICULARES
 #
 
+SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
+
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
 SELECT:estado_3 N IF (-1 ("[a-záéíóúñ].*"r)) (0 ("Estado")) ;	# "Estado" (con mayúscula) va precedido de una palabra con minúscula inicial
@@ -494,6 +495,7 @@ REMOVE:vela_2 ("vela_cirio"i) IF (0 ("vela"i)) (0 ("vela_cirio"i)) ;
 SELECT:alero_1 ("alero"i) IF (0 ("alero"i)) (0*/* AleroTejadoWords) ;
 REMOVE:alero_2 ("alero"i) IF (0 ("alero"i)) (0 ("alero_baloncesto"i)) ;
 
+SELECT:dirección_1 ("dirección"i) IF (0 ("dirección"i)) (1 ("general"i)) ;
 REMOVE:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("en"i)) ; # en dirección
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)) ; # dirección desconocida
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("interés"i)); # dirección de interés
