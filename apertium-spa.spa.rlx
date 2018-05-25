@@ -233,7 +233,7 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemPl) (
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
 #los acuerdo, los cazo, las cazo > Verbo
-SELECT:detpl_vb_nsg Vblex IF (0 Vblex) (0 (n sg)) (-1 (prn pl)); 
+REMOVE:detpl_vb_nsg N IF (0 Vblex) (0 (n sg)) (-1 (prn pl)); 
 
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
