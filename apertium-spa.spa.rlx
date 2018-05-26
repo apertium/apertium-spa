@@ -401,6 +401,8 @@ SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num);
 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
+SELECT:calle N IF (0 ("calle")) (-1 >>>);
+SELECT:calle N IF (0 ("calle")) (NOT -1 NP);
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
 SELECT:julio_mes N IF (0 ("Valle")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
