@@ -243,6 +243,8 @@ REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 (adj m)) (NOT 0 (adj f)) (-1 (prn pro f))
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
 
+SELECT:uno_sobre_otro Prep IF (0 ("sobre")) (-1 ("uno")) (1 ("otro"));
+
 # preposiciones / verbos
 # no tratamos "cabo" porque es muy infrecuente (+ nombre!, como "bajo", que también es adj)
 REMOVE:r_como_1 Vblex (0 ("como") OR ("Como")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
