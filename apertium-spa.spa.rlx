@@ -236,6 +236,9 @@ REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula
 #los acuerdo, los cazo, las cazo > Verbo
 REMOVE:detpl_vb_nsg N IF (0 Vblex) (0 (n sg)) (-1 (prn pro pl)); 
 REMOVE:detpl_vb_adjsg A IF (0 Vblex) (0 (adj sg)) (-1 (prn pro pl));
+REMOVE:detpl_vb_nm N IF (0 Vblex) (0 (n m)) (NOT 0 (n f)) (-1 (prn pro f)); #la motivo
+REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 (adj m)) (NOT 0 (adj f)) (-1 (prn pro f));
+
 
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
@@ -450,7 +453,7 @@ REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant)) (0C Verb OR N OR A) (0 Maj
 
 SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
 
-REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")); # muy raro: yo motivo, yo objeto.
+REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
