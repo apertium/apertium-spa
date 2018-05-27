@@ -222,7 +222,9 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
-SELECT:prn_vb_n Vblex IF (0C Verb + (p1 sg) OR N) (-1C ("yo"i)) ;
+SELECT:prn_vb_n Verb IF (0C Verb + (p1 sg) OR N) (-1C ("yo"i));
+SELECT:prn_vb_n Verb IF (0C Verb + (p3 sg) OR N) (-1C (prn tn p3 sg) OR ("ello"));
+SELECT:prn_vb_n Verb IF (0C Verb + (p3 pl) OR N) (-1C (prn tn p3 pl));
  
 # prep + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
 REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* Prep) (NOT -1 ("hasta"i));
@@ -234,16 +236,15 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemPl) (
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
 #los acuerdo, los cazo, las cazo > Verbo
-REMOVE:detpl_vb_nsg N IF (0 Vblex) (0 (n sg)) (-1 (prn pro pl)); 
-REMOVE:detpl_vb_adjsg A IF (0 Vblex) (0 (adj sg)) (-1 (prn pro pl));
-REMOVE:detpl_vb_nm N IF (0 Vblex) (0 (n m)) (NOT 0 (n f)) (-1 (prn pro f)); #la motivo
-REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 (adj m)) (NOT 0 (adj f)) (-1 (prn pro f));
+REMOVE:detpl_vb_nsg N IF (0 Vblex) (0 (n sg)) (-1 (prn pro pl)) (NOT 0 (pp)); 
+REMOVE:detpl_vb_adjsg A IF (0 Vblex) (0 (adj sg)) (-1 (prn pro pl)) (NOT 0 (pp));
+REMOVE:detpl_vb_nm N IF (0 Vblex) (0 N + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp)); #la motivo
+REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 A + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp));
 
 
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
 
-SELECT:uno_sobre_otro Prep IF (0 ("sobre")) (-1 ("uno")) (1 ("otro"));
 
 # preposiciones / verbos
 # no tratamos "cabo" porque es muy infrecuente (+ nombre!, como "bajo", que también es adj)
@@ -256,6 +257,8 @@ SELECT:r_para_3 Prep (0 ("para") OR ("Para")) (1 Inf) ;
 SELECT:r_para_5 Prep IF (0 ("parir") OR ("Parir")) (0 Prep);
 REMOVE:r_salvo_1 Vblex (0 ("salvo") OR ("Salvo")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_salvo_2 Vblex (0 ("salvo") OR ("Salvo")) (*1 Vblex BARRIER Cnj_Rel) ;
+SELECT:uno_sobre_otro Prep IF (0 ("sobre")) (-1 ("uno")) (1 ("otro"));
+REMOVE:sobre_nonom N IF (0 ("sobre")) (0 Prep) (-1 Pl OR Fem); 
 REMOVE:r_sobre_1 Vblex (0 ("sobre") OR ("Sobre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_sobre_2 Vblex (0 ("sobre") OR ("Sobre")) (*1 Vblex BARRIER Cnj_Rel) ;
 REMOVE:r_entre_1 Vblex (0 ("entre") OR ("Entre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
@@ -407,8 +410,9 @@ SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num);
 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
-SELECT:calle N IF (0 ("calle")) (-1 >>>);
-SELECT:calle N IF (0 ("calle")) (NOT -1 NP);
+SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
+SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
+SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
 SELECT:julio_mes N IF (0 ("Valle")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
@@ -453,9 +457,13 @@ REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant)) (0C Verb OR N OR A) (0 Maj
 # PALABRAS PARTICULARES
 #
 
+SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (1 ("<[Hh]?[iíÍÍ].*>"r));
+REMOVE:e_noconj (cnjcoo) IF (0 ("e"i));
+
 SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
 
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
+SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)); #uso típico: nombre + "objeto de" (en aposición)
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
@@ -720,8 +728,8 @@ SELECT:n_a_eos_1 N IF (0 Noun_Adj_PP LINK NOT 0 Adv OR PP OR Ger OR Inf OR NP OR
 SELECT:n_a_eos_1b N IF (0 Noun_Adj_PP LINK NOT 0 Adv OR PP OR Ger OR Inf OR NP OR ("ser") OR ("sino")) (-1C Vblex) (NOT -1 PP OR ("hablar") OR VPred) (1 CnjCoo) (2 Barrera_Final_Estrict_SN) ;
 	# detonando explosivos y derrumbando
 
-SELECT:n_a_eos_2 N IF (0 Noun_Adj_PP LINK NOT 0 NP OR ("ser")) (-1 Det) (NOT -1 ("este") OR ("Este")) (1 Barrera_Final_Estrict_SN) ;
-SELECT:n_a_eos_2 N IF (0 Noun_Adj_PP LINK NOT 0 NP OR ("ser")) (-1 Det) (NOT -1 ("este") OR ("Este")) (1 CM OR CnjCoo) (1 Barrera_Final_Estrict_SN) ;
+SELECT:n_a_eos_2 N IF (0 Noun_Adj_PP LINK NOT 0 NP OR ("ser") OR ("sobre")) (-1 Det) (NOT -1 ("este") OR ("Este")) (1 Barrera_Final_Estrict_SN) ;
+SELECT:n_a_eos_2 N IF (0 Noun_Adj_PP LINK NOT 0 NP OR ("ser") OR ("sobre")) (-1 Det) (NOT -1 ("este") OR ("Este")) (1 CM OR CnjCoo) (1 Barrera_Final_Estrict_SN) ;
 	# detonar los explosivos.
 	# PERO: Las clasificaciones más reconocidas internacionalmente son la francesa y la estadounidense.
 	# PERO: muy poco conocida.
