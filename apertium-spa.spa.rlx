@@ -257,6 +257,7 @@ SELECT:r_para_3 Prep (0 ("para") OR ("Para")) (1 Inf) ;
 SELECT:r_para_5 Prep IF (0 ("parir") OR ("Parir")) (0 Prep);
 REMOVE:r_salvo_1 Vblex (0 ("salvo") OR ("Salvo")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_salvo_2 Vblex (0 ("salvo") OR ("Salvo")) (*1 Vblex BARRIER Cnj_Rel) ;
+SELECT:sobre_prep Prep IF (0 ("sobre")) (1 ("<:>"));
 SELECT:uno_sobre_otro Prep IF (0 ("sobre")) (-1 ("uno")) (1 ("otro"));
 REMOVE:sobre_nonom N IF (0 ("sobre")) (0 Prep) (-1 Pl OR Fem); 
 REMOVE:r_sobre_1 Vblex (0 ("sobre") OR ("Sobre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
@@ -457,13 +458,14 @@ REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant)) (0C Verb OR N OR A) (0 Maj
 # PALABRAS PARTICULARES
 #
 
-SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (1 ("<[Hh]?[iíÍÍ].*>"r));
+SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (1 ("<[Hh]?[iíÍI].*>"r));
+SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (2 ("<[Hh]?[iíÍI].*>"r)) (1 (cm));
 REMOVE:e_noconj (cnjcoo) IF (0 ("e"i));
 
 SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
 
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
-SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)); #uso típico: nombre + "objeto de" (en aposición)
+SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
