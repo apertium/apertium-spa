@@ -475,7 +475,7 @@ SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
 SELECT:estado_3 N IF (-1 ("[a-záéíóúñ].*"r)) (0 ("Estado")) ;	# "Estado" (con mayúscula) va precedido de una palabra con minúscula inicial
 
 
-REMOVE:radio Masc IF (0 ("radio"i)) (0*/* LaradioWords);
+REMOVE:radio Masc IF (0 ("radio"i)) (0*/* LaradioWords) (NOT -1 Det + Masc) (NOT 1 A + Masc) (NOT 1 PP + Masc);
 
 SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
