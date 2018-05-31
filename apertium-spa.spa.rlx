@@ -634,7 +634,7 @@ REMOVE:cámara (m) IF (0 ("cámara"i)) (NOT -1 (det m)) (NOT -1 (adj m)) (NOT 1 
 # la tierra como medio de vida
 
 # pronombre + verbo
-SELECT:pronombre_verbo Vblex IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
+SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
 
 # vía pr/n
 REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
