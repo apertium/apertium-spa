@@ -634,6 +634,8 @@ SELECT:probar_a Vblex IF (0 ("probar"i)) (1 ("a")) (2 Inf);
 
 REMOVE:cámara (m) IF (0 ("cámara"i)) (NOT -1 (det m)) (NOT -1 (adj m)) (NOT 1 (adj m)); #si no està determinat és femení
 
+REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
+
 # la tierra como medio de vida
 
 # pronombre + verbo
