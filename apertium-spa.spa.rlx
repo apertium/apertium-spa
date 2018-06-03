@@ -468,7 +468,9 @@ REMOVE:e_noconj (cnjcoo) IF (0 ("e"i));
 SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
 
 #Por tanto: No puede ser multipalabra.
-SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i)) (1 CM);
+SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i));
+
+REMOVE:pienso N IF (0 ("<pienso>"i)) (NOT -1 Prep) (NOT -1 Det) (NOT 1 ("para"));
 
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
