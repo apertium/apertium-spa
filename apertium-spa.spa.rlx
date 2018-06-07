@@ -412,6 +412,7 @@ SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num);
 #
 
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
+REMOVE:costa NP IF (0 ("Costa")) (1 ("azul") OR ("bravo") OR ("blanco")); 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
