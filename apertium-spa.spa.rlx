@@ -411,6 +411,7 @@ SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
+REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
