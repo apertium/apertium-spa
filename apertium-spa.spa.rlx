@@ -690,6 +690,11 @@ SELECT:ser_ir_1 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
 SELECT:fundar_fundir_1 Fundar (0 Fundar) (-1C Ref) ; # se non è vero...
 REMOVE:parecido_adj Vblex (0 ("parecido")) (NOT -1 Vbhaver) ; #Sin el verbo haber, es nombre o adjetivo, no participio.
 
+# Cambio de género
+SET ANouns = ("aura") OR ("ágata") OR ("ágora") OR ("águila") OR ("álgebra") OR ("áncora") OR ("ánfora") OR ("ánima") OR ("área") OR ("árnica") OR ("acta") OR ("afta") OR ("agua") OR ("aguasal") OR ("aguaviva") OR ("ala") OR ("alba") OR ("alga") OR ("algia") OR ("alma") OR ("alza") OR ("ama") OR ("anca") OR ("ancla") OR ("ansia") OR ("ara") OR ("arca") OR ("archa") OR ("aria") OR ("arma") OR ("arpa") OR ("arria") OR ("asa") OR ("ascua") OR ("asma") OR ("aspa") OR ("asta") OR ("aula") OR ("ave") OR ("aya") OR ("haba") OR ("habla") OR ("hacha") OR ("hada") OR ("hambre") OR ("hampa") OR ("haya"); # OR ("arte")
+
+REPLACE:un_agua (det ind f sg) (det) IF (0 ("<un>"i)) (1 ANouns) (1 FemSg); # Son posibles y correctos: un agua/una agua
+
 # lenguas (eo)
 
 SELECT:hablar A IF (-1 ("hablar") OR ("Hablar")) (0 A LINK 0 N) ;
