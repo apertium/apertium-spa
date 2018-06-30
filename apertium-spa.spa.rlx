@@ -182,7 +182,7 @@ SET NadaPronWords = ("añadir"i) OR ("aportar"i) OR ("tener"i) OR ("contener"i) 
 
 SET NadaPronWords2 = ("<más>"i) OR ("<menos>"i) OR ("<mejor>"i) OR ("<peor>"i) OR ("<nuevo>"i) OR ("<parecido>"i);
 
-SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR ("televisión") OR ("TV") OR ("música") OR ("emisor") OR ("emitir") OR ("comunicación") OR ("locutor") OR ("anuncio") OR ("escuchar") OR ("oír") OR ("rock") OR ("canal");
+SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR ("televisión") OR ("TV") OR ("música") OR ("emisor") OR ("emitir") OR ("comunicación") OR ("locutor") OR ("anuncio") OR ("escuchar") OR ("oír") OR ("rock") OR ("canal") OR ("sintonizar");
 
 ###############################################################################
 #  Morphological disambiguation
