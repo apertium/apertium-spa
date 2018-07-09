@@ -649,7 +649,7 @@ REMOVE:cámara (m) IF (0 ("cámara"i)) (NOT -1 (det m)) (NOT -1 (adj m)) (NOT 1 
 
 REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 
-REMOVE:casero N IF (0 ("casero")) (NOT -1 Det);
+REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 
 # la tierra como medio de vida
 
