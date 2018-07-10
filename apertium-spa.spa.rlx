@@ -308,7 +308,7 @@ REMOVE:nom_verb2 N (NOT -2 Verb) (NOT -2 Prep) (-1C Pro) (0 N LINK 0 Verb) ;
 	# le cuenta que
 	# NO: que ayuda en muchos aspectos
 
-REMOVE:tanto_como_1 A (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
+SELECT:tanto_como_1 Adv (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
 REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")) ;
 
 # seguir, estar + ger
