@@ -664,6 +664,9 @@ REMOVE:via2 Prep IF (0 ("vía") + $$FemSg) (1 A + $$FemSg) ;
 #SUBSTITUTE:media_2 ("media") ("media_duono") TARGET ("media") IF (-3C Num) (-2 N) (-1 CnjCoo) (0 ("media")) ;
 	# dos veces y media > kaj duono
 
+# medio (nombre)
+SELECT:medio_nom N IF (0 ("medio"i)) (1 ("material") OR ("oficial") OR ("humano") OR ("personal"));
+
 # dos veces y media; dos años y medio
 SELECT:y_medio_adj A IF (-2 (n f)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj f sg));
 SELECT:y_media_adj A IF (-2 (n m)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj m sg));
