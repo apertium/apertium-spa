@@ -308,6 +308,9 @@ REMOVE:nom_verb2 N (NOT -2 Verb) (NOT -2 Prep) (-1C Pro) (0 N LINK 0 Verb) ;
 	# le cuenta que
 	# NO: que ayuda en muchos aspectos
 
+
+SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i)); #Por tanto: No puede ser multipalabra.
+
 SELECT:tanto_como_1 Adv (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
 REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")) ;
 
@@ -468,9 +471,6 @@ SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (2 ("<[Hh]?[iíÍI].*>"r)) (1 (cm));
 REMOVE:e_noconj (cnjcoo) IF (0 ("e"i));
 
 SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
-
-#Por tanto: No puede ser multipalabra.
-SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i));
 
 REMOVE:pienso N IF (0 ("<pienso>"i)) (NOT -1 Prep) (NOT -1 Det) (NOT 1 ("para"));
 
