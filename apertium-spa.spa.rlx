@@ -586,7 +586,8 @@ REMOVE:dado_n N IF (0 ("<dado>"i)) (NOT -1 Det) (1 Det + MascSg);
 REMOVE:dados_n N IF (0 ("<dados>"i)) (NOT -1 Det) (1 Det + MascPl);
 
 SELECT:gestiones N IF (0 ("<Gestiones>") OR ("<Relaciones>") OR ("<Expediente>") OR ("<Expedientes>") OR ("<Presupuesto>")); # en mayúsculas son sustantivos
-REMOVE:presupuesto PP IF (0 ("presupuesto")) (NOT -1 Haber);
+REMOVE:presupuesto PP IF (0 ("presupuesto")) (NOT -1 Haber) (NOT -1 (n m sg));
+REMOVE:presupuesto (p1) IF (0 ("presupuesto")) (NOT -1 ("yo")) (NOT -1 Pro); # forma verbal muy infrecuente
 
 #SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
 
