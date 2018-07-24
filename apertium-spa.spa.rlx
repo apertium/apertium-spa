@@ -651,6 +651,7 @@ SELECT:ordinal A IF (0 Ord + FemPl) (1 N + FemPl) (NOT 0 ("primo"i));
 SELECT:probar_a Vblex IF (0 ("probar"i)) (1 ("a")) (2 Inf);
 
 REMOVE:cámara (m) IF (0 ("cámara"i)) (NOT -1 (det m)) (NOT -1 (adj m)) (NOT 1 (adj m)); #si no està determinat és femení
+REMOVE:parte_f (m) IF (0 ("parte"i)) (NOT -1 (det m)); #si no està determinat és femení
 
 REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 
