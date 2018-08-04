@@ -474,6 +474,8 @@ SELECT:como Vblex IF (0 ("<como>"i)) (-1 Pro); #caso diferente: la coma
 
 REMOVE:pienso N IF (0 ("<pienso>"i)) (NOT -1 Prep) (NOT -1 Det) (NOT 1 ("para"));
 
+SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc); 
+
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral"));
