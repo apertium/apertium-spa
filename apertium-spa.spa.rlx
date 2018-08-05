@@ -641,7 +641,7 @@ REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 
 # Quisiera (condicional). Se puede ampliar.
-SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Rel) (NOT -1* CnjSub); # BARRIER CnjCoo OR CM 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Verb); # BARRIER CnjCoo OR CM 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
 
