@@ -645,6 +645,10 @@ SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras")); 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
+
+
 SELECT:puesto N IF (0 ("puesto"i)) (-1 (ord m));
 
 #ordinales (el tagger no detecta els ordinals)
