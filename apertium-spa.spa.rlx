@@ -644,7 +644,6 @@ REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Verb); # BARRIER CnjCoo OR CM 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
-
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras")); 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
 
