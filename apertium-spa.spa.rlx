@@ -410,6 +410,12 @@ SELECT:grado_ordinal2 Num IF (0 Ord) (0 Num) (-1 ("entre")) (1 CnjCoo) (2 Num);
 SELECT:grado_ordinal3 Num IF (0 Ord) (0 Num) (-1 CnjCoo) (-2 Num) (-3 ("entre"));
 SELECT:grado_ordinal0 Ord IF (0 Ord) (0 Num);
 
+#capital (f o m)
+SET CapitalMonetarioWords = ("empresa") OR ("empresario") OR ("empresarial") OR ("bolsa") OR ("dinerario") OR ("financiero");
+SET CapitalCiudadWords = ("estado") OR ("provincia") OR ("distrito") OR ("provincial") OR ("comarca") OR ("comarcal") ;
+REMOVE:capital_msc (n f) IF (0 ("capital")) (NOT -1 (f)) (NOT -1 (m)) (NOT 1 (f)) (NOT 1 (m)) (0*/* CapitalMonetarioWords) (NOT 0*/* CapitalCiudadWords);
+REMOVE:capital_fem (n m) IF (0 ("capital")) (NOT -1 (f)) (NOT -1 (m)) (NOT 1 (f)) (NOT 1 (m)) (0*/* CapitalCiudadWords OR (loc)) (NOT 0*/* CapitalMonetarioWords);
+
 #
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
