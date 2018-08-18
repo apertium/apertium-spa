@@ -416,6 +416,10 @@ SET CapitalCiudadWords = ("estado") OR ("provincia") OR ("distrito") OR ("provin
 REMOVE:capital_msc (n f) IF (0 ("capital")) (NOT -1 (f)) (NOT -1 (m)) (NOT 1 (f)) (NOT 1 (m)) (0*/* CapitalMonetarioWords) (NOT 0*/* CapitalCiudadWords);
 REMOVE:capital_fem (n m) IF (0 ("capital")) (NOT -1 (f)) (NOT -1 (m)) (NOT 1 (f)) (NOT 1 (m)) (0*/* CapitalCiudadWords OR (loc)) (NOT 0*/* CapitalMonetarioWords);
 
+# parecer (n)
+SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
+
+
 #
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
