@@ -557,6 +557,7 @@ REMOVE:dirección_3 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-2 ("b
 REMOVE:dirección_4 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("cultura") OR ("kutxa"i) OR ("ordenación") OR ("personal"));
 REMOVE:dirección_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("de"i)) (-2 ("comité") OR ("equipo"i) OR ("escuela") OR ("facultad") OR ("nivel") OR ("poder") OR ("personal") OR ("secretariado") OR ("secretario"));
 REMOVE:dirección_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("y"i)) (2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
+REMOVE:dirección_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("y"i)) (-2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
 
 SELECT:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)); 
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("interés"i));
