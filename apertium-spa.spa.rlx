@@ -558,7 +558,7 @@ REMOVE:dirección_4 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de
 REMOVE:dirección_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("de"i)) (-2 ("comité") OR ("equipo"i) OR ("escuela") OR ("facultad") OR ("nivel") OR ("poder") OR ("personal") OR ("secretariado") OR ("secretario"));
 REMOVE:dirección_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("y"i)) (2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
 REMOVE:dirección_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("y"i)) (-2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
-REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("apuntar"i) OR ("dirigir"i) OR ("paso"i) OR ("esfuerzo"i) BARRIER Verb + Pers) (-1* ("en") BARRIER Verb + Pers);
+REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("apuntar"i) OR ("dirigir"i) OR ("orientar"i) OR ("paso"i) OR ("esfuerzo"i) BARRIER Verb + Pers) (-1* ("en") BARRIER Verb + Pers);
 REMOVE:dirección_9 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (0 MajIni) (NOT -1 >>>);
 
 SELECT:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)); 
