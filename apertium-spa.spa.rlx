@@ -559,6 +559,7 @@ REMOVE:dirección_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("d
 REMOVE:dirección_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("y"i)) (2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
 REMOVE:dirección_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("y"i)) (-2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
 REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("apuntar"i) OR ("paso"i) OR ("dirigir"i)) (-1* ("en") BARRIER Verb);
+REMOVE:dirección_9 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (0 MajIni) (NOT -1 >>>);
 
 SELECT:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)); 
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("interés"i));
