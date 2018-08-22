@@ -96,6 +96,7 @@ LIST unknown = ("\\*.*"r) ;
 LIST unknownMajIni = ("\\*[A-ZÀÁÈÉíÒÓÚÜÇ].*"r) ;
 LIST knownMajIni = ("[A-ZÀÁÈÉíÒÓÚÜÇ].*"r) ;
 LIST MajIni = ("<[A-ZÀÁÈÉíÒÓÚÜÇ].*>"r) ;
+LIST Url = ("<.*(http|www|@).*>"r) ;
 
 SET Barrera_Final_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Verb OR Rel OR Pro ;	# Verb és perillós per la ambigüitat, però en general, prolífic
 SET Barrera_Final_Estrict_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Rel OR Pro ;
@@ -158,7 +159,7 @@ SET EntendimientoWords = ("vía"i) OR ("camino"i) OR ("falta"i) OR ("buscar"i) O
 SET CuartoHabitacionWords = ("dormir"i) OR ("jugar"i) OR  ("decorar"i) OR ("pintar"i) ;
 SET CuartoDeHabitacionWords = ("matrimonio"i)  OR ("colada"i) OR ("juego"i) OR ("juguete"i) OR ("niño"i) OR ("bebé"i) OR ("plancha"i) OR ("niñera"i) OR ("trasto"i) OR ("muchacho"i) OR ("invitar"i) OR ("huésped"i) OR ("primo"i) OR ("abuelo"i) OR ("padre"i) OR ("madre"i) OR ("hermano"i) OR ("tío"i) OR ("lectura"i);
 
-SET DirecciónPostalWords = ("<gmail>"i) OR ("<hotmail>"i) OR ("<http>"i) OR ("<IP>") OR ("<www>"i) OR ("actualizar"i) OR ("agenda"i) OR ("apellido"i) OR ("avenida"i) OR ("blog"i) OR ("bolígrafo"i) OR ("calle"i) OR ("carnet"i) OR ("carné"i) OR ("carta"i) OR ("cartero"i) OR ("correo"i) OR ("destinatario"i) OR ("destino"i) OR ("DNI") OR ("domicilio"i) OR ("electrónico"i) OR ("entrega"i)  OR ("envío"i)  OR ("enviar"i) OR ("escribir"i) OR ("Facebook"i) OR ("factura"i) OR ("facturación"i) OR ("fax"i) OR ("identidad"i) OR ("Internet"i) OR ("libreta"i) OR ("mail"i) OR ("paquete"i) OR ("paseo"i) OR ("plaza"i) OR ("postal"i) OR ("remitente"i) OR ("Skype"i) OR ("teléfono"i) OR ("verificación"i) OR ("verificar"i) OR ("web"i); # ("sobre") cal assegurar que "sobre" és nom i no preposició/ OR ("n.º"i)
+SET DirecciónPostalWords = ("s/n") OR ("<gmail>"i) OR ("<hotmail>"i) OR ("<IP>") OR ("actualizar"i) OR ("agenda"i) OR ("apellido"i) OR ("avenida"i) OR ("blog"i) OR ("bolígrafo"i) OR ("calle"i) OR ("carnet"i) OR ("carné"i) OR ("carta"i) OR ("cartero"i) OR ("correo"i) OR ("destinatario"i) OR ("destino"i) OR ("DNI") OR ("domicilio"i) OR ("electrónico"i) OR ("entrega"i)  OR ("envío"i)  OR ("enviar"i) OR ("escribir"i) OR ("Facebook"i) OR ("factura"i) OR ("facturación"i) OR ("fax"i) OR ("identidad"i) OR ("Internet"i) OR ("libreta"i) OR ("mail"i) OR ("paquete"i) OR ("paseo"i) OR ("postal"i) OR ("remitente"i) OR ("Skype"i) OR ("teléfono"i) OR ("verificación"i) OR ("verificar"i) OR ("web"i) OR Url; # ("sobre") cal assegurar que "sobre" és nom i no preposició/ OR ("n.º"i) OR ("plaza"i)
 
 SET RayoMeteoroWords = ("trueno"i) OR ("tempestad"i) OR ("tormenta"i) OR ("Zeus"i) OR ("dios"i) OR ("fulminar"i) OR ("pararrayos") OR ("rápido"i) OR ("correr"i) OR ("granizada"i) OR ("temporal"i) OR ("divino"i) OR ("lluvia"i) OR ("llover"i) OR ("tronar"i) OR ("caer"i) OR ("caída"i);
 
@@ -551,14 +552,13 @@ REMOVE:vela_2 ("vela_cirio"i) IF (0 ("vela"i)) (0 ("vela_cirio"i)) ;
 SELECT:alero_1 ("alero"i) IF (0 ("alero"i)) (0*/* AleroTejadoWords) ;
 REMOVE:alero_2 ("alero"i) IF (0 ("alero"i)) (0 ("alero_baloncesto"i)) ;
 
-REMOVE:dirección_1 ("dirección_postal"i) IF (0 ("dirección"i)) (1 ("general"i) OR ("administrativo"i) OR ("artístico"i) OR ("asistir"i) OR ("comercial"i) OR ("contrario"i) OR ("ejecutivo"i) OR ("escénico"i) OR ("facultativo"i) OR ("jurídico"i) OR ("meteorológico"i) OR ("musical"i) OR ("nacional"i) OR ("teatral"i) OR ("territorial"i)) ;
+REMOVE:dirección_1 ("dirección_postal"i) IF (0 ("dirección"i)) (1 ("general"i) OR ("administrativo"i) OR ("artístico"i) OR ("asistir"i) OR ("comercial"i) OR ("contrario"i) OR ("ejecutivo"i) OR ("escénico"i) OR ("facultativo"i) OR ("jurídico"i) OR ("meteorológico"i) OR ("musical"i) OR ("nacional"i) OR ("teatral"i) OR ("territorial"i) OR ("regional"i)) ;
 REMOVE:dirección_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("en"i) OR ("<alta>"i) OR ("<buena>"i) OR ("bajo"i)) ; # en dirección
 REMOVE:dirección_3 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-2 ("bajo"i)) (-1 Det OR Pos);
-REMOVE:dirección_4 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("cultura") OR ("kutxa"i) OR ("ordenación") OR ("personal") OR ("servicio") OR ("recurso"));
+REMOVE:dirección_4 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("cultura") OR ("kutxa"i) OR ("ordenación") OR ("personal") OR ("servicio") OR ("recurso") OR ("obra") OR ("departamento"));
 REMOVE:dirección_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("de"i)) (-2 ("comité") OR ("equipo"i) OR ("escuela") OR ("facultad") OR ("nivel") OR ("poder") OR ("personal") OR ("secretariado") OR ("secretario"));
-REMOVE:dirección_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("y"i) OR (cm)) (2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
-REMOVE:dirección_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("y"i) OR (cm)) (-2 ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion"));
-REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("apuntar"i) OR ("dirigir"i) OR ("orientar"i) OR ("paso"i) OR ("esfuerzo"i) BARRIER Verb + Pers) (-1* ("en") BARRIER Verb + Pers);
+REMOVE:dirección_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (0*/* ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion") OR ("gerencia") OR ("proyecto") OR ("obra") OR ("norte") OR ("sur") OR ("oeste") OR ("este") BARRIER Verb OR Cnj_Rel_End);
+REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("apuntar"i)  OR ("orientar"i) OR ("paso"i) OR ("esfuerzo"i) OR ("dirigir"i) BARRIER Verb + Pers OR Cnj_Rel_End OR CM) (-1* ("en") BARRIER Verb + Pers); #
 SELECT:dirección_postal_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 DirecciónPostalWords) ;
 SELECT:dirección_postal_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (2 DirecciónPostalWords) ;
 REMOVE:dirección_9 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (0 MajIni) (-1 Det OR Pos);
