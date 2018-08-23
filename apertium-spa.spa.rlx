@@ -480,7 +480,8 @@ SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i)) (1
 # PALABRAS PARTICULARES
 #
 
-SELECT:lo (nt) IF (0 ("<lo>"i)) (1 ("ser"));
+SELECT:lo1 (nt) IF (0 ("<lo>"i)) (1 ("ser"));
+SELECT:lo2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
 
 SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (1 ("<[Hh]?[iíÍI].*>"r));
 SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (2 ("<[Hh]?[iíÍI].*>"r)) (1 (cm));
