@@ -484,8 +484,9 @@ SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 ("ser"));
 SELECT:lo_neutro2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
 
 #Existe un antecedent determinado, ej. "al gobierno lo consideran" 
-SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* (det m sg)); 
-SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* (det m sg));
+SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* (det m sg)) (-1*/* (n m sg) BARRIER (det m sg)) (NOT -1 ("así") OR ("como")); 
+SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* (det m sg)) (-1*/* (n m sg) BARRIER (det m sg));
+SELECT:lo_m_sg3 (m) IF (0 (prn pro p3 m sg)) (1 ("ayudar"));
 
 SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (1 ("<[Hh]?[iíÍI].*>"r));
 SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (2 ("<[Hh]?[iíÍI].*>"r)) (1 (cm));
@@ -563,7 +564,7 @@ REMOVE:dirección_1 ("dirección_postal"i) IF (0 ("dirección"i)) (1 ("general"i
 REMOVE:dirección_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("en"i) OR ("<alta>"i) OR ("<buena>"i) OR ("bajo"i)) ; # en dirección
 REMOVE:dirección_3 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-2 ("bajo"i)) (-1 Det OR Pos);
 REMOVE:dirección_4 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("cultura") OR ("kutxa"i) OR ("ordenación") OR ("personal") OR ("servicio") OR ("recurso") OR ("obra") OR ("departamento"));
-REMOVE:dirección_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("de"i)) (-2 ("comité") OR ("equipo"i) OR ("escuela") OR ("facultad") OR ("nivel") OR ("poder") OR ("personal") OR ("secretariado") OR ("secretario"));
+REMOVE:dirección_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1 ("de"i)) (-2 ("comité") OR ("equipo"i) OR ("escuela") OR ("facultad") OR ("nivel") OR ("poder") OR ("personal") OR ("secretariado") OR ("secretario") OR ("consejo"));
 SELECT:dirección_postal_5 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 DirecciónPostalWords);
 SELECT:dirección_postal_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (2 DirecciónPostalWords);
 SELECT:dirección_postal_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("<:>") OR ("siguiente"));
