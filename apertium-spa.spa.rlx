@@ -463,6 +463,8 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
+SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
+SELECT:helena_np  NP IF (0 ("Helena"));
 REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra")); # evita alguns comportaments estranys (Granda/granada).
 
 #  ANTROPÓNIMOS
