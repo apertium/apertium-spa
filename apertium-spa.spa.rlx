@@ -486,15 +486,6 @@ SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 Vbhaver) (2 VerbsLoNeutro);
 SELECT:lo_neutro2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
 SELECT:lo_neutro3 (nt) IF (0/* (prn enc p3 nt)) (0/* VerbsLoNeutro);
 
-#Existe un antecedent determinado, ej. "al gobierno lo consideran" 
-
-#SET DetNoPos = (det ind) OR (det def) OR (det dem); #determinante no posesivo
-#SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* N + MascSg LINK -1 DetNoPos + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)); 
-#SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 DetNoPos + MascSg) (NOT -1*/* (prn tn nt));
-#SELECT:lo_m_sg3 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* N + MascSg LINK -1 A + MascSg LINK -1 DetNoPos + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)); 
-#SELECT:lo_m_sg4 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 A + MascSg LINK -1 DetNoPos + MascSg) (NOT -1*/* (prn tn nt));
-SELECT:lo_m_sg (m) IF (0 (prn pro p3 m sg)) (1 ("ayudar"));
-
 SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (1 ("<[Hh]?[iíÍI].*>"r));
 SELECT:e_conj (cnjcoo) IF (0 ("e"i)) (2 ("<[Hh]?[iíÍI].*>"r)) (1 (cm));
 REMOVE:e_noconj (cnjcoo) IF (0 ("e"i));
