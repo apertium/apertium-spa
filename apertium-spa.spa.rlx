@@ -740,7 +740,8 @@ REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que")) ;
 REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) ; # creer necesario/oportuno...
 REMOVE:creer_crear_3 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
 REMOVE:creer_crear_4 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
-REMOVE:creer_crear PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
+REMOVE:creer_crear_5 PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
+REMOVE:creer_crear_2 Crear (0 Crear) (1 ("yo")) ;
 SELECT:ser_ir_1 Ser (0 Ser LINK 0 Ir) (1C PP) ; # no sempre funciona, però sí de costum
 SELECT:ser_ir_1 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
 SELECT:fundar_fundir_1 Fundar (0 Fundar) (-1C Ref) ; # se non è vero...
