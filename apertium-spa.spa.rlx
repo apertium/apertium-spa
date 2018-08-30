@@ -486,11 +486,11 @@ SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("des
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 VerbsLoNeutro);
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 Vbhaver) (2 VerbsLoNeutro);
 SELECT:lo_neutro2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
-SELECT:lo_neutro3 (nt) IF (0/* (prn enc p3 nt)) (0/* VerbsLoNeutro);
+SELECT:lo_neutro3 (nt) IF (0/* (prn enc p3 nt)) (0/* VerbsLoNeutro OR ("decir"));
 
 
 #Existe un antecedent determinado, ej. "al gobierno lo consideran" 
-SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)) (NOT 2 ("<todo>"i)); 
+SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (NOT 1 ("uno")) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)) (NOT 2 ("<todo>"i)); 
 SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1*/* (prn tn nt));
 SELECT:lo_m_sg3 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* N + MascSg LINK -1 A + MascSg LINK -1 Det + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)) (NOT 2 ("<todo>"i)); 
 SELECT:lo_m_sg4 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 A + MascSg LINK -1 Det + MascSg) (NOT -1*/* (prn tn nt));
@@ -578,7 +578,7 @@ SELECT:dirección_postal_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) 
 SELECT:dirección_postal_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("<:>") OR ("siguiente"));
 REMOVE:dirección_6 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("norte") OR ("sur") OR ("oeste") OR ("<este>"i));
 REMOVE:dirección_7 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (0*/* ("administración") OR ("formación"i) OR ("gestión") OR ("guión") OR ("guion") OR ("gerencia") OR ("proyecto") OR ("obra") BARRIER Verb OR CnjSub OR CnjAdv OR Rel);
-REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("apuntar"i)  OR ("orientar"i) OR ("paso"i) OR ("esfuerzo"i) OR ("dirigir"i) BARRIER Verb + Pers OR Cnj_Rel_End OR CM) (-1* ("en") BARRIER Verb + Pers); #
+REMOVE:dirección_8 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (-1* ("remar") OR ("ir") OR ("avanzar"i) OR ("apuntar"i)  OR ("orientar"i) OR ("paso"i) OR ("esfuerzo"i) OR ("dirigir"i) BARRIER Verb + Pers OR Cnj_Rel_End OR CM) (-1* ("en") BARRIER Verb + Pers); #
 REMOVE:dirección_9 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (0 MajIni) (-1 Det OR Pos);
 SELECT:dirección_postal_1 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("equivocar"i) OR ("desconocer"i)); 
 SELECT:dirección_postal_2 ("dirección_postal"i) IF (0 ("dirección_postal"i)) (1 ("de"i)) (2 ("interés"i));
@@ -658,6 +658,7 @@ SELECT:rellena ("rellenar") IF (0 ("rellenar"i)) (1 Det); # Rellena el formulari
 REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (NOT -1 Det + (m)) (NOT -1 ("número"i)); # uno (no es sustantivo si no está determinado)
 
 REMOVE:uno_unir Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
+REMOVE:uno_unir Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
@@ -756,7 +757,8 @@ REMOVE:creer_crear_4 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oport
 REMOVE:creer_crear_5 PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1 ("yo")) ;
 SELECT:ser_ir_1 Ser (0 Ser LINK 0 Ir) (1C PP) ; # no sempre funciona, però sí de costum
-SELECT:ser_ir_1 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
+SELECT:ser_ir_2 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
+SELECT:ser_ir_3 Ser (0 Ser LINK 0 Ir) (-1 ("<lo>"i));
 SELECT:fundar_fundir_1 Fundar (0 Fundar) (-1C Ref) ; # se non è vero...
 REMOVE:parecido_adj Vblex (0 ("parecido")) (NOT -1 Vbhaver) ; #Sin el verbo haber, es nombre o adjetivo, no participio.
 
