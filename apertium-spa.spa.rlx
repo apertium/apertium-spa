@@ -482,7 +482,7 @@ SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i)) (1
 # PALABRAS PARTICULARES
 #
 
-SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("desear") OR ("comprender") OR ("hacer") OR ("agradecer") ;
+SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("desear") OR ("comprender") OR ("hacer") OR ("agradecer") OR ("estimar") OR ("considerar") OR ("permitir");
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 VerbsLoNeutro);
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 Vbhaver) (2 VerbsLoNeutro);
 SELECT:lo_neutro2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
