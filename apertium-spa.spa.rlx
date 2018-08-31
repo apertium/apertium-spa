@@ -434,7 +434,7 @@ SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
 SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
-SELECT:julio_mes N IF (0 ("Valle")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
+SELECT:julio_mes N IF (0 ("Valle") OR ("Luz")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
 SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
@@ -709,6 +709,8 @@ REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 # a mi > a mí (error frecuente)
 SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1 A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
 SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1 A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
 
 # mero
 REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 N + MascSg);
