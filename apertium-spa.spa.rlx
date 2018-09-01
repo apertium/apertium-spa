@@ -443,7 +443,7 @@ SELECT:pascual_adj A IF (0 ("pascual")) (-1 ("vigilia") OR ("cordero") OR ("trid
 SELECT:pascual_np NP IF (0 ("Pascual")) (0 MajIni);
 SELECT:luis_np NP IF (0 ("Luis")) (0 MajIni);
 REMOVE:españa (ant) IF (0 ("España")) (NOT -1/* NP OR unknownMajIni) (NOT 1/* NP OR unknownMajIni); #España apellido/topónimo
-
+SELECT:ucraina_np NP IF (0 ("Ucrania"));
 SELECT:bueno0 Interj IF (-1 >>>) (0 ("Bueno")) (1 (cm));
 SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
 SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
@@ -526,7 +526,7 @@ REMOVE:radio3 Fem IF (0 ("radio"i) + Sg) (NOT 0*/* LaradioWords) (-1 Det + Pos +
 SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
 
-SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) ; # siempre tarde, llegan tarde
+SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) (NOT -1 Det + FemSg); # siempre tarde, llegan tarde
 
 SELECT:mucho_det Det IF (0 ("<mucho>"i)) (1 N + MascSg) (-1 ("hay"i)); # hay mucho interés (el tagger falla)
 
@@ -714,6 +714,12 @@ SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) 
 
 # mero
 REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 N + MascSg);
+# fluido
+REMOVE:fluido_no_PP PP IF (0 ("fluir")) (NOT -1 ("haber"));
+#del otro ponente
+SELECT:otro_adj A IF (0 ("otro") + MascSg) (-1/* Prep + Det + MascSg); 
+#era nuestra debilidad
+SELECT:otro_adj Det IF (0 ("nuestro") + FemSg) (1 N + FemSg); 
 
 # la tierra como medio de vida
 
@@ -756,14 +762,15 @@ REMOVE:sentir_sentar_4 Sentar (0 Sentar) (1 Det) ; # siento una cosa (pero: me s
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que")) ;
 REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) ; # creer necesario/oportuno...
-REMOVE:creer_crear_3 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
-REMOVE:creer_crear_4 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
-REMOVE:creer_crear_5 PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
-REMOVE:creer_crear_2 Crear (0 Crear) (1 ("yo")) ;
-REMOVE:creer_crear_2 Crear (0 Crear) (1 Inf);
+REMOVE:creer_crear_4 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
+REMOVE:creer_crear_5 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
+REMOVE:creer_crear_6 PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
+REMOVE:creer_crear_7 Crear (0 Crear) (1 ("yo")) ;
+REMOVE:creer_crear_8 Crear (0 Crear) (1 Inf);
+REMOVE:creer_crear_9 Crear (0 Crear) (1 CM);
 SELECT:ser_ir_1 Ser (0 Ser LINK 0 Ir) (1C PP) ; # no sempre funciona, però sí de costum
 SELECT:ser_ir_2 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
-SELECT:ser_ir_2 Ser (0 Ser LINK 0 Ir) (1 Det) ; # fueron los últimos
+SELECT:ser_ir_2 Ser (0 Ser LINK 0 Ir) (1 Det) (NOT 1/* Prep); # fueron los últimos
 SELECT:ser_ir_3 Ser (0 Ser LINK 0 Ir) (-1 ("<lo>"i));
 SELECT:fundar_fundir_1 Fundar (0 Fundar) (-1C Ref) ; # se non è vero...
 REMOVE:parecido_adj Vblex (0 ("parecido")) (NOT -1 Vbhaver) ; #Sin el verbo haber, es nombre o adjetivo, no participio.
