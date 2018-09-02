@@ -771,7 +771,8 @@ REMOVE:creer_crear_5 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oport
 REMOVE:creer_crear_6 PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
 REMOVE:creer_crear_7 Crear (0 Crear) (1 ("yo")) ;
 REMOVE:creer_crear_8 Crear (0 Crear) (1 Inf);
-REMOVE:creer_crear_9 Crear (0 ("<creo>"i)) (1 CM);
+REMOVE:creer_crear_9 Crear (0 ("<creo>"i)); # (1 CM) Mucho más frecuente "creer". ¿Cuando es "crear"?
+REMOVE:creer_crear_10 (prs) (0 Creer LINK 0 Crear) (0 (prs) LINK 0 (pri)) (NOT -1*/* CnjSub OR CnjAdv OR Rel); #elimina el subjuntivo de creer/crear
 SELECT:ser_ir_1 Ser (0 Ser LINK 0 Ir) (1C PP) ; # no sempre funciona, però sí de costum
 SELECT:ser_ir_2 Ir (0 Ser LINK 0 Ir) (-1 ("<se>"i));
 SELECT:ser_ir_3 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
