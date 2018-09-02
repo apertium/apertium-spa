@@ -289,7 +289,7 @@ SELECT:pr_cnjadv_2 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR
 SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C Inf OR Enc) ;
 
 SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv ("ben" en catalán)
-REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron); #Evita PreAdv ("ben" en catalán)
+REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como")); #Evita PreAdv ("ben" en catalán)
 
 SELECT:que_1 CnjSub (0 ("que")) (-1C Inf OR Enc) ;
 SELECT:que_2 CnjSub (0 ("que")) (-1C Vblex LINK NOT 0 PP) ;
