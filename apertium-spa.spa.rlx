@@ -724,6 +724,8 @@ SELECT:otro_adj Det IF (0 ("nuestro") + FemSg) (1 A + FemSg) (2 N + FemSg);
 #dicho
 SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
 SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
+#puro
+REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
 
 # la tierra como medio de vida
 
