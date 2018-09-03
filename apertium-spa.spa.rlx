@@ -726,6 +726,8 @@ SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det);
 SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
 #puro
 REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
+#suma cero
+REMOVE:suma_n A IF (0 ("suma")) (1 ("cero"));
 
 # la tierra como medio de vida
 
@@ -766,7 +768,7 @@ REMOVE:sentir_sentar_2 Sentar (0 Sentar) (1C ("que")) ;
 REMOVE:sentir_sentar_3 Sentar (0 Sentar) (1 A) ; # me siento feliz
 REMOVE:sentir_sentar_4 Sentar (0 Sentar) (1 Det) ; # siento una cosa (pero: me siento los domingos)
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
-REMOVE:creer_crear_2 Crear (0 Crear) ((-1*/* ("que") BARRIER Verb + Pers);
+REMOVE:creer_crear_2 Crear (0 Crear) (1*/* ("que") BARRIER Verb + Pers);
 REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) ; # creer necesario/oportuno...
 REMOVE:creer_crear_4 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
 REMOVE:creer_crear_5 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
