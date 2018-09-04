@@ -809,7 +809,8 @@ REMOVE:creer_crear_11 Creer (0 ("<crea>"i)) (-1 ("<que>"i) OR Rel) (NOT 1 ("en")
 
 # creamos, pensamos, continuamos, seguimos.... (presente o pasado?)
 
-REMOVE:presente_pasado (pri) IF (0 (pri)) (0 (ifi)) (0*/* ("pasado") OR ("ayer") OR ("anteayer") OR ("el año pasado")); #El año pasado creamos
+REMOVE:presente_pasado1 (pri) IF (0 (pri)) (0 (ifi)) (0*/* ("pasado") OR ("ayer") OR ("anteayer") OR ("el año pasado")); #El año pasado creamos
+REMOVE:presente_pasado2 (ifi) IF (0 (pri)) (0 (ifi));
 
 SET Presente = (prs) OR (pri);
 REMOVE:verb_presente1 (ifi) IF (0 Presente LINK 0 (ifi)) (1 CnjCoo OR CM) (2 Presente LINK NOT 0 (ifi));
