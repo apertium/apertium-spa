@@ -731,6 +731,8 @@ REMOVE:suma_n A IF (0 ("suma")) (1 ("cero"));
 #vario
 SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
 SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 FemPl);
+SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
+SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
 #toma
 SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
 
@@ -798,16 +800,17 @@ REMOVE:verb_indicativo3 (prs) IF (0 (prs) LINK 0 (pri)) (-1 CnjCoo OR CM) (-2 (p
 REMOVE:verb_subjuntivo4 (pri) IF (0 (prs) LINK 0 (pri)) (-1 CnjCoo) (-2 (prs) LINK NOT 0 (pri));
 REMOVE:verb_subjuntivo4b (pri) IF (0 (prs) LINK 0 (pri)) (-1 CM) (-2 (prs) LINK NOT 0 (pri)) (NOT -1*/* ("aunque"));
 
-# creamos (presente o pasaod)
+# creamos, pensamos, continuamos, seguimos.... (presente o pasado?)
 SET Presente = (prs) OR (pri);
 REMOVE:verb_presente1 (ifi) IF (0 Presente LINK 0 (ifi)) (1 CnjCoo OR CM) (2 Presente LINK NOT 0 (ifi));
 REMOVE:verb_presente2 (ifi) IF (0 Presente LINK 0 (ifi)) (-1 CnjCoo OR CM) (-2 Presente LINK NOT 0 (ifi));
-
+REMOVE:creamos_presente (imp) IF (0 ("<creamos>"i)); #imperativo poco común. 
 
 # Cambio de género
 SET ANouns = ("aura") OR ("ágata") OR ("ágora") OR ("águila") OR ("álgebra") OR ("áncora") OR ("ánfora") OR ("ánima") OR ("área") OR ("árnica") OR ("acta") OR ("afta") OR ("agua") OR ("aguasal") OR ("aguaviva") OR ("ala") OR ("alba") OR ("alga") OR ("algia") OR ("alma") OR ("alza") OR ("ama") OR ("anca") OR ("ancla") OR ("ansia") OR ("ara") OR ("arca") OR ("archa") OR ("aria") OR ("arma") OR ("arpa") OR ("arria") OR ("asa") OR ("ascua") OR ("asma") OR ("aspa") OR ("asta") OR ("aula") OR ("ave") OR ("aya") OR ("haba") OR ("habla") OR ("hacha") OR ("hada") OR ("hambre") OR ("hampa") OR ("haya"); # OR ("arte")
 
 REPLACE:un_agua (det ind f sg) (det) IF (0 ("<un>"i)) (1 ANouns) (1 FemSg); # Son posibles y correctos: un agua/una agua
+REPLACE:el_hambre (det def f sg) (det) IF (0 ("<el>"i)) (1 ANouns) (1 FemSg); # Son posibles y correctos: un agua/una agua
 
 # lenguas (eo)
 
