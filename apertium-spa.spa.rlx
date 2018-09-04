@@ -731,6 +731,8 @@ REMOVE:suma_n A IF (0 ("suma")) (1 ("cero"));
 #vario
 SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
 SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 FemPl);
+#toma
+SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
 
 # la tierra como medio de vida
 
@@ -776,7 +778,8 @@ REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) ; # creer necesario/oportuno...
 REMOVE:creer_crear_4 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
 REMOVE:creer_crear_5 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
 REMOVE:creer_crear_6 PRS (0 ("<crea>")) (NOT *-1 ("que") OR Rel BARRIER (Cnj_Rel_End)) ;
-REMOVE:creer_crear_7 Crear (0 Crear) (1 (prn tn)) ; # creo yo, cree él...
+REMOVE:creer_crear_7 Crear (0 Crear) (0 (p1 sg)) (1 (prn tn p1 sg)); #creo yo
+REMOVE:creer_crear_7b Crear (0 Crear) (0 (p3 sg)) (1 (prn tn p3 sg)); #cree él 
 REMOVE:creer_crear_8 Crear (0 Crear) (1 Inf);
 REMOVE:creer_crear_9 Crear (0 ("<creo>"i)); # (1 CM) Mucho más frecuente "creer". ¿Cuando es "crear"?
 REMOVE:creer_crear_10 (prs) (0 Creer LINK 0 Crear) (0 (prs) LINK 0 (pri)) (NOT -1*/* CnjSub OR CnjAdv OR Rel); #elimina el subjuntivo de creer/crear
