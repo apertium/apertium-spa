@@ -774,9 +774,13 @@ REMOVE:sentir_sentar_1b Sentar (0 Sentar) (1 Adv) (2C Inf OR Enc) ;
 REMOVE:sentir_sentar_2 Sentar (0 Sentar) (1C ("que")) ;
 REMOVE:sentir_sentar_3 Sentar (0 Sentar) (1 A) ; # me siento feliz
 REMOVE:sentir_sentar_4 Sentar (0 Sentar) (1 Det) ; # siento una cosa (pero: me siento los domingos)
+REMOVE:creer_crear_0 Crear (0 Crear) (1 Adv) (2 ("en"));
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que"));
-REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) ; # creer necesario/oportuno...
+REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg); # creer necesario/oportuno...
+REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Pl) (NOT 2 N + Pl); # que crea convenientes
+REMOVE:creer_crear_3 Crear (0 Crear) (1 PreAdv OR Adv) (2C A + Sg OR Adv); # creer necesario/oportuno...
+REMOVE:creer_crear_3 Crear (0 Crear) (1 PreAdv OR Adv) (2C A + Pl OR Adv) (NOT 3 N + Pl); # que crea convenientes
 REMOVE:creer_crear_4 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
 REMOVE:creer_crear_5 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
 REMOVE:creer_crear_6 PRS (0 ("<crea>")) (NOT *-1 ("que") OR Rel BARRIER (Cnj_Rel_End)) ;
@@ -803,6 +807,9 @@ REMOVE:verb_subjuntivo4b (pri) IF (0 (prs) LINK 0 (pri)) (-1 CM) (-2 (prs) LINK 
 REMOVE:creer_crear_11 Creer (0 ("<crea>"i)) (-1 ("<que>"i) OR Rel) (NOT 1 ("en"));  # pero faltan más excepciones a esta regla 
 
 # creamos, pensamos, continuamos, seguimos.... (presente o pasado?)
+
+REMOVE:presente_pasado (pri) IF (0 (pri)) (0 (ifi)) (0*/* ("pasado") OR ("ayer") OR ("anteayer") OR ("el año pasado")); #El año pasado creamos
+
 SET Presente = (prs) OR (pri);
 REMOVE:verb_presente1 (ifi) IF (0 Presente LINK 0 (ifi)) (1 CnjCoo OR CM) (2 Presente LINK NOT 0 (ifi));
 REMOVE:verb_presente2 (ifi) IF (0 Presente LINK 0 (ifi)) (-1 CnjCoo OR CM) (-2 Presente LINK NOT 0 (ifi));
