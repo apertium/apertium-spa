@@ -821,7 +821,7 @@ REMOVE:creamos_presente (imp) IF (0 ("<creamos>"i)); #imperativo poco común.
 SET ANouns = ("aura") OR ("ágata") OR ("ágora") OR ("águila") OR ("álgebra") OR ("áncora") OR ("ánfora") OR ("ánima") OR ("área") OR ("árnica") OR ("acta") OR ("afta") OR ("agua") OR ("aguasal") OR ("aguaviva") OR ("ala") OR ("alba") OR ("alga") OR ("algia") OR ("alma") OR ("alza") OR ("ama") OR ("anca") OR ("ancla") OR ("ansia") OR ("ara") OR ("arca") OR ("archa") OR ("aria") OR ("arma") OR ("arpa") OR ("arria") OR ("asa") OR ("ascua") OR ("asma") OR ("aspa") OR ("asta") OR ("aula") OR ("ave") OR ("aya") OR ("haba") OR ("habla") OR ("hacha") OR ("hada") OR ("hambre") OR ("hampa") OR ("haya"); # OR ("arte")
 
 REPLACE:un_agua (det ind f sg) (det) IF (0 ("<un>"i)) (1 ANouns) (1 FemSg); # Son posibles y correctos: un agua/una agua
-REPLACE:el_hambre (det def f sg) (det) IF (0 ("<el>"i)) (1 ANouns) (1 FemSg); # Son posibles y correctos: un agua/una agua
+REPLACE:el_hambre (det def f sg) (det) IF (0/* (det def m sg)) (1 ANouns) (1 FemSg); # Son posibles y correctos: un agua/una agua
 
 # lenguas (eo)
 
