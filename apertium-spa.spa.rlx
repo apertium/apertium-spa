@@ -728,6 +728,9 @@ SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det);
 REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
 #suma cero
 REMOVE:suma_n A IF (0 ("suma")) (1 ("cero"));
+#vario
+SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
+SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 FemPl);
 
 # la tierra como medio de vida
 
@@ -772,7 +775,7 @@ REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que"));
 REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) ; # creer necesario/oportuno...
 REMOVE:creer_crear_4 Crear (0 Crear) (1C (prn) + (tn)) (2C A + Sg) ; # creer él/tú necesario/oportuno...
 REMOVE:creer_crear_5 Creer (0 Crear) (1 A + Pl) (2 N + Pl); # crean nuevas oportunidades
-REMOVE:creer_crear_6 PRS (0 ("<crea>")) (NOT *-1 ("que") BARRIER (Cnj_Rel_End)) ;
+REMOVE:creer_crear_6 PRS (0 ("<crea>")) (NOT *-1 ("que") OR Rel BARRIER (Cnj_Rel_End)) ;
 REMOVE:creer_crear_7 Crear (0 Crear) (1 (prn tn)) ; # creo yo, cree él...
 REMOVE:creer_crear_8 Crear (0 Crear) (1 Inf);
 REMOVE:creer_crear_9 Crear (0 ("<creo>"i)); # (1 CM) Mucho más frecuente "creer". ¿Cuando es "crear"?
@@ -789,7 +792,8 @@ REMOVE:verb_indicativo1 (prs) IF (0 (prs) LINK 0 (pri)) (1 CnjCoo OR CM) (2 (pri
 REMOVE:verb_subjuntivo2 (pri) IF (0 (prs) LINK 0 (pri)) (1 CnjCoo) (2 (prs) LINK NOT 0 (pri));
 REMOVE:verb_subjuntivo2b (pri) IF (0 (prs) LINK 0 (pri)) (1 CM) (2 (prs) LINK NOT 0 (pri)) (NOT -1*/* ("si"));
 REMOVE:verb_indicativo3 (prs) IF (0 (prs) LINK 0 (pri)) (-1 CnjCoo OR CM) (-2 (pri) LINK NOT 0 (prs));
-REMOVE:verb_subjuntivo4 (pri) IF (0 (prs) LINK 0 (pri)) (-1 CnjCoo OR CM) (-2 (prs) LINK NOT 0 (pri));
+REMOVE:verb_subjuntivo4 (pri) IF (0 (prs) LINK 0 (pri)) (-1 CnjCoo) (-2 (prs) LINK NOT 0 (pri));
+REMOVE:verb_subjuntivo4b (pri) IF (0 (prs) LINK 0 (pri)) (-1 CM) (-2 (prs) LINK NOT 0 (pri)) (NOT -1*/* ("aunque"));
 
 # creamos (presente o pasaod)
 SET Presente = (prs) OR (pri);
