@@ -728,12 +728,14 @@ SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det);
 #puro
 REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
 #suma 
+SELECT:sumo_adj A IF (0 ("sumo") + MascSg) (-1 ("grado") + MascSg);
 REMOVE:suma_n A IF (0 ("sumo") + FemSg ) (NOT 1 N + FemSg);
 REMOVE:suma_n A IF (0 ("sumo") + FemPl ) (NOT 1 N + FemPl);
 REMOVE:suma_n A IF (0 ("sumo") + MascSg ) (NOT 1 N + MascSg);
 REMOVE:se_suma ("sumir") IF (-1 ("<se>"i)) (0 ("<suma>"i)); # sumirse es posible pero raro 
-SELECT:sumir ("sumir") IF (0 ("sumir")) (1 ("en")) (-1 Pro); # se sume en
-SELECT:sumir ("sumir") IF (0 ("sumir")) (1 ("en")) (0/* Pro); # sumirse en
+REMOVE:sumir ("sumar") IF (0 ("sumir")) (1 ("en")) (-1 Pro); # se sume en
+REMOVE:sumir ("sumar") IF (0 ("sumir")) (-3 ("en")) (-2 Rel) (-1 Pro); # en la que nos sumen 
+REMOVE:sumir ("sumar") IF (0 ("sumir")) (1 ("en")) (0/* Pro); # sumirse en
 REMOVE:sumar ("sumir") IF (0 ("sumir") LINK 0 ("sumar")); # sumirse en
 #vario
 SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
