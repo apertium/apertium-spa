@@ -646,7 +646,6 @@ REMOVE:nata_adj N IF (-1 N + Fem + Sg) (0 ("<nata>"i));  # artista nata
 REMOVE:nata_adj N IF (-1 N + Fem + Pl) (0 ("<natas>"i)); # artistas natas
 SELECT:nata_nom N IF (0 ("nata"i));                      # resto: helado de nata
 
-REMOVE:se_suma ("sumir") IF (-1 ("<se>"i)) (0 ("<suma>"i)); # sumirse es posible pero raro 
 #REMOVE:queda A IF (0 ("quedo"i) + A + Fem); # queda, quedas: adj raro
 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1/* ("a"i)); 
@@ -728,10 +727,14 @@ SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det);
 SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
 #puro
 REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
-#suma cero
+#suma 
 REMOVE:suma_n A IF (0 ("sumo") + FemSg ) (NOT 1 N + FemSg);
 REMOVE:suma_n A IF (0 ("sumo") + FemPl ) (NOT 1 N + FemPl);
 REMOVE:suma_n A IF (0 ("sumo") + MascSg ) (NOT 1 N + MascSg);
+REMOVE:se_suma ("sumir") IF (-1 ("<se>"i)) (0 ("<suma>"i)); # sumirse es posible pero raro 
+SELECT:sumir ("sumir") IF (0 ("sumir")) (1 ("en")) (-1 Pro); # se sume en
+SELECT:sumir ("sumir") IF (0 ("sumir")) (1 ("en")) (0/* Pro); # sumirse en
+REMOVE:sumar ("sumir") IF (0 ("sumir") LINK 0 ("sumar")); # sumirse en
 #vario
 SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
 SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 FemPl);
