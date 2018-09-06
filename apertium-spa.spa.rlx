@@ -510,6 +510,7 @@ SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc);
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral"));
+SELECT:marco N IF (0 ("marco")) (-1 N); #(-1 ("programa") OR ("ley") OR ("estatuto") OR ("convenio") OR ("directiva") OR ("acuerdo") OR ("condición") OR ("estrategia") OR ("estructura") OR ("propuesta") OR ("procedimiento") OR ("norma"));
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
