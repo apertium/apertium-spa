@@ -290,7 +290,7 @@ SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") 
 
 SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv ("ben" en catalán)
 REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como") OR Vbhaver); #Evita PreAdv ("ben" en catalán)
-SELECT:como_bien Adv (0 ("bien")) (NOT -1 Det + MascSg) (1 Verb); # como bien ha dicho
+SELECT:como_bien Adv (0 ("bien")) (NOT -1 Det + MascSg) (1 Verb + Pers); # como bien ha dicho
 
 SELECT:que_1 CnjSub (0 ("que")) (-1C Inf OR Enc) ;
 SELECT:que_2 CnjSub (0 ("que")) (-1C Vblex LINK NOT 0 PP) ;
@@ -312,7 +312,7 @@ REMOVE:nom_verb2 N (NOT -2 Verb) (NOT -2 Prep) (-1C Pro) (0 N LINK 0 Verb) ;
 
 
 SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i)); #Por tanto: No puede ser multipalabra.
-
+SELECT:tanto_n   N IF (0 ("<tanto>"i)) (-1 Det + MascSg); 
 SELECT:tanto_como_1 Adv (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
 REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")) ;
 
