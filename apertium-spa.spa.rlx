@@ -755,6 +755,11 @@ REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que"));
 #sé
 REMOVE:se_saber (vbser) IF (0 ("<sé>"i)) (NOT 1 A) (NOT 1 PP);
 
+#primo prima
+SET PrimaWords = ("duplicar") OR ("obtener");
+REMOVE:prima ("primo") IF (0 ("primo") LINK (0 "prima")) (0*/* PrimaWords);
+REMOVE:primo ("prima") IF (0 ("primo") LINK (0 "prima"));
+
 # la tierra como medio de vida
 
 # pronombre + verbo
