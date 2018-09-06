@@ -288,9 +288,9 @@ SELECT:pr_cnjadv_1 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR
 SELECT:pr_cnjadv_2 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C A) ;
 SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C Inf OR Enc) ;
 
-REMOVE:bien PreAdv (0 ("bien")) (NOT 1 A OR PP)
-SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv ("ben" en catalán)
-REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como") OR Vbhaver); #Evita PreAdv ("ben" en catalán)
+REMOVE:bien PreAdv (0 ("bien")) (NOT 1 A OR PP);
+SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv, "ben" en catalán.
+REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como") OR Vbhaver); #Evita PreAdv, "ben" en catalán.
 SELECT:como_bien Adv (0 ("bien")) (NOT -1 Det + MascSg) (1 Verb + Pers); # como bien ha dicho
 
 SELECT:que_1 CnjSub (0 ("que")) (-1C Inf OR Enc) ;
@@ -755,10 +755,12 @@ REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que"));
 #sé
 REMOVE:se_saber (vbser) IF (0 ("<sé>"i)) (NOT 1 A) (NOT 1 PP);
 
-#primo prima
-SET PrimaWords = ("duplicar") OR ("obtener");
-REMOVE:prima ("primo") IF (0 ("primo") LINK (0 "prima")) (0*/* PrimaWords);
-REMOVE:primo ("prima") IF (0 ("primo") LINK (0 "prima"));
+#primo/prima (cousin) vs prima (de riesgo)
+SET PrimoCousinWords = ("hermano") OR ("cuñado") OR ("tío") OR ("abuelo") OR ("nieto") OR ("bisabuelo") OR ("biznieto") OR ("madre") OR ("padre") OR ("marido") OR ("mujer") OR ("cuarto_habitación");
+REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (-1 Pos);
+REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (1 ("segundo") OR ("cercano") OR ("pobre"));
+REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords);
+REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
 
 # la tierra como medio de vida
 
