@@ -288,6 +288,7 @@ SELECT:pr_cnjadv_1 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR
 SELECT:pr_cnjadv_2 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C A) ;
 SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C Inf OR Enc) ;
 
+REMOVE:bien PreAdv (0 ("bien")) (NOT 1 A OR PP)
 SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv ("ben" en catalán)
 REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como") OR Vbhaver); #Evita PreAdv ("ben" en catalán)
 SELECT:como_bien Adv (0 ("bien")) (NOT -1 Det + MascSg) (1 Verb + Pers); # como bien ha dicho
@@ -625,7 +626,7 @@ SELECT:sed_nom N IF (0 ("<sed>"i)) (NOT 1 (adj pl)) (NOT 1 (n pl));  # Sed valie
 
 SELECT:vino_nom N IF (0 ("vino")) (-1 VinoWords); # beber vino (n)
 
-SELECT:pasar_verb Vblex IF (0 ("pasar"i)) (1 ("a")); # pasa (v) a ser 
+SELECT:pasar_verb Vblex IF (0 ("pasar"i)) (1 ("a")) (NOT -1 ("dar")); # pasa (v) a ser 
 SELECT:dar_verb Vblex IF (0 ("dar"i)) (1 ("de")) (2 ("<alta>") OR ("<baja>")); # dado (participio, no nombre) de alta
 
 REMOVE:dado_n N IF (0 ("<dado>"i)) (NOT -1 Det) (1 Det + MascSg);
@@ -751,6 +752,8 @@ SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
 REMOVE:cosa Verb IF (0 ("cosa")); # "coser" muy improbable
 #fecha
 REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que")); 
+#sé
+REMOVE:se_saber (vbser) IF (0 ("<sé>"i)) (NOT 1 A) (NOT 1 PP);
 
 # la tierra como medio de vida
 
