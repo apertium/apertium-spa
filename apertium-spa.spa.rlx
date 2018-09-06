@@ -662,8 +662,9 @@ SELECT:rellena ("rellenar") IF (0 ("rellenar"i)) (1 Det); # Rellena el formulari
 
 REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (NOT -1 Det + (m)) (NOT -1 ("número"i)); # uno (no es sustantivo si no está determinado)
 
-REMOVE:uno_unir Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
-REMOVE:uno_unir Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
+REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
+REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
+REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT 1 Pro) ;
 
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
