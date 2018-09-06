@@ -290,6 +290,7 @@ SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") 
 
 SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv ("ben" en catalán)
 REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como") OR Vbhaver); #Evita PreAdv ("ben" en catalán)
+SELECT:como_bien Adv (0 ("bien")) (NOT -1 Det + MascSg) (1 Verb); # como bien ha dicho
 
 SELECT:que_1 CnjSub (0 ("que")) (-1C Inf OR Enc) ;
 SELECT:que_2 CnjSub (0 ("que")) (-1C Vblex LINK NOT 0 PP) ;
@@ -510,7 +511,8 @@ SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc);
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral"));
-SELECT:marco N IF (0 ("marco")) (-1 N); #(-1 ("programa") OR ("ley") OR ("estatuto") OR ("convenio") OR ("directiva") OR ("acuerdo") OR ("condición") OR ("estrategia") OR ("estructura") OR ("propuesta") OR ("procedimiento") OR ("norma"));
+SELECT:marco N IF (0 ("marco")) (-1 N); 
+REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
@@ -745,6 +747,10 @@ SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
 SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
 #toma
 SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
+#cosa
+REMOVE:cosa Verb IF (0 ("cosa")); # "coser" muy improbable
+#fecha
+REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que")); 
 
 # la tierra como medio de vida
 
