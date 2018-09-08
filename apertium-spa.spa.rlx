@@ -614,7 +614,7 @@ SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("de"i)) (2 ("forma"i) OR ("manera"i)) (3 
 SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR ("interés"i));
 SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("<del>"i));
 
-SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex); #seguir/pasar/tirar adelante 
+SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pasar/tirar adelante 
 
 SELECT:vela_n N IF (0 ("vela"i)); #vela (nombre), raro: ve + la (pron.)
 
@@ -745,6 +745,7 @@ REMOVE:sumar ("sumir") IF (0 ("sumir") LINK 0 ("sumar")); # sumirse en
 #vario
 SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
 SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 FemPl);
+SELECT:vario_det Det IF (0 ("vario")) (-1 CnjCoo) (-2 ("uno"));
 SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
 SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
 #toma
