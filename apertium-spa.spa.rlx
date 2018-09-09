@@ -766,7 +766,7 @@ SELECT:precio N IF (0 ("precio"));
 #blando
 REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
 # campo
-SELECT:campo N IF (0 ("campo"));
+REMOVE:campo Verb IF (0 ("campo"));
 
 #primo/prima (cousin) vs prima (de riesgo)
 SET PrimoCousinWords = ("hermano") OR ("cuñado") OR ("tío") OR ("abuelo") OR ("nieto") OR ("bisabuelo") OR ("biznieto") OR ("madre") OR ("padre") OR ("marido") OR ("mujer") OR ("cuarto_habitación");
