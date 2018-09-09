@@ -757,6 +757,11 @@ REMOVE:cosa Verb IF (0 ("cosa")); # "coser" muy improbable
 REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que")); 
 #sé
 REMOVE:se_saber (vbser) IF (0 ("<sé>"i)) (NOT 1 A) (NOT 1 PP);
+# agua
+REMOVE:agua Verb IF (0 ("agua")) (NOT -1 Pro);
+REMOVE:agua Verb IF (0 ("agua")) (1 Det);
+# precio
+SELECT:precio N IF (0 ("precio"));
 
 #primo/prima (cousin) vs prima (de riesgo)
 SET PrimoCousinWords = ("hermano") OR ("cuñado") OR ("tío") OR ("abuelo") OR ("nieto") OR ("bisabuelo") OR ("biznieto") OR ("madre") OR ("padre") OR ("marido") OR ("mujer") OR ("cuarto_habitación");
