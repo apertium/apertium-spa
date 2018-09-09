@@ -94,9 +94,9 @@ SET Cnj_Rel_End = >>> OR CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 
 LIST unknown = ("\\*.*"r) ;
 LIST unknownMajIni = ("\\*[A-ZÀÁÈÉíÒÓÚÜÇ].*"r) ;
-LIST knownMajIni = ("[A-ZÀÁÈÉíÒÓÚÜÇ].*"r) ;
-LIST MajIni = ("<[A-ZÀÁÈÉíÒÓÚÜÇ].*>"r) ;
-LIST MajIni2 = ("<[A-ZÀÁÈÉíÒÓÚÜÇ][a-zàáèéìíòóùúïüçñ·]+.*>"r) ;
+LIST knownMajIni = ("[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*"r) ;
+LIST MajIni = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*>"r) ;
+LIST MajIni2 = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ][a-zàáèéìíòóùúïüçñ·]+.*>"r) ;
 LIST Url = ("<.*(http|www|@).*>"r) ;
 
 SET Barrera_Final_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Verb OR Rel OR Pro ;	# Verb és perillós per la ambigüitat, però en general, prolífic
@@ -221,7 +221,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 	## cogieron tres rehenes.
 
 # se referirán, desde entonces, a los indígenas del Magreb como pueblos líbicos, aunque
- REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber);
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1C Pro);
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
 
 # prn + verbo/nombre
@@ -759,9 +759,14 @@ REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que"));
 REMOVE:se_saber (vbser) IF (0 ("<sé>"i)) (NOT 1 A) (NOT 1 PP);
 # agua
 REMOVE:agua Verb IF (0 ("agua")) (NOT -1 Pro);
-REMOVE:agua Verb IF (0 ("agua")) (1 Det);
+REMOVE:agua Verb IF (0 ("agua") + FemSg) (-1 Det + Sg);
+REMOVE:agua Verb IF (0 ("agua") + FemPl) (-1 Det + FemPl);
 # precio
 SELECT:precio N IF (0 ("precio"));
+#blando
+REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
+# campo
+SELECT:campo N IF (0 ("campo"));
 
 #primo/prima (cousin) vs prima (de riesgo)
 SET PrimoCousinWords = ("hermano") OR ("cuñado") OR ("tío") OR ("abuelo") OR ("nieto") OR ("bisabuelo") OR ("biznieto") OR ("madre") OR ("padre") OR ("marido") OR ("mujer") OR ("cuarto_habitación");
