@@ -762,11 +762,14 @@ REMOVE:agua Verb IF (0 ("agua")) (NOT -1 Pro);
 REMOVE:agua Verb IF (0 ("agua") + FemSg) (-1 Det + Sg);
 REMOVE:agua Verb IF (0 ("agua") + FemPl) (-1 Det + FemPl);
 # precio
-SELECT:precio N IF (0 ("precio"));
+SELECT:precio  N IF (0 ("precio"));
+SELECT:precio2 N IF (0 ("oferta") OR ("peso")) (-1 ("precio"));
 #blando
 REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
 # campo
 REMOVE:campo Verb IF (0 ("campo"));
+# suelo
+REMOVE:suelo Verb IF (0 ("suelo")) (NOT 1 Inf OR Adv);
 
 #primo/prima (cousin) vs prima (de riesgo)
 SET PrimoCousinWords = ("hermano") OR ("cuñado") OR ("tío") OR ("abuelo") OR ("nieto") OR ("bisabuelo") OR ("biznieto") OR ("madre") OR ("padre") OR ("marido") OR ("mujer") OR ("cuarto_habitación");
