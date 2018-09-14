@@ -770,15 +770,14 @@ REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
 REMOVE:campo Verb IF (0 ("campo"));
 # suelo
 REMOVE:suelo Verb IF (0 ("suelo")) (NOT 1/* Inf OR Adv);
-
 #primo/prima (cousin) vs prima (de riesgo)
 SET PrimoCousinWords = ("hermano") OR ("cuñado") OR ("tío") OR ("abuelo") OR ("nieto") OR ("bisabuelo") OR ("biznieto") OR ("madre") OR ("padre") OR ("marido") OR ("mujer") OR ("cuarto_habitación");
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (-1 Pos);
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (1 ("segundo") OR ("cercano") OR ("pobre"));
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords);
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
-
-# la tierra como medio de vida
+# qué sentido
+SELECT:qué A IF (0 ("qué")) (1 N);
 
 # pronombre + verbo
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
