@@ -778,6 +778,10 @@ REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords)
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
 # qué sentido
 SELECT:qué A IF (0 ("qué")) (1 N) (NOT 1 Copula OR Vbmod OR Vbhaver);
+SELECT:qué N IF (-1 ("qué")) (0 N) (NOT 0 Copula OR Vbmod OR Vbhaver);
+SELECT:qué PreAdv IF (0 ("qué")) (1C A);
+REMOVE:qué PreAdv IF (0 ("qué"));
+
 # son
 REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
 
