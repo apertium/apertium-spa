@@ -779,7 +779,7 @@ REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
 # qué sentido
 SELECT:qué A IF (0 ("qué")) (1 N) (NOT 1 Copula OR Vbmod OR Vbhaver);
 # son
-REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg);
+REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
 
 # pronombre + verbo
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
