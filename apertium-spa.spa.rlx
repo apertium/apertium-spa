@@ -220,7 +220,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro);
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro) (NOT -1 ("si")) (NOT -1 ("no") LINK NOT -1 ("si"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascPl) (0 MascPl);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + FemSg) (0 FemSg);
@@ -804,15 +804,23 @@ REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
 #frontero
 REMOVE:frontero A IF (0 ("frontero") + Fem) (-1C N + Fem);
 #médico
-REMOVE:medico A IF (0 ("médico") + MascSg) (NOT -1 N + MascSg);
-REMOVE:medico A IF (0 ("médico") + MascPl) (NOT -1 N + MascPl);
-REMOVE:medico A IF (0 ("médico") + FemSg) (NOT -1 N + FemSg);
-REMOVE:medico A IF (0 ("médico") + FemPl) (NOT -1 N + FemPl);
+SELECT:medico N IF (0 ("médico")) (-1 ("como"));
+SELECT:medico N IF (0 ("médico")) (-1 ("haber") OR ("hay"));
+REMOVE:medico A IF (0 ("médico") + MascSg) (1 A + MascSg);
+REMOVE:medico A IF (0 ("médico") + MascPl) (1 A + MascPl);
+REMOVE:medico A IF (0 ("médico") + FemSg) (1 A + FemSg);
+REMOVE:medico A IF (0 ("médico") + FemPl) (1 A + FemPl);
 #familiar
 REMOVE:familiar N IF (0 ("familiar") + Sg) (-1 N OR A) (-1 Sg);
 REMOVE:familiar N IF (0 ("familiar") + Pl) (-1 N OR A) (-1 Pl);
 #solo
 SELECT:solo Adv IF (0 ("solo")) (-1 Copula) (1 A);
+#reciclados
+SELECT:reciclado PP IF (0 ("reciclado") + MascPl) (NOT -1 Det + MascPl);
+# medida 
+SELECT:medida N IF (0 ("medida")) (-1 ("tal"));
+SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
+SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
 
 # pronombre + verbo
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
