@@ -220,8 +220,12 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-# se referirán, desde entonces, a los indígenas del Magreb como pueblos líbicos, aunque
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro);
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascPl) (0 MascPl);
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + FemSg) (0 FemSg);
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + FemPl) (0 FemPl);
+
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
 
 # prn + verbo/nombre
@@ -513,7 +517,7 @@ SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc);
 
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
-SELECT:umbral N IF (0 ("valor")) (1 ("umbral"));
+SELECT:umbral N IF (0 ("valor")) (1 ("umbral") OR ("límite"));
 SELECT:marco N IF (0 ("marco")) (-1 N); 
 REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
 
@@ -771,6 +775,8 @@ SELECT:precio2 N IF (0 ("oferta") OR ("peso")) (-1 ("precio"));
 REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
 # campo
 REMOVE:campo Verb IF (0 ("campo"));
+# terreno
+REMOVE:terreno A IF (0 ("terreno")); #excepciones?
 # suelo
 REMOVE:suelo Verb IF (0 ("suelo")) (NOT 1/* Inf OR Adv);
 #primo/prima (cousin) vs prima (de riesgo)
@@ -780,6 +786,7 @@ REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (1 ("segundo") OR ("cer
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords);
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
 # qué sentido
+SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
 SELECT:qué A IF (0 ("qué")) (1 N) (NOT 1 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascSg) (2 N + MascSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascPl) (2 N + MascPl) (NOT 2 Copula OR Vbmod OR Vbhaver);
@@ -791,9 +798,20 @@ SELECT:qué PreAdv IF (0 ("qué")) (1C PP);
 SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 A);
 SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 PP);
 REMOVE:qué PreAdv IF (0 ("qué"));
-
 # son
 REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
+#frontero
+REMOVE:frontero A IF (0 ("frontero") + Fem) (-1C N + Fem);
+#médico
+REMOVE:medico A IF (0 ("médico") + MascSg) (NOT -1 N + MascSg);
+REMOVE:medico A IF (0 ("médico") + MascPl) (NOT -1 N + MascPl);
+REMOVE:medico A IF (0 ("médico") + FemSg) (NOT -1 N + FemSg);
+REMOVE:medico A IF (0 ("médico") + FemPl) (NOT -1 N + FemPl);
+#familiar
+REMOVE:familiar N IF (0 ("familiar") + Sg) (-1 N OR A) (-1 Sg);
+REMOVE:familiar N IF (0 ("familiar") + Pl) (-1 N OR A) (-1 Pl);
+#solo
+SELECT:solo Adv IF (0 ("solo")) (-1 Copula) (1 A);
 
 # pronombre + verbo
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
