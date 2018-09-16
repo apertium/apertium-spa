@@ -221,7 +221,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 	## cogieron tres rehenes.
 
 # se referirán, desde entonces, a los indígenas del Magreb como pueblos líbicos, aunque
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1C Pro);
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro);
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
 
 # prn + verbo/nombre
@@ -321,6 +321,7 @@ REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")
 # seguir, estar + ger
 SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
 SELECT:preciso A IF (0 ("preciso")) (-1 Ser OR ("resultar"));
+SELECT:preciso Vblex IF (1 ("preciso")) (0 ("resultar"));
 SELECT:precisar Vblex IF (0 ("precisar")) (1 Inf);
 SELECT:ir_a Ir IF (0 Ir) (1 ("a")) (2/* Inf);
 REMOVE:ir_ger Ser IF (0 Ser) (0 Ir) (1/* Ger); #fueron subiendo = ir, no ser
@@ -748,6 +749,7 @@ REMOVE:sumar ("sumir") IF (0 ("sumir") LINK 0 ("sumar")); # sumirse en
 SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 MascPl);
 SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 FemPl);
 SELECT:vario_det Det IF (0 ("vario")) (-1 CnjCoo) (-2 ("uno"));
+SELECT:vario_det Det IF (0 ("vario")) (1 CnjCoo) (2 ("todo"));
 SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
 SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
 #toma
@@ -779,9 +781,15 @@ REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords)
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
 # qué sentido
 SELECT:qué A IF (0 ("qué")) (1 N) (NOT 1 Copula OR Vbmod OR Vbhaver);
-SELECT:qué A IF (0 ("qué")) (1 A) (2 N) (NOT 2 Copula OR Vbmod OR Vbhaver);
-SELECT:qué N IF (-1 ("qué")) (0 N) (NOT 0 Copula OR Vbmod OR Vbhaver);
+SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascSg) (2 N + MascSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
+SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascPl) (2 N + MascPl) (NOT 2 Copula OR Vbmod OR Vbhaver);
+SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 FemSg) (2 N + FemSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
+SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 FemPl) (2 N + FemPl) (NOT 2 Copula OR Vbmod OR Vbhaver);
+SELECT:qué N IF (-1 ("qué")) (0 N) (NOT 0 Copula OR Vbmod OR Vbhaver) (NOT 0 ("falta"));
 SELECT:qué PreAdv IF (0 ("qué")) (1C A);
+SELECT:qué PreAdv IF (0 ("qué")) (1C PP);
+SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 A);
+SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 PP);
 REMOVE:qué PreAdv IF (0 ("qué"));
 
 # son
