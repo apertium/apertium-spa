@@ -493,6 +493,8 @@ REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR 
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR ("<le>"i)) (1 MajIni2); 
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<den>"i)) (-1 ("<van>"i) OR ("<von>"i)); 
 
+SELECT:París NP IF (0 ("<París>"));
+
 #
 # PALABRAS PARTICULARES
 #
@@ -539,9 +541,8 @@ REMOVE:radio2 Masc IF (0 ("radio"i) + Pl) (0*/* LaradioWords) (NOT -1 Det + Masc
 
 REMOVE:radio3 Fem IF (0 ("radio"i) + Sg) (NOT 0*/* LaradioWords) (-1 Det + Pos + (mf));
 
-
-SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
+SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
 
 SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) (NOT -1 Det + FemSg); # siempre tarde, llegan tarde
 
@@ -810,7 +811,7 @@ REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
 #frontero
 REMOVE:frontero A IF (0 ("frontero") + Fem) (-1C N + Fem);
 #médico
-SELECT:medico N IF (0 ("médico")) (-1 ("como") OR ("joven"));
+SELECT:medico N IF (0 ("médico")) (-1 ("como") OR ("joven") OR ("<soy>"i));
 SELECT:medico N IF (0 ("<médicos>"i)) (1 ("<sin>"i)) (2 ("<fronteras>"i));
 SELECT:medico N IF (0 ("médico")) (-1 ("haber") OR ("hay"));
 REMOVE:medico A IF (0 ("médico") + MascSg) (1 A + MascSg) (NOT -1 N + MascSg);
