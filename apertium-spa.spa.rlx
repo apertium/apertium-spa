@@ -220,7 +220,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro) (NOT -1 ("si")) (NOT -1 ("no") LINK NOT -1 ("si"));
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro OR CnjSub OR CnjAdv OR Rel) (NOT -1 ("si")) (NOT -1 ("no") LINK NOT -1 ("si"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascPl) (0 MascPl);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + FemSg) (0 FemSg);
@@ -805,6 +805,7 @@ REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
 REMOVE:frontero A IF (0 ("frontero") + Fem) (-1C N + Fem);
 #médico
 SELECT:medico N IF (0 ("médico")) (-1 ("como"));
+SELECT:medico N IF (0 ("<médicos>"i)) (1 ("<sin>"i)) (1 ("<fronteras>"i));
 SELECT:medico N IF (0 ("médico")) (-1 ("haber") OR ("hay"));
 REMOVE:medico A IF (0 ("médico") + MascSg) (1 A + MascSg);
 REMOVE:medico A IF (0 ("médico") + MascPl) (1 A + MascPl);
@@ -821,7 +822,9 @@ SELECT:reciclado PP IF (0 ("reciclado") + MascPl) (NOT -1 Det + MascPl);
 SELECT:medida N IF (0 ("medida")) (-1 ("tal"));
 SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
-
+# pasa
+SELECT:pasa_v Vblex IF (0 ("<pasa>"i)) (NOT -1 Det + FemSg) (NOT -1 ("uva"));
+SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva"));
 # pronombre + verbo
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
 
