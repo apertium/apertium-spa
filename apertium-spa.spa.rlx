@@ -229,6 +229,8 @@ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + FemPl) (0 FemPl);
 # SELECT:r_verb_2 Vblex (0 Vblex + Pers) (-1C Pro) ; No: podría recurrir a ellas para hacer
 
+REMOVE:cuyo_adj A IF (0 A) (0 N) (NOT 1 N) (-1 ("cuyo"));
+
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
 SELECT:prn_vb_n Verb IF (0C Verb + (p1 sg) OR N) (-1C ("yo"i));
