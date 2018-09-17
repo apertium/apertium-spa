@@ -186,12 +186,6 @@ SET NadaPronWords2 = ("<más>"i) OR ("<menos>"i) OR ("<mejor>"i) OR ("<peor>"i) 
 
 SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR ("televisión") OR ("TV") OR ("música") OR ("emisor") OR ("emitir") OR ("comunicación") OR ("locutor") OR ("anuncio") OR ("escuchar") OR ("oír") OR ("rock") OR ("canal") OR ("sintonizar");
 
-####################################
-# Palabras particulares 
-
-#saludo
-SELECT:saludo Vblex IF (0 ("saludo")) (NOT -1 Det + MascSg);
-
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -228,6 +222,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro OR CnjSub OR CnjAdv OR Rel) (NOT -1 ("si")) (NOT -1 ("no") LINK NOT -1 ("si"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 ("cuyo"));
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-2 ("cuyo")) (-1C N);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascPl) (0 MascPl);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + FemSg) (0 FemSg);
@@ -837,11 +832,12 @@ SELECT:medida N IF (0 ("medida")) (-1 ("tal"));
 SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
 # pasa
-SELECT:pasa_v Vblex IF (0 ("<pasa>"i)) (NOT -1 Det + FemSg) (NOT -1 ("uva"));
-SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva"));
+SELECT:pasa_v Vblex IF (0 ("<pasa>"i))  (NOT -1 Det + FemSg) (NOT -1 ("uva")) (NOT 1 A + FemSg);
+SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva")) (NOT 1 A + FemPl);
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
-
+#supuesto
+SELECT:supuesto N IF (0 ("supuesto")) (1 ("contencioso"));
 # pronombre + verbo
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
 
