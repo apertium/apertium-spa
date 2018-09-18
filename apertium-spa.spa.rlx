@@ -836,7 +836,8 @@ SELECT:medida N IF (0 ("medida")) (-1 ("tal"));
 SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
 # pasa
-SELECT:pasa_v Vblex IF (0 ("<pasa>"i))  (NOT -1 Det + FemSg) (NOT -1 ("uva")) (NOT 1 A + FemSg);
+SELECT:pasa_v Vblex IF (0 ("pasar")) (-1 ("no"));
+SELECT:pasa_v Vblex IF (0 ("<pasa>"i))  (NOT -1 Det + FemSg) (NOT -1 ("uva")) (NOT 1 A + (f sg));
 SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva")) (NOT 1 A + FemPl);
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
