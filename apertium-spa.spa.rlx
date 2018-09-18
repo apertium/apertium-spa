@@ -445,6 +445,7 @@ SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
 SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
+REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
 SELECT:julio_mes N IF (0 ("Valle") OR ("Luz")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
@@ -837,9 +838,13 @@ SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + Fem
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
 # pasa
 SELECT:pasa_v Vblex IF (0 ("pasar")) (-1 ("no"));
-SET PasaUva = ("virgen") OR ("blanco") OR ("dulce") OR ("valenciano") OR ("borde") OR ("rojo") OR ("australiano") OR ("griego");
-SELECT:pasa_v Vblex IF (0 ("<pasa>"i))  (NOT -1 Det + FemSg) (NOT -1 ("uva")) (NOT 1 PasaUva LINK 0 FemSg);
-SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva")) (NOT 1 PasaUva LINK 0 FemPl);
+SELECT:pasa_n N IF (0 ("pasa")) (1 ("de")) (2 ("Corinto") OR ("Málaga") OR ("Denia"));
+SET PasaUva = ("virgen") OR ("blanco") OR ("dulce") OR ("valenciano") OR ("borde") OR ("rojo") OR ("australiano") OR ("griego") OR ("sultán");
+SELECT:pasa_v Vblex IF (0 ("<pasa>"i))  (NOT -1 Det + FemSg) (NOT -1 ("uva")) (NOT 1 PasaUva + FemSg);
+SELECT:pasa_n N IF (0 ("<pasas>"i)) (1 PasaUva) (1 FemPl);
+SELECT:pasa_n N IF (0 ("<pasas>"i)) (-1 A OR PP) (-1 FemPl);
+SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva") OR ("producir")) (NOT -1 A + FemPl) (NOT -1 PP + FemPl) (NOT 1 PasaUva + FemPl);
+
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
 #supuesto
@@ -848,7 +853,6 @@ SELECT:supuesto N IF (0 ("supuesto")) (1 ("contencioso"));
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
 
 # vía pr/n
-REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
 REMOVE:via2 Prep IF (0 ("vía") + $$FemSg) (1 A + $$FemSg) ;
 
 #SELECT:media_1 N IF (-3C Num) (-2 N) (-1 CnjCoo) (0 ("media")) ;
