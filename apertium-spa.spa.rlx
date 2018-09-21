@@ -446,8 +446,8 @@ SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
 SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
 REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
-SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en"));
-SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal")) (-1 ("de"));
+SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR unknownMajIni);#
+SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
