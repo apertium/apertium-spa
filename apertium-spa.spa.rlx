@@ -849,6 +849,8 @@ SELECT:pasa_n N IF (0 ("<pasas>"i)) (-1 A OR PP) (-1 FemPl);
 SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva") OR ("producir")) (NOT -1 A + FemPl) (NOT -1 PP + FemPl) (NOT 1 PasaUva + FemPl);
 #remite
 REMOVE:remite_v N IF (0 ("remite")) (1/* ("a"));
+#pediente
+SELECT:pendiente_adj A IF (0 ("pendiente")) (-1 Estar);
 
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
