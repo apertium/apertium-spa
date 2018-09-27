@@ -851,6 +851,8 @@ SELECT:pasa_v Vblex IF (0 ("<pasas>"i)) (NOT -1 Det + FemPl) (NOT -1 ("uva") OR 
 REMOVE:remite_v N IF (0 ("remite")) (1/* ("a"));
 #pediente
 SELECT:pendiente_adj A IF (0 ("pendiente")) (-1 Estar);
+#añada
+SELECT:añada_v Vblex IF (0 ("añada")) (-1 ("cuando") OR ("si") OR ("cuanto") OR ("como"));
 
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
