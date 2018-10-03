@@ -856,8 +856,10 @@ SELECT:añada_v Vblex IF (0 ("añada")) (-1 ("cuando") OR ("si") OR ("cuanto") O
 #comida
 SELECT:comida_n N IF (0 ("comida")) (1 ("basura"));
 # consumir / consumar
-SET ConsumirWords = ("combustible") OR ("gasolina") OR ("gasóleo") OR ("gasoil") OR ("queroseno");
-REMOVE:consumar ("consumir") IF (0 ("consumir")) (0 ("consumar")) (0*/* ConsumirWords);
+SET ConsumirWords = ("combustible") OR ("gasolina") OR ("gasóleo") OR ("gasoil") OR ("queroseno") OR ("alimento") OR ("carne") OR ("huevo");
+SET ConsumarWords = ("matrimonio") OR ("relación") OR ("amor") OR ("acto") OR ("hecho");
+REMOVE:consumar ("consumir") IF (0 ("consumir")) (0 ("consumar")) (0*/* ConsumarWords) (NOT 0*/* ConsumirWords);
+REMOVE:consumir ("consumar") IF (0 ("consumir")) (0 ("consumar")); 
 
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
