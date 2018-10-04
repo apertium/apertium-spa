@@ -860,6 +860,7 @@ SET ConsumirWords = ("combustible") OR ("gasolina") OR ("gasóleo") OR ("gasoil"
 SET ConsumarWords = ("matrimonio") OR ("relación") OR ("amor") OR ("acto") OR ("hecho");
 REMOVE:consumar ("consumir") IF (0 ("consumir")) (0 ("consumar")) (0*/* ConsumarWords) (NOT 0*/* ConsumirWords);
 REMOVE:consumir ("consumar") IF (0 ("consumir")) (0 ("consumar")); 
+SELECT:consumo N IF (0 ("consumo")) (-1 N) ; #infrecuente: yo consumo
 
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
