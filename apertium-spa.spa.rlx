@@ -703,16 +703,15 @@ REMOVE:algo5 PreAdv IF (0 ("algo"i));
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 
-# elimina futuro de subjuntivo (poco usual) (tuviere, hubiere)
-SUBSTITUTE (fts) (pis) TARGET (fts) IF (0 (fts));
-
 # Quisiera (condicional). Se puede ampliar.
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Verb); # BARRIER CnjCoo OR CM 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
-SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR CnjSub OR Rel); 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR CnjSub OR Rel OR CnjAdv); 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
 
+# analiza futuro de subjuntivo (poco usual) (tuviere, hubiere) como pretérito de subjuntivo
+SUBSTITUTE (fts) (pis) TARGET (fts) IF (0 (fts));
 
 SELECT:puesto N IF (0 ("puesto"i)) (-1 (ord m));
 
