@@ -149,7 +149,7 @@
 ^de/de<pr>$
 ^constituir/constituir<vblex><inf>$
 ^la/el<det><def><f><sg>$
-^biografía/biografía<n><f><sg>$ ###############################################################################################################
+^biografía/biografía<n><f><sg>$
 ^más/más<adv>$
 ^concisa/conciso<adj><f><sg>$
 ^y/y<cnjcoo>$
@@ -210,11 +210,11 @@
 ^ocurrido/ocurrir<vblex><pp><m><sg>$
 ^a/a<pr>$
 ^Oliver/Oliver<np><ant>$
-^Twist/Twist<np>$^./.<sent>$ --------------------------------------------------------------------------------------------------------
+^Twist/Twist<np>$^./.<sent>$
 ^Es/Ser<vbser><pri><p3><sg>$
 ^el/el<det><def><m><sg>$
 ^caso/caso<n><m><sg>$
-^que/que<rel><an><mf><sp>$ ########################################################################################################
+^que/que<rel><an><mf><sp>$
 ^se/se<prn><pro><ref><p3><mf><sp>$
 ^tuvieron/tener<vblex><ifi><p3><pl>$
 ^grandes/grande<adj><mf><pl>$
@@ -249,12 +249,12 @@
 ^un/uno<det><ind><m><sg>$
 ^rato/rato<n><m><sg>$
 ^permaneció/permanecer<vblex><ifi><p3><sg>$
-^boqueando/*boqueando$ ------------------------------------------------------------------------------------------------------------------------
+^boqueando/boquear<vblex><ger>$
 ^sobre/sobre<pr>$
 ^un/uno<det><ind><m><sg>$
-^colchoncillo/*colchoncillo$ ------------------------------------------------------------------------------------------------------------------
+^colchoncillo/colchoncillo<n><m><sg>$
 ^de/de<pr>$
-^borra/borrar<vblex><pri><p3><sg>/borrar<vblex><imp><p2><sg>$^,/,<cm>$ -------------------INSERT AS NOUN---------------------------------------
+^borra/borra<n><f><sg>$^,/,<cm>$
 ^suspendido/suspender<vblex><pp><m><sg>$
 ^de/de<pr>$
 ^manera/manera<n><f><sg>$
@@ -290,13 +290,14 @@
 ^de/de<pr>$
 ^solícitas/solícito<adj><f><pl>$
 ^abuelas/abuelo<n><f><pl>$^,/,<cm>$
-^anhelosas/*anhelosas$ ------------------------------------------------------------------------------------------------------------------------
+^anhelosas/anheloso<adj><f><pl>$
 ^tías/tío<n><f><pl>$^,/,<cm>$
 ^expertas/experto<adj><f><pl>/experto<n><f><pl>$
 ^nodrizas/nodriza<n><f><pl>$
 ^y/y<cnjcoo>$
 ^doctores/doctor<n><m><pl>$
 ^de/de<pr>$
+#################################################################################################################################
 ^honda/honda<n><f><sg>/hondo<adj><f><sg>$
 ^sabiduría/sabiduría<n><f><sg>$^,/,<cm>$
 ^inevitable/inevitable<adj><mf><sg>$
@@ -359,6 +360,7 @@
 ^a/a<pr>$
 ^anunciar/anunciar<vblex><inf>$
 ^a/a<pr>$
+#################################################################################################################################
 ^los/el<det><def><m><pl>$
 ^huéspedes/huésped<n><m><pl>$
 ^del/de<pr>+el<det><def><m><sg>$
@@ -390,7 +392,7 @@
 ^solo/solo<adv>$
 ^poseía/poseer<vblex><pii><p3><sg>$
 ^ese/ese<det><dem><m><sg>$
-^utilísimo/*utilísimo$ ------------------------------------------------------------------------------------------------------------------------
+^utilísimo/utilísimo<adj><m><sg>$
 ^accesorio/accesorio<n><m><sg>$
 ^que/que<rel><an><mf><sp>$
 ^es/ser<vbser><pri><p3><sg>$
@@ -426,7 +428,7 @@
 ^se/se<prn><pro><ref><p3><mf><sp>$
 ^agitó/agitar<vblex><ifi><p3><sg>$
 ^la/el<det><def><f><sg>$
-^remendada/remendar<vblex><pp><f><sg>$ --------------------------------INSERT AS ADJECTIVE-----------------------------------------------------
+^remendada/remendado<adj><f><sg>$
 ^colcha/colcha<n><f><sg>$
 ^que/que<cnjsub>/que<rel><an><mf><sp>$
 ^se/se<prn><pro><ref><p3><mf><sp>$
@@ -440,7 +442,7 @@
 ^hierro/hierro<n><m><sg>$^,/,<cm>$
 ^se/se<prn><pro><ref><p3><mf><sp>$
 ^alzó/alzar<vblex><ifi><p3><sg>$
-^desmayadamente/*desmayadamente$ --------------------------------------------------------------------------------------------------------------
+^desmayadamente/desmayadamente<adv>$
 ^sobre/sobre<pr>$
 ^la/el<det><def><f><sg>$
 ^almohada/almohada<n><f><sg>$
