@@ -707,7 +707,7 @@ REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Verb); # BARRIER CnjCoo OR CM 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
-SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR CnjSub OR Rel OR CnjAdv); 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* (".* que"r) OR ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR CnjSub OR Rel); 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
 
 # analiza futuro de subjuntivo (poco usual) (tuviere, hubiere) como pretérito de subjuntivo
@@ -776,6 +776,8 @@ REMOVE:cosa Verb IF (0 ("cosa")); # "coser" muy improbable
 REMOVE:fecha Verb IF (0 ("fecha")) (1 ("en")) (2 ("el que")); 
 #sé
 REMOVE:se_saber (vbser) IF (0 ("<sé>"i)) (NOT 1 A) (NOT 1 PP);
+# conexiones
+REMOVE:conexiones Verb IF (0 ("<conexiones>"i));
 # agua
 REMOVE:agua Verb IF (0 ("agua")) (NOT -1 Pro);
 REMOVE:agua Verb IF (0 ("agua") + FemSg) (-1 Det + Sg);
