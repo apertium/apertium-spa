@@ -694,11 +694,14 @@ REMOVE:nada_1 Verb IF (0 ("<nada>"i)) (NOT 0*/* NadarWords) (NOT -1 (ant));     
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 ("<que>"i));
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
 
-SELECT:algo1 PreAdv IF (0 ("algo")) (-1 N + MascSg) (1C A + MascSg);
-SELECT:algo2 PreAdv IF (0 ("algo")) (-1 N + MascPl) (1C A + MascPl);
-SELECT:algo3 PreAdv IF (0 ("algo")) (-1 N + FemSg) (1C A + FemSg);
-SELECT:algo4 PreAdv IF (0 ("algo")) (-1 N + FemPl) (1C A + FemPl);
-REMOVE:algo5 PreAdv IF (0 ("algo"i));
+SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + MascSg) (-2 ("el") OR ("uno")) (-1 N + MascSg) (1 A + MascSg);
+SELECT:algo2 PreAdv IF (0 ("algo")) (1 A + MascPl);
+SELECT:algo3 PreAdv IF (0 ("algo")) (1 A + FemSg) (NOT 1 MascSg);
+SELECT:algo4 PreAdv IF (0 ("algo")) (1 A + FemPl);
+SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
+SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
+SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
+REMOVE:algo0 PreAdv IF (0 ("algo"i));
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
