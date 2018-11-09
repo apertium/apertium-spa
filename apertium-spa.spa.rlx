@@ -697,11 +697,13 @@ REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + MascSg) (-2 ("el") OR ("uno")) (-1 N + MascSg) (1 A + MascSg);
 SELECT:algo2 PreAdv IF (0 ("algo")) (1 A + MascPl);
 SELECT:algo3 PreAdv IF (0 ("algo")) (1 A + FemSg) (NOT 1 MascSg);
+SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + FemSg) (-1 N + FemSg) (1 A + FemSg);
 SELECT:algo4 PreAdv IF (0 ("algo")) (1 A + FemPl);
+REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 Adv) (3 A + MascSg);
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
 SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
 SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
-REMOVE:algo0 PreAdv IF (0 ("algo"i));
+REMOVE:algo0b PreAdv IF (0 ("algo"i));
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
