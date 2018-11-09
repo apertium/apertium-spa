@@ -700,10 +700,12 @@ SELECT:algo3 PreAdv IF (0 ("algo")) (1 A + FemSg) (NOT 1 MascSg);
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + FemSg) (-1 N + FemSg) (1 A + FemSg);
 SELECT:algo4 PreAdv IF (0 ("algo")) (1 A + FemPl);
 REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 Adv) (3 A + MascSg);
+REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
 SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
 SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
-REMOVE:algo0b PreAdv IF (0 ("algo"i));
+SELECT:algo7 PreAdv IF (0 ("algo"i)) (1 Adv);
+REMOVE:algo0b PreAdv IF (0 ("algo"i)) (NOT 1 Adv);
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
