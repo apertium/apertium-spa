@@ -88,7 +88,7 @@ SET Adv_PreAdv = Adv OR PreAdv ;
 
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
 SET Verb_Prep = Verb OR Prep ;
-SET Verb_Adv = Verb OR Adv ;
+SET Verb_Adv = Verb OR Adv OR PreAdv ;
 SET Cnj_Rel = CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 SET Cnj_Rel_End = >>> OR CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 
@@ -704,7 +704,7 @@ REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
 SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
 SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
-SELECT:algo7 PreAdv IF (0 ("algo"i)) (1 ("más tarde"));
+SELECT:algo7 PreAdv IF (0 ("algo"i)) (1 ("más tarde") OR ("tarde"));
 REMOVE:algo0b PreAdv IF (0 ("algo"i)) (NOT 1 Adv);
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
