@@ -704,7 +704,7 @@ REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
 SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
 SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
-SELECT:algo7 PreAdv IF (0 ("algo"i)) (1 Adv);
+SELECT:algo7 PreAdv IF (0 ("algo"i)) (1 ("más tarde"));
 REMOVE:algo0b PreAdv IF (0 ("algo"i)) (NOT 1 Adv);
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
