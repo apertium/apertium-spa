@@ -682,6 +682,8 @@ REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (p
 REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT -1 Pro);
 
+SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (NOT 2 N);
+
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep);
@@ -704,7 +706,8 @@ REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
 SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
 SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
-SELECT:algo7 PreAdv IF (0 ("algo"i)) (1 ("más tarde") OR ("tarde"));
+SELECT:algo8 PreAdv IF (0 ("algo"i)) (1 ("más tarde") OR ("tarde") OR ("inferior") OR ("superior") OR ("mayor") OR ("menor"));
+SELECT:algo9 PreAdv IF (0 ("algo"i)) (-1 Estar) (-1 Sg);
 REMOVE:algo0b PreAdv IF (0 ("algo"i)) (NOT 1 Adv);
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
