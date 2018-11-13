@@ -445,6 +445,7 @@ SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
 SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
+SELECT:calle N IF (0 ("<calle>"i)) (1 MajIni);
 REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
 SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR unknownMajIni);#
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
