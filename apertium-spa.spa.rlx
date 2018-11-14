@@ -48,6 +48,8 @@ LIST PRS = (prs) ;
 LIST Ger = (ger) ;
 
 LIST P3 = (p3) ;
+LIST P2 = (p2) ;
+LIST P1 = (p1);
 
 LIST Def = (def) ;
 
@@ -1273,6 +1275,19 @@ REMOVE:r_na_9_fp_mp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 0 N OR NP) (1 CM) (2 Det + $$FemPl2) (3C N + $$FemPl2) ;
 # vinieron los italianos, los alemanes, los polacos y los ucranianos.
 
+# albertonl
+SELECT Det IF (0 Det) (0 Pron) (1 N) ;
+SELECT Vbmod IF (0 Vblex) (0 Vbmod) (1 Vblex) ;
+REMOVE P1 IF (-1 Pron) (-1 P3) (0 Vblex) (0 Vbhaver) (0 P1) (0 P3) ;
+REMOVE P3 IF (-1 Pron) (-1 P1) (0 Vblex) (0 Vbhaver) (0 P1) (0 P3) ;
+SELECT PP IF (-1 Vbhaver) (0 Vblex) (0 PP) ;
+REMOVE P1 IF (0 Vblex) (0 P1) (0 P3) (1 Det) (2 N) ;
+REMOVE Pron IF (0 Det) (0 Detnt) (1 N) ;
+REMOVE Detnt IF (0 Pron) (0 Detnt) (NOT 1 N) ;
+SELECT Pron IF (0 Preadv) (0 Prn) (1 Vbmod) ;
+SELECT N IF (-1 Det OR A OR Pr) (0 N) ;
+SELECT A IF (-1 Adv) (0 A) ;
+
 #### final clasificación
 
 # "intelectual alemán judío exiliado." FUNCIONA
@@ -1286,3 +1301,5 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 	# adj_pp: "un trípode pesado con miras"
 
 # REMOVE:r_na_20 A OR PP IF (-1 Barrera_Inicial_SN LINK NOT 0 N) (NOT -1 Limite_Barrera_Inicial_SN) (0 Noun_Adj_PP LINK 0 N OR NP) (1 Barrera_Final_SN) ;
+
+	
