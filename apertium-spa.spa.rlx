@@ -650,6 +650,7 @@ REMOVE:dado_n N IF (0 ("<dado>"i)) (NOT -1 Det) (1 Det + MascSg);
 REMOVE:dados_n N IF (0 ("<dados>"i)) (NOT -1 Det) (1 Det + MascPl);
 
 SELECT:gestiones N IF (0 ("<Gestiones>") OR ("<Relaciones>") OR ("<Expediente>") OR ("<Expedientes>") OR ("<Presupuesto>")); # en mayúsculas son sustantivos
+SELECT:versiones N IF (0 ("<versiones>"i));
 REMOVE:presupuesto_0 PP IF (0 ("<presupuesto>"i)) (NOT -1 Haber) (NOT -1C (n m sg));
 REMOVE:presupuesto_1 PP IF (0 ("<presupuestos>"i)) (NOT -1 Haber) (NOT -1C (n m pl));
 REMOVE:presupuesto_1 PP IF (0 ("presupuesto")) (-1 Det OR A);
@@ -800,6 +801,8 @@ SELECT:precio2 N IF (0 ("oferta") OR ("peso")) (-1 ("precio"));
 REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
 # campo
 REMOVE:campo Verb IF (0 ("campo"));
+# roto
+REMOVE:roto Verb IF (0 ("roto"));
 # terreno
 REMOVE:terreno A IF (0 ("terreno")); #excepciones?
 # suelo
