@@ -1278,8 +1278,8 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 # albertonl
 SELECT Det IF (0 Det) (0 Pron) (1 N) ; # "La manzana me gusta mucho" (Appropriate structure: Det N Prn Vblex Adv) -> ^la/el<det><def><f><sg>$ ^manzana/manzana<n><f><sg>$
 SELECT Vbmod IF (0 Vblex) (0 Vbmod) (1 Vblex) ; # "Quiero comer un taco" (Appropriate structure: Vbmod Vblex Det N -> "Querer comer" (inf.)) -> ^quiero/querer<vbmod><pri><p1><sg>$ ^comer/comer<vblex><inf>$ ^un/uno<det><ind><m><sg>$ ^taco/taco<n><m><sg>$
-REMOVE P1 IF (-1 Pron) (-1 P3) (0 Vblex) (0 Vbhaver) (0 P1) (0 P3) ; # "Él hacía los deberes" (Appropriate structure: Prn (p3) Vblex (p3) Det N) -> ^Él/Él<prn><tn><p3><m><sg>$ ^hacía/hacer<vblex><pii><p3><sg>$ ^los/el<det><def><m><pl>$ ^deberes/deber<n><m><pl>$
-REMOVE P3 IF (-1 Pron) (-1 P1) (0 Vblex) (0 Vbhaver) (0 P1) (0 P3) ;
+REMOVE P1 IF (-1 Pron) (-1 P3) (0 Vblex OR Vbhaver) (0 P1) (0 P3) ; # "Él hacía los deberes" (Appropriate structure: Prn (p3) Vblex (p3) Det N) -> ^Él/Él<prn><tn><p3><m><sg>$ ^hacía/hacer<vblex><pii><p3><sg>$ ^los/el<det><def><m><pl>$ ^deberes/deber<n><m><pl>$
+REMOVE P3 IF (-1 Pron) (-1 P1) (0 Vblex OR Vbhaver) (0 P1) (0 P3) ;
 SELECT PP IF (-1 Vbhaver) (0 Vblex) (0 PP) ;
 REMOVE P1 IF (0 Vblex) (0 P1) (0 P3) (1 Det) (2 N) ;
 REMOVE Pron IF (0 Det) (0 Detnt) (1 N) ;
