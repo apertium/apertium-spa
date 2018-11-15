@@ -1285,8 +1285,8 @@ REMOVE P1 IF (0 Vblex) (0 P1) (0 P3) (1 Det) (2 N) ;
 REMOVE Pron IF (0 Det) (0 Detnt) (1 N) ;
 REMOVE Detnt IF (0 Pron) (0 Detnt) (NOT 1 N) ;
 SELECT Preadv IF (0 Preadv) (0 Prn) (1 Vbmod) ;
-SELECT N IF (-1 Det OR A OR Pr) (0 N) (1 A) ;
-SELECT A IF (-1 Adv) (0 A) ;
+SELECT N IF (-2 Det OR A OR Pr) (-1 A) (0 N) ;
+SELECT A IF (-1 N) (0 A) ;
 
 #### final clasificación
 
