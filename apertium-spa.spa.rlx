@@ -7,6 +7,12 @@ SETS
 LIST >>> = >>> ;
 LIST <<< = <<< ;
 
+LIST Up = "<[A-Z].*>" ;
+LIST Low = "<[a-z].*>" ;
+
+LIST Sent = (sent) ;
+LIST Cm = (cm) ;
+
 LIST N = (n) ;
 LIST NP = (np) ;
 LIST A = (adj) ;
@@ -1275,18 +1281,17 @@ REMOVE:r_na_9_fp_mp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 0 N OR NP) (1 CM) (2 Det + $$FemPl2) (3C N + $$FemPl2) ;
 # vinieron los italianos, los alemanes, los polacos y los ucranianos.
 
-# albertonl
-SELECT Det IF (0 Det) (0 Pron) (1 N) ; # "La manzana me gusta mucho" (Appropriate structure: Det N Prn Vblex Adv) -> ^la/el<det><def><f><sg>$ ^manzana/manzana<n><f><sg>$
-SELECT Vbmod IF (0 Vblex) (0 Vbmod) (1 Vblex) ; # "Quiero comer un taco" (Appropriate structure: Vbmod Vblex Det N -> "Querer comer" (inf.)) -> ^quiero/querer<vbmod><pri><p1><sg>$ ^comer/comer<vblex><inf>$ ^un/uno<det><ind><m><sg>$ ^taco/taco<n><m><sg>$
-REMOVE P1 IF (-1 Pron) (-1 P3) (0 Vblex OR Vbhaver) (0 P1) (0 P3) ; # "Él hacía los deberes" (Appropriate structure: Prn (p3) Vblex (p3) Det N) -> ^Él/Él<prn><tn><p3><m><sg>$ ^hacía/hacer<vblex><pii><p3><sg>$ ^los/el<det><def><m><pl>$ ^deberes/deber<n><m><pl>$
-REMOVE P3 IF (-1 Pron) (-1 P1) (0 Vblex OR Vbhaver) (0 P1) (0 P3) ;
-SELECT PP IF (-1 Vbhaver) (0 Vblex) (0 PP) ;
-REMOVE P1 IF (0 Vblex) (0 P1) (0 P3) (1 Det) (2 N) ;
-REMOVE Pron IF (0 Det) (0 Detnt) (1 N) ;
-REMOVE Detnt IF (0 Pron) (0 Detnt) (NOT 1 N) ;
-SELECT Preadv IF (0 Preadv) (0 Prn) (1 Vbmod) ;
-SELECT N IF (-2 Det OR A OR Pr) (-1 A) (0 N) ;
-SELECT A IF (-1 N) (0 A) ;
+# albertonl (Comment structure: # example string (before-using-rules tagged text -> after-using-rules tagged text))
+REMOVE Interj IF (NOT -1 Sent) (0 Interj) (0 Adv) (NOT 1 Sent) ; # "No debíamos estar allí" (^no<ij>$ ^deber<vbmod><pii><p1><pl>$ ^estar<vblex><inf>$ ^allí<adv>$^.<sent>$ -> ^no<adv>$ ^deber<vbmod><pii><p1><pl>$ ^estar<vblex><inf>$ ^allí<adv>$^.<sent>$)
+SELECT Adv IF (0 Adv) (0 Adj) (1 N) ; # "Merecía más aplausos" (^más<adj><mf><sp>$ -> ^más<adv>$)
+SELECT P1 IF (-2 Rel) (-1 Pron) (-1 P1) (0 Vblex) (0 P1) (0 P3) (1 Vblex) (1 Inf) ; # "el que me tocó resolver" (^el que<rel><an><m><sg>$ ^me<prn><pro><p1><mf><sg>$ ###^tocar<vblex><ifi><p3><sg>$### ^resolver<vblex><inf>$ -> ^el que<rel><an><m><sg>$ ^me<prn><pro><p1><mf><sg>$ ###^tocar<vblex><ifi><p1><sg>$### ^resolver<vblex><inf>$) ;
+REMOVE Vblex IF (0 Vblex) (0 Det) (1 A) (2 N) ; # "Tengo una seria excusa" (^tener<vblex><pri><p1><sg>$ ^unir<vblex><imp><p3><sg>$ ^serio<adj><f><sg>$ ^excusa<n><f><sg>$ -> ^tener<vblex><pri><p1><sg>$ ^unir<det><ind><f><sg>$ ^serio<adj><f><sg>$ ^excusa<n><f><sg>$)
+SELECT N IF (-1 A) (0 A) (0 N) ; # "es el mejor amigo que tengo" (^ser<vbser><pri><p3><sg>$ ^el<det><def><m><sg>$ ^mejor<adj><mf><sg>$ ^amigo<adj><m><sg>$ ^que<rel><an><mf><sp>$ ^tener<vblex><pri><p1><sg>$ -> ^ser<vbser><pri><p3><sg>$ ^el<det><def><m><sg>$ ^mejor<adj><mf><sg>$ ^amigo<n><m><sg>$ ^que<rel><an><mf><sp>$ ^tener<vblex><pri><p1><sg>$)
+SELECT Pron IF (-1 Vblex) (0 Pron) (0 Det) (1 Cm OR Sent) ; # "Hay que cogerlo todo, ya que es muy valioso" (^haber que<vbmod><pri><p3><sg>$ ^coger<vblex><inf>+lo<prn><enc><p3><nt>$ ^todo<predet><nt><sp>$^,<cm>$ ^ya que<cnjadv>$ ^ser<vbser><pri><p3><sg>$ ^muy<preadv>$ ^valioso<adj><m><sg>$^.<sent>$ -> ^haber que<vbmod><pri><p3><sg>$ ^coger<vblex><inf>+lo<prn><enc><p3><nt>$ ^todo<prn><tn><m><sg>$^,<cm>$ ^ya que<cnjadv>$ ^ser<vbser><pri><p3><sg>$ ^muy<preadv>$ ^valioso<adj><m><sg>$^.<sent>$)
+SELECT CnjCoo IF (-1 Cm) (0 CnjCoo) (0 Adv) ; # "fue importante, pero pocos lo recuerdan" (^ser<vbser><ifi><p3><sg>$ ^importante<adj><mf><sg>$^,<cm>$ ^pero<adv>$ ^pocos<prn><tn><m><pl>$ ^lo<prn><pro><p3><nt>$ ^recordar<vblex><pri><p3><pl>$^.<sent>$ -> ^ser<vbser><ifi><p3><sg>$ ^importante<adj><mf><sg>$^,<cm>$ ^pero<cnjcoo>$ ^pocos<prn><tn><m><pl>$ ^lo<prn><pro><p3><nt>$ ^recordar<vblex><pri><p3><pl>$^.<sent>$)
+SELECT Adv IF (-2 Vblex) (-1 Prep) (0 Adj) (0 Adv) (1 Sent OR Cm) ; "Me ha servido de mucho" (^me<prn><pro><p1><mf><sg>$ ^haber<vbhaver><pri><p3><sg>$ ^servir<vblex><pp><m><sg>$ ^de<pr>$ ^mucho<adj><m><sg>$^.<sent>$ -> ^me<prn><pro><p1><mf><sg>$ ^haber<vbhaver><pri><p3><sg>$ ^servir<vblex><pp><m><sg>$ ^de<pr>$ ^mucho<adv>$^.<sent>$)
+SELECT NP IF (-1 Article) (0 Prop) (0 Up) ; # "no podía distinguir la China de Arizona" (^no<ij>$ ^poder<vbmod><pii><p3><sg>$ ^distinguir<vblex><inf>$ ^el<det><def><f><sg>$ ^chino<n><f><sg>$ ^de<pr>$ ^Arizona<np><loc>$^.<sent>$ -> ^no<ij>$ ^poder<vbmod><pii><p3><sg>$ ^distinguir<vblex><inf>$ ^el<det><def><f><sg>$ ^chino<n><f><sg>$ ^de<pr>$ ^Arizona<np><loc>$^.<sent>$ -> ^no<adv>$ ^poder<vbmod><pii><p3><sg>$ ^distinguir<vblex><inf>$ ^el<det><def><f><sg>$ ^China<np><top>$ ^de<pr>$ ^Arizona<np><loc>$^.<sent>$)
+SELECT Adj IF (-1 Cm) (0 Adj) (0 Adv) (1 Cm) ; # "viviré así, solo, sin nadie con quien hablar" (^vivir<vblex><fti><p1><sg>$ ^así<adv>$^,<cm>$ ^solo<adv>$^,<cm>$ ^sin<pr>$ ^nadie<prn><tn><mf><sg>$ ^con<pr>$ ^quien<rel><nn><mf><sg>$ ^hablar<vblex><inf>$^.<sent>$ -> ^vivir<vblex><fti><p1><sg>$ ^así<adv>$^,<cm>$ ^solo<adj><m><sg>$^,<cm>$ ^sin<pr>$ ^nadie<prn><tn><mf><sg>$ ^con<pr>$ ^quien<rel><nn><mf><sg>$ ^hablar<vblex><inf>$^.<sent>$)
 
 #### final clasificación
 
