@@ -198,8 +198,8 @@ SELECT:r_deber_vblex_1 Vblex IF (0 Deber) (NOT 1/* (inf));
 
 REMOVE:r_cog_1 Cog IF (-1 DetDef) (0 Cog) ;
 REMOVE:r_cog_2 Cog IF (-1 DetInd) (0 Cog) ;
-REMOVE:r_ant_1 Ant IF (-1 DetDef) (0 Ant) ;
-REMOVE:r_ant_2 Ant IF (-1 DetInd) (0 Ant) ;
+REMOVE:r_ant_1 Ant IF (-1 DetDef) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
+REMOVE:r_ant_2 Ant IF (-1 DetInd) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
 
 SELECT:este_2 Det IF (0 ("este") + $$MascSg) (-1 Verb_Prep) (1 A + $$MascSg) (2 N + $$MascSg) ;
 	# de este bonito estado
