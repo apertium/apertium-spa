@@ -813,6 +813,9 @@ REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (-1 Pos);
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (1 ("segundo") OR ("cercano") OR ("pobre"));
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords);
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
+#trata
+SELECT:trata_n N IF (0 ("tracta")) (1 ("de")) (2 ("blanca") OR ("niño") OR ("ser") OR ("persona") OR ("blanco") OR ("esclavo") OR ("inmigrante")) (NOT -1 ("se") OR ("que"));
+
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
