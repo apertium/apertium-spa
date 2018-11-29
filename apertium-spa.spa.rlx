@@ -1062,6 +1062,10 @@ REMOVE:r_na_3_fs Noun_Adj_PP IF (-1 Det + $$FemSg) (0 NP + $$FemSg) (1 Adj_PP + 
 REMOVE:r_na_3_fp Noun_Adj_PP IF (-1 Det + $$FemPl) (0 NP + $$FemPl) (1 Adj_PP + $$FemPl) ;
 # la Indochina francesa (cal treure Indochina n)
 
+# V p2 sg / N seguit de PP/Adj. Ex. Prendas compercializadas (generalitza?)
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl);
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl);
+
 # ADJ NOM
 
 # elimina la opción "adjetivo" de aquellos adjetivos que sólo pueden anteceder un nombre ("buen", "mal", etc.) y no están delante de uno
