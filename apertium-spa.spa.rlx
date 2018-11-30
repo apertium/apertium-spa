@@ -23,6 +23,7 @@ LIST Pron = (prn) ;
 LIST Prep = (pr) ;
 LIST CnjCoo = (cnjcoo) ;
 LIST Ord = (ord) ;
+LIST PreDet = (predet);
 # quantes vegades s'executa cada regla?
 # había sido inventado por los griegos mientras que los españoles aseguraban
 # elimina españoles adj, però no griegos adj; si se suprimeix la segona part de la frase, sí se suprimeix griegos adj
@@ -245,6 +246,10 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascSg) 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascPl) (0 MascPl); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemPl) (0 FemPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascSg) (0 MascSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascPl) (0 MascPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemSg) (0 FemSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl) (0 FemPl); 
 
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
@@ -471,7 +476,7 @@ REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
 
-SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers);
+SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers) (NOT 0 Copula);
 SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
 SELECT:nom_propio2 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Verb + Pers);
 SELECT:nom_propio3 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Pron) (3 Verb + Pers);
@@ -1062,7 +1067,7 @@ REMOVE:r_na_3_fs Noun_Adj_PP IF (-1 Det + $$FemSg) (0 NP + $$FemSg) (1 Adj_PP + 
 REMOVE:r_na_3_fp Noun_Adj_PP IF (-1 Det + $$FemPl) (0 NP + $$FemPl) (1 Adj_PP + $$FemPl) ;
 # la Indochina francesa (cal treure Indochina n)
 
-# V p2 sg / N seguit de PP/Adj. Ex. Prendas compercializadas (generalitza?)
+# V p2 sg / N seguit de PP/Adj. Ex. Prendas compercializadas (generalitza bé? Sí!)
 REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl);
 REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl);
 
