@@ -251,6 +251,10 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascP
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl) (0 FemPl); 
 
+# "como base": generalitza?
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* ("<como>"i));
+
+
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
 #los acuerdo, los cazo, las cazo > Verbo
