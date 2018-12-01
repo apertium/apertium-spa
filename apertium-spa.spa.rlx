@@ -246,7 +246,7 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascSg) 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascPl) (0 MascPl); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemPl) (0 FemPl); 
-REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascSg) (0 MascSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascSg) (0 MascSg) (NOT -2 ("por encima de")); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascPl) (0 MascPl); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl) (0 FemPl); 
