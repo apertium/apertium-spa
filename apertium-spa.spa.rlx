@@ -253,9 +253,9 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl
 
 # "como base": generalitza? base, model, falta, tema 
 # ("base") OR ("modelo") OR ("tema") OR ("fecha") OR ("programa") OR ("alimento") OR ("apoyo") OR ("medio") OR ("fundamento") OR ("cultivo") OR("destino") pregunta, potencia
-REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* ("<como>"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar"));
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("<como>"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
 
-REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* ("n.º"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar"));
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("n.º"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
 
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
@@ -286,6 +286,7 @@ SELECT:uno_sobre_otro Prep IF (0 ("sobre")) (-1 ("uno")) (1 ("otro"));
 REMOVE:sobre_nonom N IF (0 ("sobre")) (0 Prep) (-1 Pl OR Fem); 
 REMOVE:r_sobre_1 Vblex (0 ("sobre") OR ("Sobre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_sobre_2 Vblex (0 ("sobre") OR ("Sobre")) (*1 Vblex BARRIER Cnj_Rel) ;
+SELECT:entrar Vblex IF (0 ("entrar")) (1 ("en")) (2 ("vigor"));
 REMOVE:r_entre_1 Vblex (0 ("entre") OR ("Entre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_entre_2 Vblex (0 ("entre") OR ("Entre")) (*1 Vblex BARRIER Cnj_Rel) ;
 REMOVE:r_conforme_1 Vblex (0 ("conforme") OR ("Conforme")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
