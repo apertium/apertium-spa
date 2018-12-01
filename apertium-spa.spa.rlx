@@ -251,8 +251,8 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascP
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl) (0 FemPl); 
 
-# "como base": generalitza?
-REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* ("<como>"i));
+# "como base": generalitza? base, model, falta, tema 
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* ("<como>"i)) (0 ("base") OR ("modelo") OR ("tema")); # (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar"));
 
 
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
@@ -823,7 +823,7 @@ REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (1 ("segundo") OR ("cer
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords);
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
 #trata
-SELECT:trata_n N IF (0 ("trata")) (1 ("de")) (2 ("mujer") OR ("blanca") OR ("niño") OR ("ser") OR ("persona") OR ("blanco") OR ("esclavo") OR ("inmigrante")) (2 Pl) (NOT -1 ("se") OR ("que") OR ("qué"));
+SELECT:trata_n N IF (0 ("trata")) (1 ("de")) (2 ("mujer") OR ("blanca") OR ("niño") OR ("ser") OR ("ser humano") OR ("persona") OR ("blanco") OR ("esclavo") OR ("inmigrante")) (2 Pl) (NOT -1 ("se") OR ("que") OR ("qué"));
 SELECT:trata_v Verb IF (0 ("trata"));
 
 # qué sentido
