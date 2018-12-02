@@ -485,6 +485,8 @@ SELECT:charles NP IF (0 NP) (0 (p2)) (NOT -1 >>>);
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
 
+REMOVE:tales NP IF (0 ("Tales")) (1 MascPl OR Copula + Pl);
+
 SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers) (NOT 0 Copula);
 SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
 SELECT:nom_propio2 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Verb + Pers);
@@ -1002,6 +1004,7 @@ SELECT:traducir A IF (-2 ("traducir") OR ("Traducir")) (0 A LINK 0 N) ;
 # alguno en frases negativas: caso alguno
 SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT 1 FemSg);
 SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT 1 MascSg);
+SELECT:nom_alguno N IF (0 N) (1C ("alguno_negativo"));
 REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
 
 ## Desambiguación ADJ (+PP) - NOMBRE
