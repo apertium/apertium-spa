@@ -1001,6 +1001,8 @@ REPLACE:el_hambre (det def f sg) (det) IF (0/* (det def m sg)) (1 ANouns) (1 Fem
 SELECT:hablar A IF (-1 ("hablar") OR ("Hablar")) (0 A LINK 0 N) ;
 SELECT:traducir A IF (-2 ("traducir") OR ("Traducir")) (0 A LINK 0 N) ;
 
+SELECT:guarda Vblex IF (0 ("guardar")) (-1 ("no"));
+
 # alguno en frases negativas: 
 # mandato imperativo alguno
 SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-2 N + FemSg) (-1 A + FemSg) (NOT 1 FemSg);
@@ -1008,8 +1010,10 @@ SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (
 # caso alguno
 SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT 1 FemSg) (NOT -2 N + FemSg);
 SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT 1 MascSg) (NOT -2 N + MascSg);
-SELECT:nom_alguno N IF (0 N + FemSg) (1C ("alguno_negativo")) (NOT -1 N + FemSg);
-SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo")) (NOT -1 N + MascSg);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1C N + FemSg) (NOT 1 FemSg);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1C N + MascSg) (NOT 1 MascSg);
+SELECT:nom_alguno N IF (0 N + FemSg) (1C ("alguno_negativo") + FemSg) (NOT -1 N + FemSg);
+SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo") + MascSg) (NOT -1 N + MascSg);
 REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
 
 ## Desambiguación ADJ (+PP) - NOMBRE
