@@ -1005,13 +1005,13 @@ SELECT:guarda Vblex IF (0 ("guardar")) (-1 ("no"));
 
 # alguno en frases negativas: 
 # mandato imperativo alguno
-SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-2 N + FemSg) (-1 A + FemSg) (NOT 1 FemSg);
-SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-2 N + MascSg) (-1 A + MascSg) (NOT 1 MascSg);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-2 N + FemSg) (-1 A + FemSg) (NOT 1 FemSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-2 N + MascSg) (-1 A + MascSg) (NOT 1 MascSg) (NOT -2 PreAdv);
 # caso alguno
-SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT 1 FemSg) (NOT -2 N + FemSg);
-SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT 1 MascSg) (NOT -2 N + MascSg);
-SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1C N + FemSg) (NOT 1 FemSg);
-SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1C N + MascSg) (NOT 1 MascSg);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT 1 FemSg) (NOT -2 N + FemSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT 1 MascSg) (NOT -2 N + MascSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1C N + FemSg) (NOT 1 FemSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1C N + MascSg) (NOT 1 MascSg) (NOT -2 PreAdv);
 SELECT:nom_alguno N IF (0 N + FemSg) (1C ("alguno_negativo") + FemSg) (NOT -1 N + FemSg);
 SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo") + MascSg) (NOT -1 N + MascSg);
 REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
