@@ -479,7 +479,7 @@ SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
 SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
 REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 
-SELECT:charles NP IF (0 NP) (0 (p2));
+SELECT:charles NP IF (0 NP) (0 (p2)) (NOT -1 >>>);
 
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
