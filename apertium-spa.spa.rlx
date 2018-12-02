@@ -479,6 +479,8 @@ SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
 SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
 REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 
+SELECT:charles NP IF (0 NP) (0 (p2));
+
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
@@ -495,7 +497,7 @@ REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
-REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra")); # evita alguns comportaments estranys (Granda/granada).
+REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra")); # evita alguns comportaments estranys (Granada/granada).
 
 #  ANTROPÓNIMOS
 SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
@@ -997,8 +999,12 @@ REPLACE:el_hambre (det def f sg) (det) IF (0/* (det def m sg)) (1 ANouns) (1 Fem
 SELECT:hablar A IF (-1 ("hablar") OR ("Hablar")) (0 A LINK 0 N) ;
 SELECT:traducir A IF (-2 ("traducir") OR ("Traducir")) (0 A LINK 0 N) ;
 
-#
-# Desambiguación ADJ (+PP) - NOMBRE
+# alguno en frases negativas: caso alguno
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT 1 FemSg);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT 1 MascSg);
+REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
+
+## Desambiguación ADJ (+PP) - NOMBRE
 #
 
 # NOM / ADJ
