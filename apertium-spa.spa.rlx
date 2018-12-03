@@ -221,7 +221,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro OR CnjSub OR CnjAdv OR Rel) (NOT -1 ("si")) (NOT -1 ("no") LINK NOT -1 ("si"));
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1* Pro OR CnjSub OR CnjAdv OR Rel) (NOT -1* ("si")) (NOT -1* ("no") LINK NOT -1 ("si"));  ## ALERT: TOO GREEDY!!!
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 ("cuyo"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-2 ("cuyo")) (-1C N);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
