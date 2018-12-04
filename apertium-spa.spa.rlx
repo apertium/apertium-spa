@@ -221,7 +221,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1* Pro OR CnjSub OR CnjAdv OR Rel) (NOT -1* ("si")) (NOT -1* ("no") LINK NOT -1 ("si"));  ## ALERT: TOO GREEDY!!!
+REMOVE:r_verb_1 Vblex (0 Verb + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1* CnjSub OR CnjAdv OR Rel) (NOT -1 Pro) (NOT -1* ("si")) (NOT -1* ("no") LINK NOT -1 ("si"));  ## ALERT: TOO GREEDY!!!
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 ("cuyo"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-2 ("cuyo")) (-1C N);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
@@ -250,6 +250,10 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascS
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascPl) (0 MascPl); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl) (0 FemPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + MascSg) (-1 Det + MascSg) (0 MascSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + MascPl) (-1 Det + MascPl) (0 MascPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + FemSg) (-1 Det + FemSg) (0 FemSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + FemPl) (-1 Det + FemPl) (0 FemPl); 
 
 # "como base": generalitza? base, model, falta, tema 
 # ("base") OR ("modelo") OR ("tema") OR ("fecha") OR ("programa") OR ("alimento") OR ("apoyo") OR ("medio") OR ("fundamento") OR ("cultivo") OR("destino") pregunta, potencia
@@ -258,7 +262,8 @@ REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("<como>"i)) (NOT 0 
 #como resultado
 REMOVE:como_pp PP IF (-1 ("como")) (0 N) (0 PP + MascSg) (NOT 1 N + MascSg);
 
-REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("n.º"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("n.º"i) OR ("número"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (1C/* ("n.º"i) OR ("número"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
 
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
@@ -584,6 +589,7 @@ REMOVE:cola_extremidad ("cola_sustancia"i) IF (0 ("cola"i)) (0 ("cola_sustancia"
 SELECT:estrella_nom_1 N IF (0 ("estrella")) (-1 N) (NOT 1 Det); #actriz estrella
 SELECT:estrella_nom_2 N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella del espectáculo
 
+SELECT:empleo_fijo ("empleo") IF (0 ("empleo")) (1 ("fijo") OR ("estable"));
 REMOVE:empleo_ocupacion0 ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) (0 Pl);   # por defecto: empleos=ocupaciones
 REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-1 EmpleoOcupacionLeftWords);                # excepciones para "empleo de=uso de"
 REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-2 EmpleoOcupacionLeftWords);                # excepciones para "empleo de=uso de"
@@ -644,11 +650,13 @@ REMOVE:entendimiento_0 ("entendimiento_acuerdo"i) IF (0 ("entendimiento"i)) (0 (
 SELECT:cuenta_1 Verb IF (0 ("contar"i)) (1 ("conmigo"i) OR ("contigo"i) OR ("consigo"i));
 SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 ("con"i)) (NOT -1 Det);
 
-SELECT:fuera Adv IF (0 ("fuera"i)) (-1 ("situar"i) OR ("colocar"i) OR ("poner"i) OR ("ubicar"i));
-SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("de"i)) (2 ("este"i)); # ??
-SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("de"i)) (2 ("forma"i) OR ("manera"i)) (3 A);
-SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR ("interés"i));
-SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("<del>"i));
+SELECT:fuera Adv IF (0 ("<fuera>"i)) (-1 ("situar"i) OR ("colocar"i) OR ("poner"i) OR ("ubicar"i));
+SELECT:fuera Adv IF (0 ("<fuera>"i)) (1 ("de"i)) (2 ("este"i)); # ??
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 ("de"i)) (2 ("forma"i) OR ("manera"i)) (3 A);
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR ("interés"i));
+SELECT:fuera Adv IF (0 ("<fuera>"i)) (1 ("<del>"i));
+SET DiasSemana = ("lunes") OR ("martes") OR ("miércoles") OR ("jueves") OR ("viernes") OR ("sábado") OR ("domigno");
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 DiasSemana);
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pasar/tirar adelante 
 
@@ -801,6 +809,7 @@ SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
 SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
 #toma
 SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
+SELECT:toma_v Verb IF (0 ("tomar")) (1 ("nota"));
 #cosa
 REMOVE:cosa Verb IF (0 ("cosa")); # "coser" muy improbable
 #fecha
@@ -837,6 +846,18 @@ SELECT:trata_n N IF (0 ("trata")) (1 ("de")) (2 ("mujer") OR ("blanca") OR ("ni�
 SELECT:trata_v Verb IF (0 ("trata"));
 #fecha
 SELECT:fecha_n N IF (0 ("fecha")) (1 ("límite"));
+#turno
+REMOVE:turno Vblex IF (0 ("turno")) (1 A + MascSg);
+#tramo:
+REMOVE:tramo Vblex IF (0 ("tramo")) (NOT -1 ("yo") OR Pro);
+#río 
+SELECT:río N IF (0 ("río") OR ("modelo")) (1 MajIni);
+#sede
+SELECT:sede N IF (0 ("sede")) (1 ("de"));
+# trabajo
+SELECT:trabajo N IF (0 ("trabajo")) (-1 ("factor"));
+#sede
+SELECT:curso N IF (0 ("curso")) (-1 (ord));
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
