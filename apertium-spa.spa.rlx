@@ -556,6 +556,8 @@ SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso t
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral") OR ("límite"));
 SELECT:marco N IF (0 ("marco")) (-1 N); 
 REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
+SELECT:beneficio N IF (-1 ("coste")) (0 ("beneficio"));
+SELECT:coste N IF (0 ("coste")) (1 ("beneficio"));
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
