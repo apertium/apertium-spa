@@ -222,7 +222,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-REMOVE:r_verb_1 Verb (0 Verb + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1* CnjSub OR CnjAdv OR Rel) (NOT -1 Pro) (NOT -1* ("si")) (NOT -1* ("no") LINK NOT -1 ("si"));  ## ALERT: TOO GREEDY!!!
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT 0 ("<sé>"i)) (NOT -1* CnjSub OR CnjAdv OR Rel) (NOT -1 Pro) (NOT -1* ("si")) (NOT -1* ("no") LINK NOT -1 ("si"));  ## ALERT: TOO GREEDY!!!
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 ("cuyo"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-2 ("cuyo")) (-1C N);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
@@ -855,9 +855,7 @@ SELECT:fecha_n N IF (0 ("fecha")) (1 ("límite"));
 #turno
 REMOVE:turno Vblex IF (0 ("turno")) (1 A + MascSg);
 #tramo:
-REMOVE:tramo Vblex IF (0 ("tramo")) (NOT -1 ("yo") OR Pro);
-#tramo:
-REMOVE:modelo Vblex IF (0 ("modelo")) (NOT -1 ("yo") OR Pro);
+REMOVE:tramo Vblex IF (0 ("tramo") OR ("modelo") OR ("proyecto")) (NOT -1 ("yo") OR Pro);
 #río 
 SELECT:río N IF (0 ("río") OR ("modelo")) (1 MajIni);
 #sede
@@ -868,6 +866,8 @@ SELECT:trabajo N IF (0 ("trabajo")) (-1 ("factor"));
 SELECT:curso N IF (0 ("curso")) (-1 (ord));
 #mercado
 SELECT:mercado N IF (0 ("mercado")) (NOT -1 Vbhaver);
+#este
+#REMOVE:este N IF (0 ("este")) (NOT -1 Det) (1 N + MascSg);
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
