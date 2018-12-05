@@ -870,6 +870,7 @@ SELECT:curso N IF (0 ("curso")) (-1 (ord));
 SELECT:mercado N IF (0 ("mercado")) (NOT -1 Vbhaver);
 #respecta
 SELECT:respecta Prep IF (0 ("respecta"));
+SELECT:respecto N IF (0 ("respecto"));
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
