@@ -868,8 +868,8 @@ SELECT:trabajo N IF (0 ("trabajo")) (-1 ("factor"));
 SELECT:curso N IF (0 ("curso")) (-1 (ord));
 #mercado
 SELECT:mercado N IF (0 ("mercado")) (NOT -1 Vbhaver);
-#este
-#REMOVE:este N IF (0 ("este")) (NOT -1 Det) (1 N + MascSg);
+#respecta
+SELECT:respecta Prep IF (0 ("respecta"));
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
