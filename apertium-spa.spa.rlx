@@ -99,6 +99,7 @@ LIST knownMajIni = ("[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*"r) ;
 LIST MajIni = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*>"r) ;
 LIST MajIni2 = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ][a-zàáèéìíòóùúïüçñ·]+.*>"r) ;
 LIST Url = ("<.*(http|www|@).*>"r) ;
+LIST AllUpper = ("<[A-Z]+>"r) ;
 
 SET Barrera_Final_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Verb OR Rel OR Pro ;	# Verb és perillós per la ambigüitat, però en general, prolífic
 SET Barrera_Final_Estrict_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Rel OR Pro ;
@@ -522,6 +523,9 @@ SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR 
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<den>"i)) (-1 ("<van>"i) OR ("<von>"i)); 
 
 SELECT:París NP IF (0 ("<París>"));
+
+#acrónimos
+SELECT:acronim (acr) IF (0 AllUpper);
 
 #
 # PALABRAS PARTICULARES
