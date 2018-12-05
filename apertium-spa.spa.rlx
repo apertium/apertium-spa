@@ -732,6 +732,7 @@ REMOVE:nada_1 Verb IF (0 ("<nada>"i)) (NOT 0*/* NadarWords) (NOT -1 (ant));     
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 ("<que>"i));
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
 
+SELECT:andar_algo PreAdv IF (0 ("algo")) (-1 ("andar"));
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + MascSg) (-2 ("el") OR ("uno")) (-1 N + MascSg) (1 A + MascSg);
 SELECT:algo2 PreAdv IF (0 ("algo")) (1 A + MascPl);
 SELECT:algo3 PreAdv IF (0 ("algo")) (1 A + FemSg) (NOT 1 MascSg);
