@@ -560,8 +560,8 @@ SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso t
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral") OR ("límite"));
 SELECT:marco N IF (0 ("marco")) (-1 N); 
 REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
-SELECT:beneficio N IF (-1 ("coste")) (0 ("beneficio"));
-SELECT:coste N IF (0 ("coste")) (1 ("beneficio"));
+SELECT:beneficio N IF (-1 ("coste") OR ("costo")) (0 ("beneficio"));
+SELECT:coste N IF (0 ("coste") OR ("costo")) (1 ("beneficio"));
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
@@ -856,14 +856,18 @@ SELECT:fecha_n N IF (0 ("fecha")) (1 ("límite"));
 REMOVE:turno Vblex IF (0 ("turno")) (1 A + MascSg);
 #tramo:
 REMOVE:tramo Vblex IF (0 ("tramo")) (NOT -1 ("yo") OR Pro);
+#tramo:
+REMOVE:modelo Vblex IF (0 ("modelo")) (NOT -1 ("yo") OR Pro);
 #río 
 SELECT:río N IF (0 ("río") OR ("modelo")) (1 MajIni);
 #sede
 SELECT:sede N IF (0 ("sede")) (1 ("de"));
 # trabajo
 SELECT:trabajo N IF (0 ("trabajo")) (-1 ("factor"));
-#sede
+#curso
 SELECT:curso N IF (0 ("curso")) (-1 (ord));
+#mercado
+SELECT:mercado N IF (0 ("mercado")) (NOT -1 Vbhaver);
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
