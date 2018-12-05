@@ -556,7 +556,7 @@ REMOVE:pienso N IF (0 ("<pienso>"i)) (NOT -1 Prep) (NOT -1 Det) (NOT 1 ("para"))
 SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc); 
 
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
-SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
+SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser) (NOT 0 ("mero")); #uso típico: nombre + "objeto de" (en aposición)
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral") OR ("límite"));
 SELECT:marco N IF (0 ("marco")) (-1 N); 
 REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
@@ -782,8 +782,9 @@ SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1
 SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
 
 # mero
-REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 N + MascSg);
-REMOVE:mero_adj N IF (0 ("mero") + MascPl) (1 N + MascPl);
+REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 MascSg OR Num);
+REMOVE:mero_adj N IF (0 ("mero") + MascPl) (1 MascPl OR Num);
+REMOVE:mero_adj N IF (0 ("mero")) (2 ("simple"));
 # fluido
 REMOVE:fluido_no_PP PP IF (0 ("fluir")) (NOT -1 ("haber"));
 #del otro ponente
