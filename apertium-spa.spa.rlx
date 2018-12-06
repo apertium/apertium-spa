@@ -491,6 +491,12 @@ REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 
 SELECT:charles NP IF (0 NP) (0 (p2)) (NOT -1 >>>);
 
+#Servicio Público, Sistema Español,
+REMOVE:adj_no_np NP IF (0 NP) (0 A + MascSg) (-1 MajIni2 + MascSg) (-1 A OR N) (NOT -1 NP);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + MascPl) (-1 MajIni2 + MascPl) (-1 A OR N) (NOT -1 NP);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + FemSg) (-1 MajIni2 + FemSg) (-1 A OR N) (NOT -1 NP);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + FemPl) (-1 MajIni2 + FemPl) (-1 A OR N) (NOT -1 NP);
+
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
@@ -509,7 +515,7 @@ REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
-REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra")); # evita alguns comportaments estranys (Granada/granada).
+REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("público")); # evita alguns comportaments estranys (Granada/granada).
 
 #  ANTROPÓNIMOS
 SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
@@ -872,6 +878,9 @@ SELECT:mercado N IF (0 ("mercado")) (NOT -1 Vbhaver);
 #respecta
 SELECT:respecta Prep IF (0 ("respecta"));
 SELECT:respecto N IF (0 ("respecto"));
+#dragado
+SELECT:dragado N IF (0 ("dragado") + MascSg) (NOT -1 Vbhaver OR Copula OR N + MascSg);
+SELECT:dragado N IF (0 ("dragado") + MascPl) (NOT -1 Vbhaver OR Copula OR N + MascPl);
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
