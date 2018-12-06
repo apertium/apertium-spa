@@ -188,6 +188,8 @@ SET NadaPronWords2 = ("<más>"i) OR ("<menos>"i) OR ("<mejor>"i) OR ("<peor>"i) 
 
 SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR ("televisión") OR ("TV") OR ("música") OR ("emisor") OR ("emitir") OR ("comunicación") OR ("locutor") OR ("anuncio") OR ("escuchar") OR ("oír") OR ("rock") OR ("canal") OR ("sintonizar");
 
+SET Cargos = ("señor") OR ("presidente") OR ("ministro") OR ("director") OR ("Dña.") OR ("D.ª") OR ("D.") OR ("Sr.") OR ("Sra.") OR ("Sres.") OR ("Sras.");
+
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -460,6 +462,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
+SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
 REMOVE:costa NP IF (0 ("Costa")) (1 ("azul") OR ("bravo") OR ("blanco")); 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
@@ -491,11 +494,13 @@ REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 
 SELECT:charles NP IF (0 NP) (0 (p2)) (NOT -1 >>>);
 
+SELECT:bajo_alto NP IF (0 (top) OR (loc)) (-1 ("alto") OR ("bajo"));
+
 #Servicio Público, Sistema Español,
-REMOVE:adj_no_np NP IF (0 NP) (0 A + MascSg) (-1 MajIni2 + MascSg) (-1 A OR N) (NOT -1 NP);
-REMOVE:adj_no_np NP IF (0 NP) (0 A + MascPl) (-1 MajIni2 + MascPl) (-1 A OR N) (NOT -1 NP);
-REMOVE:adj_no_np NP IF (0 NP) (0 A + FemSg) (-1 MajIni2 + FemSg) (-1 A OR N) (NOT -1 NP);
-REMOVE:adj_no_np NP IF (0 NP) (0 A + FemPl) (-1 MajIni2 + FemPl) (-1 A OR N) (NOT -1 NP);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + MascSg) (-1 MajIni2 + MascSg) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + MascPl) (-1 MajIni2 + MascPl) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + FemSg) (-1 MajIni2 + FemSg) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + FemPl) (-1 MajIni2 + FemPl) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
 
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
@@ -524,6 +529,9 @@ SELECT:apellido1 (ant) IF (0 (ant)) (-1 ("i"i)) (-2 (ant));
 # Evita traducir nombres propios 
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni); # Más riesgo de problemas con adj.!
 REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni);   #Sirve de algo?
+
+SET ExcepDirector = ("ejecutivo") OR ("comercial") OR ("financiero") OR ("general") OR ("provisional");
+SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1 Cargos) (0C Verb OR A) (0 MajIni) (NOT 0 ("alto") OR ("primer") OR Cargos OR ExcepDirector); # Sr. Barón
 
 # no traduir "di" en "di Maria, di Pietro, etc."; van den Eynde; le Chant ...
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR ("<le>"i)) (1 MajIni2); 
