@@ -889,6 +889,8 @@ SELECT:respecto N IF (0 ("respecto"));
 #dragado
 SELECT:dragado N IF (0 ("dragado") + MascSg) (NOT -1 Vbhaver OR Copula OR N + MascSg);
 SELECT:dragado N IF (0 ("dragado") + MascPl) (NOT -1 Vbhaver OR Copula OR N + MascPl);
+#primado
+SELECT:primado N IF (0 ("obispo") OR ("arzobispo") OR ("cardenal"));
 
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
