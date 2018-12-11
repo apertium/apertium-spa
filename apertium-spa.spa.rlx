@@ -23,6 +23,7 @@ LIST Pron = (prn) ;
 LIST Prep = (pr) ;
 LIST CnjCoo = (cnjcoo) ;
 LIST Ord = (ord) ;
+LIST PreDet = (predet);
 # quantes vegades s'executa cada regla?
 # había sido inventado por los griegos mientras que los españoles aseguraban
 # elimina españoles adj, però no griegos adj; si se suprimeix la segona part de la frase, sí se suprimeix griegos adj
@@ -88,7 +89,7 @@ SET Adv_PreAdv = Adv OR PreAdv ;
 
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
 SET Verb_Prep = Verb OR Prep ;
-SET Verb_Adv = Verb OR Adv ;
+SET Verb_Adv = Verb OR Adv OR PreAdv ;
 SET Cnj_Rel = CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 SET Cnj_Rel_End = >>> OR CnjCoo OR CnjSub OR CnjAdv OR Rel ;
 
@@ -98,6 +99,7 @@ LIST knownMajIni = ("[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*"r) ;
 LIST MajIni = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*>"r) ;
 LIST MajIni2 = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ][a-zàáèéìíòóùúïüçñ·]+.*>"r) ;
 LIST Url = ("<.*(http|www|@).*>"r) ;
+LIST AllUpper = ("<[A-Z]+>"r) ;
 
 SET Barrera_Final_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Verb OR Rel OR Pro ;	# Verb és perillós per la ambigüitat, però en general, prolífic
 SET Barrera_Final_Estrict_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Rel OR Pro ;
@@ -173,9 +175,9 @@ SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) 
 SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i) OR ("soplar"i);
 
 SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i);;
-SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("región"i) OR ("comunidad"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
+SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("estado miembro"i) OR ("región"i) OR ("comunidad"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
 
-SET ColaSustanciaWords = ("pegar"i) OR ("adherir"i) OR ("encuadernar"i) OR ("esnifar"i) OR ("encolar"i) OR ("celo"i) OR ("resutante"i) OR ("remojar"i) OR ("laca"i) OR ("barniz"i) OR ("emulsión"i) OR ("inhalar"i) OR ("pegamento"i) OR ("tijeras"i) OR ("papel"i) OR ("cartón"i) OR ("light"i) OR ("chocolate"i) OR ("vodka"i) OR ("whisky"i) OR ("ácido"i) OR ("químico"i) OR ("vodka"i) OR ("botella"i) OR ("vaso"i) OR ("refresco"i) OR ("lata"i) OR ("vodka"i) OR ("jarabe"i) OR ("<Pepsi>") OR ("<Fanta>") OR ("bebida"i) OR ("ron"i) OR ("frío"i) OR ("beber"i);
+SET ColaSustanciaWords = ("pegar"i) OR ("adherir"i) OR ("encuadernar"i) OR ("esnifar"i) OR ("encolar"i) OR ("celo"i) OR ("resutante"i) OR ("remojar"i) OR ("laca"i) OR ("barniz"i) OR ("emulsión"i) OR ("inhalar"i) OR ("pegamento"i)  OR ("tijera"i) OR ("tijeras"i) OR ("papel"i) OR ("cartón"i) OR ("light"i) OR ("chocolate"i) OR ("vodka"i) OR ("whisky"i) OR ("ácido"i) OR ("químico"i) OR ("vodka"i) OR ("botella"i) OR ("vaso"i) OR ("refresco"i) OR ("lata"i) OR ("vodka"i) OR ("jarabe"i) OR ("<Pepsi>") OR ("<Fanta>") OR ("bebida"i) OR ("ron"i) OR ("frío"i) OR ("beber"i);
 SET ColaExtremidadWords = ("pelo"i);
 
 SET NadarWords = ("agua"i) OR ("mar"i) OR ("piscina"i) OR ("río"i) OR ("lago"i);
@@ -185,6 +187,8 @@ SET NadaPronWords = ("añadir"i) OR ("aportar"i) OR ("tener"i) OR ("contener"i) 
 SET NadaPronWords2 = ("<más>"i) OR ("<menos>"i) OR ("<mejor>"i) OR ("<peor>"i) OR ("<nuevo>"i) OR ("<parecido>"i);
 
 SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR ("televisión") OR ("TV") OR ("música") OR ("emisor") OR ("emitir") OR ("comunicación") OR ("locutor") OR ("anuncio") OR ("escuchar") OR ("oír") OR ("rock") OR ("canal") OR ("sintonizar");
+
+SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("director") OR ("Dña.") OR ("D.ª") OR ("D.") OR ("Sr.") OR ("Sra.") OR ("Sres.") OR ("Sras.");
 
 ###############################################################################
 #  Morphological disambiguation
@@ -198,8 +202,8 @@ SELECT:r_deber_vblex_1 Vblex IF (0 Deber) (NOT 1/* (inf));
 
 REMOVE:r_cog_1 Cog IF (-1 DetDef) (0 Cog) ;
 REMOVE:r_cog_2 Cog IF (-1 DetInd) (0 Cog) ;
-REMOVE:r_ant_1 Ant IF (-1 DetDef) (0 Ant) ;
-REMOVE:r_ant_2 Ant IF (-1 DetInd) (0 Ant) ;
+REMOVE:r_ant_1 Ant IF (-1 DetDef) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
+REMOVE:r_ant_2 Ant IF (-1 DetInd) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
 
 SELECT:este_2 Det IF (0 ("este") + $$MascSg) (-1 Verb_Prep) (1 A + $$MascSg) (2 N + $$MascSg) ;
 	# de este bonito estado
@@ -220,7 +224,7 @@ REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=s
 #SELECT:n_mf_2 Masc IF (0C N LINK NOT 0 Defensa) (-1C Num) (-2C Vblex OR Prep OR ("como")) (NOT -2 PP) (1 <<< OR Prep) ;
 	## cogieron tres rehenes.
 
-REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT -1 Pro OR CnjSub OR CnjAdv OR Rel) (NOT -1 ("si")) (NOT -1 ("no") LINK NOT -1 ("si"));
+REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (NOT 0 ("<sé>"i)) (NOT -1* CnjSub OR CnjAdv OR Rel) (NOT -1 Pro) (NOT -1* ("si")) (NOT -1* ("no") LINK NOT -1 ("si"));  ## ALERT: TOO GREEDY!!!
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 ("cuyo"));
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-2 ("cuyo")) (-1C N);
 REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0 Haber) (-1 Pro) (-1 Det + MascSg) (0 MascSg); # si es "Det + Nom" han de concordar
@@ -245,6 +249,24 @@ REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascSg) 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascPl) (0 MascPl); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemPl) (0 FemPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascSg) (0 MascSg) (NOT -2 ("por encima de")); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + MascPl) (0 MascPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemSg) (0 FemSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 PreDet + FemPl) (0 FemPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + MascSg) (-1 Det + MascSg) (0 MascSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + MascPl) (-1 Det + MascPl) (0 MascPl); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + FemSg) (-1 Det + FemSg) (0 FemSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-3C Prep) (-2 PreDet + FemPl) (-1 Det + FemPl) (0 FemPl); 
+
+# "como base": generalitza? base, model, falta, tema 
+# ("base") OR ("modelo") OR ("tema") OR ("fecha") OR ("programa") OR ("alimento") OR ("apoyo") OR ("medio") OR ("fundamento") OR ("cultivo") OR("destino") pregunta, potencia
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("<como>"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
+
+#como resultado
+REMOVE:como_pp PP IF (-1 ("como")) (0 N) (0 PP + MascSg) (NOT 1 N + MascSg);
+
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("n.º"i) OR ("número"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
+REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (1C/* ("n.º"i) OR ("número"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
 
 REMOVE:verb_maj Vblex IF (NOT -1 >>>) (0 MajIni) (0 Verb + Pers) (0 N); #paraula en majúsucla: de la obra Luces de Bohemia.
 
@@ -275,6 +297,7 @@ SELECT:uno_sobre_otro Prep IF (0 ("sobre")) (-1 ("uno")) (1 ("otro"));
 REMOVE:sobre_nonom N IF (0 ("sobre")) (0 Prep) (-1 Pl OR Fem); 
 REMOVE:r_sobre_1 Vblex (0 ("sobre") OR ("Sobre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_sobre_2 Vblex (0 ("sobre") OR ("Sobre")) (*1 Vblex BARRIER Cnj_Rel) ;
+SELECT:entrar Vblex IF (0 ("entrar")) (1 ("en")) (2 ("vigor"));
 REMOVE:r_entre_1 Vblex (0 ("entre") OR ("Entre")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_entre_2 Vblex (0 ("entre") OR ("Entre")) (*1 Vblex BARRIER Cnj_Rel) ;
 REMOVE:r_conforme_1 Vblex (0 ("conforme") OR ("Conforme")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
@@ -298,6 +321,7 @@ SELECT:pr_cnjadv_1 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR
 SELECT:pr_cnjadv_2 Prep (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C A) ;
 SELECT:pr_cnjadv_3 CnjAdv (0 ("después de") OR ("Después de") OR ("antes de") OR ("Antes de") OR ("tras") OR ("Tras")) (1C Inf OR Enc) ;
 
+SELECT:bien_n N IF (0 ("bien") + MascSg) (-1 Det + MascSg) (1 A + MascSg) (NOT 2 N + MascSg);
 REMOVE:bien PreAdv (0 ("bien")) (NOT 1 A OR PP);
 SELECT:si_bien Adv (0 ("bien")) (-1 ("si") OR ("Si")); #Evita N o PreAdv, "ben" en catalán.
 REMOVE:si_bien PreAdv (0 ("bien")) (1 Pron OR ("como") OR Vbhaver); #Evita PreAdv, "ben" en catalán.
@@ -430,6 +454,10 @@ SET CapitalCiudadWords = ("estado") OR ("provincia") OR ("distrito") OR ("provin
 REMOVE:capital_msc (n f) IF (0 ("capital")) (NOT -1 (f)) (NOT -1 (m)) (NOT 1 (f)) (NOT 1 (m)) (0*/* CapitalMonetarioWords) (NOT 0*/* CapitalCiudadWords);
 REMOVE:capital_fem (n m) IF (0 ("capital")) (NOT -1 (f)) (NOT -1 (m)) (NOT 1 (f)) (NOT 1 (m)) (0*/* CapitalCiudadWords OR (loc)) (NOT 0*/* CapitalMonetarioWords);
 
+#batería
+SET BateriaFemWords = ("duración") OR ("batallón") OR ("destacamento") OR ("transporte") OR ("campaña") OR ("coche") OR ("camión") OR ("moto") OR ("motocicleta") OR ("bicicleta") OR ("artillería") OR ("guerra") OR ("cuartel") OR ("cañón") OR ("antiaéreo") OR ("aéreo") OR ("avión") OR ("linterna") OR ("acumulador");
+SELECT:bateria_f (f) IF (0 ("batería")) (-1 Det OR Num) (-1 (mf)) (0*/* BateriaFemWords);
+
 # parecer (n)
 SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 
@@ -438,6 +466,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
+SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
 REMOVE:costa NP IF (0 ("Costa")) (1 ("azul") OR ("bravo") OR ("blanco")); 
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
@@ -445,6 +474,7 @@ SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
 SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
+SELECT:calle N IF (0 ("<calle>"i)) (1 MajIni);
 REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
 SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR unknownMajIni);#
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
@@ -466,11 +496,23 @@ SELECT:bueno1 Interj IF (-1 >>>) (0 ("Bueno")) (1 <<<);
 SELECT:bueno2 A      IF (-1 >>>) (0 ("Bueno"));
 REMOVE:bueno2 Interj IF (0 ("bueno")); #  demasiadas interj!
 
+SELECT:charles NP IF (0 NP) (0 (p2)) (NOT -1 >>>);
+
+SELECT:bajo_alto NP IF (0 (top) OR (loc)) (-1 ("alto") OR ("bajo"));
+
+#Servicio Público, Sistema Español,
+REMOVE:adj_no_np NP IF (0 NP) (0 A + MascSg) (-1 MajIni2 + MascSg) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + MascPl) (-1 MajIni2 + MascPl) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + FemSg) (-1 MajIni2 + FemSg) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+REMOVE:adj_no_np NP IF (0 NP) (0 A + FemPl) (-1 MajIni2 + FemPl) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
+
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
 
-SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers);
+REMOVE:tales NP IF (0 ("Tales")) (1 MascPl OR Copula + Pl);
+
+SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers) (NOT 0 Copula);
 SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
 SELECT:nom_propio2 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Verb + Pers);
 SELECT:nom_propio3 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Pron) (3 Verb + Pers);
@@ -482,7 +524,7 @@ REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
-REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra")); # evita alguns comportaments estranys (Granda/granada).
+REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("público")); # evita alguns comportaments estranys (Granada/granada).
 
 #  ANTROPÓNIMOS
 SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
@@ -492,11 +534,17 @@ SELECT:apellido1 (ant) IF (0 (ant)) (-1 ("i"i)) (-2 (ant));
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni); # Más riesgo de problemas con adj.!
 REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni);   #Sirve de algo?
 
+SET ExcepDirector = ("ejecutivo") OR ("comercial") OR ("financiero") OR ("general") OR ("provisional") OR ("territorial") OR ("económico") OR ("autonómico") OR ("corporativo") OR ("plenipotenciario") OR ("deportivo") OR ("interino") OR ("regional") OR ("creativo") OR ("nacional") OR ("estatal");
+SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1 Cargos + Sg) (0C Verb OR A) (0 MajIni) (NOT 0 ("alto") OR ("primer") OR Cargos OR ExcepDirector); # Sr. Barón
+
 # no traduir "di" en "di Maria, di Pietro, etc."; van den Eynde; le Chant ...
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR ("<le>"i)) (1 MajIni2); 
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<den>"i)) (-1 ("<van>"i) OR ("<von>"i)); 
 
 SELECT:París NP IF (0 ("<París>"));
+
+#acrónimos
+SELECT:acronim (acr) IF (0 AllUpper);
 
 #
 # PALABRAS PARTICULARES
@@ -527,10 +575,12 @@ REMOVE:pienso N IF (0 ("<pienso>"i)) (NOT -1 Prep) (NOT -1 Det) (NOT 1 ("para"))
 SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc); 
 
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
-SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser); #uso típico: nombre + "objeto de" (en aposición)
+SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser) (NOT 0 ("mero")); #uso típico: nombre + "objeto de" (en aposición)
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral") OR ("límite"));
 SELECT:marco N IF (0 ("marco")) (-1 N); 
 REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
+SELECT:beneficio N IF (-1 ("coste") OR ("costo")) (0 ("beneficio"));
+SELECT:coste N IF (0 ("coste") OR ("costo")) (1 ("beneficio"));
 
 SELECT:estado_1 N IF (-1 Det + Masc) (0 ("estado") OR ("Estado")) ;
 SELECT:estado_2 PP IF (-1 Vbhaver) (0 ("estado")) (1 PP) ;
@@ -564,6 +614,7 @@ REMOVE:cola_extremidad ("cola_sustancia"i) IF (0 ("cola"i)) (0 ("cola_sustancia"
 SELECT:estrella_nom_1 N IF (0 ("estrella")) (-1 N) (NOT 1 Det); #actriz estrella
 SELECT:estrella_nom_2 N IF (0 ("estrella")) (-1 N) (1/1 Prep);  #actor estrella del espectáculo
 
+SELECT:empleo_fijo ("empleo") IF (0 ("empleo")) (1 ("fijo") OR ("estable"));
 REMOVE:empleo_ocupacion0 ("empleo_uso"i) IF (0 ("empleo"i)) (0 ("empleo_uso"i)) (0 Pl);   # por defecto: empleos=ocupaciones
 REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-1 EmpleoOcupacionLeftWords);                # excepciones para "empleo de=uso de"
 REMOVE:empleo_ocupacion1 ("empleo_uso"i) IF (-2 EmpleoOcupacionLeftWords);                # excepciones para "empleo de=uso de"
@@ -624,11 +675,13 @@ REMOVE:entendimiento_0 ("entendimiento_acuerdo"i) IF (0 ("entendimiento"i)) (0 (
 SELECT:cuenta_1 Verb IF (0 ("contar"i)) (1 ("conmigo"i) OR ("contigo"i) OR ("consigo"i));
 SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 ("con"i)) (NOT -1 Det);
 
-SELECT:fuera Adv IF (0 ("fuera"i)) (-1 ("situar"i) OR ("colocar"i) OR ("poner"i) OR ("ubicar"i));
-SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("de"i)) (2 ("este"i)); # ??
-SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("de"i)) (2 ("forma"i) OR ("manera"i)) (3 A);
-SELECT:fuera Ser IF (0 ("fuera"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR ("interés"i));
-SELECT:fuera Adv IF (0 ("fuera"i)) (1 ("<del>"i));
+SELECT:fuera Adv IF (0 ("<fuera>"i)) (-1 ("situar"i) OR ("colocar"i) OR ("poner"i) OR ("ubicar"i));
+SELECT:fuera Adv IF (0 ("<fuera>"i)) (1 ("de"i)) (2 ("este"i)); # ??
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 ("de"i)) (2 ("forma"i) OR ("manera"i)) (3 A);
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR ("interés"i));
+SELECT:fuera Adv IF (0 ("<fuera>"i)) (1 ("<del>"i));
+SET DiasSemana = ("lunes") OR ("martes") OR ("miércoles") OR ("jueves") OR ("viernes") OR ("sábado") OR ("domigno");
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 DiasSemana);
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pasar/tirar adelante 
 
@@ -649,6 +702,7 @@ REMOVE:dado_n N IF (0 ("<dado>"i)) (NOT -1 Det) (1 Det + MascSg);
 REMOVE:dados_n N IF (0 ("<dados>"i)) (NOT -1 Det) (1 Det + MascPl);
 
 SELECT:gestiones N IF (0 ("<Gestiones>") OR ("<Relaciones>") OR ("<Expediente>") OR ("<Expedientes>") OR ("<Presupuesto>")); # en mayúsculas son sustantivos
+SELECT:versiones N IF (0 ("<versiones>"i));
 REMOVE:presupuesto_0 PP IF (0 ("<presupuesto>"i)) (NOT -1 Haber) (NOT -1C (n m sg));
 REMOVE:presupuesto_1 PP IF (0 ("<presupuestos>"i)) (NOT -1 Haber) (NOT -1C (n m pl));
 REMOVE:presupuesto_1 PP IF (0 ("presupuesto")) (-1 Det OR A);
@@ -682,6 +736,8 @@ REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (p
 REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT -1 Pro);
 
+#SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
+
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep);
@@ -694,11 +750,20 @@ REMOVE:nada_1 Verb IF (0 ("<nada>"i)) (NOT 0*/* NadarWords) (NOT -1 (ant));     
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 ("<que>"i));
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
 
-SELECT:algo1 PreAdv IF (0 ("algo")) (-1 N + MascSg) (1C A + MascSg);
-SELECT:algo2 PreAdv IF (0 ("algo")) (-1 N + MascPl) (1C A + MascPl);
-SELECT:algo3 PreAdv IF (0 ("algo")) (-1 N + FemSg) (1C A + FemSg);
-SELECT:algo4 PreAdv IF (0 ("algo")) (-1 N + FemPl) (1C A + FemPl);
-REMOVE:algo5 PreAdv IF (0 ("algo"i));
+SELECT:andar_algo PreAdv IF (0 ("algo")) (-1 ("andar"));
+SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + MascSg) (-2 ("el") OR ("uno")) (-1 N + MascSg) (1 A + MascSg);
+SELECT:algo2 PreAdv IF (0 ("algo")) (1 A + MascPl);
+SELECT:algo3 PreAdv IF (0 ("algo")) (1 A + FemSg) (NOT 1 MascSg);
+SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + FemSg) (-1 N + FemSg) (1 A + FemSg);
+SELECT:algo4 PreAdv IF (0 ("algo")) (1 A + FemPl);
+REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 Adv) (3 A + MascSg);
+REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
+SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
+SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
+SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
+SELECT:algo8 PreAdv IF (0 ("algo"i)) (1 ("más tarde") OR ("tarde") OR ("inferior") OR ("superior") OR ("mayor") OR ("menor"));
+SELECT:algo9 PreAdv IF (0 ("algo"i)) (-1 Estar) (-1 Sg);
+REMOVE:algo0b PreAdv IF (0 ("algo"i)) (NOT 1 Adv);
 
 REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
@@ -707,7 +772,7 @@ REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Verb); # BARRIER CnjCoo OR CM 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
-SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* (".* que"r) OR ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR CnjSub OR Rel); 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* (".* que"r) OR ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR ("aunque") OR ("aun cuando") OR CnjSub OR Rel); 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
 
 # analiza futuro de subjuntivo (poco usual) (tuviere, hubiere) como pretérito de subjuntivo
@@ -737,8 +802,9 @@ SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1
 SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
 
 # mero
-REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 N + MascSg);
-REMOVE:mero_adj N IF (0 ("mero") + MascPl) (1 N + MascPl);
+REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 MascSg OR Num);
+REMOVE:mero_adj N IF (0 ("mero") + MascPl) (1 MascPl OR Num);
+REMOVE:mero_adj N IF (0 ("mero")) (2 ("simple"));
 # fluido
 REMOVE:fluido_no_PP PP IF (0 ("fluir")) (NOT -1 ("haber"));
 #del otro ponente
@@ -770,6 +836,7 @@ SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
 SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
 #toma
 SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
+SELECT:toma_v Verb IF (0 ("tomar")) (1 ("nota"));
 #cosa
 REMOVE:cosa Verb IF (0 ("cosa")); # "coser" muy improbable
 #fecha
@@ -789,6 +856,8 @@ SELECT:precio2 N IF (0 ("oferta") OR ("peso")) (-1 ("precio"));
 REMOVE:blando Verb IF (0 ("blando")) (-1 Adv OR PreAdv);
 # campo
 REMOVE:campo Verb IF (0 ("campo"));
+# roto
+REMOVE:roto Verb IF (0 ("roto"));
 # terreno
 REMOVE:terreno A IF (0 ("terreno")); #excepciones?
 # suelo
@@ -799,6 +868,34 @@ REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (-1 Pos);
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (1 ("segundo") OR ("cercano") OR ("pobre"));
 REMOVE:prima ("prima") IF (0 ("primo") LINK 0 ("prima")) (0*/* PrimoCousinWords);
 REMOVE:primo ("primo") IF (0 ("primo") LINK 0 ("prima"));
+#trata
+SELECT:trata_n N IF (0 ("trata")) (1 ("de")) (2 ("mujer") OR ("blanca") OR ("niño") OR ("ser") OR ("ser humano") OR ("persona") OR ("blanco") OR ("esclavo") OR ("inmigrante")) (2 Pl) (NOT -1 ("se") OR ("que") OR ("qué"));
+SELECT:trata_v Verb IF (0 ("trata"));
+#fecha
+SELECT:fecha_n N IF (0 ("fecha")) (1 ("límite"));
+#turno
+REMOVE:turno Vblex IF (0 ("turno")) (1 A + MascSg);
+#tramo:
+REMOVE:tramo Vblex IF (0 ("tramo") OR ("modelo") OR ("proyecto")) (NOT -1 ("yo") OR Pro);
+#río 
+SELECT:río N IF (0 ("río") OR ("modelo")) (1 MajIni);
+#sede
+SELECT:sede N IF (0 ("sede")) (1 ("de"));
+# trabajo
+SELECT:trabajo N IF (0 ("trabajo")) (-1 ("factor"));
+#curso
+SELECT:curso N IF (0 ("curso")) (-1 (ord));
+#mercado
+SELECT:mercado N IF (0 ("mercado")) (NOT -1 Vbhaver);
+#respecta
+SELECT:respecta Prep IF (0 ("respecta"));
+SELECT:respecto N IF (0 ("respecto"));
+#dragado
+SELECT:dragado N IF (0 ("dragado") + MascSg) (NOT -1 Vbhaver OR Copula OR N + MascSg);
+SELECT:dragado N IF (0 ("dragado") + MascPl) (NOT -1 Vbhaver OR Copula OR N + MascPl);
+#primado
+SELECT:primado N IF (0 ("obispo") OR ("arzobispo") OR ("cardenal"));
+
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
@@ -965,8 +1062,28 @@ REPLACE:el_hambre (det def f sg) (det) IF (0/* (det def m sg)) (1 ANouns) (1 Fem
 SELECT:hablar A IF (-1 ("hablar") OR ("Hablar")) (0 A LINK 0 N) ;
 SELECT:traducir A IF (-2 ("traducir") OR ("Traducir")) (0 A LINK 0 N) ;
 
-#
-# Desambiguación ADJ (+PP) - NOMBRE
+SELECT:guarda Vblex IF (0 ("guardar")) (-1 ("no"));
+
+# alguno en frases negativas: 
+# mandato imperativo alguno
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-2 N + FemSg) (-1 A + FemSg) (NOT 1 FemSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-2 N + MascSg) (-1 A + MascSg) (NOT 1 MascSg) (NOT -2 PreAdv);
+# caso alguno
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT 1 FemSg) (NOT -2 N + FemSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT 1 MascSg) (NOT -2 N + MascSg) (NOT -2 PreAdv);
+
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + FemSg) (-1 N + FemSg) (NOT -1 A) (NOT 1 FemSg) (NOT -2 PreAdv);
+SELECT:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo") + MascSg) (-1 N + MascSg) (NOT -1 A) (NOT 1 MascSg) (NOT -2 PreAdv);
+
+SELECT:nom_alguno N IF (0 N + FemSg) (1C ("alguno_negativo") + FemSg) (NOT -1 N + FemSg);
+SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo") + MascSg) (NOT -1 N + MascSg);
+
+SELECT:nom_alguno N IF (0 N + FemSg) (1C ("alguno_negativo") + FemSg) (NOT 0 A);
+SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo") + MascSg) (NOT 0 A);
+
+REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
+
+## Desambiguación ADJ (+PP) - NOMBRE
 #
 
 # NOM / ADJ
@@ -1044,6 +1161,10 @@ REMOVE:r_na_3_fs Noun_Adj_PP IF (-1 Det + $$FemSg) (0 NP + $$FemSg) (1 Adj_PP + 
 REMOVE:r_na_3_fp Noun_Adj_PP IF (-1 Det + $$FemPl) (0 NP + $$FemPl) (1 Adj_PP + $$FemPl) ;
 # la Indochina francesa (cal treure Indochina n)
 
+# V p2 sg / N seguit de PP/Adj. Ex. Prendas compercializadas (generalitza bé? Sí!)
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl);
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl);
+
 # ADJ NOM
 
 # elimina la opción "adjetivo" de aquellos adjetivos que sólo pueden anteceder un nombre ("buen", "mal", etc.) y no están delante de uno
@@ -1110,17 +1231,17 @@ SELECT:na3_fp A OR PP IF (-1 N + $$FemPl) (0 Adj_PP + $$FemPl) (1 Adj_PP + $$Fem
 
 # NOM ADJ ADJ
 
-SELECT:naa1_ms A OR PP IF (-2 N + $$MascSg) (-1 Adj_PP + $$MascSg) (0 Adj_PP + $$MascSg) (NOT 0 Det) ;
-SELECT:naa1_mp A OR PP IF (-2 N + $$MascPl) (-1 Adj_PP + $$MascPl) (0 Adj_PP + $$MascPl) (NOT 0 Det) ;
-SELECT:naa1_fs A OR PP IF (-2 N + $$FemSg) (-1 Adj_PP + $$FemSg) (0 Adj_PP + $$FemSg) (NOT 0 Det) ;
-SELECT:naa1_fp A OR PP IF (-2 N + $$FemPl) (-1 Adj_PP + $$FemPl) (0 Adj_PP + $$FemPl) (NOT 0 Det) ;
+SELECT:naa1_ms A OR PP IF (-2 N + $$MascSg) (-1 Adj_PP + $$MascSg) (0 Adj_PP + $$MascSg) (NOT 0 Det OR NP) ;
+SELECT:naa1_mp A OR PP IF (-2 N + $$MascPl) (-1 Adj_PP + $$MascPl) (0 Adj_PP + $$MascPl) (NOT 0 Det OR NP) ;
+SELECT:naa1_fs A OR PP IF (-2 N + $$FemSg) (-1 Adj_PP + $$FemSg) (0 Adj_PP + $$FemSg) (NOT 0 Det OR NP) ;
+SELECT:naa1_fp A OR PP IF (-2 N + $$FemPl) (-1 Adj_PP + $$FemPl) (0 Adj_PP + $$FemPl) (NOT 0 Det OR NP) ;
 
 # NOM ADJ ADJ ADJ
 
-SELECT:naaa1_ms A OR PP IF (-3 N + $$MascSg) (-2 N + $$MascSg) (-1 Adj_PP + $$MascSg) (0 Adj_PP + $$MascSg) (NOT 0 Det) ;
-SELECT:naaa1_mp A OR PP IF (-3 N + $$MascPl) (-2 N + $$MascPl) (-1 Adj_PP + $$MascPl) (0 Adj_PP + $$MascPl) (NOT 0 Det) ;
-SELECT:naaa1_fs A OR PP IF (-3 N + $$FemSg) (-2 N + $$FemSg) (-1 Adj_PP + $$FemSg) (0 Adj_PP + $$FemSg) (NOT 0 Det) ;
-SELECT:naaa1_fp A OR PP IF (-3 N + $$FemPl) (-2 N + $$FemPl) (-1 Adj_PP + $$FemPl) (0 Adj_PP + $$FemPl) (NOT 0 Det) ;
+SELECT:naaa1_ms A OR PP IF (-3 N + $$MascSg) (-2 N + $$MascSg) (-1 Adj_PP + $$MascSg) (0 Adj_PP + $$MascSg) (NOT 0 Det OR NP) ;
+SELECT:naaa1_mp A OR PP IF (-3 N + $$MascPl) (-2 N + $$MascPl) (-1 Adj_PP + $$MascPl) (0 Adj_PP + $$MascPl) (NOT 0 Det OR NP) ;
+SELECT:naaa1_fs A OR PP IF (-3 N + $$FemSg) (-2 N + $$FemSg) (-1 Adj_PP + $$FemSg) (0 Adj_PP + $$FemSg) (NOT 0 Det OR NP) ;
+SELECT:naaa1_fp A OR PP IF (-3 N + $$FemPl) (-2 N + $$FemPl) (-1 Adj_PP + $$FemPl) (0 Adj_PP + $$FemPl) (NOT 0 Det OR NP) ;
 ## "la Primera Conferencia Internacional Americana celebrada" (pqè Americana > adj)
 
 # NOM ADJ ADJ ADJ ADJ
