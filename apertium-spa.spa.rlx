@@ -810,8 +810,9 @@ REMOVE:fluido_no_PP PP IF (0 ("fluir")) (NOT -1 ("haber"));
 #del otro ponente
 SELECT:otro_adj A IF (0 ("otro") + MascSg) (-1/* Prep + Det + MascSg); 
 #era nuestra debilidad
-SELECT:otro_adj Det IF (0 ("nuestro") + FemSg) (1 N + FemSg); 
-SELECT:otro_adj Det IF (0 ("nuestro") + FemSg) (1 A + FemSg) (2 N + FemSg); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemSg) (1 N + FemSg); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemSg) (1 A + FemSg) (2 N + FemSg); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 Sg) (1 NP); 
 #dicho
 SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
 SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
