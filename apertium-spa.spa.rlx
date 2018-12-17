@@ -835,6 +835,8 @@ SELECT:vario_det Det IF (0 ("vario")) (-1 CnjCoo) (-2 ("uno"));
 SELECT:vario_det Det IF (0 ("vario")) (1 CnjCoo) (2 ("todo"));
 SELECT:otro_det Det IF (0 ("otro") + MascPl) (1 ("vario") + MascPl) (2 MascPl);
 SELECT:otro_det Det IF (0 ("otro") + FemPl) (1 ("vario") + FemPl) (2 FemPl);
+SELECT:vario_det Det IF (0 ("vario") + MascPl) (1 ("de")) (2 MascPl);
+SELECT:vario_det Det IF (0 ("vario") + FemPl) (1 ("de")) (2 FemPl);
 #toma
 SELECT:toma_v Verb IF (0 ("tomar")) (1 ("bueno")) (2 ("nota"));
 SELECT:toma_v Verb IF (0 ("tomar")) (1 ("nota"));
