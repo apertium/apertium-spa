@@ -100,6 +100,7 @@ LIST MajIni = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ].*>"r) ;
 LIST MajIni2 = ("<[A-ZÀÁÈÉÍÌÒÓÚÜÇ][a-zàáèéìíòóùúïüçñ·]+.*>"r) ;
 LIST Url = ("<.*(http|www|@).*>"r) ;
 LIST AllUpper = ("<[A-Z]+>"r) ;
+LIST NumRomanos = ("<[XICV]+>"r) ;
 
 SET Barrera_Final_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Verb OR Rel OR Pro ;	# Verb és perillós per la ambigüitat, però en general, prolífic
 SET Barrera_Final_Estrict_SN = <<< OR Prep OR Det OR CnjSub OR CnjAdv OR Rel OR Pro ;
@@ -507,11 +508,15 @@ REMOVE:adj_no_np NP IF (0 NP) (0 A + MascPl) (-1 MajIni2 + MascPl) (-1 A OR N) (
 REMOVE:adj_no_np NP IF (0 NP) (0 A + FemSg) (-1 MajIni2 + FemSg) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
 REMOVE:adj_no_np NP IF (0 NP) (0 A + FemPl) (-1 MajIni2 + FemPl) (-1 A OR N) (NOT -1 NP) (NOT -2 NP) (NOT -1 Cargos) (NOT -2 Cargos);
 
+SELECT:loc (loc) IF (0 (loc)) (1 (cm) OR CnjCoo) (2 (loc));
+SELECT:loc (loc) IF (0 (loc)) (-1 (cm) OR CnjCoo) (-2 (loc));
+
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
 
 REMOVE:tales NP IF (0 ("Tales")) (1 MascPl OR Copula + Pl);
+SELECT:nom_numromano NP IF (0 NP) (1 NumRomanos); #Pío X
 
 SELECT:nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Verb + Pers) (NOT 0 Copula);
 SELECT:nom_propio1 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Pron) (2 Verb + Pers);
@@ -526,6 +531,8 @@ REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
 REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("público")); # evita alguns comportaments estranys (Granada/granada).
+
+
 
 #  ANTROPÓNIMOS
 SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
