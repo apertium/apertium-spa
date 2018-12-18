@@ -1011,13 +1011,14 @@ REMOVE:poder_podar_2 Podar (0 Podar) (1C ("que")) ;
 REMOVE:soler_salar_1 Salar (0 Salar) (1C Inf OR Enc) ;
 REMOVE:soler_salar_1b Salar (0 Salar) (1 Adv) (2C Inf OR Enc) ;
 REMOVE:soler_salar_2 Salar (0 Salar) (1C ("que")) ;
-SELECT:sentar Sentar (0 Sentar) (1* ("silla") OR ("sofá") OR ("butaca") OR ("sillón") OR ("banco")) ;
-REMOVE:sentir_sentar_1 Sentar (0 Sentar) (1C Inf OR Enc) ;
-REMOVE:sentir_sentar_1b Sentar (0 Sentar) (1 Adv) (2C Inf OR Enc) ;
-REMOVE:sentir_sentar_2 Sentar (0 Sentar) (1C ("que")) ;
-REMOVE:sentir_sentar_3 Sentar (0 Sentar) (1 A) ; # me siento feliz
-REMOVE:sentir_sentar_4 Sentar (0 Sentar) (1 Det) ; # siento una cosa (pero: me siento los domingos)
-REMOVE:sentir_sentar_4 Sentar (0 Sentar) (1 Adv) ;
+
+SELECT:sentar Sentar (0 Sentar) (1* ("silla") OR ("sofá") OR ("butaca") OR ("sillón") OR ("banco") OR ("mesa") OR ("caballo") OR ("bicicleta"));
+SELECT:sentar Sentar (0 Sentar) (1* ("pierna") LINK 1 ("cruzar"));
+SELECT:sentar Sentar (0 Sentar) (1* ("rodilla") LINK 1 ("doblar"));
+SELECT:sentar_a Sentar (0 Sentar) (1 ("a")) (2 Inf);
+REMOVE:sentir_sentar Sentar (0 Sentar) (0 Sentir);
+
+
 REMOVE:creer_crear_0 Crear (0 Crear) (1 Adv) (2 ("en"));
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que"));
