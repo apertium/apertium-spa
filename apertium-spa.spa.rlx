@@ -907,7 +907,8 @@ SELECT:dragado N IF (0 ("dragado") + MascPl) (NOT -1 Vbhaver OR Copula OR N + Ma
 SELECT:primado N IF (0 ("obispo") OR ("arzobispo") OR ("cardenal"));
 #dormido
 SELECT:dormido_adj A IF (0 ("dormido")) (NOT -1 Vbhaver);
-
+# por sí solo
+SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 # qué sentido
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
