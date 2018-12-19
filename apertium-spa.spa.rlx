@@ -197,8 +197,12 @@ SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("
 
 SECTION
 
+SELECT SUB:1:haberde Vblex IF (0 ("haber# de")) (-1 Vbmod);
+REMOVE SUB:1:haberde Vblex IF (0 ("haber# de")) (NOT -1 Vbmod);
+
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (-1 MascSg);
 SELECT:este_deber Det IF (0 Det + MascSg) (1/* ("deber") + MascSg); #este deber de informar
+
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (NOT 1/* Inf);
 REMOVE:r_cuanto_vblex_1 N IF (0 Vblex) (0 (n f)) (-1 AdjItgM) (-1 PrnItgM);
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* (inf)) (NOT 1 N);
