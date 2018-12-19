@@ -569,9 +569,7 @@ SELECT:acronim (acr) IF (0 AllUpper);
 # RELATIVOS
 #
 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num)); 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-3 N) (-2 A); 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-4 N) (-3 Adv) (-2 A); 
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num) OR Adj_PP) (NOT -2 ("acuerdo") OR ("desacuerdo")); 
 
 #
 # PALABRAS PARTICULARES
@@ -824,8 +822,8 @@ REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 
 # a mi > a mí (error frecuente)
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1 A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1 A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
 SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
 SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
 
