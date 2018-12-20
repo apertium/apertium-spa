@@ -86,6 +86,7 @@ SET Adj_PP = A OR PP ;
 SET NO_Adj_PP = Word - Adj_PP ;
 
 SET Adv_PreAdv = Adv OR PreAdv ;
+SET NOT_Adv = Word - Adv - PreAdv;
 
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
 SET Verb_Prep = Verb OR Prep ;
@@ -573,16 +574,24 @@ SELECT:acronim (acr) IF (0 AllUpper);
 #
 # RELATIVOS
 #
+SET Words1 = Adv OR PreAdv OR A OR PP OR CnjCoo;
+SET Barrera1 = Word - Words1;
 
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar") LINK 1* ("de") OR ("en") LINK 1* ("acuerdo") OR ("desacuerdo"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo"));
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")) (-2 ("manera") OR ("forma")); 
+
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("acuerdo") BARRIER ("en") LINK -1 ("de") LINK -1* Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo") BARRIER ("en") LINK -1* ("en") BARRIER Barrera1 LINK -1* Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo") BARRIER ("en"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* ("conformar") OR ("amenazar") OR ("contar") OR ("soñar"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("insistir"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("acento") OR ("énfasis") LINK -1* ("poner") OR ("hacer") BARRIER NOT_Adv);
 
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP LINK -1* Ser OR Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-3 Ser OR Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser OR Estar) (-3 Adv OR PreAdv) (-2 Adj_PP);
 
 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num) OR Adj_PP); 
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
 #
 # PALABRAS PARTICULARES
