@@ -575,6 +575,9 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR (
 # PALABRAS PARTICULARES
 #
 
+SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1 Inf);
+REMOVE ("con el objeto de") IF (0 ("con el objeto de")) (NOT 1 Inf);
+
 SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("desear") OR ("comprender") OR ("hacer") OR ("agradecer") OR ("estimar") OR ("considerar") OR ("permitir") OR ("hablar");
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 VerbsLoNeutro + Verb + Pers);
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 Vbhaver) (2 VerbsLoNeutro + Verb + PP + MascSg);
