@@ -574,7 +574,7 @@ SELECT:acronim (acr) IF (0 AllUpper);
 # RELATIVOS
 #
 
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar") LINK 1* ("de") LINK 1 ("acuerdo"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar") LINK 1* ("de") OR ("en") LINK 1* ("acuerdo") OR ("desacuerdo"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* ("conformar") OR ("amenazar") OR ("contar") OR ("soñar"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("insistir"));
@@ -582,7 +582,7 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("insistir"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP LINK -1* Ser OR Estar);
 
 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num) OR Adj_PP) (NOT -2 ("acuerdo") OR ("desacuerdo")); 
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num) OR Adj_PP); 
 
 #
 # PALABRAS PARTICULARES
