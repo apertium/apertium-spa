@@ -200,8 +200,10 @@ SECTION
 SELECT:haber_vmod Vbmod IF (0 ("haber# de")) (1/* Inf);
 SELECT SUB:1:haberde Vblex IF (0 ("haber# de")) (-1 Vbmod);
 REMOVE SUB:1:haberde Vblex IF (0 ("haber# de")) (NOT -1 Vbmod);
+SELECT:deber_n N IF (0 ("deber") OR ("haber")) (0 Inf) (-1 Pos + MascSg);
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (-1 MascSg);
-REMOVE:no_vmod Vbmod IF (0 ("deber") OR ("haber")) (0 Inf) (-1 MascSg);
+REMOVE:no_vmod Vbmod IF (0 ("deber") OR ("haber")) (0 Inf) (-1 Det + MascSg);
+REMOVE:no_vmod Vbmod IF (0 ("deber") OR ("haber")) (0 Inf) (-2 Det + MascSg) (-1 MascSg);
 SELECT:este_deber Det IF (0 Det + MascSg) (1/* ("deber") + MascSg); #este deber de informar
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (NOT 1/* Inf);
 REMOVE:r_cuanto_vblex_1 N IF (0 Vblex) (0 (n f)) (-1 AdjItgM) (-1 PrnItgM);
@@ -215,6 +217,8 @@ REMOVE:r_cog_2 Cog IF (-1 DetInd) (0 Cog) ;
 REMOVE:r_ant_1 Ant IF (-1 DetDef) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
 REMOVE:r_ant_2 Ant IF (-1 DetInd) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
 
+SELECT:este_n N IF (0 ("este") + MascSg) (-1 ("el") + MascSg);
+
 SELECT:este_2 Det IF (0 ("este") + $$MascSg) (-1 Verb_Prep) (1 A + $$MascSg) (2 N + $$MascSg) ;
 	# de este bonito estado
 SELECT:este_1 Det IF (0 ("este") + $$MascSg) (-1 Verb_Prep) (1 N + $$MascSg) ;
@@ -226,7 +230,8 @@ SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
-REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (NOT -1 PuntosCardinals) (NOT -2 PuntosCardinals);
+REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (NOT -1 PuntosCardinals) (NOT -2 PuntosCardinals) (NOT 0 MajIni2);
+REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (-1 >>>);
 REMOVE:este N IF (0 ("este")) (-1 SerEstarParecer) (0 Det + MascSg);
 REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=ser)
 
@@ -569,14 +574,23 @@ SELECT:acronim (acr) IF (0 AllUpper);
 # RELATIVOS
 #
 
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar") LINK 1* ("de") LINK 1 ("acuerdo"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* ("conformar") OR ("amenazar") OR ("contar") OR ("soñar"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("insistir"));
+
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP LINK -1* Ser OR Estar);
+
+
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num) OR Adj_PP) (NOT -2 ("acuerdo") OR ("desacuerdo")); 
 
 #
 # PALABRAS PARTICULARES
 #
 
-SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1 Inf);
-REMOVE ("con el objeto de") IF (0 ("con el objeto de")) (NOT 1 Inf);
+SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1/* Inf OR (cm));
+SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1 ("no")) (2/* Inf);
+REMOVE ("con el objeto de") IF (0 ("con el objeto de")) (NOT 1/* Inf);
 
 SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("desear") OR ("comprender") OR ("hacer") OR ("agradecer") OR ("estimar") OR ("considerar") OR ("permitir") OR ("hablar");
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 VerbsLoNeutro + Verb + Pers);
