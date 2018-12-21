@@ -34,11 +34,17 @@ LIST Interj = (ij) ;
 
 SET CM = (cm) OR (lpar) OR (rpar) OR ("<;>") ;
 
-SET V = Vblex + Vbmod + Vbhaver + Copula ;
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
-SET Word = N + NP + A + Det + PreAdv + Adv + V + Pron + Prep + CnjCoo + CnjSub + CnjAdv + Rel + Interj ;
-SET NP_Member = N + A + Det + PreAdv + Adv + Pron ; # Pron es distinto al resto...
+
+# These make no sense: "+" is "cartesian product" !!
+#SET V = Vblex + Vbmod + Vbhaver + Copula ;
+#SET Word = N + NP + A + Det + PreAdv + Adv + V + Pron + Prep + CnjCoo + CnjSub + CnjAdv + Rel + Interj + Ord + PreDet;
+#SET Anything = = N + NP + A + Det + PreAdv + Adv + V + Pron + Prep + CnjCoo + CnjSub + CnjAdv + Rel + Interj + Ord + PreDet + CM; 
+#SET NP_Member = N + A + Det + PreAdv + Adv + Pron ; # Pron es distinto al resto...
 #SET NOT_NP_Member = Word - NP_Member;
+
+SET Word = A OR Adv OR CnjAdv OR CnjCoo OR CnjSub OR Copula OR Det OR Interj OR N OR NP OR Num OR Ord OR Pos OR PreAdv OR PreDet OR Prep OR Pron OR Rel OR Vbhaver OR Vblex OR Vbmod;
+
 SET NOT_NP_Member = Vblex OR Vbmod OR Vbhaver OR Copula OR Prep OR CnjCoo OR CnjSub OR CnjAdv OR Rel OR Interj ;
 
 LIST Imp = (imp) ;
@@ -83,10 +89,8 @@ SET DetInd = (det ind) ;
 SET Noun_Adj = N OR A ;
 SET Noun_Adj_PP = N OR A OR PP ;
 SET Adj_PP = A OR PP ;
-SET NO_Adj_PP = Word - Adj_PP ;
 
 SET Adv_PreAdv = Adv OR PreAdv ;
-SET NOT_Adv = Word - Adv - PreAdv;
 
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
 SET Verb_Prep = Verb OR Prep ;
@@ -575,16 +579,25 @@ SELECT:acronim (acr) IF (0 AllUpper);
 # RELATIVOS
 #
 SET Words1 = Adv OR PreAdv OR A OR PP OR CnjCoo;
-SET Barrera1 = Word - Words1;
+SET NOT_Adj = Word - Words1;
+SET NOT_Adv = Word - Adv_PreAdv;
+
+SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("convenir") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar");
+SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")) (-2 ("manera") OR ("forma")); 
 
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2 ("acuerdo") OR ("desacuerdo")) (-3 ("en") OR ("de"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("acuerdo") BARRIER ("en") LINK -1 ("de") LINK -1* Estar);
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo") BARRIER ("en") LINK -1* ("en") BARRIER Barrera1 LINK -1* Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo") OR ("acuerdo") BARRIER ("en") LINK -1* ("en") CBARRIER NOT_Adj LINK -1* Estar);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo") BARRIER ("en"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* ("conformar") OR ("amenazar") OR ("contar") OR ("soñar"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("acento") OR ("énfasis") LINK -1* ("poner") OR ("hacer") BARRIER NOT_Adv);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* VerbosRigenCon BARRIER ("con"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* VerbosRigenEn BARRIER ("en"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") BARRIER NOT_Adv);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2 ("acento") OR ("énfasis"));
+
+SET Barrier1 = Word \ Adv \ PreAdv \ Det;
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("acento") OR ("énfasis") BARRIER ("en") LINK -1* ("poner") OR ("hacer") BARRIER Barrier1);
 
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-3 Ser OR Estar);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser OR Estar) (-3 Adv OR PreAdv) (-2 Adj_PP);
