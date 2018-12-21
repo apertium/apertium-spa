@@ -91,6 +91,7 @@ SET Noun_Adj_PP = N OR A OR PP ;
 SET Adj_PP = A OR PP ;
 
 SET Adv_PreAdv = Adv OR PreAdv ;
+SET NOT_Adv = Word - Adv_PreAdv;
 
 SET Verb = Vblex OR Vbmod OR Vbhaver OR Copula ;
 SET Verb_Prep = Verb OR Prep ;
@@ -580,7 +581,6 @@ SELECT:acronim (acr) IF (0 AllUpper);
 #
 SET Words1 = Adv OR PreAdv OR A OR PP OR CnjCoo;
 SET NOT_Adj = Word - Words1;
-SET NOT_Adv = Word - Adv_PreAdv;
 
 SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar");
 SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
@@ -747,6 +747,7 @@ SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 ("<del>"i) OR ("de"i)) (2 ("agrado"i) OR
 SELECT:fuera Adv IF (0 ("<fuera>"i)) (1 ("<del>"i));
 SET DiasSemana = ("lunes") OR ("martes") OR ("miércoles") OR ("jueves") OR ("viernes") OR ("sábado") OR ("domigno");
 SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 DiasSemana);
+SELECT:fuera Ser IF (0 ("<fuera>"i)) (-1 ("este") + Sg) (1* Det OR N OR Adj_PP BARRIER NOT_Adv);
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pasar/tirar adelante 
 
