@@ -593,7 +593,7 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo")
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo") BARRIER ("en"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* VerbosRigenCon BARRIER ("con"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* VerbosRigenEn BARRIER ("en"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") BARRIER NOT_Adv);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") BARRIER NOT_Adv) (NOT -2 N);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2 ("acento") OR ("énfasis"));
 
 SET Barrier1 = Word \ Adv \ PreAdv \ Det;
