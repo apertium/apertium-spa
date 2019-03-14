@@ -596,7 +596,7 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* VerbosRigenEn 
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") OR ("convenir") BARRIER NOT_Adv) (NOT -2 N);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2 ("acento") OR ("énfasis") OR ("confianza"));
 
-SET Barrier1 = Word | Adv | PreAdv | Det;
+SET Barrier1 = Word \ Adv \ PreAdv \ Det;
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("acento") OR ("énfasis") BARRIER ("en") LINK -1* ("poner") OR ("hacer") BARRIER Barrier1);
 
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-3 Ser OR Estar);
