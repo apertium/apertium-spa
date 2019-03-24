@@ -1015,6 +1015,8 @@ SELECT:medida PP IF (0 ("medida")) (-1 ("estar"));
 SELECT:medida N IF (0 ("medida")) (-1 ("tal") OR ("mayor") OR ("menor"));
 SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
+# ceniza
+SELECT:ceniza N IF (0 ("ceniza")); 
 # pasa
 SELECT:pasa_v Vblex IF (0 ("pasar")) (-1 ("no"));
 SELECT:pasa_n N IF (0 ("pasa")) (1 ("de")) (2 ("Corinto") OR ("Málaga") OR ("Denia"));
