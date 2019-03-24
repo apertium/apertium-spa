@@ -971,6 +971,7 @@ SELECT:dormido_adj A IF (0 ("dormido")) (NOT -1 Vbhaver);
 SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 
 # qué sentido
+SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
 SELECT:qué A IF (0 ("qué")) (1 N) (NOT 1 Copula OR Vbmod OR Vbhaver);
