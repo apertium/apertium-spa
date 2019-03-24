@@ -1012,7 +1012,7 @@ REMOVE:harto Vblex IF (0 ("harto")) (NOT -1 Pro);
 SELECT:lamento Vblex IF (0 ("<Lamento>")) (1 ("que"));
 # medida 
 SELECT:medida PP IF (0 ("medida")) (-1 ("estar"));
-SELECT:medida N IF (0 ("medida")) (-1 ("tal"));
+SELECT:medida N IF (0 ("medida")) (-1 ("tal") OR ("mayor") OR ("menor"));
 SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
 # pasa
