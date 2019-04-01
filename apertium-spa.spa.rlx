@@ -969,6 +969,8 @@ SELECT:primado N IF (0 ("obispo") OR ("arzobispo") OR ("cardenal"));
 SELECT:dormido_adj A IF (0 ("dormido")) (NOT -1 Vbhaver);
 # por sí solo
 SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
+# distingo
+REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 
 # qué sentido
 SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
