@@ -373,6 +373,8 @@ SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i)); #Por tanto: No puede ser
 SELECT:tanto_n   N IF (0 ("<tanto>"i)) (-1 Det + MascSg); 
 SELECT:tanto_como_1 Adv (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
 REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")) ;
+SELECT:tanto_adj A IF (0 ("<tanto>"i)) (1 N + MascSg); # tanto frío
+SELECT:tanto_adj_n N IF (-1 ("<tanto>"i)) (0 N + MascSg);
 
 # seguir, estar + ger
 SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
