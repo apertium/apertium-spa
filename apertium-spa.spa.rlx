@@ -374,7 +374,7 @@ REMOVE:nom_verb2 N (NOT -2 Verb) (NOT -2 Prep) (-1C Pro) (0 N LINK 0 Verb) ;
 
 SELECT:tanto_adj A IF (0 ("<tanto>"i)) (-1 ("<por>"i)); #Por tanto: No puede ser multipalabra.
 SELECT:tanto_n   N IF (0 ("<tanto>"i)) (-1 Det + MascSg); 
-REMOVE:tanto_como_1 N (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
+SELECT:tanto_como_1 Adv (0 ("tanto") OR ("Tanto")) (*1 ("como") BARRIER CnjSub) ;
 REMOVE:tanto_como_2 Verb (-1* ("tanto") OR ("Tanto") BARRIER CnjSub) (0 ("como")) ;
 SELECT:tanto_adj A IF (0 ("<tanto>"i)) (1 N + MascSg) (NOT 1 ("mayor") OR ("menor") OR ("uno") OR ("este")); # tanto frío
 SELECT:tanto_adj_n N IF (-1 ("<tanto>"i)) (0 N + MascSg) (NOT 0 ("mayor") OR ("menor") OR ("uno") OR ("este")) (NOT -2 ("por"));
