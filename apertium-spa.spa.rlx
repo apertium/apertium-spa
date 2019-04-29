@@ -1046,6 +1046,12 @@ SET ConsumarWords = ("matrimonio") OR ("relación") OR ("amor") OR ("acto") OR (
 REMOVE:consumar ("consumir") IF (0 ("consumir")) (0 ("consumar")) (0*/* ConsumarWords) (NOT 0*/* ConsumirWords);
 REMOVE:consumir ("consumar") IF (0 ("consumir")) (0 ("consumar")); 
 SELECT:consumo N IF (0 ("consumo")) (-1 N) ; #infrecuente: yo consumo
+#refleja
+REMOVE:refleja_noadj A (0 ("reflejar")) (1 N OR A OR Det OR Adv OR Rel OR CnjSub OR CnjAdv);
+SELECT:refleja_adj A (0 ("<refleja>"i)) (-1 Copula) (-2 N + FemSg);
+SELECT:refleja_adj A (0 ("<reflejas>"i)) (-1 Copula) (-2 N + FemPl);
+REMOVE:refleja_noadj A (0 ("<refleja>"i)) (NOT -1 N + FemSg);
+REMOVE:refleja_noadj A (0 ("<reflejas>"i)) (NOT -1 N + FemPl);
 
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
