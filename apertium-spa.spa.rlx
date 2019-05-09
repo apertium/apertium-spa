@@ -445,6 +445,10 @@ SELECT:subj5 PRS (*-1 ("ser") LINK 1 Adv_PreAdv LINK 1 A LINK 1 ("que")) (0C Ver
 #SELECT:tanto_1 Adv IF (0 ("tanto")) (1C N) (2 ("como")) ;
 #SUBSTITUTE:tanto_1 ("tanto") ("tanto_same") TARGET ("tanto") IF (0 ("tanto")) (1C N) (2 ("como")) ;
 
+SELECT:desmentido PP IF (0 ("desmentido")) (1 ("por"));
+SELECT:vertido N IF (0 ("vertido")) (1 ("de"));
+SELECT:n_pp N IF (-1/* ("ver")) (0 ("medida") OR ("propuesta"));
+SELECT:n_pp N IF (-1/* ("quedar")) (0 ("medida") OR ("presupuesto"));
 SELECT:pp_1 PP IF (-1/* ("ver") OR ("quedar")) (0 PP) (NOT 0 A);
 SELECT:pp_1 PP IF (-1/* Haber) (0 PP) ;
 SELECT:pp_2 PP IF (-1 Ser) (0 PP) (*1 ("por") BARRIER (Cnj_Rel_End)) ;
