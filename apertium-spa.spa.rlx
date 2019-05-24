@@ -500,6 +500,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
+REMOVE:puente NP IF (0 ("Puente")) (1/* ("de")); 
 SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
 REMOVE:costa NP IF (0 ("Costa")) (1 ("azul") OR ("bravo") OR ("blanco")); 
