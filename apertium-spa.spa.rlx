@@ -994,7 +994,7 @@ SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
 #mejor
-REMOVE:mejor1 PreAdv IF (0 ("mejor")) (NOT 1 A OR PP);
+REMOVE:mejor1 PreAdv IF (0 ("mejor")) (NOT 1C A OR PP);
 REMOVE:mejor2 Adv IF (0 ("mejor")) (1C A OR PP);
 SELECT:mejor3 A IF (-1 Det + MascSg) (0 ("mejor") + MascSg) (1 N + MascSg);
 
