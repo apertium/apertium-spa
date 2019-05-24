@@ -391,8 +391,9 @@ REMOVE:lo_que_fuera Ir IF (0 Ser) (0 Ir) (-1 Rel) (NOT 1/* ("a")); # lo que fuer
 SELECT:me_fui Ir IF (0 Ser) (0 Ir + (p1)) (-1 Pro + (p1));
 SELECT:te_fuiste Ir IF (0 Ser) (0 Ir + (p2)) (-1 Pro + (p2));
 
-
-SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); #propiamente dicha (excepción a las reglas siguientes)
+#propiamente dicha, solo dos (excepción a las reglas siguientes)
+SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); 
+SELECT:solo_dos Adv IF (0 ("solo")) (1 Num);
 
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) ;
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
@@ -504,8 +505,8 @@ REMOVE:puente NP IF (0 ("Puente")) (1/* ("de"));
 SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
 REMOVE:costa NP IF (0 ("Costa")) (1 ("azul") OR ("bravo") OR ("blanco")); 
-SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 (num));
-SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 (num));
+SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 Num);
+SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 Num);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 ("la"i));
 SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
@@ -615,7 +616,7 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser
 
 #TODO: y en que ; también en que
 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR (num) OR Adj_PP); 
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
 #
