@@ -891,6 +891,12 @@ SELECT:otro_adj A IF (0 ("otro") + MascSg) (-1/* Prep + Det + MascSg);
 #era nuestra debilidad
 SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemSg) (1 N + FemSg); 
 SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemSg) (1 A + FemSg) (2 N + FemSg); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 MascSg) (1 N + MascSg); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 MascSg) (1 A + MascSg) (2 N + MascSg); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 MascPl) (1 N + MascPl); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 MascPl) (1 A + MascPl) (2 N + MascPl); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemPl) (1 N + FemPl); 
+SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemPl) (1 A + FemPl) (2 N + FemPl);
 SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 Sg) (1 NP); 
 #dicho
 SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
@@ -988,8 +994,9 @@ SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
 #mejor
-REMOVE:mejor1 PreAdv IF (0 ("mejor")) (NOT 1 A OR PP OR Adv);
-REMOVE:mejor2 Adv IF (0 ("mejor")) (1 A OR PP OR Adv);
+REMOVE:mejor1 PreAdv IF (0 ("mejor")) (NOT 1 A OR PP);
+REMOVE:mejor2 Adv IF (0 ("mejor")) (1C A OR PP);
+SELECT:mejor3 A IF (-1 Det + MascSg) (0 ("mejor") + MascSg) (1 N + MascSg);
 
 # qué sentido
 SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
@@ -1084,6 +1091,7 @@ REMOVE:via2 Prep IF (0 ("vía") + $$FemSg) (1 A + $$FemSg) ;
 
 # medio (nombre)
 SELECT:medio_nom N IF (0 ("medio"i)) (1 ("material") OR ("oficial") OR ("humano") OR ("personal"));
+SELECT:medio_nom N IF (0 ("medio"i)) (-1 ("mejor") OR ("peor"));
 
 # dos veces y media; dos años y medio
 SELECT:y_medio_adj A IF (-2 (n f)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj f sg));
