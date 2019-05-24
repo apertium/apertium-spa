@@ -982,6 +982,13 @@ SELECT:dormido_adj A IF (0 ("dormido")) (NOT -1 Vbhaver);
 SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 # distingo
 REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
+# falta
+SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
+#efecto
+SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
+#mejor
+REMOVE:mejor1 PreAdv IF (0 ("mejor")) (NOT 1 A OR PP OR Adv);
+REMOVE:mejor2 Adv IF (0 ("mejor")) (1 A OR PP OR Adv);
 
 # qué sentido
 SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
