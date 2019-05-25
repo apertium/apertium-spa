@@ -1078,6 +1078,11 @@ SELECT:refleja_adj A (0 ("<refleja>"i)) (-1 Copula) (-2 N + FemSg);
 SELECT:refleja_adj A (0 ("<reflejas>"i)) (-1 Copula) (-2 N + FemPl);
 REMOVE:refleja_noadj A (0 ("<refleja>"i)) (NOT -1 N + FemSg);
 REMOVE:refleja_noadj A (0 ("<reflejas>"i)) (NOT -1 N + FemPl);
+#amigo
+SELECT:amigo1 N IF (0 ("amigo") + MascSg) (-1 A + MascSg);
+SELECT:amigo2 N IF (0 ("amigo") + FemSg) (-1 A + FemSg);
+SELECT:amigo3 N IF (0 ("amigo") + MascPl) (-1 A + MascPl);
+SELECT:amigo4 N IF (0 ("amigo") + FemPl) (-1 A + FemPl);
 
 #medio
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
