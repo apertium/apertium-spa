@@ -997,6 +997,8 @@ REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
+#cobres
+REMOVE:cobres N IF (0 ("cobre") + MascPl) (NOT -1 MascPl);
 #mejor
 SELECT:mejor0 A IF (0 ("mejor") + Sg) (-1 Det + Sg OR Pos + Sg);
 SELECT:mejor0 A IF (0 ("mejor") + Sg) (-1 ("como")) (1 A OR N) (1 Sg);
@@ -1290,8 +1292,8 @@ REMOVE:r_na_3_fp Noun_Adj_PP IF (-1 Det + $$FemPl) (0 NP + $$FemPl) (1 Adj_PP + 
 # la Indochina francesa (cal treure Indochina n)
 
 # V p2 sg / N seguit de PP/Adj. Ex. Prendas compercializadas (generalitza bé? Sí!)
-REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl);
-REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl);
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl) (NOT 0 Vblex LINK 1 Adv);
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl) (NOT 0 Vblex LINK 1 Adv);
 
 # ADJ NOM
 
