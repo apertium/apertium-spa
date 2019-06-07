@@ -1292,8 +1292,8 @@ REMOVE:r_na_3_fp Noun_Adj_PP IF (-1 Det + $$FemPl) (0 NP + $$FemPl) (1 Adj_PP + 
 # la Indochina francesa (cal treure Indochina n)
 
 # V p2 sg / N seguit de PP/Adj. Ex. Prendas compercializadas (generalitza bé? Sí!)
-REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl) (NOT 0 Vblex LINK 1 Adv);
-REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl) (NOT 0 Vblex LINK 1 Adv);
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + MascPl) (1 Adj_PP + MascPl) (NOT 1 Adv);
+REMOVE:verb2p_adj Verb IF (0 (vblex p2 sg)) (0 N + FemPl) (1 Adj_PP + FemPl) (NOT 1 Adv);
 
 # ADJ NOM
 
