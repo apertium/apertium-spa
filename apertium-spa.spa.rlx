@@ -578,7 +578,7 @@ SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1C (ant) OR (co
 REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola);   #Sirve de algo?
 
 SET ExcepDirector = ("ejecutivo") OR ("comercial") OR ("financiero") OR ("general") OR ("provisional") OR ("territorial") OR ("económico") OR ("autonómico") OR ("corporativo") OR ("plenipotenciario") OR ("deportivo") OR ("interino") OR ("regional") OR ("creativo") OR ("nacional") OR ("estatal");
-SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1 Cargos + Sg) (0C Verb OR A) (0 MajIni) (NOT 0 ("alto") OR ("primer") OR Cargos OR ExcepDirector); # Sr. Barón
+SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1 Cargos + Sg) (0C Verb OR A) (0 MajIni) (NOT 0 ("alto") OR ("primer") OR Cargos OR ExcepDirector) (NOT -2 ("<I>")); # Sr. Barón
 
 # no traduir "di" en "di Maria, di Pietro, etc."; van den Eynde; le Chant ...
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR ("<le>"i)) (1 MajIni2); 
