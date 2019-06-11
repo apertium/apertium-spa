@@ -64,6 +64,9 @@ LIST Masc = m mf ;
 LIST Fem = f mf ;
 LIST Sg = sg sp ;
 LIST Pl = pl sp ;
+
+LIST Fin = pri prs cni pii pis fti ; 
+
 SET MascSg = (m sg) OR (m sp) OR (mf sg) OR (mf sp) ;
 SET MascPl = (m pl) OR (m sp) OR (mf pl) OR (mf sp) ;
 SET FemSg = (f sg) OR (f sp) OR (mf sg) OR (mf sp) ;
@@ -74,6 +77,7 @@ SET FemSg2 = (f sg) OR (f sp) OR (mf sg) OR (mf sp) ;
 SET FemPl2 = (f pl) OR (f sp) OR (mf pl) OR (mf sp) ;
 
 SET Pers = (p1) OR (p2) OR (p3) ;
+
 
 SET Ref = (prn pro ref) ;
 SET Pro = (prn pro) ;
@@ -1527,3 +1531,6 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 	# adj_pp: "un trípode pesado con miras"
 
 # REMOVE:r_na_20 A OR PP IF (-1 Barrera_Inicial_SN LINK NOT 0 N) (NOT -1 Limite_Barrera_Inicial_SN) (0 Noun_Adj_PP LINK 0 N OR NP) (1 Barrera_Final_SN) ;
+
+"<una>" REMOVE Vblex IF (-1C Fin) (1C N) ;
+  ## Tengo una plaza en mi ayuntamiento para hacer fiestas.
