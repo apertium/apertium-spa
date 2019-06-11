@@ -518,7 +518,7 @@ SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("c
 REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
-SELECT:julio_mes N IF (0 ("Valle") OR ("Luz")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
+SELECT:julio_mes N IF (0 ("Valle") OR ("Luz") OR ("Campaña")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
 SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
