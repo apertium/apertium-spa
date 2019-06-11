@@ -821,6 +821,7 @@ REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (1 ("de")) (2 MascPl);
 REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
 REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT -1 Pro);
+SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("como")) (2 ("otro"));
 
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
