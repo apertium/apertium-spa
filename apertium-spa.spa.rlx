@@ -630,6 +630,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+SELECT:felipe_vi Num IF (0 ("<VI>")) (-1 NP);
+
 SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1/* Inf OR (cm));
 SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1 ("no")) (2/* Inf);
 REMOVE ("con el objeto de") IF (0 ("con el objeto de")) (NOT 1/* Inf);
