@@ -873,6 +873,7 @@ SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
 SUBSTITUTE (fts) (pis) TARGET (fts) IF (0 (fts));
 
 SELECT:puesto N IF (0 ("puesto"i)) (-1 (ord m));
+SELECT:puesto N IF (0 ("puesto"i)) (1 ("de")) (2 ("responsabilidad") OR ("gobierno") OR ("control") OR ("control") OR ("salida"));
 
 #ordinales (el tagger no detecta els ordinals)
 SELECT:ordinal A IF (0 Ord + MascSg) (1 N + MascSg) (NOT 0 ("primo"i));
