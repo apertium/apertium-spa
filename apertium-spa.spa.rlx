@@ -1534,3 +1534,9 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 
 "<una>" REMOVE Vblex IF (-1C Fin) (1C N) ;
   ## Tengo una plaza en mi ayuntamiento para hacer fiestas.
+
+
+"<una>" SELECT Det IF (1C N) ;
+  ## Sujeta una caja.
+
+
