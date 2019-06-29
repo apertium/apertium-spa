@@ -891,10 +891,10 @@ REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 
 # a mi > a mí (error frecuente)
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (1 ("no")); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (1 ("no")); 
 
 # mero
 REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 MascSg OR Num);
