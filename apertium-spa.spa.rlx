@@ -521,6 +521,7 @@ SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
 SELECT:Planes_n N IF (0 ("<Planes>")) (1 A + MascPl);
+SELECT:tales_np NP IF (0 ("Tales")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
 SELECT:julio_mes N IF (0 ("Valle") OR ("Luz") OR ("Campaña")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
@@ -566,7 +567,8 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 NP);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
-REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
+REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Domeño. Pego.
+REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
