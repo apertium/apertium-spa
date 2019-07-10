@@ -64,6 +64,9 @@ LIST Masc = m mf ;
 LIST Fem = f mf ;
 LIST Sg = sg sp ;
 LIST Pl = pl sp ;
+
+LIST Fin = pri prs cni pii pis fti ; 
+
 SET MascSg = (m sg) OR (m sp) OR (mf sg) OR (mf sp) ;
 SET MascPl = (m pl) OR (m sp) OR (mf pl) OR (mf sp) ;
 SET FemSg = (f sg) OR (f sp) OR (mf sg) OR (mf sp) ;
@@ -74,6 +77,7 @@ SET FemSg2 = (f sg) OR (f sp) OR (mf sg) OR (mf sp) ;
 SET FemPl2 = (f pl) OR (f sp) OR (mf pl) OR (mf sp) ;
 
 SET Pers = (p1) OR (p2) OR (p3) ;
+
 
 SET Ref = (prn pro ref) ;
 SET Pro = (prn pro) ;
@@ -516,9 +520,11 @@ REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
 SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR unknownMajIni);#
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
+SELECT:Planes_n N IF (0 ("<Planes>")) (1 A + MascPl);
+SELECT:tales_np NP IF (0 ("Tales")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
-SELECT:julio_mes N IF (0 ("Valle") OR ("Luz")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
+SELECT:julio_mes N IF (0 ("Valle") OR ("Luz") OR ("Campaña")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
 SELECT:times NP IF (0 ("Times"));
 SELECT:time NP IF (0 ("Time"));
 SELECT:san_adjetivo A IF (0 ("San")) (1 NP);
@@ -561,7 +567,8 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 NP);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
-REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
+REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Domeño. Pego.
+REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela, Vilallonga
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
@@ -573,7 +580,9 @@ REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("públi
 SELECT:apellido0 (ant) IF (0 (ant)) (1 ("i"i)) (2 (ant));   # Navarro i García
 SELECT:apellido1 (ant) IF (0 (ant)) (-1 ("i"i)) (-2 (ant));
 
-# Evita traducir nombres propios 
+# Evita traducir nombres propios
+SELECT:don_nombre (ant) IF (0 (ant)) (-1 ("<D.>"));
+
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola); # Más riesgo de problemas con adj.!
 REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola);   #Sirve de algo?
 
@@ -623,6 +632,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 #
 # PALABRAS PARTICULARES
 #
+
+SELECT:felipe_vi Num IF (0 ("<VI>")) (-1 NP);
 
 SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1/* Inf OR (cm));
 SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1 ("no")) (2/* Inf);
@@ -819,6 +830,7 @@ REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (1 ("de")) (2 MascPl);
 REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (prn) + (pro)); #uno de los // se una de manera
 REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT -1 Pro);
+SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("como")) (2 ("otro"));
 
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
@@ -863,6 +875,7 @@ SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (-1 >>>);
 SUBSTITUTE (fts) (pis) TARGET (fts) IF (0 (fts));
 
 SELECT:puesto N IF (0 ("puesto"i)) (-1 (ord m));
+SELECT:puesto N IF (0 ("puesto"i)) (1 ("de")) (2 ("responsabilidad") OR ("gobierno") OR ("control") OR ("control") OR ("salida"));
 
 #ordinales (el tagger no detecta els ordinals)
 SELECT:ordinal A IF (0 Ord + MascSg) (1 N + MascSg) (NOT 0 ("primo"i));
@@ -880,10 +893,10 @@ REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 
 # a mi > a mí (error frecuente)
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (1 ("no")); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (1 ("no")); 
 
 # mero
 REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 MascSg OR Num);
@@ -1524,3 +1537,12 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 	# adj_pp: "un trípode pesado con miras"
 
 # REMOVE:r_na_20 A OR PP IF (-1 Barrera_Inicial_SN LINK NOT 0 N) (NOT -1 Limite_Barrera_Inicial_SN) (0 Noun_Adj_PP LINK 0 N OR NP) (1 Barrera_Final_SN) ;
+
+"<una>" REMOVE Vblex IF (-1C Fin) (1C N) ;
+  ## Tengo una plaza en mi ayuntamiento para hacer fiestas.
+
+
+"<una>" SELECT Det IF (1C N) ;
+  ## Sujeta una caja.
+
+
