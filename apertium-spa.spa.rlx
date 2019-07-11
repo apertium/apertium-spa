@@ -582,7 +582,7 @@ REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("públi
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
 
-SELECT:charla_N N IF (0 ("charla")) (1 ("taller"));
+SELECT:charla_N N IF (0 ("charla")) (1 ("taller") OR ("presentación") OR ("debate"));
 
 
 #  ANTROPÓNIMOS
