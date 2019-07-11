@@ -570,13 +570,19 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Domeño. Pego.
 REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela, Vilallonga
 
-SELECT:marco_n N IF (0 ("Marco")) (-1 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
-SELECT:montes_n N IF (0 ("Montes")) (-2 ("ingeniero"));
+SELECT:marco_n N IF (0 ("marco")) (-1 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
+SELECT:montes_a A IF (0 ("de montes")) (-1 ("ingeniero") OR ("ingeniería") OR ("guardia") OR ("guarda") OR ("agente"));
+REMOVE:montes_n A IF (0 ("de montes"));
+SELECT:montes_no_np N IF (0 ("Montes")) (1 (loc) OR (top));
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
 REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("público")); # evita alguns comportaments estranys (Granada/granada).
 
+SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
+SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
+
+SELECT:charla_N N IF (0 ("charla")) (1 ("taller"));
 
 
 #  ANTROPÓNIMOS
@@ -668,7 +674,6 @@ SELECT:hueco N IF (0 ("hueco")) (-1 Det OR A) (-1 Masc);
 REMOVE:motivo_objeto Vblex IF (0 ("<motivo>"i) OR ("<objeto>"i)) (NOT -1 ("yo")) (NOT -1 (prn pro pl)) (NOT -1 (prn pro f)); # muy raro: yo motivo, yo objeto.
 SELECT:nom_objeto N IF (0 N) (1 ("<objeto>"i)) (2/* ("de"i)) (NOT 0 Ser) (NOT 0 ("mero")); #uso típico: nombre + "objeto de" (en aposición)
 SELECT:umbral N IF (0 ("valor")) (1 ("umbral") OR ("límite"));
-SELECT:marco_n A IF (0 ("Marco")) (-1 ("Programa") OR ("Convenio"));
 SELECT:marco N IF (0 ("marco")) (-1 N); 
 REMOVE:condiciones_marco Vblex IF (0 N LINK 0 Vblex) (1 ("marco") + MascSg);
 SELECT:beneficio N IF (-1 ("coste") OR ("costo")) (0 ("beneficio"));
