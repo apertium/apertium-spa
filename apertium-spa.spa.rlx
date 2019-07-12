@@ -571,7 +571,9 @@ REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Dome
 REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela, Vilallonga
 
 SELECT:marco_n N IF (0 ("marco")) (-1 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
+SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
 SELECT:montes_a A IF (0 ("de montes")) (-1 ("ingeniero") OR ("ingeniería") OR ("guardia") OR ("guarda") OR ("agente"));
+
 REMOVE:montes_n A IF (0 ("de montes"));
 SELECT:montes_no_np N IF (0 ("Montes")) (1 (loc) OR (top));
 
