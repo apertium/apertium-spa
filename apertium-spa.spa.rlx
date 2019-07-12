@@ -521,6 +521,7 @@ SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
 SELECT:Planes_n N IF (0 ("<Planes>")) (1 A + MascPl);
+SELECT:tales_np NP IF (0 ("Tales")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 unknownMajIni);
 SELECT:julio_mes N IF (0 ("Valle") OR ("Luz") OR ("Campaña")) (NOT 1/* NP) (NOT 1 unknownMajIni) (NOT -1/* NP) (NOT -1 unknownMajIni);
@@ -566,12 +567,24 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 NP);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 
-REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>);
+REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Domeño. Pego.
+REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela, Vilallonga
+
+SELECT:marco_n N IF (0 ("marco")) (-1 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
+SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
+SELECT:montes_a A IF (0 ("de montes")) (-1 ("ingeniero") OR ("ingeniería") OR ("guardia") OR ("guarda") OR ("agente"));
+
+REMOVE:montes_n A IF (0 ("de montes"));
+SELECT:montes_no_np N IF (0 ("Montes")) (1 (loc) OR (top));
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
 REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (NOT 0 ("guerra") OR ("público")); # evita alguns comportaments estranys (Granada/granada).
 
+SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
+SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
+
+SELECT:charla_N N IF (0 ("charla")) (1 ("taller") OR ("presentación") OR ("debate"));
 
 
 #  ANTROPÓNIMOS
@@ -891,10 +904,10 @@ REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 
 # a mi > a mí (error frecuente)
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
-SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
-SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a")) (1 ("no")); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (NOT 1/* A OR N OR Inf OR PreAdv OR Adv OR NP OR ("yo") OR PP); 
+SUBSTITUTE (det pos mf sg) (prn tn p1 mf sg) TARGET (det)   IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (1 ("no")); 
+SUBSTITUTE ("mío") ("mí")                    TARGET ("mío") IF (0 ("<mi>"i)) (-1 ("a") OR ("para")) (1 ("no")); 
 
 # mero
 REMOVE:mero_adj N IF (0 ("mero") + MascSg) (1 MascSg OR Num);
