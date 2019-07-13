@@ -518,6 +518,7 @@ SELECT:calle N IF (0 ("<calle>"i)) (NOT -1 NP) (NOT -1 Pro);
 SELECT:calle N IF (0 ("<calle>"i)) (1 MajIni);
 REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
 SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR unknownMajIni);#
+SELECT:tales_n A IF (0 ("<Tales>")) (1 Pl) (-1 >>>);
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
 SELECT:Planes_n N IF (0 ("<Planes>")) (1 A + MascPl);
@@ -1049,6 +1050,7 @@ SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 PP);
 REMOVE:qué PreAdv IF (0 ("qué"));
 # son
 REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
+SELECT:son_verb Copula IF (0 ("<Son>"i)) (-1 >>>);
 #frontero
 REMOVE:frontero A IF (0 ("frontero") + Fem) (-1C N + Fem);
 #médico
