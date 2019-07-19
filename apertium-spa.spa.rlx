@@ -844,19 +844,21 @@ REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (p
 REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT -1 Pro);
 SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("como")) (2 ("otro")); 
-SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("y") OR ("o") OR ("tras")) (2 ("otro")) (NOT 3 A OR N);
+SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("y") OR ("o") OR ("tras") OR ("ni")) (2 ("otro")) (NOT 3 A OR N);
 
-SELECT:una_verb1 Vblex IF (0 ("<una>"i)) (-1 Pro) (NOT -1 ("<la>"i));           # se una, me una...
-SELECT:una_verb2 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 ("<a>"i));                 # que una a
-SELECT:una_verb3 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 Det);                      # que una los
-SELECT:una_verb4 Vblex IF (0 ("<una>"i)) (-2 Rel) (-1 ("<la>"i)) (1 ("<a>"i));  # que la una a
-REMOVE:una_det   Vblex IF (0 ("<una>"i));
-SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
+
 SELECT:cierto_adj A IF (0 ("cierto") + MascSg) (-1 ("uno") + MascSg + Det); #un cierto
 SELECT:cierto_adj A IF (0 ("cierto") + FemSg) (-1 ("uno") + FemSg + Det);
 SELECT:cierto_adj A IF (0 ("cierto") + MascPl) (-1 ("uno") + MascPl + Det);
 SELECT:cierto_adj A IF (0 ("cierto") + FemPl) (-1 ("uno") + FemPl + Det);
 
+SELECT:una_verb1 Vblex IF (0 ("<una>"i)) (-1 Pro) (NOT -1 ("<la>"i));           # se una, me una...
+SELECT:una_verb2 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 ("<a>"i));                 # que una a
+SELECT:una_verb3 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 Det);                      # que una los
+SELECT:una_verb4 Vblex IF (0 ("<una>"i)) (-2 Rel) (-1 ("<la>"i)) (1 ("<a>"i));  # que la una a
+REMOVE:una_det1  Vblex IF (0 ("<una>"i)) (NOT -1 Rel) ;
+REMOVE:una_det2 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 FemSg);
+SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
 
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
