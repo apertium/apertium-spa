@@ -854,7 +854,7 @@ SELECT:cierto_adj A IF (0 ("cierto") + FemPl) (-1 ("uno") + FemPl + Det);
 
 SELECT:una_verb1 Vblex IF (0 ("<una>"i)) (-1 Pro) (NOT -1 ("<la>"i));           # se una, me una...
 SELECT:una_verb2 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 ("<a>"i));                 # que una a
-SELECT:una_verb3 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 Det);                      # que una los
+SELECT:una_verb3 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 Det OR ("diverso"));       # que una los
 SELECT:una_verb4 Vblex IF (0 ("<una>"i)) (-2 Rel) (-1 ("<la>"i)) (1 ("<a>"i));  # que la una a
 REMOVE:una_det1  Vblex IF (0 ("<una>"i)) (NOT -1 Rel) ;
 REMOVE:una_det2 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 FemSg);
