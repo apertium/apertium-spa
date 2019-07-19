@@ -399,6 +399,7 @@ SELECT:te_fuiste Ir IF (0 Ser) (0 Ir + (p2)) (-1 Pro + (p2));
 #propiamente dicha, solo dos (excepción a las reglas siguientes)
 SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); 
 SELECT:solo_dos Adv IF (0 ("solo")) (1 Num);
+SELECT:solo_uno Adv IF (0 ("solo")) (1 ("uno") + Sg);
 
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
@@ -849,6 +850,12 @@ SELECT:una_verb2 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 ("<a>"i));                 
 SELECT:una_verb3 Vblex IF (0 ("<una>"i)) (-1 Rel) (1 Det);                      # que una los
 SELECT:una_verb4 Vblex IF (0 ("<una>"i)) (-2 Rel) (-1 ("<la>"i)) (1 ("<a>"i));  # que la una a
 REMOVE:una_det   Vblex IF (0 ("<una>"i));
+SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
+SELECT:cierto_adj A IF (0 ("cierto") + MascSg) (-1 ("uno") + MascSg + Det); #un cierto
+SELECT:cierto_adj A IF (0 ("cierto") + FemSg) (-1 ("uno") + FemSg + Det);
+SELECT:cierto_adj A IF (0 ("cierto") + MascPl) (-1 ("uno") + MascPl + Det);
+SELECT:cierto_adj A IF (0 ("cierto") + FemPl) (-1 ("uno") + FemPl + Det);
+
 
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
