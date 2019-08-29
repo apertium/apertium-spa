@@ -947,6 +947,7 @@ SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 Sg) (1 NP);
 #dicho
 SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
 SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
+SELECT:dicho_adj A IF (0 ("dicho")) (-1 Prep) (1 N OR NP); #en dicho G7
 #puro
 REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
 #suma 
