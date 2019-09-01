@@ -554,6 +554,8 @@ REMOVE:adj_no_np NP IF (0 NP) (0 A + FemPl) (-1 MajIni2 + FemPl) (-1 A OR N) (NO
 SELECT:loc (loc) IF (0 (loc)) (1 (cm) OR CnjCoo) (2 (loc));
 SELECT:loc (loc) IF (0 (loc)) (-1 (cm) OR CnjCoo) (-2 (loc));
 
+SELECT:loc (loc) IF (0 (loc)) (0 (al)) (-1 ("en")) ;
+
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
 #
