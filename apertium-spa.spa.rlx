@@ -1174,6 +1174,8 @@ REMOVE:soler_salar_1b Salar (0 Salar) (1 Adv) (2C Inf OR Enc) ;
 REMOVE:soler_salar_2 Salar (0 Salar) (1C ("que")) ;
 
 SELECT:sentar Sentar (0 Sentar) (1* ("en") LINK 1 Det LINK 1 ("silla") OR ("sofá") OR ("butaca") OR ("sillón") OR ("banco") OR ("caballo") OR ("bicicleta") OR ("cámara") OR ("congreso"));
+SELECT:sentar Sentar (0 Sentar) (1 ("base") OR ("cimiento") OR ("fundamento") OR ("precedente") OR ("premisa") OR ("jurisprudencia"));
+SELECT:sentar Sentar (0 Sentar) (1 Det) (2 ("base") OR ("cimiento") OR ("fundamento") OR ("precedente") OR ("premisa") OR ("jurisprudencia"));
 SELECT:sentar Sentar (0 Sentar) (1* ("en") OR ("a") LINK 1 Det LINK 1 ("mesa"));
 SELECT:sentar Sentar (0 Sentar) (1* ("pierna") LINK 1 ("cruzar"));
 SELECT:sentar Sentar (0 Sentar) (1* ("rodilla") LINK 1 ("doblar"));
