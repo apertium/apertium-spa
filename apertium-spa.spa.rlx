@@ -396,10 +396,18 @@ REMOVE:lo_que_fuera Ir IF (0 Ser) (0 Ir) (-1 Rel) (NOT 1/* ("a")); # lo que fuer
 SELECT:me_fui Ir IF (0 Ser) (0 Ir + (p1)) (-1 Pro + (p1));
 SELECT:te_fuiste Ir IF (0 Ser) (0 Ir + (p2)) (-1 Pro + (p2));
 
-#propiamente dicha, solo dos (excepción a las reglas siguientes)
-SELECT:dicha Verb IF (0 ("decir")) (-1 Adv); 
+#solo dos (excepción a las reglas siguientes)
 SELECT:solo_dos Adv IF (0 ("solo")) (1 Num);
 SELECT:solo_uno Adv IF (0 ("solo")) (1 ("uno") + Sg);
+
+#dicho
+SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
+SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
+SELECT:dicho_adj A IF (0 ("dicho") + FemSg) (1 N + FemSg) (NOT -1 Det); 
+SELECT:dicho_adj A IF (0 ("dicho") + FemPl) (1 N + FemPl) (NOT -1 Det); 
+SELECT:dicho_adj A IF (0 ("dicho")) (-1 Prep) (1 N OR NP); #en dicho G7
+#propiamente dicha
+SELECT:dicha Verb IF (0 ("decir")) (-1 Adv);
 
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
@@ -947,10 +955,7 @@ SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 MascPl) (1 A + MascPl) 
 SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemPl) (1 N + FemPl); 
 SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 FemPl) (1 A + FemPl) (2 N + FemPl);
 SELECT:otro_adj Det IF (0 ("nuestro") OR ("vuestro")) (0 Sg) (1 NP); 
-#dicho
-SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
-SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
-SELECT:dicho_adj A IF (0 ("dicho")) (-1 Prep) (1 N OR NP); #en dicho G7
+
 #puro
 REMOVE:puro_adj N IF (0 ("puro")) (NOT 0*/* ("cigarrillo") OR ("fumar") OR ("café") OR ("copa")) ;
 #suma 
@@ -1093,7 +1098,8 @@ REMOVE:objetivo Vblex IF (0 ("objetivo"));
 #harto
 REMOVE:harto Vblex IF (0 ("harto")) (NOT -1 Pro);
 #Lamento (y similares)
-SELECT:lamento Vblex IF (0 ("<lamento>"i)) (NOT -1 Det + MascSg) (NOT 1/* ("de"));
+SELECT:lamento Vblex IF (0 ("<lamento>"i)) (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
+SELECT:apoyo Vblex IF (0 ("<apoyo>"i))   (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
 #Haces
 SELECT:haces Vblex IF (0 ("<haces>"i)) (NOT -1 Det + MascPl) (NOT 1/* ("de"));
 # medida 
