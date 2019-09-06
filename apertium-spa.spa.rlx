@@ -555,7 +555,7 @@ SELECT:loc (loc) IF (0 (loc)) (1 (cm) OR CnjCoo) (2 (loc));
 SELECT:loc (loc) IF (0 (loc)) (-1 (cm) OR CnjCoo) (-2 (loc));
 
 SELECT:al (al) IF (0 ("Java")) (0*/* ("programa") OR ("programación") OR ("programar") OR ("datos") OR ("base") OR ("sistema")); #programar en Java
-SELECT:loc (loc) IF (0 (loc)) (0 (al)) (-1 ("en")); #en Nápoles
+SELECT:loc (loc) IF (0 (loc)) (0 (al)) (-1 ("en") OR ("de")); #en Nápoles
 
 #
 # NOMBRES PROPIOS AMBIGUOS A PRINCIO DE FRASE
