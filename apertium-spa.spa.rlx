@@ -1093,7 +1093,9 @@ REMOVE:objetivo Vblex IF (0 ("objetivo"));
 #harto
 REMOVE:harto Vblex IF (0 ("harto")) (NOT -1 Pro);
 #Lamento (y similares)
-SELECT:lamento Vblex IF (0 ("<Lamento>")) (1 ("que"));
+SELECT:lamento Vblex IF (0 ("<lamento>"i)) (NOT -1 Det + MascSg) (NOT 1/* ("de"));
+#Haces
+SELECT:haces Vblex IF (0 ("<haces>"i)) (NOT -1 Det + MascPl) (NOT 1/* ("de"));
 # medida 
 SELECT:medida PP IF (0 ("medida")) (-1 ("estar"));
 SELECT:medida N IF (0 ("medida")) (-1 ("tal") OR ("mayor") OR ("menor"));
@@ -1176,6 +1178,7 @@ REMOVE:soler_salar_2 Salar (0 Salar) (1C ("que")) ;
 SELECT:sentar Sentar (0 Sentar) (1* ("en") LINK 1 Det LINK 1 ("silla") OR ("sofá") OR ("butaca") OR ("sillón") OR ("banco") OR ("caballo") OR ("bicicleta") OR ("cámara") OR ("congreso"));
 SELECT:sentar Sentar (0 Sentar) (1 ("base") OR ("cimiento") OR ("fundamento") OR ("precedente") OR ("premisa") OR ("jurisprudencia"));
 SELECT:sentar Sentar (0 Sentar) (1 Det) (2 ("base") OR ("cimiento") OR ("fundamento") OR ("precedente") OR ("premisa") OR ("jurisprudencia"));
+SELECT:sentar_precedente N (-1 Sentar) (0 ("precedente"));
 SELECT:sentar Sentar (0 Sentar) (1* ("en") OR ("a") LINK 1 Det LINK 1 ("mesa"));
 SELECT:sentar Sentar (0 Sentar) (1* ("pierna") LINK 1 ("cruzar"));
 SELECT:sentar Sentar (0 Sentar) (1* ("rodilla") LINK 1 ("doblar"));
