@@ -418,7 +418,7 @@ REMOVE:bien PreAdv (0 ("bien")) (1C A) (1C ("dicho"));
 
 SELECT:tamano_adj A IF (0 ("tamaño") + MascSg) (1 N + MascSg) (NOT -1 Det); 
 SELECT:tamano_adj A IF (0 ("tamaño") + MascPl) (1 N + MascPl) (NOT -1 Det); 
-REMOVE:tamano_n N IF (0 ("tamaño"));
+REMOVE:tamano_n A IF (0 ("tamaño"));
 
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
