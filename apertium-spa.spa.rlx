@@ -420,6 +420,16 @@ SELECT:tamano_adj A IF (0 ("tamaño") + MascSg) (1 N + MascSg) (NOT -1 Det);
 SELECT:tamano_adj A IF (0 ("tamaño") + MascPl) (1 N + MascPl) (NOT -1 Det); 
 REMOVE:tamano_n A IF (0 ("tamaño"));
 
+REMOVE:el_mismo_det Pron IF (0/* ("el mismo") + MascSg) (1 N + MascSg); 
+REMOVE:el_mismo_det Pron IF (0/* ("el mismo") + MascPl) (1 N + MascPl); 
+REMOVE:el_mismo_det Pron IF (0/* ("el mismo") + FemSg) (1 N + FemSg); 
+REMOVE:el_mismo_det Pron IF (0/* ("el mismo") + FemPl) (1 N + FemPl); 
+
+SELECT:tanto_adj A IF (0 ("tanto") + MascSg) (1 MascSg) (NOT -1 Det); 
+SELECT:tanto_adj A IF (0 ("tanto") + MascPl) (1 MascPl) (NOT -1 Det); 
+SELECT:tanto_adj A IF (0 ("tanto") + FemSg) (1 FemSg) (NOT -1 Det); 
+SELECT:tanto_adj A IF (0 ("tanto") + FemPl) (1 FemPl) (NOT -1 Det); 
+
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
 REMOVE:adj_adv_3 Adv (-1C A) (0 A LINK 0 Adv) (NOT 1 Verb) ;
