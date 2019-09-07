@@ -245,6 +245,7 @@ REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (NOT -1 PuntosCardinals) (NOT -2
 REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (-1 >>>);
 REMOVE:este N IF (0 ("este")) (-1 SerEstarParecer) (0 Det + MascSg);
 REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=ser)
+REMOVE:no_este N IF (0 ("<este>")) (-1 ("no"));
 
 # Tio estas ligita al la (mis)difinoj de accionista__n, albañil__n, gilipollas__n kaj reh/én__n
 #SELECT:n_mf_1 Masc IF (0C N LINK NOT 0 Defensa) (-1C Vblex OR Prep OR ("como")) (NOT -1 PP) (1 <<< OR Prep) ;
@@ -412,6 +413,8 @@ REMOVE:dicho_adj Vblex IF (-1C ("dicho") + FemPl) (0 N + FemPl) (NOT -2 Det OR H
 SELECT:dicho_adj A IF (0 ("dicho")) (-1 Prep) (1 N OR NP); #en dicho G7
 #propiamente dicha
 SELECT:dicha Verb IF (0 ("decir")) (-1 Adv);
+#integrar bien dichas prioridades
+REMOVE:bien PreAdv (0 ("bien")) (1C A) (1C ("dicho"));
 
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
@@ -1185,6 +1188,9 @@ REMOVE:soler_salar_1 Salar (0 Salar) (1C Inf OR Enc) ;
 REMOVE:soler_salar_1b Salar (0 Salar) (1 Adv) (2C Inf OR Enc) ;
 REMOVE:soler_salar_2 Salar (0 Salar) (1C ("que")) ;
 
+#en poder de
+SELECT:en_poder N IF (0 ("<poder>"i)) (-1 ("<en>"i)) (1/* ("de"));
+
 SELECT:sentar Sentar (0 Sentar) (1* ("en") LINK 1 Det LINK 1 ("silla") OR ("sofá") OR ("butaca") OR ("sillón") OR ("banco") OR ("caballo") OR ("bicicleta") OR ("cámara") OR ("congreso"));
 SELECT:sentar Sentar (0 Sentar) (1 ("base") OR ("cimiento") OR ("fundamento") OR ("precedente") OR ("premisa") OR ("jurisprudencia"));
 SELECT:sentar Sentar (0 Sentar) (1 Det) (2 ("base") OR ("cimiento") OR ("fundamento") OR ("precedente") OR ("premisa") OR ("jurisprudencia"));
@@ -1199,7 +1205,7 @@ REMOVE:sentir_sentar Sentar (0 Sentar) (0 Sentir);
 REMOVE:creer_crear_0 Crear (0 Crear) (1 Adv) (2 ("en"));
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que"));
-REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg); # creer necesario/oportuno...
+REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) (NOT 1 ("dicho")); # creer necesario/oportuno...
 REMOVE:creer_crear_3 Creer (0 Crear) (1C A + Pl) (3C A + Pl) (4 N + Pl); # que crea nuevos y grandes inconvenientes
 REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Pl) (NOT 2 N + Pl); # que crea convenientes
 REMOVE:creer_crear_3 Crear (0 Crear) (1 PreAdv OR Adv) (2C A + Sg OR Adv); # creer necesario/oportuno...
