@@ -401,10 +401,14 @@ SELECT:solo_dos Adv IF (0 ("solo")) (1 Num);
 SELECT:solo_uno Adv IF (0 ("solo")) (1 ("uno") + Sg);
 
 #dicho
-SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det); 
-SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det); 
-SELECT:dicho_adj A IF (0 ("dicho") + FemSg) (1 N + FemSg) (NOT -1 Det); 
-SELECT:dicho_adj A IF (0 ("dicho") + FemPl) (1 N + FemPl) (NOT -1 Det); 
+SELECT:dicho_adj A IF (0 ("dicho") + MascSg) (1 N + MascSg) (NOT -1 Det OR Haber); 
+SELECT:dicho_adj A IF (0 ("dicho") + MascPl) (1 N + MascPl) (NOT -1 Det OR Haber); 
+SELECT:dicho_adj A IF (0 ("dicho") + FemSg) (1 N + FemSg) (NOT -1 Det OR Haber); 
+SELECT:dicho_adj A IF (0 ("dicho") + FemPl) (1 N + FemPl) (NOT -1 Det OR Haber); 
+REMOVE:dicho_adj Vblex IF (-1C ("dicho") + MascSg) (0 N + MascSg) (NOT -2 Det OR Haber); 
+REMOVE:dicho_adj Vblex IF (-1C ("dicho") + MascPl) (0 N + MascPl) (NOT -2 Det OR Haber); 
+REMOVE:dicho_adj Vblex IF (-1C ("dicho") + FemSg) (0 N + FemSg) (NOT -2 Det OR Haber); 
+REMOVE:dicho_adj Vblex IF (-1C ("dicho") + FemPl) (0 N + FemPl) (NOT -2 Det OR Haber); 
 SELECT:dicho_adj A IF (0 ("dicho")) (-1 Prep) (1 N OR NP); #en dicho G7
 #propiamente dicha
 SELECT:dicha Verb IF (0 ("decir")) (-1 Adv);
@@ -1099,7 +1103,7 @@ REMOVE:objetivo Vblex IF (0 ("objetivo"));
 REMOVE:harto Vblex IF (0 ("harto")) (NOT -1 Pro);
 #Lamento (y similares)
 SELECT:lamento Vblex IF (0 ("<lamento>"i)) (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
-SELECT:apoyo Vblex IF (0 ("<apoyo>"i))   (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
+#SELECT:apoyo Vblex IF (0 ("<apoyo>"i))   (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
 #Haces
 SELECT:haces Vblex IF (0 ("<haces>"i)) (NOT -1 Det + MascPl) (NOT 1/* ("de"));
 # medida 
