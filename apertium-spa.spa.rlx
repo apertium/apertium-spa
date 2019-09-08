@@ -536,6 +536,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
+REMOVE:mar NP IF (0 ("Mar")) (1 ("Egeo") OR ("Báltico") OR ("Mediterráno"));
 REMOVE:puente NP IF (0 ("Puente")) (1/* ("de")); 
 SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
