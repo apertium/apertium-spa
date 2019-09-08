@@ -416,8 +416,8 @@ SELECT:dicha Verb IF (0 ("decir")) (-1 Adv);
 #integrar bien dichas prioridades
 REMOVE:bien PreAdv (0 ("bien")) (1C A) (1C ("dicho"));
 
-SELECT:tamano_adj A IF (0 ("tamaño") + MascSg) (1 N + MascSg) (NOT -1 Det); 
-SELECT:tamano_adj A IF (0 ("tamaño") + MascPl) (1 N + MascPl) (NOT -1 Det); 
+#SELECT:tamano_adj A IF (0 ("tamaño") + MascSg) (1C N + MascSg) (NOT -1 Det OR N); 
+SELECT:tamano_adj A IF (0 ("tamaño") + MascPl) (1 N + MascPl) (NOT -1 Det OR N); 
 REMOVE:tamano_n A IF (0 ("tamaño"));
 
 REMOVE:el_mismo_det Pron IF (0/* ("el mismo") + MascSg) (1 N + MascSg); 
