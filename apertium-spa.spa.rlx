@@ -542,7 +542,8 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
-REMOVE:mar NP IF (0 ("Mar")) (1 ("Egeo") OR ("Báltico") OR ("Mediterráno"));
+REMOVE:mar NP IF (0 ("mar"i)) (1 ("egeo"i) OR ("báltico"i) OR ("mediterráno"i));
+REMOVE:mar NP IF (-1 ("mar"i)) (0 ("egeo"i) OR ("báltico"i) OR ("mediterráno"i));
 REMOVE:puente NP IF (0 ("Puente")) (1/* ("de")); 
 SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
@@ -774,6 +775,7 @@ SELECT:rayo_no_meteoro ("rayo"i) IF (0 ("rayo"i)) (1 RayoNoMeteoroWords) ;
 SELECT:rayo_meteoro ("rayo_meteoro"i) IF (0 ("rayo_meteoro"i)) (0*/* RayoMeteoroWords) ;
 REMOVE:rayo_0 ("rayo_meteoro"i) IF (0 ("rayo"i)) (0 ("rayo_meteoro"i)) ;
 
+SELECT:cubo_matematicas ("cubo_matemáticas"i) IF (0 ("cubo_matemáticas"i)) (-1 ("<al>"i)) (-2 ("elevar"i) OR (num));
 SELECT:cubo_matematicas ("cubo_matemáticas"i) IF (0 ("cubo_matemáticas"i)) (0*/* CuboMatematicasWords) ;
 REMOVE:cubo_0 ("cubo_matemáticas"i) IF (0 ("cubo"i)) (0 ("cubo_matemáticas"i)) ;
 
@@ -915,10 +917,10 @@ REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
 
 SELECT:andar_algo PreAdv IF (0 ("algo")) (-1 ("andar"));
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + MascSg) (-2 ("el") OR ("uno")) (-1 N + MascSg) (1 A + MascSg);
-SELECT:algo2 PreAdv IF (0 ("algo")) (1 Adj_PP + MascPl);
+SELECT:algo2 PreAdv IF (0 ("algo")) (1 Adj_PP + MascPl) (NOT 1 ("más"));
 SELECT:algo3 PreAdv IF (0 ("algo")) (1 Adj_PP + FemSg) (NOT 1 MascSg);
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + FemSg) (-1 N + FemSg) (1 A + FemSg);
-SELECT:algo4 PreAdv IF (0 ("algo")) (1 Adj_PP + FemPl);
+SELECT:algo4 PreAdv IF (0 ("algo")) (1 Adj_PP + FemPl) (NOT 1 ("más"));
 REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 Adv) (3 A + MascSg);
 REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
