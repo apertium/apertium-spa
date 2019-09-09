@@ -89,13 +89,13 @@
       </e>
     </pardef>
 
-    <pardef n="EL">
-   <!--   <e>
+    <!--<pardef n="EL">
+      <e>
         <p>
           <l><a/>EL<b/></l>
           <r>L<b/></r>
         </p>
-      </e> -->
+      </e> 
       <e>
         <p>
           <l>EL<b/></l>
@@ -109,7 +109,7 @@
         </p>
         <par n="caracter_general"/>
       </e>
-    </pardef>
+    </pardef>-->
 
 
 
