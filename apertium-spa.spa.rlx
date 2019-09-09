@@ -209,9 +209,11 @@ SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("
 SECTION
 
 
-REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (2 ("con"));
+REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (*2 ("con"));
+REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (-1 ("nada") OR ("qué"));
 SELECT:tenerque_vmod  Vbmod IF (0 ("tener# que")) (1/* Inf);
 REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (NOT 1/* Inf);
+SELECT:que_cnjsub CnjSub IF (0 ("que")) (-1 ("algo") OR ("mucho") OR ("poco") OR ("nada")) (1 Inf);
 SELECT:haber_vmod Vbmod IF (0 ("haber# de")) (1/* Inf);
 SELECT SUB:1:haberde Vblex IF (0 ("haber# de")) (-1 Vbmod);
 REMOVE SUB:1:haberde Vblex IF (0 ("haber# de")) (NOT -1 Vbmod);
