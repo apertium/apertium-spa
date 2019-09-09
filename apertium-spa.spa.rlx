@@ -542,8 +542,8 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
-REMOVE:mar NP IF (0 ("mar"i)) (1 ("egeo"i) OR ("báltico"i) OR ("mediterráno"i));
-REMOVE:mar NP IF (-1 ("mar"i)) (0 ("egeo"i) OR ("báltico"i) OR ("mediterráno"i));
+REMOVE:mar NP IF (0 ("mar"i)) (1 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
+REMOVE:mar NP IF (-1 ("mar"i)) (0 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
 REMOVE:puente NP IF (0 ("Puente")) (1/* ("de")); 
 SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
@@ -685,6 +685,9 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 #
 # PALABRAS PARTICULARES
 #
+
+SELECT:lista N IF (0 ("lista"i) + FemSg) (1 Det + FemSg);
+SELECT:lista N IF (0 ("lista"i) + FemPl) (1 Det + FemPl);
 
 SELECT:felipe_vi Num IF (0 ("<VI>")) (-1 NP);
 
