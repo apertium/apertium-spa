@@ -271,6 +271,7 @@ REMOVE:r_verb_1 Vblex (0 Vblex + Pers) (*1C Vblex + Pers BARRIER Cnj_Rel) (NOT 0
 REMOVE:cuyo_adj A IF (0 A) (0 N) (NOT 1 N) (-1 ("cuyo"));
 REMOVE:cuyo_m (f) IF (0 Masc LINK 0 Fem) (-1 ("cuyo") + Masc);
 REMOVE:cuyo_f (m) IF (0 Masc LINK 0 Fem) (-1 ("cuyo") + Fem);
+SELECT:bajo_pr Prep IF (0 ("<bajo>")) (1 ("cuyo"));
 
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
