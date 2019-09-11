@@ -274,7 +274,7 @@ REMOVE:cuyo_f (m) IF (0 Masc LINK 0 Fem) (-1 ("cuyo") + Fem);
 SELECT:bajo_pr Prep IF (0 ("<bajo>")) (1 ("cuyo"));
 
 #desear
-SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos); #el deseo, mi deseo
+SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
 SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
 
 # prn + verbo/nombre
@@ -690,6 +690,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 #
 # PALABRAS PARTICULARES
 #
+
+REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"))
 
 SELECT:lista N IF (0 ("lista"i) + FemSg) (1 Det + FemSg);
 SELECT:lista N IF (0 ("lista"i) + FemPl) (1 Det + FemPl);
