@@ -274,7 +274,8 @@ REMOVE:cuyo_f (m) IF (0 Masc LINK 0 Fem) (-1 ("cuyo") + Fem);
 SELECT:bajo_pr Prep IF (0 ("<bajo>")) (1 ("cuyo"));
 
 #desear
-SELECT:desear Vblex IF (0 ("desear")) (1 Inf);
+SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos); #el deseo, mi deseo
+SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
 
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
