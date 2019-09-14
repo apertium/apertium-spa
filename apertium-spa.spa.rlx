@@ -186,8 +186,8 @@ SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) 
 
 SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i) OR ("soplar"i);
 
-SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i);;
-SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("estado miembro"i) OR ("región"i) OR ("comunidad"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
+SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i) OR ("bolsa");
+SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("estado miembro"i) OR ("región"i) OR ("comunidad"i) OR ("provincia"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
 
 SET ColaSustanciaWords = ("pegar"i) OR ("adherir"i) OR ("encuadernar"i) OR ("esnifar"i) OR ("encolar"i) OR ("celo"i) OR ("resutante"i) OR ("remojar"i) OR ("laca"i) OR ("barniz"i) OR ("emulsión"i) OR ("inhalar"i) OR ("pegamento"i)  OR ("tijera"i) OR ("tijeras"i) OR ("papel"i) OR ("cartón"i) OR ("light"i) OR ("chocolate"i) OR ("vodka"i) OR ("whisky"i) OR ("ácido"i) OR ("químico"i) OR ("vodka"i) OR ("botella"i) OR ("vaso"i) OR ("refresco"i) OR ("lata"i) OR ("vodka"i) OR ("jarabe"i) OR ("<Pepsi>") OR ("<Fanta>") OR ("bebida"i) OR ("ron"i) OR ("frío"i) OR ("beber"i);
 SET ColaExtremidadWords = ("pelo"i);
@@ -441,6 +441,7 @@ SELECT:tanto_adj A IF (0 ("tanto") + MascPl) (1 MascPl) (NOT -1 Det);
 SELECT:tanto_adj A IF (0 ("tanto") + FemSg) (1 FemSg) (NOT -1 Det); 
 SELECT:tanto_adj A IF (0 ("tanto") + FemPl) (1 FemPl) (NOT -1 Det); 
 
+REMOVE:mas_menos_adv A IF (0 ("más") OR ("menos")) (1 A);
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
 REMOVE:adj_adv_3 Adv (-1C A) (0 A LINK 0 Adv) (NOT 1 Verb) ;
@@ -691,7 +692,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
-REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"))
+REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"));
 
 SELECT:lista N IF (0 ("lista"i) + FemSg) (1 Det + FemSg);
 SELECT:lista N IF (0 ("lista"i) + FemPl) (1 Det + FemPl);
