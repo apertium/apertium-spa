@@ -699,8 +699,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 #
 
 #demos
-SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + Masc);
-SELECT:demos_v Vblex (0 ("<demos>"i)) (NOT -1 Det + FemPl);
+SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + MascSg);
+SELECT:demos_v Vblex (0 ("<demos>"i)); #(NOT -1 Det + FemPl);
 
 REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"));
 
@@ -1364,6 +1364,7 @@ REMOVE:r_na_5_fscom A OR PP IF (-2 ("como") OR ("Como")) (-1 Det + $$FemSg) (0 N
 REMOVE:r_na_5_mpcom A OR PP IF (-2 ("como") OR ("Como")) (-1 Det + $$MascPl) (0 Noun_Adj_PP + $$MascPl LINK 0 N OR NP) (1 CM OR CnjCoo) (2 Barrera_Final_Estrict_SN) (NOT -1 DetDef) ;
 REMOVE:r_na_5_fpcom A OR PP IF (-2 ("como") OR ("Como")) (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 0 N OR NP) (1 CM OR CnjCoo) (2 Barrera_Final_Estrict_SN) (NOT -1 DetDef) ;
 
+# TODO: aquestes regles no estan justificades del tot. Cal provar d'eliminar-les.
 SELECT:s_na_1_ms N IF (-1 Det + $$MascSg) (0 Noun_Adj_PP + $$MascSg LINK NOT 0 NP) (1 <<< OR Prep OR Det) ;
 SELECT:s_na_1_fs N IF (-1 Det + $$FemSg) (0 Noun_Adj_PP + $$FemSg LINK NOT 0 NP) (1 <<< OR Prep OR Det) ;
 SELECT:s_na_1_mp N IF (-1 Det + $$MascPl) (0 Noun_Adj_PP + $$MascPl LINK NOT 0 NP) (1 <<< OR Prep OR Det) ;
