@@ -699,7 +699,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 #
 
 #demos
-REMOVE:demos_n ("demos") (0 ("demos"i)) (NOT -1 Det + Masc);
+SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + Masc);
 SELECT:demos_v Vblex (0 ("<demos>"i)) (NOT -1 Det + FemPl);
 
 REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"));
