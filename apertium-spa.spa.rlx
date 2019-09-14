@@ -208,6 +208,8 @@ SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("
 
 SECTION
 
+#fallo
+SELECT:fallo_n N (0 ("fallo")) (-1 ("sentencia") OR ("parte dispositiva") OR ("dispositva"));
 
 REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (*2 ("con"));
 REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (-1 ("nada") OR ("qué"));
@@ -272,6 +274,8 @@ REMOVE:cuyo_adj A IF (0 A) (0 N) (NOT 1 N) (-1 ("cuyo"));
 REMOVE:cuyo_m (f) IF (0 Masc LINK 0 Fem) (-1 ("cuyo") + Masc);
 REMOVE:cuyo_f (m) IF (0 Masc LINK 0 Fem) (-1 ("cuyo") + Fem);
 SELECT:bajo_pr Prep IF (0 ("<bajo>")) (1 ("cuyo"));
+
+REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 
 #desear
 SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
@@ -441,7 +445,9 @@ SELECT:tanto_adj A IF (0 ("tanto") + MascPl) (1 MascPl) (NOT -1 Det);
 SELECT:tanto_adj A IF (0 ("tanto") + FemSg) (1 FemSg) (NOT -1 Det); 
 SELECT:tanto_adj A IF (0 ("tanto") + FemPl) (1 FemPl) (NOT -1 Det); 
 
-REMOVE:mas_menos_adv A IF (0 ("más") OR ("menos")) (1 A);
+SELECT:bastante_preadv PreAdv IF (0 ("bastante")) (1 ("más") OR ("menos")) (1 A);
+SELECT:una_vez_mas_adj A IF (0 ("más")) (-1 ("vez")) (-2 ("<una>"i));
+SELECT:mas_menos_adv Adv IF (0 ("más") OR ("menos")) (1 A);
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
 REMOVE:adj_adv_3 Adv (-1C A) (0 A LINK 0 Adv) (NOT 1 Verb) ;
@@ -692,6 +698,10 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+#demos
+REMOVE:demos_n ("demos") (0 ("demos"i)) (NOT -1 Det + Masc);
+SELECT:demos_v Vblex (0 ("<demos>"i)) (NOT -1 Det + FemPl);
+
 REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"));
 
 SELECT:lista N IF (0 ("lista"i) + FemSg) (1 Det + FemSg);
@@ -870,7 +880,7 @@ REMOVE:presupuesto_2 (p1) IF (0 ("presupuesto")) (NOT -1 ("yo")) (NOT -1 Pro); #
 
 #SELECT:muchos_otros A IF (0 ("mucho"i)) (1 ("otro"i));
 
-SELECT:listo A IF (0 ("listo") OR ("seguro")) (-1 SerEstarParecer);
+SELECT:listo A IF (0 ("listo") OR ("seguro")) (-1 SerEstarParecer OR ("más") OR ("menos"));
 
 REMOVE:usted_unidad1 N IF (0 ("<Ud.>")); #Ud.=usted ud.=unidad
 REMOVE:usted_unidad2 Pron IF (0 ("<ud.>"));
@@ -933,7 +943,7 @@ SELECT:algo3 PreAdv IF (0 ("algo")) (1 Adj_PP + FemSg) (NOT 1 MascSg);
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + FemSg) (-1 N + FemSg) (1 A + FemSg);
 SELECT:algo4 PreAdv IF (0 ("algo")) (1 Adj_PP + FemPl) (NOT 1 ("más"));
 REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 Adv) (3 A + MascSg);
-REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg);
+REMOVE:algo0a PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascSg) (NOT 1 ("más"));
 SELECT:algo5 PreAdv IF (0 ("algo")) (1 Adv) (2 A + MascPl);
 SELECT:algo6 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemSg) (NOT 2 MascSg);
 SELECT:algo7 PreAdv IF (0 ("algo")) (1 Adv) (2 A + FemPl);
@@ -967,8 +977,6 @@ SELECT:probar_a Vblex IF (0 ("probar"i)) (1 ("a")) (2 Inf);
 
 REMOVE:cámara (m) IF (0 ("cámara"i)) (NOT -1 (det m)) (NOT -1 (adj m)) (NOT 1 (adj m)); #si no està determinat és femení
 REMOVE:parte_f (m) IF (0 ("parte"i)) (NOT -1 (det m)); #si no està determinat és femení
-
-REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 
 REMOVE:casero N IF (0 ("casero")) (NOT -1 Det) (NOT -1 Prep);
 
