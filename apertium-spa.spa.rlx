@@ -704,8 +704,9 @@ SELECT:demos_v Vblex (0 ("<demos>"i)); #(NOT -1 Det + FemPl);
 
 REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito") OR ("hallux") OR ("pie") OR ("pulgar") OR ("talipes"));
 
-SELECT:lista N IF (0 ("lista"i) + FemSg) (1 Det + FemSg);
-SELECT:lista N IF (0 ("lista"i) + FemPl) (1 Det + FemPl);
+SELECT:lista N IF (0 ("lista"i) + FemSg) (-1 Det + FemSg);
+SELECT:lista N IF (0 ("lista"i) + FemSg) (-2 Det + FemSg) (-1 FemSg);
+SELECT:lista N IF (0 ("lista"i) + FemPl) (-1 Det + FemPl);
 
 SELECT:felipe_vi Num IF (0 ("<VI>")) (-1 NP);
 
@@ -894,6 +895,7 @@ SELECT:nata_nom N IF (0 ("nata"i));                      # resto: helado de nata
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1/* ("a"i)); 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1 Adv) (2/* ("a"i)); 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (-1 Rel); 
+REMOVE:llamada N IF (0 ("llamada")) (-1 ("<la>"i)) (1 ("lista") OR ("política") OR MajIni OR unknown);
 
 SELECT:ave_tren (acr) IF (0 ("AVE") OR ("IBAN"));
 
