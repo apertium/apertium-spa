@@ -554,7 +554,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGUEDAD NOMBRE PROPIO - COMÚN
 #
 
-REMOVE:mesa NP iF (0 ("Mesa")) (1 ("de") OR ("sectorial") OR ("redondo") OR ("territorial") OR ("negociador") OR ("quirúrgico") OR ("general") OR ("técnico"));
+REMOVE:mesa (ant) IF (0 ("Mesa")) (NOT -1/* NP OR unknownMajIni) (NOT 1/* NP OR unknownMajIni);
 REMOVE:mar NP IF (0 ("mar"i)) (1 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
 REMOVE:mar NP IF (-1 ("mar"i)) (0 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
 REMOVE:puente NP IF (0 ("Puente")) (1/* ("de")); 
