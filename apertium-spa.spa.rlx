@@ -353,7 +353,7 @@ SELECT:r_bajo_0 A (0 ("bajo") OR ("Bajo")) (-1C PreAdv) ;
 REMOVE:r_bajo_1 Vblex (0 ("bajo") OR ("Bajo")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_bajo_2 Vblex (0 ("bajo") OR ("Bajo")) (*1 Vblex BARRIER Cnj_Rel) ;
 SELECT:bajo_3 Prep (0 ("bajo") OR ("Bajo")) (1 Det) ;
-SELECT:bajo_4 Prep (0 ("bajo") OR ("Bajo")) (-1 Copula) ;
+#SELECT:bajo_4 Prep (0 ("bajo") OR ("Bajo")) (-1 Copula) ;
 SELECT:bajo_5 Prep (0 ("bajo") OR ("Bajo")) (-1C N) (1C N) ;
 	# Económicamente es muy bajo el rango. XXXXX
 SELECT:debidoa_1 Prep (0 ("debido a") OR ("Debido a")) (NOT -1 ("ser") OR ("Ser")) ;
