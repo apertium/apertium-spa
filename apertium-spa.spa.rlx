@@ -699,6 +699,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
+
 #demos
 SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + MascSg);
 SELECT:demos_v Vblex (0 ("<demos>"i)); #(NOT -1 Det + FemPl);
