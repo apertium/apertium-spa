@@ -702,7 +702,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
 SELECT:ganado_v Vblex (0 ("ganar"i)) (1 ("<por>"i)) (NOT -1 Prep OR Pos OR Det);
 SELECT:promedio_n N (0 ("promedio"i)) (-1 Prep OR Pos OR Det);
-REMOVE:cultivar_v N (0 ("cultivar"i)) (NOT -1 Det OR Pos);
+REMOVE:cultivar_v N (0 ("<cultivar>"i)) (NOT -1 Det OR Pos);
 
 #demos
 SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + MascSg);
