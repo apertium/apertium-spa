@@ -1102,6 +1102,7 @@ SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 # distingo
 REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 # falta
+SELECT:falta Verb IF (0 ("falta")) (-1 Rel);
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
