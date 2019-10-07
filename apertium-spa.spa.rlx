@@ -699,6 +699,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+REMOVE:informe_n Vblex (0 ("informe")) (-1C Det OR Pos OR Prep);
+SELECT:expresa_v Vblex (0 ("expresar")) (1 N OR A) (NOT 1 Vblex + Pers) (-1 N OR A) (NOT -1 Vblex + Pers);
 SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
 SELECT:ganado_v Vblex (0 ("ganar"i)) (1 ("<por>"i)) (NOT -1 Prep OR Pos OR Det);
 SELECT:promedio_n N (0 ("promedio"i)) (-1 Prep OR Pos OR Det);
