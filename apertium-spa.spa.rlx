@@ -699,6 +699,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
+SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar"));
 REMOVE:informe_n Vblex (0 ("informe")) (-1C Det OR Pos OR Prep);
 SELECT:expresa_v Vblex (0 ("expresar")) (1 N OR A) (NOT 1 Vblex + Pers) (-1 N OR A) (NOT -1 Vblex + Pers);
 SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
@@ -767,9 +769,10 @@ REMOVE:radio3 Fem IF (0 ("radio"i) + Sg) (NOT 0*/* LaradioWords) (-1 Det + Pos +
 
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
 SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
-SELECT:mañana Adv IF (0 ("mañana")) (1 ("por la mañana") OR ("por la tarde") OR ("por la noche"));
+SELECT:mañana Adv IF (0 ("mañana")) (1 ("por la mañana") OR ("por la tarde") OR ("por la noche") OR ("a mediodía") OR ("a medianoche"));
 SELECT:mañana Adv IF (0 ("mañana")) (1/* ("por") OR ("a")) (2 ("tarde") OR ("noche") OR ("mediodía") OR ("mañana") OR ("medianoche"));
 SELECT:mañana Adv IF (0 ("mañana")) (1/* ("por") OR ("a")) (2 Det) (3 ("tarde") OR ("noche") OR ("mediodía") OR ("mañana") OR ("medianoche"));
+SELECT:mañana Adv IF (0 ("mañana")) (1 ("a")) (2 ("<las>")) ; # mañana a las 12
 
 SELECT:tarde_adv Adv IF (0 ("tarde")) (-1 Verb_Adv) (NOT -1 Det + FemSg); # siempre tarde, llegan tarde
 
@@ -903,8 +906,10 @@ SELECT:nata_nom N IF (0 ("nata"i));                      # resto: helado de nata
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1/* ("a"i)); 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1 Adv) (2/* ("a"i)); 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (-1 Rel); 
-REMOVE:llamada N IF (0 ("llamada")) (-1 ("<la>"i)) (1 N + FemSg OR MajIni OR unknown);
-REMOVE:llamada N IF (0 ("llamada")) (-1 ("<la>"i)) (1 A + FemSg) (2 N + FemSg OR MajIni OR unknown);
+REMOVE:llamada N IF (0 ("llamada") + FemSg) (1 N + FemSg OR MajIni OR unknown OR NP); # (-1 Det + FemSg)
+REMOVE:llamada N IF (0 ("llamada") + FemPl) (1 N + FemPl OR MajIni OR unknown OR NP); # (-1 Det + FemPl)
+REMOVE:llamada N IF (0 ("llamada") + FemSg) (-1 ("<la>"i)) (1 A + FemSg OR Num) (2 N + FemSg OR MajIni OR unknown);
+REMOVE:llamada N IF (0 ("llamada") + FemPl) (-1 ("<las>"i)) (1 A + FemPl OR Num) (2 N + FemPl OR MajIni OR unknown);
 
 SELECT:ave_tren (acr) IF (0 ("AVE") OR ("IBAN"));
 
@@ -947,7 +952,7 @@ REMOVE:nada_1 Verb IF (0 ("<nada>"i)) (NOT 0*/* NadarWords) (NOT -1 (ant));     
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 ("<que>"i));
 REMOVE:nada_2 Verb IF (0 ("nada"i)) (1 Prep);
 
-SELECT:andar_algo PreAdv IF (0 ("algo")) (-1 ("andar"));
+SELECT:andar_algo PreAdv IF (0 ("algo")) (-1 ("andar") OR ("resultar"));
 SELECT:algo1 PreAdv IF (0 ("algo")) (-2 Det + MascSg) (-2 ("el") OR ("uno")) (-1 N + MascSg) (1 A + MascSg);
 SELECT:algo2 PreAdv IF (0 ("algo")) (1 Adj_PP + MascPl) (NOT 1 ("más"));
 SELECT:algo3 PreAdv IF (0 ("algo")) (1 Adj_PP + FemSg) (NOT 1 MascSg);
