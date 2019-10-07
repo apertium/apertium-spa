@@ -903,7 +903,8 @@ SELECT:nata_nom N IF (0 ("nata"i));                      # resto: helado de nata
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1/* ("a"i)); 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (1 Adv) (2/* ("a"i)); 
 SELECT:llamar_verb Vblex IF (0 ("llamar"i)) (-1 Rel); 
-REMOVE:llamada N IF (0 ("llamada")) (-1 ("<la>"i)) (1 ("lista") OR ("política") OR MajIni OR unknown);
+REMOVE:llamada N IF (0 ("llamada")) (-1 ("<la>"i)) (1 N + FemSg OR MajIni OR unknown);
+REMOVE:llamada N IF (0 ("llamada")) (-1 ("<la>"i)) (1 A + FemSg) (2 N + FemSg OR MajIni OR unknown);
 
 SELECT:ave_tren (acr) IF (0 ("AVE") OR ("IBAN"));
 
