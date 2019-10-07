@@ -700,7 +700,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 #
 
 SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
-SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar"));
+SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
 REMOVE:informe_n Vblex (0 ("informe")) (-1C Det OR Pos OR Prep);
 SELECT:expresa_v Vblex (0 ("expresar")) (1 N OR A) (NOT 1 Vblex + Pers) (-1 N OR A) (NOT -1 Vblex + Pers);
 SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
@@ -717,6 +717,8 @@ REMOVE:valgo_adj A IF (0 ("valgo")) (NOT -1 ("rodilla") OR ("genu") OR ("cúbito
 SELECT:lista N IF (0 ("lista"i) + FemSg) (-1 Det + FemSg);
 SELECT:lista N IF (0 ("lista"i) + FemSg) (-2 Det + FemSg) (-1 FemSg);
 SELECT:lista N IF (0 ("lista"i) + FemPl) (-1 Det + FemPl);
+SELECT:lista N IF (0 ("lista"i) + FemSg) (1 MajIni OR unknown OR NP);
+
 
 SELECT:felipe_vi Num IF (0 ("<VI>")) (-1 NP);
 
