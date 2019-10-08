@@ -1588,9 +1588,9 @@ SELECT:n_a_eos_4 N IF (2C N) (1 CnjCoo) (0C Noun_Adj_PP LINK NOT 0 NP) (-1 Barre
 
 # NOM, NOM CONJ NOM
 
-SELECT:s_na_2n N IF (-2C N) (-1 CM) (0 Noun_Adj_PP) (1 CnjCoo) (2 Noun_Adj_PP) ; 
-SELECT:s_na_3n N IF (-3 CM) (-2C N) (-1 CnjCoo) (0 Noun_Adj_PP) (NOT 1 A) ; 
-SELECT:s_na_4n N IF (0 Noun_Adj_PP) (1 CM) (2C N) (1 CnjCoo) (2 Noun_Adj_PP) ; 
+SELECT:s_na_2n N IF (-2C N) (-1 CM) (0 Noun_Adj_PP) (1 CnjCoo) (2 Noun_Adj_PP) (NOT 0 Det); 
+SELECT:s_na_3n N IF (-3 CM) (-2C N) (-1 CnjCoo) (0 Noun_Adj_PP) (NOT 1 A) (NOT 0 Det) ; 
+SELECT:s_na_4n N IF (0 Noun_Adj_PP) (1 CM) (2C N) (1 CnjCoo) (2 Noun_Adj_PP) (NOT 0 Det); 
 # compositor, teórico y pedagogo
 # varios religiosos, pensadores y políticos
 
