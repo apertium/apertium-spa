@@ -699,6 +699,11 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+
+#puesto que
+REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 Det OR Pos) (-1 MascSg);
+REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-2 Det OR Pos) (-2 MascSg) (-1 Adj_PP + MascSg);
+SELECT:puesto_que CnjAdv (0 ("puesto que"));
 SELECT:n_tales_como N IF (0 N) (1 ("<tales como>")) (NOT -1 N);
 SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
 SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
