@@ -324,10 +324,15 @@ REMOVE:detpl_vb_adjsg A IF (0 Vblex) (0 (adj sg)) (-1 (prn pro pl)) (NOT 0 (pp))
 REMOVE:detpl_vb_nm N IF (0 Vblex) (0 N + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp)); #la motivo
 REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 A + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp));
 
-
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
 
+# consumir / consumar
+SET ConsumirWords = ("combustible") OR ("gasolina") OR ("gasóleo") OR ("gasoil") OR ("queroseno") OR ("alimento") OR ("carne") OR ("huevo");
+SET ConsumarWords = ("matrimonio") OR ("relación") OR ("amor") OR ("acto") OR ("hecho");
+REMOVE:consumar ("consumir") IF (0 ("consumir")) (0 ("consumar")) (0*/* ConsumarWords) (NOT 0*/* ConsumirWords);
+REMOVE:consumir ("consumar") IF (0 ("consumir")) (0 ("consumar")); 
+SELECT:consumo N IF (0 ("consumo")) (-1 N) ; #infrecuente: yo consumo
 
 # preposiciones / verbos
 # no tratamos "cabo" porque es muy infrecuente (+ nombre!, como "bajo", que también es adj)
@@ -482,7 +487,7 @@ SELECT:subj1 PRS (*-1 ("que") OR ("Que") BARRIER (Cnj_Rel_End)) (*-1 VerboSubj L
 
 #REMOVE:subj2 PRS (*-1 >>> BARRIER CnjAdv OR CnjSub OR Rel) (NOT -1 ("no") OR ("No") OR ("nunca") OR ("Nunca")) (0C Verb) ;
 SELECT:subj3 PRS (*-1 ("ser# .*"r) LINK 1 ("que")) (0C Verb) ;
-SELECT:subj4 PRS (*-1 ("ser") LINK 1 A LINK 1 ("que")) (0C Verb) ;
+SELECT:subj4 PRS (*-1 ("ser") LINK 1 A LINK 1 ("que")) (0C Verb) ;  #TODO: se necesitan mejores límites
 SELECT:subj5 PRS (*-1 ("ser") LINK 1 Adv_PreAdv LINK 1 A LINK 1 ("que")) (0C Verb) ;
 	# es común que la persona sienta la certeza
 	# es posible que vengas.
@@ -1211,12 +1216,6 @@ SELECT:pendiente_adj A IF (0 ("pendiente")) (-1 Estar);
 SELECT:añada_v Vblex IF (0 ("añada")) (-1 ("cuando") OR ("si") OR ("cuanto") OR ("como"));
 #comida
 SELECT:comida_n N IF (0 ("comida")) (1 ("basura"));
-# consumir / consumar
-SET ConsumirWords = ("combustible") OR ("gasolina") OR ("gasóleo") OR ("gasoil") OR ("queroseno") OR ("alimento") OR ("carne") OR ("huevo");
-SET ConsumarWords = ("matrimonio") OR ("relación") OR ("amor") OR ("acto") OR ("hecho");
-REMOVE:consumar ("consumir") IF (0 ("consumir")) (0 ("consumar")) (0*/* ConsumarWords) (NOT 0*/* ConsumirWords);
-REMOVE:consumir ("consumar") IF (0 ("consumir")) (0 ("consumar")); 
-SELECT:consumo N IF (0 ("consumo")) (-1 N) ; #infrecuente: yo consumo
 #refleja
 REMOVE:refleja_noadj A (0 ("reflejar")) (1 N OR A OR Det OR Adv OR Rel OR CnjSub OR CnjAdv);
 SELECT:refleja_adj A (0 ("<refleja>"i)) (-1 Copula) (-2 N + FemSg);
