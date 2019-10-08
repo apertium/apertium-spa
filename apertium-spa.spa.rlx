@@ -776,7 +776,7 @@ REMOVE:radio2 Masc IF (0 ("radio"i) + Pl) (0*/* LaradioWords) (NOT -1 Det + Masc
 REMOVE:radio3 Fem IF (0 ("radio"i) + Sg) (NOT 0*/* LaradioWords) (-1 Det + Pos + (mf));
 
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 Det + FemSg); # esta/una/la mañana
-SELECT:mañana_nom N IF (0 ("mañana")) (-1 Adj_PP + FemSg) (-2 Det + FemSg);
+SELECT:mañana_nom N IF (0 ("mañana")) (-1 Adj_PP + FemSg) (-2 Det + FemSg) (NOT -1 N);
 SELECT:mañana_nom N IF (0 ("mañana")) (1 CnjCoo OR CM) (2 ("tarde") OR ("noche") OR ("madrugada")); 
 #SELECT:mañana_nom N IF (0 ("mañana")) (-1 CnjCoo OR CM) (-2 ("tarde") OR ("noche") OR ("madrugada")); 
 SELECT:mañana Adv IF (0 ("mañana"));
