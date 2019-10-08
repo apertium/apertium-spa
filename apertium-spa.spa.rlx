@@ -705,6 +705,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
 REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
+REMOVE:este_año_n Adv (0 ("este año")) (1 ("y")) (2 ("este"));
 SELECT:este_año_adv Adv (0 ("este año"));
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 Det OR Pos) (-1 MascSg);
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-2 Det OR Pos) (-2 MascSg) (-1 Adj_PP + MascSg);
