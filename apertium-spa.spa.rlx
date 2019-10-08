@@ -699,10 +699,11 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 # PALABRAS PARTICULARES
 #
 
+SELECT:n_tales_como N IF (0 N) (1 ("<tales como>")) (NOT -1 N);
 SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
 SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
 REMOVE:informe_n Vblex (0 ("informe")) (-1C Det OR Pos OR Prep);
-SELECT:expresa_v Vblex (0 ("expresar")) (1 N OR A) (NOT 1 Vblex + Pers) (-1 N OR A) (NOT -1 Vblex + Pers);
+SELECT:expresa_v Vblex (0 ("expresar")) (1 N) (NOT 1 Vblex + Pers OR Prep) (-1 N) (NOT -1 Vblex + Pers OR ("forma") OR ("manera"));
 SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
 SELECT:ganado_v Vblex (0 ("ganar"i)) (1 ("<por>"i)) (NOT -1 Prep OR Pos OR Det);
 SELECT:promedio_n N (0 ("promedio"i)) (-1 Prep OR Pos OR Det);
@@ -1130,7 +1131,7 @@ SELECT:mejor3 A IF (-1 Det + MascSg) (0 ("mejor") + MascSg) (1 N + MascSg);
 SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
-SELECT:qué A IF (0 ("qué")) (1 N) (NOT 1 Copula OR Vbmod OR Vbhaver);
+SELECT:qué A IF (0 ("qué")) (1 N OR NP) (NOT 1 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascSg) (2 N + MascSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascPl) (2 N + MascPl) (NOT 2 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 FemSg) (2 N + FemSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
