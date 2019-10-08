@@ -775,7 +775,8 @@ REMOVE:radio2 Masc IF (0 ("radio"i) + Pl) (0*/* LaradioWords) (NOT -1 Det + Masc
 
 REMOVE:radio3 Fem IF (0 ("radio"i) + Sg) (NOT 0*/* LaradioWords) (-1 Det + Pos + (mf));
 
-SELECT:mañana_nom N IF (0 ("mañana")) (-1 (det f sg)) ; # esta/una/la mañana
+SELECT:mañana_nom N IF (0 ("mañana")) (-1 Det + FemSg); # esta/una/la mañana
+SELECT:mañana_nom N IF (0 ("mañana")) (-1 Adj_PP + FemSg) (-2 Det + FemSg);
 SELECT:mañana_nom N IF (0 ("mañana")) (1 CnjCoo OR CM) (2 ("tarde") OR ("noche") OR ("madrugada")); 
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 CnjCoo OR CM) (-2 ("tarde") OR ("noche") OR ("madrugada")); 
 SELECT:mañana Adv IF (0 ("mañana"));
@@ -1122,7 +1123,7 @@ SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 # distingo
 REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 # falta
-SELECT:falta Verb IF (0 ("falta")) (-1 Rel) (NOT -1 ("cuyo"));
+SELECT:falta Verb IF (0 ("falta")) (-1 Rel OR ("aún") OR ("todavía")) (NOT -1 ("cuyo"));
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
