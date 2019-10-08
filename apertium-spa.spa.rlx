@@ -254,6 +254,7 @@ REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (-1 >>>);
 REMOVE:este N IF (0 ("este")) (-1 SerEstarParecer) (0 Det + MascSg);
 REMOVE:este_es Ir IF (-1 ("este")) (0 Ser) (0 Ir); # más probable: este fue (=ser)
 REMOVE:no_este N IF (0 ("<este>")) (-1 ("no"));
+REMOVE:este N IF (0 ("este")) (1 CnjCoo) (2 (dem));
 
 # Tio estas ligita al la (mis)difinoj de accionista__n, albañil__n, gilipollas__n kaj reh/én__n
 #SELECT:n_mf_1 Masc IF (0C N LINK NOT 0 Defensa) (-1C Vblex OR Prep OR ("como")) (NOT -1 PP) (1 <<< OR Prep) ;
@@ -1411,7 +1412,7 @@ SELECT:s_na_1_fp N IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK NOT 0 NP)
 SELECT:n_a_eos_1 N IF (0 Noun_Adj_PP LINK NOT 0 Adv OR PP OR Ger OR Inf OR NP OR ("ser") OR ("sino")) (-1C Vblex) (NOT -1 PP OR ("hablar") OR VPred) (1 Barrera_Final_Estrict_SN) ;
 	# detonar explosivos.
 	# nos vino impuesto.
-SELECT:n_a_eos_1b N IF (0 Noun_Adj_PP LINK NOT 0 Adv OR PP OR Ger OR Inf OR NP OR ("ser") OR ("sino")) (-1C Vblex) (NOT -1 PP OR ("hablar") OR VPred) (1 CnjCoo) (2 Barrera_Final_Estrict_SN) ;
+SELECT:n_a_eos_1b N IF (0 Noun_Adj_PP LINK NOT 0 Adv OR PP OR Ger OR Inf OR NP OR ("ser") OR ("sino")) (-1C Vblex) (NOT -1 PP OR ("hablar") OR VPred) (1 CnjCoo) (2 Barrera_Final_Estrict_SN) (NOT 0 Det);
 	# detonando explosivos y derrumbando
 
 SELECT:n_a_eos_2 N IF (0 Noun_Adj_PP LINK NOT 0 NP OR ("ser") OR ("sobre")) (-1 Det) (NOT -1 ("este") OR ("Este")) (1 Barrera_Final_Estrict_SN) ;
@@ -1609,8 +1610,8 @@ SELECT:s_na_4a A IF (0 Noun_Adj_PP) (1 CM) (2C A) (1 CnjCoo) (2 Noun_Adj_PP) ;
 
 # NOM, NOM,
 
-SELECT:s_ncnc1 N IF (-2C N) (-1 CM) (0 Noun_Adj_PP LINK NOT 0 NP) (1 CM OR CnjCoo) (NOT 0 ("ser"i));
-SELECT:s_ncnc2 N IF (-4 Det) (-3C N) (-2 CM) (-1 Det) (0 Noun_Adj_PP LINK NOT 0 NP) (1 CM OR CnjCoo) ;
+SELECT:s_ncnc1 N IF (-2C N) (-1 CM) (0 Noun_Adj_PP LINK NOT 0 NP) (1 CM OR CnjCoo) (NOT 0 ("ser"i) OR Det);
+SELECT:s_ncnc2 N IF (-4 Det) (-3C N) (-2 CM) (-1 Det) (0 Noun_Adj_PP LINK NOT 0 NP) (1 CM OR CnjCoo) (NOT 0 Det);
 
 # ADJ, ADJ,
 
