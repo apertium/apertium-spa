@@ -778,7 +778,7 @@ REMOVE:radio3 Fem IF (0 ("radio"i) + Sg) (NOT 0*/* LaradioWords) (-1 Det + Pos +
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 Det + FemSg); # esta/una/la mañana
 SELECT:mañana_nom N IF (0 ("mañana")) (-1 Adj_PP + FemSg) (-2 Det + FemSg);
 SELECT:mañana_nom N IF (0 ("mañana")) (1 CnjCoo OR CM) (2 ("tarde") OR ("noche") OR ("madrugada")); 
-SELECT:mañana_nom N IF (0 ("mañana")) (-1 CnjCoo OR CM) (-2 ("tarde") OR ("noche") OR ("madrugada")); 
+#SELECT:mañana_nom N IF (0 ("mañana")) (-1 CnjCoo OR CM) (-2 ("tarde") OR ("noche") OR ("madrugada")); 
 SELECT:mañana Adv IF (0 ("mañana"));
 # sin contexto (ej. en una tabla) no es posible desambiguar
 #SELECT:mañana Adv IF (0 ("mañana")) (-1 Verb_Prep) ; # vendré mañana, el día de mañana
