@@ -1143,8 +1143,8 @@ REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 SELECT:falta Verb IF (0 ("falta")) (-1 Rel OR ("aún") OR ("todavía")) (NOT -1 ("cuyo"));
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #pase
-SELECT:pase_v Verb IF (0 ("<pase>")) (NOT -1 Det + MascSg) (NOT -1 Pos + MascSg);
-SELECT:pase_v Verb IF (0 ("<pases>")) (NOT -1 Det + MascPl) (NOT -1 Pos + MascPl); # Pero "cuando los pases" podría ser verbo
+SELECT:pase_v Verb IF (0 ("<pase>"i)) (NOT -1 Det + MascSg) (NOT -1 Pos + MascSg);
+SELECT:pase_v Verb IF (0 ("<pases>"i)) (NOT -1 Det + MascPl) (NOT -1 Pos + MascPl); # Pero "cuando los pases" podría ser verbo
 
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
