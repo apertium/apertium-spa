@@ -169,7 +169,7 @@ SET MangoNotFruitWords = ("acero"i) OR ("azada"i) OR ("levantar"i) OR ("alzar"i)
 
 SET VinoWords = ("beber") OR ("Beber") OR ("tomar") OR ("Tomar") OR ("comprar") OR ("Comprar") OR ("vender") OR ("Vender");
 SET EntreCon = ("entre"i) OR ("con"i);
-SET EntendimientoWords = ("vía"i) OR ("camino"i) OR ("falta"i) OR ("buscar"i) OR ("intentar"i) OR ("encontrar"i) OR ("cauce"i);
+SET EntendimientoWords = ("memorándum") OR ("memorandum") OR ("vía"i) OR ("camino"i) OR ("falta"i) OR ("buscar"i) OR ("intentar"i) OR ("encontrar"i) OR ("cauce"i);
 
 SET CuartoHabitacionWords = ("dormir"i) OR ("jugar"i) OR  ("decorar"i) OR ("pintar"i) ;
 SET CuartoDeHabitacionWords = ("matrimonio"i)  OR ("colada"i) OR ("juego"i) OR ("juguete"i) OR ("niño"i) OR ("bebé"i) OR ("plancha"i) OR ("niñera"i) OR ("trasto"i) OR ("muchacho"i) OR ("invitar"i) OR ("huésped"i) OR ("primo"i) OR ("abuelo"i) OR ("padre"i) OR ("madre"i) OR ("hermano"i) OR ("tío"i) OR ("lectura"i);
@@ -663,7 +663,7 @@ SET ExcepDirector = ("ejecutivo") OR ("comercial") OR ("financiero") OR ("genera
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1 Cargos + Sg) (0C Verb OR A) (0 MajIni) (NOT 0 ("alto") OR ("primer") OR Cargos OR ExcepDirector) (NOT -2 ("<I>")); # Sr. Barón
 
 # no traduir "di" en "di Maria, di Pietro, etc."; van den Eynde; le Chant ...
-SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR ("<le>"i) OR ("<un>"i) OR ("<une>"i)) (1 MajIni2); 
+SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<di>"i) OR ("<le>"i)) (1 MajIni2); 
 SUBSTITUTE:di_nompropi (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0 ("<den>"i)) (-1 ("<van>"i) OR ("<von>"i)); 
 
 SELECT:París NP IF (0 ("<París>"));
