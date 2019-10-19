@@ -631,6 +631,7 @@ SELECT:nom_propio3 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 Adv) (2 Pron) (3 Ver
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 NP);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (NOT 2 Verb + Pers);
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
+REMOVE:iran NP IF (0 ("<Caen>")) (-1 >>>); #Caen los precios
 
 REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Domeño. Pego.
 REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela, Vilallonga
