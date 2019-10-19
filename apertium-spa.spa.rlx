@@ -227,7 +227,7 @@ SELECT:este_deber Det IF (0 Det + MascSg) (1/* ("deber") + MascSg); #este deber 
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (NOT 1/* Inf);
 REMOVE:r_cuanto_vblex_1 N IF (0 Vblex) (0 (n f)) (-1 AdjItgM) (-1 PrnItgM);
 
-SELECT:debe_n N IF (0 ("<debe>"i)) (-1/* Prep OR ("<el>"i)) (NOT -1 ("como") OR Rel) (NOT -1 (META:/["«“'‘]/r));
+SELECT:debe_n N IF (0 ("<debe>"i)) (-1 ("<el>"i) OR ("de") OR ("a") OR ("en") OR ("con") OR ("<del>"i) OR ("<al>"i)) (NOT -1 ("como") OR Rel) (NOT -1 (META:/["«“'‘]/r));
 REMOVE:debe_n N IF (0 ("<debe>"i));
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (NOT 1 N);
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (1 ("ser"));
@@ -712,7 +712,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR (
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
 #aunque no encaje #TODO:, si no completo, 
-SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("como") OR ("sobre"));
+SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("como") OR ("sobre") OR ("mejor")) (NOT 0 Adj_PP LINK 1 CM);
 SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
 
 #
