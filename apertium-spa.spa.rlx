@@ -226,6 +226,9 @@ REMOVE:no_vmod Vbmod IF (0 ("deber") OR ("haber")) (0 Inf) (-2 Det + MascSg) (-1
 SELECT:este_deber Det IF (0 Det + MascSg) (1/* ("deber") + MascSg); #este deber de informar
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (NOT 1/* Inf);
 REMOVE:r_cuanto_vblex_1 N IF (0 Vblex) (0 (n f)) (-1 AdjItgM) (-1 PrnItgM);
+
+SELECT:debe_n N IF (0 ("<debe>"i)) (-1/* Prep OR DetDef + MascSg);
+REMOVE:debe_n N IF (0 ("<debe>"i));
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (NOT 1 N);
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (1 ("ser"));
 SELECT:r_deber_vblex_1 Vblex IF (0 Deber) (NOT 1/* Inf);
@@ -707,12 +710,14 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
+#aunque no encaje
+SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
+SELECT:aunque_no_verb Copula IF (0 Copula + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
+
 #
 # PALABRAS PARTICULARES
 #
 
-
-#puesto que
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
@@ -720,6 +725,7 @@ REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
 REMOVE:este_año_n Adv (0 ("este año")) (1 ("y")) (2 ("este"));
 SELECT:este_año_adv Adv (0 ("este año"));
 
+#puesto que
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 ("o") OR ("y")) (-2 ("plaza") OR ("cargo") OR ("ocupación"));
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (1 ("se")) (2 ("convocar")) (-1 >>>);
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 Det OR Pos) (-1 MascSg);
