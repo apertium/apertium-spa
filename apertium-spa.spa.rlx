@@ -227,7 +227,7 @@ SELECT:este_deber Det IF (0 Det + MascSg) (1/* ("deber") + MascSg); #este deber 
 REMOVE:no_vmod Vbmod IF (0 ("deber# de") OR ("haber# de")) (0 Inf) (NOT 1/* Inf);
 REMOVE:r_cuanto_vblex_1 N IF (0 Vblex) (0 (n f)) (-1 AdjItgM) (-1 PrnItgM);
 
-SELECT:debe_n N IF (0 ("<debe>"i)) (-1/* Prep OR DetDef + MascSg);
+SELECT:debe_n N IF (0 ("<debe>"i)) (-1/* Prep OR ("<el>"i)) (NOT -1 ("como") OR Rel) (NOT -1 (META:/["«“'‘]/r));
 REMOVE:debe_n N IF (0 ("<debe>"i));
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (NOT 1 N);
 SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (1 ("ser"));
@@ -663,8 +663,8 @@ SELECT:don_nombre (ant) IF (0 (ant)) (-1 ("<D.>"));
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola); # Más riesgo de problemas con adj.!
 REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola);   #Sirve de algo?
 #de Tuesten
-SUBSTITUTE:nom_propi3 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0C Verb + Pers + MajIni) (-1/* Prep);
-REPLACE:nom_propi4 (np) Verb IF (0C Verb + Pers + MajIni) (-1/* Prep);
+SUBSTITUTE:nom_propi3 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (0C Verb + Pers + MajIni) (-1/* Prep) (NOT -1 (META:/["«“'‘]/r));
+REPLACE:nom_propi4 (np) Verb IF (0C Verb + Pers + MajIni) (-1/* Prep) (NOT -1 (META:/["«“'‘]/r));
 
 SET ExcepDirector = ("ejecutivo") OR ("comercial") OR ("financiero") OR ("general") OR ("provisional") OR ("territorial") OR ("económico") OR ("autonómico") OR ("corporativo") OR ("plenipotenciario") OR ("deportivo") OR ("interino") OR ("regional") OR ("creativo") OR ("nacional") OR ("estatal");
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1 Cargos + Sg) (0C Verb OR A) (0 MajIni) (NOT 0 ("alto") OR ("primer") OR Cargos OR ExcepDirector) (NOT -2 ("<I>")); # Sr. Barón
@@ -711,14 +711,15 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
-#aunque no encaje
-SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
-SELECT:aunque_no_verb Copula IF (0 Copula + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
+#aunque no encaje #TODO:, si no completo, 
+SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("como") OR ("sobre"));
+SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
 
 #
 # PALABRAS PARTICULARES
 #
 
+REMOVE:exento_v Vblex IF (0 ("exento"));
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
@@ -741,6 +742,8 @@ SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 
 SELECT:ganado_v Vblex (0 ("ganar"i)) (1 ("<por>"i)) (NOT -1 Prep OR Pos OR Det);
 SELECT:promedio_n N (0 ("promedio"i)) (-1 Prep OR Pos OR Det);
 REMOVE:cultivar_v N (0 ("<cultivar>"i)) (NOT -1 Det OR Pos);
+
+REMOVE:presente_n Vblex IF (0 ("presente")) (-1 SerEstarParecer);
 
 #demos
 SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + MascSg);
