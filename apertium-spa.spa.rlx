@@ -202,6 +202,10 @@ SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR
 
 SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("director") OR ("Dña.") OR ("D.ª") OR ("D.") OR ("Sr.") OR ("Sra.") OR ("Sres.") OR ("Sras.");
 
+### Muy improbables
+
+REMOVE:exento_adj Vblex IF (0 ("exento"));
+
 ###############################################################################
 #  Morphological disambiguation
 #
@@ -711,11 +715,15 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
+#aunque no encaje #TODO:, si no completo,  aunque no libertad para (NOT 1 CM)
+SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor")) (NOT -2 ("como"));
+SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
+
+
 #
 # PALABRAS PARTICULARES
 #
 
-REMOVE:exento_adj Vblex IF (0 ("exento"));
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
 REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
@@ -980,6 +988,7 @@ SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
 
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
+SELECT:nada_v Verb IF (0 ("nada")) (-1 ("no"));
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep);
@@ -1379,11 +1388,6 @@ SELECT:nom_alguno N IF (0 N + FemSg) (1C ("alguno_negativo") + FemSg) (NOT 0 A);
 SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo") + MascSg) (NOT 0 A);
 
 REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
-
-
-#aunque no encaje #TODO:, si no completo,  aunque no libertad para (NOT 1 CM)
-SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor")) (NOT -2 ("como"));
-SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
 
 
 ## Desambiguación ADJ (+PP) - NOMBRE
