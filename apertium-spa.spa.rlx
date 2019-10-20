@@ -1221,6 +1221,7 @@ REMOVE:harto Vblex IF (0 ("harto")) (NOT -1 Pro);
 #Lamento (y similares)
 SELECT:lamento Vblex IF (0 ("<lamento>"i)) (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
 #SELECT:apoyo Vblex IF (0 ("<apoyo>"i))   (NOT -1 Det + MascSg) (NOT 1/* ("de")) (NOT -1 Prep);
+SELECT:apoyo N IF (0 ("apoyo")) (1 ("financiero") OR ("logístico") OR ("técnico") OR ("económico") OR ("social"));
 #Haces
 SELECT:haces Vblex IF (0 ("<haces>"i)) (NOT -1 Det + MascPl) (NOT 1/* ("de"));
 # medida 
