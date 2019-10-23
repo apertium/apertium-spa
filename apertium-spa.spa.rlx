@@ -901,6 +901,7 @@ REMOVE:entendimiento_0 ("entendimiento_acuerdo"i) IF (0 ("entendimiento"i)) (0 (
 SELECT:cuenta_1 Verb IF (0 ("contar"i)) (1 ("conmigo"i) OR ("contigo"i) OR ("consigo"i));
 SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 ("con"i)) (NOT -1 Det);
 SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 Adv) (2 ("con"));
+SELECT:cuenta_2 Verb IF (0 ("contar"i)) (1 ("usted")) (2 ("con"i)) (NOT -1 Det);
 SELECT:cuenta_2 Verb IF (0 ("contar"i)) (-1 ("no"));
 
 SELECT:fuera Adv IF (0 ("<fuera>"i)) (-1 ("situar"i) OR ("colocar"i) OR ("poner"i) OR ("ubicar"i));
