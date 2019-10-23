@@ -1135,7 +1135,7 @@ REMOVE:turno Vblex IF (0 ("turno")) (1 A + MascSg);
 #tramo:
 REMOVE:tramo Vblex IF (0 ("tramo") OR ("modelo") OR ("proyecto")) (NOT -1 ("yo") OR Pro);
 #río 
-SELECT:río N IF (0 ("río") OR ("modelo")) (1 MajIni);
+SELECT:río N IF (0 ("río") OR ("modelo") OR ("prestamista")) (1 MajIni);
 #sede
 SELECT:sede N IF (0 ("sede")) (1 ("de"));
 # trabajo
