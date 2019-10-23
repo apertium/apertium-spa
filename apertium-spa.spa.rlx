@@ -971,7 +971,7 @@ REMOVE:uno_unir1 Vblex IF (0 ("uno"i)) (1/* ("de"i) OR ("del cual"i)) (NOT -1 (p
 REMOVE:uno_unir2 Vblex IF (0 ("uno"i)) (-1 ("lo")); #lo uno (podría ser verbo?)
 REMOVE:uno_unir3 Vblex IF (0 ("<uno>"i)) (NOT -1 Pro);
 SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("como")) (2 ("otro")); 
-SELECT:uno_como_otro Pron IF (0 ("uno")) (1 ("y") OR ("o") OR ("tras") OR ("ni")) (2 ("otro")) (NOT 3 A OR N);
+SELECT:uno_como_otro Pron IF (0 ("uno")) (1 Prep OR CnjCoo OR ("tras")) (2 ("otro")) (NOT 3 A OR N);
 
 
 SELECT:cierto_adj A IF (0 ("cierto") + MascSg) (-1 ("uno") + MascSg + Det); #un cierto
