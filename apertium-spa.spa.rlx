@@ -76,6 +76,8 @@ SET MascPl2 = (m pl) OR (m sp) OR (mf pl) OR (mf sp) ;
 SET FemSg2 = (f sg) OR (f sp) OR (mf sg) OR (mf sp) ;
 SET FemPl2 = (f pl) OR (f sp) OR (mf pl) OR (mf sp) ;
 
+SET GN = MascSg OR MascPl OR FemSg OR FemPl;
+
 SET Pers = (p1) OR (p2) OR (p3) ;
 
 
@@ -719,6 +721,8 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor")) (NOT -2 ("como"));
 SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
 
+#que afecta, que presente
+SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR Rel);
 
 #
 # PALABRAS PARTICULARES
@@ -747,6 +751,7 @@ SELECT:promedio_n N (0 ("promedio"i)) (-1 Prep OR Pos OR Det);
 REMOVE:cultivar_v N (0 ("<cultivar>"i)) (NOT -1 Det OR Pos);
 
 REMOVE:presente_n Vblex IF (0 ("presente")) (-1 SerEstarParecer);
+
 
 #demos
 SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + MascSg);
@@ -1261,6 +1266,7 @@ SELECT:amigo3 N IF (0 ("amigo") + MascPl) (-1 A + MascPl);
 SELECT:amigo4 N IF (0 ("amigo") + FemPl) (-1 A + FemPl);
 
 #medio
+SELECT:medio_adj A IF (0 ("medio") + &&GN) (-1 ("importe") + &&GN);
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
 #supuesto
 SELECT:supuesto N IF (0 ("supuesto")) (1 ("contencioso"));
