@@ -695,27 +695,6 @@ SET NOT_Adj = Word - Words1;
 SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar") OR ("basar");
 SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")) (-2 ("manera") OR ("forma") OR ("lugar") OR ("estado")); 
-
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2 ("acuerdo") OR ("desacuerdo")) (-3 ("en") OR ("de"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("acuerdo") BARRIER ("en") LINK -1 ("de") LINK -1* Estar);
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo") OR ("acuerdo") BARRIER ("en") LINK -1* ("en") CBARRIER NOT_Adj LINK -1* Estar);
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo") OR ("hacer# hincapié") OR ("hacer# especial hincapié") BARRIER ("en"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2*/* VerbosRigenCon BARRIER ("con"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2*/* VerbosRigenEn BARRIER ("en"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") OR ("convenir") BARRIER NOT_Adv) (NOT -2 N);
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2 ("acento") OR ("énfasis") OR ("confianza"));
-
-SET Barrier1 = Word \ Adv \ PreAdv \ Det;
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("acento") OR ("énfasis") BARRIER ("en") LINK -1* ("poner") OR ("hacer") BARRIER Barrier1);
-
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-3 Ser OR Estar);
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser OR Estar) (-3 Adv OR PreAdv) (-2 Adj_PP);
-
-#TODO: y en que ; también en que
-
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
-SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
 #aunque no encaje #TODO:, si no completo,  aunque no libertad para (NOT 1 CM)
 SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor")) (NOT -2 ("como"));
@@ -736,6 +715,8 @@ SELECT:este_año_adv Adv (0 ("este año"));
 
 SELECT:en_un_principio Adv IF (0 ("en un principio")) (-1 >>> OR CM);
 REMOVE:en_un_principio Adv IF (0 ("en un principio"));
+
+SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
 #puesto que
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 ("o") OR ("y")) (-2 ("plaza") OR ("cargo") OR ("ocupación"));
@@ -1726,3 +1707,25 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 
 "<una>" SELECT Det IF (1C N) ;
   ## Sujeta una caja.
+
+
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")) (-2 ("manera") OR ("forma") OR ("lugar") OR ("estado")); 
+
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2 ("acuerdo") OR ("desacuerdo")) (-3 ("en") OR ("de"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("acuerdo") BARRIER ("en") LINK -1 ("de") LINK -1* Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo") OR ("acuerdo") BARRIER ("en") LINK -1* ("en") CBARRIER NOT_Adj LINK -1* Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo") OR ("hacer# hincapié") OR ("hacer# especial hincapié") BARRIER ("en"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2*/* VerbosRigenCon BARRIER ("con"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2*/* VerbosRigenEn BARRIER ("en"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") OR ("convenir") BARRIER NOT_Adv) (NOT -2 N);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2 ("acento") OR ("énfasis") OR ("confianza"));
+
+SET Barrier1 = Word \ Adv \ PreAdv \ Det;
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("acento") OR ("énfasis") BARRIER ("en") LINK -1* ("poner") OR ("hacer") BARRIER Barrier1);
+
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-3 Ser OR Estar);
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser OR Estar) (-3 Adv OR PreAdv) (-2 Adj_PP);
+
+#TODO: y en que ; también en que
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
+SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
