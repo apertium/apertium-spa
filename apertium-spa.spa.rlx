@@ -639,7 +639,7 @@ SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (NOT 2 Verb 
 SELECT:nom_propio4 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (1 CnjCoo) (2 NP);
 REMOVE:iran NP IF (0 ("<Caen>")) (-1 >>>); #Caen los precios
 
-REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc)); #Domeño. Pego.
+REMOVE:no_nom_propio0 NP IF (0 NP) (0 Verb + Pers) (-1 >>>) (NOT 0 (loc) OR AllUpper); #Domeño. Pego.
 REMOVE:ant_loc (ant) IF (0C NP) (0 (ant)) (0 (loc)) (NOT 1 (ant) OR (cog)) (-1 >>>); #Orihuela, Vilallonga
 
 SELECT:marco_n N IF (0 ("marco")) (-1 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
@@ -692,7 +692,7 @@ SELECT:acronim (acr) IF (0 AllUpper);
 SET Words1 = Adv OR PreAdv OR A OR PP OR CnjCoo;
 SET NOT_Adj = Word - Words1;
 
-SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar");
+SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar") OR ("basar");
 SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")) (-2 ("manera") OR ("forma") OR ("lugar") OR ("estado")); 
@@ -701,8 +701,8 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2 ("acuerdo") OR 
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("acuerdo") BARRIER ("en") LINK -1 ("de") LINK -1* Estar);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("desacuerdo") OR ("acuerdo") BARRIER ("en") LINK -1* ("en") CBARRIER NOT_Adj LINK -1* Estar);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con") OR ("en")) (-2* ("estar# de acuerdo") OR ("hacer# hincapié") OR ("hacer# especial hincapié") BARRIER ("en"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2* VerbosRigenCon BARRIER ("con"));
-REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* VerbosRigenEn BARRIER ("en"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2*/* VerbosRigenCon BARRIER ("con"));
+REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2*/* VerbosRigenEn BARRIER ("en"));
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2* ("estar") OR ("convenir") BARRIER NOT_Adv) (NOT -2 N);
 REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("en"))            (-2 ("acento") OR ("énfasis") OR ("confianza"));
 
@@ -733,6 +733,9 @@ REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
 REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
 REMOVE:este_año_n Adv (0 ("este año")) (1 ("y")) (2 ("este"));
 SELECT:este_año_adv Adv (0 ("este año"));
+
+SELECT:en_un_principio Adv IF (0 ("en un principio")) (-1 >>> OR CM);
+REMOVE:en_un_principio Adv IF (0 ("en un principio"));
 
 #puesto que
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 ("o") OR ("y")) (-2 ("plaza") OR ("cargo") OR ("ocupación"));
@@ -1027,7 +1030,8 @@ REMOVE:quinta Verb IF (0 ("quintar"i)) (0 A); # quinta/s no suele ser verbo
 REMOVE:quinta N IF (0 ("quinto"i)) (0 A);     # necesita + desambiguación
 
 # Quisiera (condicional). Se puede ampliar.
-SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* Verb); # BARRIER CnjCoo OR CM 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* CnjAdv OR CnjSub OR Rel); 
+SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<quisiera>") OR ("<quisiéramos>")) (NOT -1* CnjAdv OR CnjSub OR Verb + Pers); 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 ("<Quisiera>") OR ("<Quisiéramos>")) (-1 >>>);
 
 SUBSTITUTE (pis) (cni) TARGET (pis) IF (0 Vbhaver) (NOT -1* (".* que"r) OR ("si") OR ("que") OR ("ojalá") OR ("cuando") OR ("mientras") OR ("aunque") OR ("aun cuando") OR CnjSub OR Rel); 
@@ -1276,7 +1280,7 @@ SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se i
 
 #en cuanto
 SELECT:en_cuanto_prep Prep IF (0 ("en cuanto")) (1 ("tal")); 
-REMOVE:en_cuanto_rel Prep IF (0 ("en cuanto")) (1 Verb + Pers);
+REMOVE:en_cuanto_rel Prep IF (0 ("en cuanto")) (1 Verb + Pers) (NOT 1 N);
 
 # vía pr/n
 REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
