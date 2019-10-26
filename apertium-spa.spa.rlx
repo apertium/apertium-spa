@@ -917,7 +917,7 @@ SELECT:fuera Adv IF (0 ("<fuera>"i)) (1 ("<del>"i));
 SET DiasSemana = ("lunes") OR ("martes") OR ("miércoles") OR ("jueves") OR ("viernes") OR ("sábado") OR ("domigno");
 SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 DiasSemana);
 SELECT:fuera Ser IF (0 ("<fuera>"i)) (-1 ("este") + Sg) (1* Det OR N OR Adj_PP BARRIER NOT_Adv);
-REMOVE:fuera Adv IF (0 ("fuera")) (1 Adj_PP) (-1 CnjAdv OR CnjSub OR Rel);
+SELECT:fuera Ser IF (0 ("fuera")) (1 Adj_PP) (-1 CnjAdv OR CnjSub OR Rel);
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pasar/tirar adelante 
 
@@ -1275,6 +1275,7 @@ SELECT:supuesto N IF (0 ("supuesto")) (1 ("contencioso"));
 SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se impaciente
 
 #en cuanto
+SELECT:en_cuanto_prep Prep IF (0 ("en cuanto")) (1 ("tal")); 
 REMOVE:en_cuanto_rel Prep IF (0 ("en cuanto")) (1 Verb + Pers);
 
 # vía pr/n
