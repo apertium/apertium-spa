@@ -204,6 +204,9 @@ SET LaradioWords = ("emisión") OR ("entrevista") OR ("programa") OR ("onda") OR
 
 SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("director") OR ("Dña.") OR ("D.ª") OR ("D.") OR ("Sr.") OR ("Sra.") OR ("Sres.") OR ("Sras.");
 
+SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar") OR ("basar") OR ("convertir");
+SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
+
 ### Muy improbables
 
 REMOVE:exento_adj Vblex IF (0 ("exento"));
@@ -686,16 +689,6 @@ SELECT:París NP IF (0 ("<París>"));
 #acrónimos
 SELECT:acronim (acr) IF (0 AllUpper);
 
-#
-# RELATIVOS
-#
-SET Words1 = Adv OR PreAdv OR A OR PP OR CnjCoo;
-SET NOT_Adj = Word - Words1;
-
-SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar") OR ("basar");
-SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
-
-
 #aunque no encaje #TODO:, si no completo,  aunque no libertad para (NOT 1 CM)
 SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor")) (NOT -2 ("como"));
 SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
@@ -713,8 +706,11 @@ REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
 REMOVE:este_año_n Adv (0 ("este año")) (1 ("y")) (2 ("este"));
 SELECT:este_año_adv Adv (0 ("este año"));
 
-SELECT:en_un_principio Adv IF (0 ("en un principio")) (-1 >>> OR CM);
-REMOVE:en_un_principio Adv IF (0 ("en un principio"));
+
+
+REMOVE:en_un_principio Adv IF (0 ("en un principio")) (-1*/* VerbosRigenEn BARRIER ("en"));
+#SELECT:en_un_principio Adv IF (0 ("en un principio")) (-1 >>> OR CM);
+SELECT:en_un_principio Adv IF (0 ("en un principio"));
 
 SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
@@ -1708,6 +1704,12 @@ REMOVE:r_na_9_fp_fp A OR PP IF (-1 Det + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 
 "<una>" SELECT Det IF (1C N) ;
   ## Sujeta una caja.
 
+
+#
+# RELATIVOS
+#
+SET Words1 = Adv OR PreAdv OR A OR PP OR CnjCoo;
+SET NOT_Adj = Word - Words1;
 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")) (-2 ("manera") OR ("forma") OR ("lugar") OR ("estado")); 
 
