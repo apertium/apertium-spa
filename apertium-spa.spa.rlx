@@ -763,7 +763,7 @@ SELECT:lo_neutro3 (nt) IF (0/* (prn enc p3 nt)) (0/* VerbsLoNeutro OR ("decir"))
 
 #Existe un antecedent determinado, ej. "al gobierno lo consideran" 
 SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (NOT 1 ("uno")) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)) (NOT 2 ("<todo>"i)); 
-SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1*/* (prn tn nt));
+SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1*/* (prn tn nt)) (NOT 0/* ("pensar") + ("se"));  #excep: pensárselo
 SELECT:lo_m_sg3 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (-1*/* N + MascSg LINK -1 A + MascSg LINK -1 Det + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)) (NOT 2 ("<todo>"i)); 
 SELECT:lo_m_sg4 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 A + MascSg LINK -1 Det + MascSg) (NOT -1*/* (prn tn nt));
 SELECT:lo_m_sg (m) IF (0 (prn pro p3 m sg)) (1 ("ayudar") OR ("obsesionar"));
