@@ -982,7 +982,7 @@ SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
 SELECT:nada_v Verb IF (0 ("nada")) (-1 ("no"));
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 Adj_PP);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
-REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep OR Haber);
+REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep OR Haber OR ("hay"));
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 NadaPronWords);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (2 NadaPronWords);
