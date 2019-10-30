@@ -526,9 +526,13 @@ SELECT:pp_1 PP IF (-1/* Haber) (0 PP) ;
 SELECT:pp_2 PP IF (-1 Ser) (0 PP) (*1 ("por") BARRIER (Cnj_Rel_End)) ;
 
 SELECT:haber_n N IF (0 ("haber") + MascSg) (-1 Det + MascSg) (NOT 1 PP + MascSg);
-SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Verb + (pp m sg)); #las había dicho
-SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Adv) (2 Verb + (pp m sg)); #las había siempre visto
+SELECT:haber_vbhaver Vblex IF (0 Haber) (1 ("nada"));
+SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Verb + (pp m sg)) (NOT 1 Haber); #las había dicho
+SELECT:haber_vbhaver Vbhaver IF (0 Haber) (1 Adv) (2 Verb + (pp m sg)) (NOT 1 Haber); #las había siempre visto
 SELECT:haber_vblex Vblex IF (0 Haber) (NOT 1 Verb + (pp m sg)); #las había en cantidad
+SELECT:haber_vbhaver Vblex IF (0 Haber) (1 Verb + (pp m sg)) (1 Haber); 
+SELECT:haber_vbhaver Vblex IF (0 Haber) (1 Adv) (2 Verb + (pp m sg)) (1 Haber); 
+
 
 # doble negación (eo)
 SET No = ("no") OR ("No") ;
@@ -976,9 +980,9 @@ SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
 SELECT:nada_v Verb IF (0 ("nada")) (-1 ("no"));
-REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 A);
+REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 Adj_PP);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
-REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep);
+REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 Prep OR Haber);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (-1 NadaPronWords);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (2 NadaPronWords);
