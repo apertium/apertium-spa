@@ -748,6 +748,14 @@ SELECT:lista N IF (0 ("lista"i) + FemSg) (-2 Det + FemSg) (-1 FemSg);
 SELECT:lista N IF (0 ("lista"i) + FemPl) (-1 Det + FemPl);
 SELECT:lista N IF (0 ("lista"i) + FemSg) (1 MajIni OR unknown OR NP);
 
+# para traducir spa>cat: lo que es > cosa 
+SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (3 CM OR <<<);
+SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("aún") OR ("todavía")) (2 ("más")) (3 Adj_PP) (4 CM OR <<<);
+SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (3 ("aún") OR ("todavía")) (4 CM OR <<<);
+SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (2 (META:/[-–—−]/r));
+SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("aún") OR ("todavía")) (2 ("más")) (3 Adj_PP) (3 (META:/[-–—−]/r));
+SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (3 ("aún") OR ("todavía")) (3 (META:/[-–—−]/r));
+REMOVE:lo_que_es N IF (0 ("lo que es"));
 
 SELECT:felipe_vi Num IF (0 ("<VI>")) (-1 NP);
 
