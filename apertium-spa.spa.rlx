@@ -210,6 +210,8 @@ SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
 ### Muy improbables
 
 REMOVE:exento_adj Vblex IF (0 ("exento"));
+SELECT:escándalo_n N IF (0 ("escándalo"));
+SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
 ###############################################################################
 #  Morphological disambiguation
@@ -220,14 +222,14 @@ SECTION
 #fallo
 SELECT:fallo_n N (0 ("fallo")) (-1 ("sentencia") OR ("parte dispositiva") OR ("dispositva"));
 
-# para traducir spa>cat: lo que es > cosa 
-SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (3 CM OR <<<);
-SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("aún") OR ("todavía")) (2 ("más")) (3 Adj_PP) (4 CM OR <<<);
-SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (3 ("aún") OR ("todavía")) (4 CM OR <<<);
-SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (2 (META:/[-–—−]/r));
-SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("aún") OR ("todavía")) (2 ("más")) (3 Adj_PP) (3 (META:/[-–—−]/r));
-SELECT:lo_que_es N IF (0 ("lo que es")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("más")) (2 Adj_PP) (3 ("aún") OR ("todavía")) (3 (META:/[-–—−]/r));
-REMOVE:lo_que_es N IF (0 ("lo que es"));
+# para traducir spa>cat: lo que es > cosa que és
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (4 CM OR <<<);
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("aún") OR ("todavía")) (3 ("más")) (4 Adj_PP) (5 CM OR <<<);
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (4 ("aún") OR ("todavía")) (5 CM OR <<<);
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (3 (META:/[-–—−]/r));
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("aún") OR ("todavía")) (3 ("más")) (4 Adj_PP) (4 (META:/[-–—−]/r));
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (4 ("aún") OR ("todavía")) (4 (META:/[-–—−]/r));
+REMOVE:lo_que_es ("lo_que2") IF (0 ("lo_que2"));
 
 REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (*2 ("con"));
 REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (-1 ("nada") OR ("qué"));
@@ -725,8 +727,6 @@ REMOVE:en_un_principio Adv IF (0 ("en un principio")) (-1*/* VerbosRigenEn BARRI
 #SELECT:en_un_principio Adv IF (0 ("en un principio")) (-1 >>> OR CM);
 SELECT:en_un_principio Adv IF (0 ("en un principio"));
 
-SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
-
 #puesto que
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 ("o") OR ("y")) (-2 ("plaza") OR ("cargo") OR ("ocupación"));
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (1 ("se")) (2 ("convocar")) (-1 >>>);
@@ -770,7 +770,7 @@ SELECT:lo_neutro2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
 SELECT:lo_neutro3 (nt) IF (0/* (prn enc p3 nt)) (0/* VerbsLoNeutro OR ("decir"));
 
 SET VerbsSeLo = ("merecer") OR ("comer") OR ("beber") OR ("fumar") OR ("ingeniar") OR ("creer") OR ("encontrar") OR ("pensar") OR ("tomar") OR ("pasar");
-REMOVE SUB:1 ("le") IF (0/* VerbsSeLo);
+REMOVE SUB:1 ("le") IF (0/* VerbsSeLo) (NOT -1 (p1) OR (p2));
 SELECT (nt) IF (0/* VerbsSeLo);
 
 #Existe un antecedent determinado, ej. "al gobierno lo consideran" 
