@@ -773,8 +773,6 @@ SET VerbsSeLo = ("merecer") OR ("comer") OR ("beber") OR ("fumar") OR ("ingeniar
 REMOVE SUB:1 ("le") IF (0/* VerbsSeLo);
 SELECT (nt) IF (0/* VerbsSeLo);
 
-
-
 #Existe un antecedent determinado, ej. "al gobierno lo consideran" 
 SELECT:lo_m_sg1 (m) IF (0 (prn pro p3 m sg)) (1 Verb) (NOT 1 ("uno")) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1 ("así") OR Prep) (NOT -1*/* (prn tn nt)) (NOT 2 ("<todo>"i)); 
 SELECT:lo_m_sg2 (m) IF (0/* (prn enc p3 m sg)) (-1*/* N + MascSg LINK -1 Det + MascSg) (NOT -1*/* (prn tn nt)) (NOT 0/* ("pensar") + ("se")); 
