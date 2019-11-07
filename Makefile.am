@@ -2,8 +2,6 @@
 ## Makefile for apertium-spa
 ###############################################################################
 
-RELEASE=1.1
-VERSION=1.1.0
 LANG1=spa
 BASENAME=apertium-$(LANG1)
 
@@ -29,7 +27,7 @@ $(LANG1).autogen.bin: $(BASENAME).$(LANG1).dix
 
 $(LANG1).automorf.bin: $(BASENAME).$(LANG1).dix $(BASENAME).$(LANG1).acx
 	apertium-validate-dictionary $<
-	lt-comp lr $(BASENAME).$(LANG1).dix $@ $(BASENAME).$(LANG1).acx 
+	lt-comp lr $(BASENAME).$(LANG1).dix $@ $(BASENAME).$(LANG1).acx
 
 $(LANG1).autogen.att.gz: $(LANG1).autogen.bin
 	lt-print $< | gzip -9 -c -n > $@
@@ -41,18 +39,18 @@ $(LANG1).autopgen.bin: $(BASENAME).post-$(LANG1).dix
 	lt-comp lr $< $@
 
 ###############################################################################
-## Morph disambiguation rules 
+## Morph disambiguation rules
 ###############################################################################
 
-$(LANG1).lrx.bin: $(BASENAME).$(LANG1).lrx 
+$(LANG1).lrx.bin: $(BASENAME).$(LANG1).lrx
 	lrx-comp $< $@
 
 ###############################################################################
-## Disambiguation rules 
+## Disambiguation rules
 ###############################################################################
 
-$(LANG1).rlx.bin: $(BASENAME).$(LANG1).rlx $(CGCOMP)
-	$(CGCOMP) $< $@
+$(LANG1).rlx.bin: $(BASENAME).$(LANG1).rlx
+	cg-comp $< $@
 
 ###############################################################################
 ## Distribution
