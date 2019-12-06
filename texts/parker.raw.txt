@@ -1,0 +1,1370 @@
+"<Por primera vez>"
+	"por primera vez" adv
+"<en>"
+	"en" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<historia>"
+	"historia" n f sg
+;	"historiar" vblex pri p3 sg
+;	"historiar" vblex imp p2 sg
+"<una>"
+;	"uno" num f sp
+;	"uno" prn tn f sg
+	"uno" det ind f sg
+;	"unir" vblex prs p3 sg
+;	"unir" vblex prs p1 sg
+;	"unir" vblex imp p3 sg
+"<nave>"
+	"nave" n f sg
+"<espacial>"
+	"espacial" adj mf sg
+"<ha>"
+	"haber" vbhaver pri p3 sg
+"<entrado>"
+	"entrar" vblex pp m sg
+"<en>"
+	"en" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<atmósfera>"
+	"atmósfera" n f sg
+"<del>"
+	"el" det def m sg
+		"de" pr
+"<Sol>"
+	"sol" n m sg
+"<y>"
+	"y" cnjcoo
+"<ha>"
+	"haber" vbhaver pri p3 sg
+"<sobrevivido>"
+	"sobrevivir" vblex pp m sg
+"<para>"
+	"para" pr
+;	"parar" vblex pri p3 sg
+;	"parar" vblex imp p2 sg
+;	"parir" vblex prs p3 sg
+;	"parir" vblex prs p1 sg
+;	"parir" vblex imp p3 sg
+"<contarlo>"
+	"lo" prn enc p3 nt
+		"contar" vblex inf
+;	"lo" prn enc p3 m sg
+		"contar" vblex inf
+"<.>"
+	"." sent
+"<Hoy>"
+	"hoy" adv
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<publican>"
+	"publicar" vblex pri p3 pl
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<primeros>"
+	"primero" adj ord m pl
+"<resultados>"
+	"resultado" n m pl
+;	"resultar" vblex pp m pl
+"<científicos>"
+	"científico" adj m pl
+;	"científico" n m pl
+"<recogidos>"
+;	"recogido" n m pl
+	"recoger" vblex pp m pl
+"<por>"
+	"por" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<sonda>"
+	"sonda" n f sg
+;	"sondar" vblex pri p3 sg
+;	"sondar" vblex imp p2 sg
+"<solar>"
+	"solar" adj mf sg
+;	"solar" n m sg
+"<Parker>"
+	"Parker" np ant
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<NASA>"
+	"NASA" n acr f sg
+"<durante>"
+	"durante" pr
+"<sus>"
+	"suyo" det pos mf pl
+"<dos>"
+	"dos" num mf sp
+"<primeros>"
+	"primero" adj ord m pl
+"<acercamientos>"
+	"acercamiento" n m pl
+"<al>"
+	"el" det def m sg
+		"a" pr
+"<astro>"
+	"astro" n m sg
+"<.>"
+	"." sent
+"<Los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<datos>"
+	"dato" n m pl
+"<desvelan>"
+	"desvelar" vblex pri p3 pl
+"<una>"
+;	"uno" num f sp
+;	"uno" prn tn f sg
+	"uno" det ind f sg
+;	"unir" vblex prs p3 sg
+;	"unir" vblex prs p1 sg
+;	"unir" vblex imp p3 sg
+"<estrella>"
+	"estrella" n f sg
+;	"estrellar" vblex pri p3 sg
+;	"estrellar" vblex imp p2 sg
+"<mucho más>"
+	"mucho más" adv
+"<violenta>"
+	"violento" adj f sg
+;	"violentar" vblex pri p3 sg
+;	"violentar" vblex imp p2 sg
+"<y>"
+	"y" cnjcoo
+"<enigmática>"
+	"enigmático" adj f sg
+"<de>"
+	"de" pr
+"<lo que>"
+	"lo que" rel an nt
+;	"lo_que2" rel an nt
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<pensaba>"
+	"pensar" vblex pii p3 sg
+;	"pensar" vblex pii p1 sg
+"<.>"
+	"." sent
+"<.>"
+	"." sent
+
+
+
+"<La>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<principal>"
+	"principal" adj mf sg
+"<misión>"
+	"misión" n f sg
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<sonda>"
+	"sonda" n f sg
+;	"sondar" vblex pri p3 sg
+;	"sondar" vblex imp p2 sg
+"<Parker>"
+	"Parker" np ant
+"<es>"
+	"ser" vbser pri p3 sg
+"<entender>"
+	"entender" vblex inf
+"<por qué>"
+	"por qué" adv itg
+"<las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<capas>"
+	"capa" n f pl
+;	"capar" vblex pri p2 sg
+"<más>"
+	"más" adv
+;	"más" adj mf sp
+"<superficiales>"
+	"superficial" adj mf pl
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<atmósfera>"
+	"atmósfera" n f sg
+"<solar>"
+	"solar" adj mf sg
+;	"solar" n m sg
+"<,>"
+	"," cm
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<corona>"
+	"corona" n f sg
+;	"coronar" vblex pri p3 sg
+;	"coronar" vblex imp p2 sg
+"<,>"
+	"," cm
+"<pueden>"
+	"poder" vbmod pri p3 pl
+"<alcanzar>"
+	"alcanzar" vblex inf
+"<temperaturas>"
+	"temperatura" n f pl
+"<de>"
+	"de" pr
+"<un>"
+	"uno" det ind m sg
+"<millón>"
+	"millón" n m sg
+"<de>"
+	"de" pr
+"<grados>"
+	"grado" n m pl
+"<mientras que>"
+	"mientras que" cnjadv
+"<mucho más>"
+	"mucho más" adv
+"<adentro>"
+	"adentro" adv
+;	"adentrar" vblex pri p1 sg
+"<,>"
+	"," cm
+"<en>"
+	"en" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<superficie>"
+	"superficie" n f sg
+"<,>"
+	"," cm
+"<solo>"
+	"solo" adv
+;	"solo" adj m sg
+;	"solo" n m sg
+"<hay>"
+	"hay" vblex pri p3 sg
+"<unos>"
+;	"uno" n m pl
+;	"uno" prn tn m pl
+	"uno" det ind m pl
+"<5.000>"
+	"5.000" num
+"<grados>"
+	"grado" n m pl
+"<.>"
+	"." sent
+"<Resolver>"
+	"resolver" vblex inf
+"<este>"
+;	"este" n m sg
+;	"este" prn tn m sg
+	"este" det dem m sg
+"<enigma>"
+	"enigma" n m sg
+"<es>"
+	"ser" vbser pri p3 sg
+"<esencial>"
+	"esencial" adj mf sg
+"<para>"
+	"para" pr
+;	"parar" vblex pri p3 sg
+;	"parar" vblex imp p2 sg
+;	"parir" vblex prs p3 sg
+;	"parir" vblex prs p1 sg
+;	"parir" vblex imp p3 sg
+"<entender>"
+	"entender" vblex inf
+"<el>"
+	"el" det def m sg
+"<comportamiento>"
+	"comportamiento" n m sg
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<estrella>"
+	"estrella" n f sg
+;	"estrellar" vblex pri p3 sg
+;	"estrellar" vblex imp p2 sg
+"<y>"
+	"y" cnjcoo
+"<su>"
+	"suyo" det pos mf sg
+"<viento>"
+	"viento" n m sg
+"<solar>"
+	"solar" adj mf sg
+;	"solar" n m sg
+"<,>"
+	"," cm
+"<una>"
+;	"uno" num f sp
+;	"uno" prn tn f sg
+	"uno" det ind f sg
+;	"unir" vblex prs p3 sg
+;	"unir" vblex prs p1 sg
+;	"unir" vblex imp p3 sg
+"<oleada>"
+	"oleada" n f sg
+"<de>"
+	"de" pr
+"<partículas>"
+	"partícula" n f pl
+"<subatómicas>"
+	"subatómico" adj f pl
+"<cargadas>"
+	"cargar" vblex pp f pl
+"<que>"
+;	"que" cnjsub
+	"que" rel an mf sp
+"<escupe>"
+	"escupir" vblex pri p3 sg
+;	"escupir" vblex imp p2 sg
+"<en>"
+	"en" pr
+"<todas>"
+	"todo" predet f pl
+;	"todo" prn tn f pl
+"<direcciones>"
+	"dirección" n f pl
+;	"direccionar" vblex prs p2 sg
+;	"dirección_postal" n f pl
+"<.>"
+	"." sent
+"<Las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<tormentas>"
+	"tormenta" n f pl
+"<solares>"
+	"solar" adj mf pl
+;	"solar" n m pl
+"<pueden>"
+	"poder" vbmod pri p3 pl
+"<ser>"
+	"ser" vbser inf
+;	"ser" n m sg
+"<una>"
+;	"uno" num f sp
+;	"uno" prn tn f sg
+	"uno" det ind f sg
+;	"unir" vblex prs p3 sg
+;	"unir" vblex prs p1 sg
+;	"unir" vblex imp p3 sg
+"<amenaza>"
+	"amenaza" n f sg
+;	"amenazar" vblex pri p3 sg
+;	"amenazar" vblex imp p2 sg
+"<para>"
+	"para" pr
+;	"parar" vblex pri p3 sg
+;	"parar" vblex imp p2 sg
+;	"parir" vblex prs p3 sg
+;	"parir" vblex prs p1 sg
+;	"parir" vblex imp p3 sg
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<astronautas>"
+	"astronauta" n mf pl
+"<y>"
+	"y" cnjcoo
+"<causar>"
+	"causar" vblex inf
+"<importantes>"
+	"importante" adj mf pl
+"<daños>"
+	"daño" n m pl
+"<en>"
+	"en" pr
+"<el>"
+	"el" det def m sg
+"<tendido eléctrico>"
+	"tendido eléctrico" n m sg
+"<y>"
+	"y" cnjcoo
+"<las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<comunicaciones>"
+	"comunicación" n f pl
+"<por>"
+	"por" pr
+"<satélite>"
+;	"satélite" adj mf sg
+	"satélite" n m sg
+"<.>"
+	"." sent
+"<.>"
+	"." sent
+
+
+"<La>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<sonda>"
+	"sonda" n f sg
+;	"sondar" vblex pri p3 sg
+;	"sondar" vblex imp p2 sg
+"<ha>"
+	"haber" vbhaver pri p3 sg
+"<explorado>"
+	"explorar" vblex pp m sg
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<zona>"
+	"zona" n f sg
+"<a>"
+	"a" pr
+"<unos>"
+;	"uno" n m pl
+;	"uno" prn tn m pl
+	"uno" det ind m pl
+"<24>"
+	"24" num
+"<millones>"
+	"millón" n m pl
+"<de>"
+	"de" pr
+"<kilómetros>"
+	"kilómetro" n m pl
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<superficie>"
+	"superficie" n f sg
+"<,>"
+	"," cm
+"<seis>"
+	"seis" num mf sp
+"<veces>"
+	"vez" n f pl
+"<más>"
+	"más" adv
+;	"más" adj mf sp
+"<cerca de>"
+	"cerca de" pr
+"<lo que>"
+	"lo que" rel an nt
+;	"lo_que2" rel an nt
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<Tierra>"
+	"tierra" n f sg
+"<está>"
+	"estar" vblex pri p3 sg
+"<del>"
+	"el" det def m sg
+		"de" pr
+"<Sol>"
+	"sol" n m sg
+"<.>"
+	"." sent
+"<La>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<nave>"
+	"nave" n f sg
+"<sigue>"
+	"seguir" vblex pri p3 sg
+;	"seguir" vblex imp p2 sg
+"<una>"
+;	"uno" num f sp
+;	"uno" prn tn f sg
+	"uno" det ind f sg
+;	"unir" vblex prs p3 sg
+;	"unir" vblex prs p1 sg
+;	"unir" vblex imp p3 sg
+"<órbita>"
+	"órbita" n f sg
+"<muy>"
+	"muy" preadv
+"<apaisada>"
+	"apaisado" adj f sg
+"<de modo que>"
+	"de modo que" cnjadv
+"<,>"
+	"," cm
+"<tras>"
+	"tras" pr
+"<acercarse>"
+	"se" prn enc ref p3 mf sp
+		"acercar" vblex inf
+"<al máximo>"
+	"al máximo" adv
+"<al>"
+	"el" det def m sg
+		"a" pr
+"<Sol>"
+	"sol" n m sg
+"<,>"
+	"," cm
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<aleja>"
+	"alejar" vblex pri p3 sg
+;	"alejar" vblex imp p2 sg
+"<hasta>"
+;	"hasta" adv
+	"hasta" pr
+"<llegar>"
+	"llegar" vblex inf
+"<más allá de>"
+	"más allá de" pr
+"<Venus>"
+;	"Venus" np al
+;	"Venus" np ant
+	"Venus" np loc
+"<,>"
+	"," cm
+"<el>"
+	"el" det def m sg
+"<segundo>"
+;	"segundo" n m sg
+	"segundo" adj ord m sg
+"<planeta>"
+	"planeta" n m sg
+"<más>"
+	"más" adv
+;	"más" adj mf sp
+"<cercano>"
+	"cercano" adj m sg
+"<al>"
+	"el" det def m sg
+		"a" pr
+"<astro>"
+	"astro" n m sg
+"<.>"
+	"." sent
+"<Además>"
+	"además" adv
+"<va>"
+	"ir" vblex pri p3 sg
+"<armada>"
+;	"armada" n f sg
+	"armar" vblex pp f sg
+"<con>"
+	"con" pr
+"<un>"
+	"uno" det ind m sg
+"<escudo>"
+	"escudo" n m sg
+;	"escudar" vblex pri p1 sg
+"<térmico>"
+	"térmico" adj m sg
+"<que>"
+;	"que" cnjsub
+	"que" rel an mf sp
+"<siempre>"
+	"siempre" adv
+"<da>"
+	"dar" vblex pri p3 sg
+;	"dar" vblex imp p2 sg
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<cara>"
+	"cara" n f sg
+;	"caro" adj f sg
+"<al>"
+	"el" det def m sg
+		"a" pr
+"<Sol>"
+	"sol" n m sg
+"<y>"
+	"y" cnjcoo
+"<que>"
+;	"que" cnjsub
+	"que" rel an mf sp
+"<es>"
+	"ser" vbser pri p3 sg
+"<capaz>"
+	"capaz" adj mf sg
+"<de>"
+	"de" pr
+"<soportar>"
+	"soportar" vblex inf
+"<temperaturas>"
+	"temperatura" n f pl
+"<de>"
+	"de" pr
+"<1.400>"
+	"1.400" num
+"<grados>"
+	"grado" n m pl
+"<.>"
+	"." sent
+"<Al>"
+;	"Al" np ant
+	"el" det def m sg
+		"a" pr
+"<otro>"
+;	"otro" prn tn m sg
+;	"otro" adj ind m sg
+	"otro" det ind m sg
+"<lado>"
+	"lado" n m sg
+"<de>"
+	"de" pr
+"<esta>"
+;	"este" prn tn f sg
+	"este" det dem f sg
+"<coraza>"
+	"coraza" n f sg
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<instrumentos>"
+	"instrumento" n m pl
+"<científicos>"
+	"científico" adj m pl
+;	"científico" n m pl
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<mantienen>"
+	"mantener" vblex pri p3 pl
+"<a>"
+	"a" pr
+"<unos>"
+;	"uno" n m pl
+;	"uno" prn tn m pl
+	"uno" det ind m pl
+"<30>"
+	"30" num
+"<grados>"
+	"grado" n m pl
+"<.>"
+	"." sent
+"<.>"
+	"." sent
+
+
+"<Los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<primeros>"
+	"primero" adj ord m pl
+"<resultados>"
+	"resultado" n m pl
+;	"resultar" vblex pp m pl
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<misión>"
+	"misión" n f sg
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<publican>"
+	"publicar" vblex pri p3 pl
+"<hoy>"
+	"hoy" adv
+"<en>"
+	"en" pr
+"<cuatro>"
+	"cuatro" num mf sp
+"<estudios>"
+	"estudio" n m pl
+"<en>"
+	"en" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<revista>"
+	"revista" n f sg
+;	"revistar" vblex pri p3 sg
+;	"revistar" vblex imp p2 sg
+;	"revestir" vblex prs p3 sg
+;	"revestir" vblex prs p1 sg
+;	"revestir" vblex imp p3 sg
+"<científica>"
+	"científico" adj f sg
+;	"científico" n f sg
+"<Nature>"
+	"Nature" np al
+"<.>"
+	"." sent
+"<Uno>"
+;	"uno" num m sp
+;	"uno" n m sg
+	"uno" prn tn m sg
+;	"unir" vblex pri p1 sg
+"<de>"
+	"de" pr
+"<ellos>"
+	"él" prn tn p3 m pl
+"<demuestra>"
+	"demostrar" vblex pri p3 sg
+;	"demostrar" vblex imp p2 sg
+"<que>"
+	"que" cnjsub
+;	"que" rel an mf sp
+"<el>"
+	"el" det def m sg
+"<flujo>"
+	"flujo" n m sg
+"<de>"
+	"de" pr
+"<partículas>"
+	"partícula" n f pl
+"<es>"
+	"ser" vbser pri p3 sg
+"<mucho más>"
+	"mucho más" adv
+"<rápido>"
+	"rápido" adj m sg
+"<de>"
+	"de" pr
+"<lo que>"
+	"lo que" rel an nt
+;	"lo_que2" rel an nt
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<había>"
+	"haber" vbhaver pii p3 sg
+;	"haber" vbhaver pii p1 sg
+;	"haber" vblex pii p3 sg
+"<observado>"
+	"observar" vblex pp m sg
+"<.>"
+	"." sent
+ “
+"<Hemos>"
+	"haber" vbhaver pri p1 pl
+"<visto>"
+	"ver" vblex pp m sg
+;	"vestir" vblex pri p1 sg
+"<que>"
+	"que" cnjsub
+;	"que" rel an mf sp
+"<el>"
+	"el" det def m sg
+"<viento>"
+	"viento" n m sg
+"<solar>"
+	"solar" adj mf sg
+;	"solar" n m sg
+"<avanza>"
+	"avanzar" vblex pri p3 sg
+;	"avanzar" vblex imp p2 sg
+"<formando>"
+	"formar" vblex ger
+"<enormes>"
+	"enorme" adj mf pl
+"<olas>"
+	"ola" n f pl
+"<que>"
+;	"que" cnjsub
+	"que" rel an mf sp
+"<,>"
+	"," cm
+"<en cuestión>"
+	"en cuestión" adv
+"<de>"
+	"de" pr
+"<minutos>"
+;	"minuto" adj m pl
+	"minuto" n m pl
+"<,>"
+	"," cm
+"<duplican>"
+	"duplicar" vblex pri p3 pl
+"<su>"
+	"suyo" det pos mf sg
+"<velocidad>"
+	"velocidad" n f sg
+"<llegando>"
+	"llegar" vblex ger
+"<hasta>"
+;	"hasta" adv
+	"hasta" pr
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<150>"
+	"150" num
+"<kilómetros>"
+	"kilómetro" n m pl
+"<por segundo>"
+	"por segundo" adv
+”
+"<,>"
+	"," cm
+"<explica>"
+	"explicar" vblex pri p3 sg
+;	"explicar" vblex imp p2 sg
+"<Justin>"
+	"Justin" np ant
+"<Kasper>"
+	"Kasper" np ant
+"<,>"
+	"," cm
+"<físico>"
+;	"físico" adj m sg
+	"físico" n m sg
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<Universidad>"
+	"universidad" n f sg
+"<de>"
+	"de" pr
+"<Michigan>"
+	"Michigan" np loc
+"<y>"
+	"y" cnjcoo
+"<coautor>"
+	"coautor" n m sg
+"<de>"
+	"de" pr
+"<varios>"
+;	"vario" adj m pl
+	"vario" det ind m pl
+"<de>"
+	"de" pr
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<estudios>"
+	"estudio" n m pl
+"<publicados>"
+	"publicar" vblex pp m pl
+"<hoy>"
+	"hoy" adv
+"<.>"
+	"." sent
+  “
+"<Es>"
+	"ser" vbser pri p3 sg
+"<algo>"
+;	"algo" preadv
+;	"algo" adj m sg
+	"algo" prn tn nt sg
+"<nunca>"
+	"nunca" adv
+"<visto>"
+	"ver" vblex pp m sg
+;	"vestir" vblex pri p1 sg
+"<hasta ahora>"
+	"hasta ahora" adv
+”
+"<,>"
+	"," cm
+"<resalta>"
+	"resaltar" vblex pri p3 sg
+;	"resaltar" vblex imp p2 sg
+"<el>"
+	"el" det def m sg
+"<investigador>"
+;	"investigador" adj m sg
+	"investigador" n m sg
+"<.>"
+	"." sent
+"<.>"
+	"." sent
+
+
+"<Las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<ráfagas>"
+	"ráfaga" n f pl
+"<de>"
+	"de" pr
+"<viento>"
+	"viento" n m sg
+"<solar>"
+	"solar" adj mf sg
+;	"solar" n m sg
+ “
+"<vienen>"
+	"venir" vblex pri p3 pl
+"<en>"
+	"en" pr
+"<grupos>"
+	"grupo" n m pl
+"<y>"
+	"y" cnjcoo
+"<parecen>"
+	"parecer" vblex pri p3 pl
+"<tener>"
+	"tener" vblex inf
+"<una>"
+;	"uno" num f sp
+;	"uno" prn tn f sg
+	"uno" det ind f sg
+;	"unir" vblex prs p3 sg
+;	"unir" vblex prs p1 sg
+;	"unir" vblex imp p3 sg
+"<estructura>"
+	"estructura" n f sg
+;	"estructurar" vblex pri p3 sg
+;	"estructurar" vblex imp p2 sg
+"<coherente>"
+	"coherente" adj mf sg
+”
+"<,>"
+	"," cm
+"<explica>"
+	"explicar" vblex pri p3 sg
+;	"explicar" vblex imp p2 sg
+"<Kasper>"
+	"Kasper" np ant
+"<.>"
+	"." sent
+"<Según>"
+	"según" cnjadv
+	"según" pr
+"<su>"
+	"suyo" det pos mf sg
+"<equipo>"
+	"equipo" n m sg
+	"equipar" vblex pri p1 sg
+"<,>"
+	"," cm
+"<estos>"
+;	"este" prn tn m pl
+	"este" det dem m pl
+"<patrones>"
+	"patrón" n m pl
+"<pueden>"
+	"poder" vbmod pri p3 pl
+"<deberse>"
+	"se" prn enc ref p3 mf sp
+		"deber" vblex inf
+;	"se" prn enc ref p3 mf sp
+;		"deber" vbmod inf
+"<a que>"
+	"a que" cnjsub
+"<el>"
+	"el" det def m sg
+"<Sol>"
+	"sol" n m sg
+"<genera>"
+	"generar" vblex pri p3 sg
+;	"generar" vblex imp p2 sg
+"<un>"
+	"uno" det ind m sg
+"<campo>"
+	"campo" n m sg
+;	"campar" vblex pri p1 sg
+"<magnético>"
+	"magnético" adj m sg
+"<que>"
+;	"que" cnjsub
+	"que" rel an mf sp
+"<marca>"
+;	"marca" n f sg
+	"marcar" vblex pri p3 sg
+;	"marcar" vblex imp p2 sg
+"<el>"
+	"el" det def m sg
+"<camino>"
+	"camino" n m sg
+;	"caminar" vblex pri p1 sg
+"<que>"
+;	"que" cnjsub
+	"que" rel an mf sp
+"<siguen>"
+	"seguir" vblex pri p3 pl
+"<las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<partículas>"
+	"partícula" n f pl
+"<y>"
+	"y" cnjcoo
+"<las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<acelera>"
+	"acelerar" vblex pri p3 sg
+;	"acelerar" vblex imp p2 sg
+"<.>"
+	"." sent
+"<Esta>"
+;	"este" prn tn f sg
+	"este" det dem f sg
+"<especie>"
+	"especie" n f sg
+"<de>"
+	"de" pr
+"<autopista>"
+	"autopista" n f sg
+"<tiene>"
+	"tener" vblex pri p3 sg
+"<forma>"
+	"forma" n f sg
+;	"formar" vblex pri p3 sg
+;	"formar" vblex imp p2 sg
+"<de>"
+	"de" pr
+"<s>"
+	"s" n f sg
+;	"s" n acr m sp
+"<,>"
+	"," cm
+"<de forma que>"
+	"de forma que" cnjadv
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<electrones>"
+	"electrón" n m pl
+"<y>"
+	"y" cnjcoo
+"<protones>"
+	"protón" n m pl
+"<cargados>"
+	"cargar" vblex pp m pl
+"<no>"
+	"no" adv
+;	"no" ij
+"<viajan>"
+	"viajar" vblex pri p3 pl
+"<en línea>"
+	"en línea" adj mf sp
+"<recta>"
+;	"recta" n f sg
+	"recto" adj f sg
+"<,>"
+	"," cm
+"<sino>"
+	"sino" cnjcoo
+"<haciendo>"
+	"hacer" vblex ger
+"<eses>"
+	"ese" n f pl
+"<en>"
+	"en" pr
+"<su>"
+	"suyo" det pos mf sg
+"<cada vez más>"
+	"cada vez más" adv
+"<rápido>"
+	"rápido" adj m sg
+"<camino>"
+	"camino" n m sg
+;	"caminar" vblex pri p1 sg
+"<hacia>"
+	"hacia" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<Tierra>"
+	"tierra" n f sg
+"<.>"
+	"." sent
+"<.>"
+	"." sent
+
+
+"<Al igual que>"
+	"al igual que" cnjadv
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<atmósfera>"
+	"atmósfera" n f sg
+"<terrestre>"
+	"terrestre" adj mf sg
+"<,>"
+	"," cm
+"<el>"
+	"el" det def m sg
+"<plasma>"
+	"plasma" n m sg
+;	"plasmar" vblex pri p3 sg
+;	"plasmar" vblex imp p2 sg
+"<de>"
+	"de" pr
+"<partículas>"
+	"partícula" n f pl
+"<cargadas>"
+	"cargar" vblex pp f pl
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<corona>"
+	"corona" n f sg
+;	"coronar" vblex pri p3 sg
+;	"coronar" vblex imp p2 sg
+"<solar>"
+	"solar" adj mf sg
+;	"solar" n m sg
+"<gira>"
+;	"gira" n f sg
+	"girar" vblex pri p3 sg
+;	"girar" vblex imp p2 sg
+"<en>"
+	"en" pr
+"<el mismo>"
+;	"el mismo" prn tn m sg
+	"el mismo" det def m sg
+"<sentido>"
+	"sentido" n m sg
+;	"sentir" vblex pp m sg
+"<que>"
+	"que" cnjsub
+;	"que" rel an mf sp
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<estrella>"
+	"estrella" n f sg
+;	"estrellar" vblex pri p3 sg
+;	"estrellar" vblex imp p2 sg
+"<.>"
+	"." sent
+"<En>"
+	"en" pr
+"<teoría>"
+	"teoría" n f sg
+"<,>"
+	"," cm
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<velocidad>"
+	"velocidad" n f sg
+"<de>"
+	"de" pr
+"<rotación>"
+	"rotación" n f sg
+"<debería>"
+;	"deber" vblex cni p3 sg
+;	"deber" vblex cni p1 sg
+	"deber" vbmod cni p3 sg
+;	"deber" vbmod cni p1 sg
+"<ir>"
+	"ir" vblex inf
+"<disminuyendo>"
+	"disminuir" vblex ger
+"<a>"
+	"a" pr
+"<medida>"
+	"medida" n f sg
+;	"medir" vblex pp f sg
+"<que>"
+	"que" cnjsub
+;	"que" rel an mf sp
+"<el>"
+	"el" det def m sg
+"<plasma>"
+	"plasma" n m sg
+;	"plasmar" vblex pri p3 sg
+;	"plasmar" vblex imp p2 sg
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<aleja>"
+	"alejar" vblex pri p3 sg
+;	"alejar" vblex imp p2 sg
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<superficie>"
+	"superficie" n f sg
+"<,>"
+	"," cm
+"<pero>"
+;	"pero" adv
+	"pero" cnjcoo
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<datos>"
+	"dato" n m pl
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<Parker>"
+	"Parker" np ant
+"<muestran>"
+	"mostrar" vblex pri p3 pl
+"<que>"
+	"que" cnjsub
+;	"que" rel an mf sp
+"<,>"
+	"," cm
+"<en>"
+	"en" pr
+"<las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+"<capas>"
+	"capa" n f pl
+;	"capar" vblex pri p2 sg
+"<más>"
+	"más" adv
+;	"más" adj mf sp
+"<superficiales>"
+	"superficial" adj mf pl
+"<de>"
+	"de" pr
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<corona>"
+	"corona" n f sg
+;	"coronar" vblex pri p3 sg
+;	"coronar" vblex imp p2 sg
+"<,>"
+	"," cm
+"<el>"
+	"el" det def m sg
+"<plasma>"
+	"plasma" n m sg
+;	"plasmar" vblex pri p3 sg
+;	"plasmar" vblex imp p2 sg
+"<va>"
+	"ir" vblex pri p3 sg
+ “
+"<unas>"
+;	"uno" prn tn f pl
+	"uno" det ind f pl
+;	"unir" vblex prs p2 sg
+"<20>"
+	"20" num
+"<veces>"
+	"vez" n f pl
+"<más>"
+	"más" adv
+;	"más" adj mf sp
+"<rápido>"
+	"rápido" adj m sg
+"<de>"
+	"de" pr
+"<lo que>"
+	"lo que" rel an nt
+;	"lo_que2" rel an nt
+"<debería>"
+	"deber" vblex cni p3 sg
+;	"deber" vblex cni p1 sg
+;	"deber" vbmod cni p3 sg
+;	"deber" vbmod cni p1 sg
+"<según>"
+;	"según" cnjadv
+	"según" pr
+"<las>"
+	"el" det def f pl
+;	"lo" prn pro p3 f pl
+
+"<predicciones>"
+	"predicción" n f pl
+”
+"<,>"
+	"," cm
+"<explica>"
+	"explicar" vblex pri p3 sg
+;	"explicar" vblex imp p2 sg
+"<Kasper>"
+	"Kasper" np ant
+"<.>"
+	"." sent
+"<Por el momento>"
+	"por el momento" adv
+"<no>"
+	"no" adv
+;	"no" ij
+"<hay>"
+	"hay" vblex pri p3 sg
+"<muchas>"
+;	"mucho" adj f pl
+	"mucho" det ind f pl
+;	"muchos" prn tn f pl
+"<respuestas>"
+	"respuesta" n f pl
+"<sobre>"
+	"sobre" pr
+;	"sobre" n m sg
+;	"sobrar" vblex prs p3 sg
+;	"sobrar" vblex prs p1 sg
+;	"sobrar" vblex imp p3 sg
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<fenómenos>"
+	"fenómeno" n m pl
+"<observados>"
+	"observar" vblex pp m pl
+"<,>"
+	"," cm
+"<reconoce>"
+	"reconocer" vblex pri p3 sg
+;	"reconocer" vblex imp p2 sg
+"<el>"
+	"el" det def m sg
+"<físico>"
+;	"físico" adj m sg
+	"físico" n m sg
+"<,>"
+	"," cm
+"<pero>"
+;	"pero" adv
+	"pero" cnjcoo
+"<sí>"
+	"sí" adv
+;	"sí" prn tn ref p3 mf sp
+"<la>"
+	"el" det def f sg
+;	"lo" prn pro p3 f sg
+"<esperanza>"
+	"esperanza" n f sg
+;	"esperanzar" vblex pri p3 sg
+;	"esperanzar" vblex imp p2 sg
+"<de que>"
+	"de que" cnjsub
+"<en>"
+	"en" pr
+"<los>"
+	"el" det def m pl
+;	"lo" prn pro p3 m pl
+"<próximos>"
+	"próximo" adj m pl
+"<años>"
+	"año" n m pl
+"<se>"
+	"se" prn pro ref p3 mf sp
+"<consigan>"
+	"conseguir" vblex prs p3 pl
+;	"conseguir" vblex imp p3 pl
+"<entender>"
+	"entender" vblex inf
+"<,>"
+	"," cm
+"<incluso>"
+	"incluso" adv
+;	"incluso" adj m sg
+"<predecir>"
+	"predecir" vblex inf
+"<.>"
+	"." sent
+"<.>"
+	"." sent
+
