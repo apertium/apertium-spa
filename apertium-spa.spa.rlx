@@ -255,11 +255,10 @@ SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (1 ("ser"));
 SELECT:r_deber_vblex_1 Vblex IF (0 Deber) (NOT 1/* Inf);
 SELECT:deberde_vbmod Vbmod IF (0 ("deber# de")) (-1 ("a")) (-2 ("ir")) (1/* Inf);
 
-REMOVE:r_cog_1 Cog IF (-1 DetDef + &&GN) (0 N + &&GN) ;
-REMOVE:r_cog_2 Cog IF (-1 DetInd + &&GN) (0 N + &&GN) ;
-REMOVE:r_ant_1 Ant IF (-1 DetDef + &&GN) (0 N + &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
-REMOVE:r_ant_2 Ant IF (-1 DetInd + &&GN) (0 N + &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
-REMOVE:r_ant_2 Ant IF (-1 DetDem + &&GN) (0 N + &&GN) (NOT 0 ("Cenicienta")) ;
+REMOVE:r_cog_1 Cog IF (-1 &&GN) (-1 Det OR Pos) (0 &&GN);
+#REMOVE:r_cog_1 Cog IF (-2 &&GN) (-2 Det OR Pos) (-1 Adj_PP + &&GN) (0 &&GN);
+REMOVE:r_ant_1 Ant IF (-1 &&GN) (-1 Det OR Pos) (0 &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
+#REMOVE:r_ant_1 Ant IF (-1 &&GN) (-2 Det OR Pos) (-1 Adj_PP + &&GN) (0 &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
 
 SELECT:este_n N IF (0 ("este") + MascSg) (-1 ("el") + MascSg);
 
@@ -589,9 +588,11 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGÜEDAD NOMBRE PROPIO - COMÚN
 #
 
-SELECT:Paz NP IF (0 ("Paz")) (1 (ant) OR (cog) OR unknownMajIni);
-SELECT:Paz NP IF (0 ("Paz")) (-1 (ant) OR (cog) OR unknownMajIni);
-REMOVE:paz NP IF (0 ("Paz"));# (-1 ("de")) (-2 ("acuerdo") OR ("tratado") OR ("proceso") OR ("negociación") OR ("plan"));
+SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero");
+
+SELECT:Paz NP IF (0 NomProCom) (1 (ant) OR (cog) OR unknownMajIni);
+SELECT:Paz NP IF (0 NomProCom) (-1 (ant) OR (cog) OR unknownMajIni);
+REMOVE:paz NP IF (0 NomProCom);
 REMOVE:marco NP IF (0 ("Marco")) (-1 ("comisión") OR ("convención") OR ("directiva") OR ("decisión") OR ("acuerdo") OR ("convenio"));
 REMOVE:marco NP IF (0 ("Marco")) (0 N + &&GN) (1 A + &&GN);
 REMOVE:casas NP IF (0 ("Casas")) (1 ("de"));
@@ -1288,7 +1289,7 @@ SELECT:amigo3 N IF (0 ("amigo") + MascPl) (-1 A + MascPl);
 SELECT:amigo4 N IF (0 ("amigo") + FemPl) (-1 A + FemPl);
 
 #medio
-SELECT:medio_adj A IF (0 ("medio") + &&GN) (-1 ("importe") + &&GN);
+SELECT:medio_adj A IF (0 ("medio") + &&GN) (-1 ("importe") OR ("tamaño")) (-1 &&GN);
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
 #supuesto
 SELECT:supuesto N IF (0 ("supuesto")) (1 ("contencioso"));
