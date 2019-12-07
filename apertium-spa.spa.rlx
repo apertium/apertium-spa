@@ -721,7 +721,16 @@ REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
 REMOVE:este_año_n Adv (0 ("este año")) (1 ("y")) (2 ("este"));
 SELECT:este_año_adv Adv (0 ("este año"));
 
-
+#ese (n o det)
+SELECT:ese_n N IF (0 ("ese") + FemSg) (-1 Det + FemSg);
+REMOVE:ese_det N IF (0 ("ese"))
+#deje, dejes (n o v)
+SELECT:deje_n N IF (0 ("deje") + MascSg) (-1 Det + MascSg);
+SELECT:deje_n N IF (0 ("deje") + MascPl) (-1 Det + MascPl);
+REMOVE:deje_v N IF (0 ("deje"));
+#feliz cumpleaños
+SELECT:feliz_cumpleaños_n N IF (0 ("feliz cumpleaños") + MascSg) (-1 Det + MascSg);
+REMOVE:feliz_cumpleaños_n N IF (0 ("feliz cumpleaños"));
 
 REMOVE:en_un_principio Adv IF (0 ("en un principio")) (-1*/* VerbosRigenEn BARRIER ("en"));
 #SELECT:en_un_principio Adv IF (0 ("en un principio")) (-1 >>> OR CM);
