@@ -91,6 +91,7 @@ SET Ant_Cog = Ant OR Cog ;
 
 SET DetDef = (det def) ;
 SET DetInd = (det ind) ;
+SET DetDem = (det dem) ;
 
 SET Noun_Adj = N OR A ;
 SET Noun_Adj_PP = N OR A OR PP ;
@@ -254,10 +255,11 @@ SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (1 ("ser"));
 SELECT:r_deber_vblex_1 Vblex IF (0 Deber) (NOT 1/* Inf);
 SELECT:deberde_vbmod Vbmod IF (0 ("deber# de")) (-1 ("a")) (-2 ("ir")) (1/* Inf);
 
-REMOVE:r_cog_1 Cog IF (-1 DetDef) (0 Cog) ;
-REMOVE:r_cog_2 Cog IF (-1 DetInd) (0 Cog) ;
-REMOVE:r_ant_1 Ant IF (-1 DetDef) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
-REMOVE:r_ant_2 Ant IF (-1 DetInd) (0 Ant) (NOT 0 ("Cenicienta")) ; #más excepciones?
+REMOVE:r_cog_1 Cog IF (-1 DetDef + &&GN) (0 N + &&GN) ;
+REMOVE:r_cog_2 Cog IF (-1 DetInd + &&GN) (0 N + &&GN) ;
+REMOVE:r_ant_1 Ant IF (-1 DetDef + &&GN) (0 N + &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
+REMOVE:r_ant_2 Ant IF (-1 DetInd + &&GN) (0 N + &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
+REMOVE:r_ant_2 Ant IF (-1 DetDem + &&GN) (0 N + &&GN) (NOT 0 ("Cenicienta")) ;
 
 SELECT:este_n N IF (0 ("este") + MascSg) (-1 ("el") + MascSg);
 
@@ -584,9 +586,15 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 
 
 #
-# AMBIGUEDAD NOMBRE PROPIO - COMÚN
+# AMBIGÜEDAD NOMBRE PROPIO - COMÚN
 #
 
+SELECT:Paz NP IF (0 ("Paz")) (1 (ant) OR (cog) OR unknownMajIni);
+SELECT:Paz NP IF (0 ("Paz")) (-1 (ant) OR (cog) OR unknownMajIni);
+REMOVE:paz NP IF (0 ("Paz"));# (-1 ("de")) (-2 ("acuerdo") OR ("tratado") OR ("proceso") OR ("negociación") OR ("plan"));
+REMOVE:marco NP IF (0 ("Marco")) (-1 ("comisión") OR ("convención") OR ("directiva") OR ("decisión") OR ("acuerdo") OR ("convenio"));
+REMOVE:casas NP IF (0 ("Casas")) (1 ("de"));
+REMOVE:costas NP IF (0 ("Costas")) (-1 ("y")) (-2 ("agua") OR ("puero") OR ("playa") OR ("frontera"));
 REMOVE:mesa (ant) IF (0 ("Mesa")) (NOT -1/* NP OR unknownMajIni) (NOT 1/* NP OR unknownMajIni);
 REMOVE:mar NP IF (0 ("mar"i)) (1 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
 REMOVE:mar NP IF (-1 ("mar"i)) (0 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
@@ -669,7 +677,7 @@ SELECT:montes_no_np N IF (0 ("Montes")) (1 (loc) OR (top));
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
-REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (0 ("Granada") OR ("Calles")); # evita alguns comportaments estranys (Granada/granada).
+REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (0 MajIni2); # (0 ("Granada") OR ("Calles") OR ("Medio Ambiente")); # evita alguns comportaments estranys (Granada/granada).
 
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
@@ -683,6 +691,11 @@ SELECT:apellido1 (ant) IF (0 (ant)) (-1 ("i"i)) (-2 (ant));
 
 # Evita traducir nombres propios
 SELECT:don_nombre (ant) IF (0 (ant)) (-1 ("<D.>"));
+
+SELECT:nom_propi0 NP IF (-1C (ant) OR (cog)) (0 NP);
+SELECT:nom_propi0 NP IF (0 NP) (1C (ant) OR (cog));
+SELECT:nom_propi0 NP IF (-1 (ant) OR (cog)) (0 NP) (1 (ant) OR (cog));
+
 
 SUBSTITUTE:nom_propi1 (".*"r) ("\\*$1"v) TARGET ("<(.*)>"r) IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola); # Más riesgo de problemas con adj.!
 REPLACE:nom_propi2 (np) Verb OR N OR A IF (-1C (ant) OR (cog)) (0C Verb OR N OR A) (0 MajIni) (NOT 0 MajSola);   #Sirve de algo?
@@ -723,7 +736,7 @@ SELECT:este_año_adv Adv (0 ("este año"));
 
 #ese (n o det)
 SELECT:ese_n N IF (0 ("ese") + FemSg) (-1 Det + FemSg);
-REMOVE:ese_det N IF (0 ("ese"))
+REMOVE:ese_det N IF (0 ("ese"));
 #deje, dejes (n o v)
 SELECT:deje_n N IF (0 ("deje") + MascSg) (-1 Det + MascSg);
 SELECT:deje_n N IF (0 ("deje") + MascPl) (-1 Det + MascPl);
