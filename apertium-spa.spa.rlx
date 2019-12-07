@@ -593,6 +593,7 @@ SELECT:Paz NP IF (0 ("Paz")) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:Paz NP IF (0 ("Paz")) (-1 (ant) OR (cog) OR unknownMajIni);
 REMOVE:paz NP IF (0 ("Paz"));# (-1 ("de")) (-2 ("acuerdo") OR ("tratado") OR ("proceso") OR ("negociación") OR ("plan"));
 REMOVE:marco NP IF (0 ("Marco")) (-1 ("comisión") OR ("convención") OR ("directiva") OR ("decisión") OR ("acuerdo") OR ("convenio"));
+REMOVE:marco NP IF (0 ("Marco")) (0 N + &&GN) (1 A + &&GN);
 REMOVE:casas NP IF (0 ("Casas")) (1 ("de"));
 REMOVE:costas NP IF (0 ("Costas")) (-1 ("y")) (-2 ("agua") OR ("puero") OR ("playa") OR ("frontera"));
 REMOVE:mesa (ant) IF (0 ("Mesa")) (NOT -1/* NP OR unknownMajIni) (NOT 1/* NP OR unknownMajIni);
