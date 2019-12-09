@@ -588,7 +588,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGÜEDAD NOMBRE PROPIO - COMÚN
 #
 
-SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero");
+SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero") OR ("Planes");
 
 SELECT:Paz NP IF (0 NomProCom) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:Paz NP IF (0 NomProCom) (-1 (ant) OR (cog) OR unknownMajIni);
