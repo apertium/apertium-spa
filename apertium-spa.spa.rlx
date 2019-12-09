@@ -590,6 +590,10 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 
 SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero") OR ("Planes");
 
+
+SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
+REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
+SELECT:Planes_n N IF (0 ("<Planes>")) (1 A + MascPl);
 SELECT:Paz NP IF (0 NomProCom) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:Paz NP IF (0 NomProCom) (-1 (ant) OR (cog) OR unknownMajIni);
 REMOVE:paz NP IF (0 NomProCom);
@@ -614,9 +618,6 @@ SELECT:calle N IF (0 ("<calle>"i)) (1 MajIni);
 REMOVE:ron NP IF (0 ("ron")) (1 ("con"));
 SELECT:pliego_n N IF (0 ("Pliego")) (NOT -1 ("en")) (NOT -1 NP OR knownMajIni OR unknownMajIni);#
 SELECT:tales_n A IF (0 ("<Tales>")) (1 Pl) (-1 >>>);
-SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
-REMOVE:planes_n NP IF (0 ("Planes")) (NOT -1 ("en") OR ("<les>"i));
-SELECT:Planes_n N IF (0 ("<Planes>")) (1 A + MascPl);
 SELECT:tales_np NP IF (0 ("Tales")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
 SELECT:marzo_mes N IF (0 ("Marzo")) (NOT -1/* NP);
 SELECT:julio_mes N IF (0 ("Julio")) (NOT 1/* NP) (NOT 1 MajIni) (NOT 1 unknownMajIni);
