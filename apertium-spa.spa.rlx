@@ -593,10 +593,11 @@ SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero");
 SELECT:Paz NP IF (0 NomProCom) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:Paz NP IF (0 NomProCom) (-1 (ant) OR (cog) OR unknownMajIni);
 REMOVE:paz NP IF (0 NomProCom);
-REMOVE:marco NP IF (0 ("Marco")) (-1 ("comisión") OR ("convención") OR ("directiva") OR ("decisión") OR ("acuerdo") OR ("convenio"));
+REMOVE:marco NP IF (0 ("Marco")) (-1 ("comisión") OR ("convención") OR ("directiva") OR ("decisión") OR ("acuerdo") OR ("convenio") OR ("estatuto"));
 REMOVE:marco NP IF (0 ("Marco")) (0 N + &&GN) (1 A + &&GN);
 REMOVE:casas NP IF (0 ("Casas")) (1 ("de"));
-REMOVE:costas NP IF (0 ("Costas")) (-1 ("y")) (-2 ("agua") OR ("puero") OR ("playa") OR ("frontera"));
+REMOVE:costas NP IF (0 ("Costas") OR ("Canales")) (-1 ("y") OR CM) (-2 ("camino") OR ("agua") OR ("puero") OR ("playa") OR ("frontera") OR ("aeropuerto"));
+REMOVE:costas NP IF (0 ("Costas") OR ("Canales")) (1 ("y") OR CM) (2 ("camino") OR ("agua") OR ("puero") OR ("playa") OR ("frontera") OR ("aeropuerto"));
 REMOVE:mesa (ant) IF (0 ("Mesa")) (NOT -1/* NP OR unknownMajIni) (NOT 1/* NP OR unknownMajIni);
 REMOVE:mar NP IF (0 ("mar"i)) (1 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
 REMOVE:mar NP IF (-1 ("mar"i)) (0 ("egeo"i) OR ("báltico"i) OR ("mediterráneo"i));
@@ -679,7 +680,12 @@ SELECT:montes_no_np N IF (0 ("Montes")) (1 (loc) OR (top));
 
 SELECT:helena_adj A IF (0 ("Helena")) (-1 ("república") OR ("liga"));
 SELECT:helena_np  NP IF (0 ("Helena"));
+
 REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (0 MajIni2); # (0 ("Granada") OR ("Calles") OR ("Medio Ambiente")); # evita alguns comportaments estranys (Granada/granada).
+
+REMOVE:np_no_adj A IF (0 NP) (1 (ant) OR (cog) OR unknownMajIni); 
+REMOVE:np_no_adj A IF (0 NP) (-1 (ant) OR (cog) OR unknownMajIni);
+
 
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
