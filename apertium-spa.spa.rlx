@@ -684,8 +684,8 @@ SELECT:helena_np  NP IF (0 ("Helena"));
 
 REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (0 MajIni2); # (0 ("Granada") OR ("Calles") OR ("Medio Ambiente")); # evita alguns comportaments estranys (Granada/granada).
 
-REMOVE:np_no_adj A IF (0 NP) (1 (ant) OR (cog) OR unknownMajIni); 
-REMOVE:np_no_adj A IF (0 NP) (-1 (ant) OR (cog) OR unknownMajIni);
+SELECT:np_no_adj NP IF (0 NP) (0 A) (1 (ant) OR (cog) OR unknownMajIni); 
+SELECT:np_no_adj NP IF (0 NP) (0 A) (-1 (ant) OR (cog) OR unknownMajIni);
 
 
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
