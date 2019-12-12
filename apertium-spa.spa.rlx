@@ -588,7 +588,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGÜEDAD NOMBRE PROPIO - COMÚN
 #
 
-SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero") OR ("Planes");
+SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero") OR ("Planes") OR ("Más");
 
 
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
@@ -598,7 +598,6 @@ SELECT:Paz NP IF (0 NomProCom) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:Paz NP IF (0 NomProCom) (-1 (ant) OR (cog) OR unknownMajIni);
 REMOVE:paz NP IF (0 NomProCom);
 SELECT:marco_n N IF (0 ("marco")) (-1 ("comisión") OR ("convención") OR ("directiva") OR ("decisión") OR ("estatuto") OR ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
-SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
 REMOVE:marco NP IF (0 ("Marco")) (0 N + &&GN) (1 A + &&GN);
 REMOVE:casas NP IF (0 ("Casas")) (1 ("de"));
 REMOVE:costas NP IF (0 ("Costas") OR ("Canales")) (-1 ("y") OR CM) (-2 ("camino") OR ("agua") OR ("puero") OR ("playa") OR ("frontera") OR ("aeropuerto"));
@@ -686,7 +685,10 @@ REMOVE:no_nom_comun N IF (0 NP) (0 N) (NOT -1 >>>) (0 MajIni2); # (0 ("Granada")
 SELECT:np_no_adj NP IF (0 NP) (0 A) (1 (ant) OR (cog) OR unknownMajIni); 
 SELECT:np_no_adj NP IF (0 NP) (0 A) (-1 (ant) OR (cog) OR unknownMajIni);
 
-SELECT:estilo_N N IF (0 ("<estilo>"i));
+SELECT:estilo_n N IF (0 ("<estilo>"i));
+SELECT:estilo_n N IF (-1 ("<estilo>"i)) (0 N);
+SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
+
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
 
