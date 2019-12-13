@@ -686,7 +686,7 @@ SELECT:np_no_adj NP IF (0 NP) (0 A) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:np_no_adj NP IF (0 NP) (0 A) (-1 (ant) OR (cog) OR unknownMajIni);
 
 SELECT:estilo_n N IF (0 ("<estilo>"i));
-SELECT:estilo_n N IF (-1 ("<estilo>"i)) (0 N);
+#SELECT:estilo_n N IF (-1 ("<estilo>"i)) (0 N);
 SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
 
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
