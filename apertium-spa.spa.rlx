@@ -220,6 +220,10 @@ SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
 SECTION
 
+#Palabras sueltas: Nombre, Rojo, etc.
+SELECT:sustantivo N IF (0 N) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
+SELECT:adjetivo   A IF (0 A) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
+
 #fallo
 SELECT:fallo_n N (0 ("fallo")) (-1 ("sentencia") OR ("parte dispositiva") OR ("dispositva"));
 
@@ -347,6 +351,8 @@ REMOVE:detpl_vb_nsg N IF (0 Vblex) (0 (n sg)) (-1 (prn pro pl)) (NOT 0 (pp));
 REMOVE:detpl_vb_adjsg A IF (0 Vblex) (0 (adj sg)) (-1 (prn pro pl)) (NOT 0 (pp));
 REMOVE:detpl_vb_nm N IF (0 Vblex) (0 N + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp)); #la motivo
 REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 A + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp));
+
+SELECT:encontrar Vblex IF (0 ("encontrar")) (-1 ("no")); #no adjetivo
 
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
@@ -1282,6 +1288,7 @@ REMOVE:remite_v N IF (0 ("remite")) (1/* ("a"));
 SELECT:pendiente_adj A IF (0 ("pendiente")) (-1 Estar);
 #añada
 SELECT:añada_v Vblex IF (0 ("añada")) (-1 ("cuando") OR ("si") OR ("cuanto") OR ("como"));
+SELECT:añada_v Vblex IF (0 ("<añada>"i)) (NOT -1 Det + FemSg) (NOT 1 ("de"));
 #comida
 SELECT:comida_n N IF (0 ("comida")) (1 ("basura"));
 #refleja
