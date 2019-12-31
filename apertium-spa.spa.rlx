@@ -615,6 +615,7 @@ REMOVE:puente NP IF (0 ("Puente")) (1/* ("de"));
 SELECT:maría NP IF (0 ("María"));
 REMOVE:marina NP IF (0 ("Marina")) (1 ("real") OR ("mercante") OR ("británica")); 
 REMOVE:costa NP IF (0 ("Costa")) (1 ("azul") OR ("bravo") OR ("blanco")); 
+SELECT:dolores (ant) IF (0 ("Dolores")) (1 (ant) OR (cog) OR unknownMajIni);
 SELECT:domingo_dia0 N IF (0 ("Domingo")) (1 (cm)) (2 Num);
 SELECT:domingo_dia1 N IF (0 ("Domingo")) (1 Num);
 SELECT:calle N IF (0 ("<calle>"i)) (-1 >>>);
