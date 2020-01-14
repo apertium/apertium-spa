@@ -1291,7 +1291,7 @@ REMOVE:remite_v N IF (0 ("remite")) (1/* ("a"));
 SELECT:pendiente_adj A IF (0 ("pendiente")) (-1 Estar);
 #añada
 SELECT:añada_v Vblex IF (0 ("añada")) (-1 ("cuando") OR ("si") OR ("cuanto") OR ("como"));
-SELECT:añada_v Vblex IF (0 ("<añada>"i)) (NOT -1 Det + FemSg) (NOT 1 ("de"));
+SELECT:añada_v Vblex IF (0 ("<añada>"i)) (NOT -1 Det + FemSg) (NOT -1 ("tal")) (NOT 1 ("de"));
 #comida
 SELECT:comida_n N IF (0 ("comida")) (1 ("basura"));
 #refleja
