@@ -310,6 +310,10 @@ REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
 SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
 
+#la una
+SELECT:la_una N IF (0 ("la una")) (0* ("mañana") OR ("noche") OR ("mediodía") OR ("tarde"));
+REMOVE:la_una N IF (0 ("la una"));
+
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
 SELECT:prn_vb_n Verb IF (0C Verb + (p1 sg) OR N) (-1C ("yo"i));
