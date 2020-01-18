@@ -311,7 +311,8 @@ SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
 SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
 
 #la una (hora)
-SELECT:la_una N IF (0 ("la una")) (0* ("mañana") OR ("noche") OR ("mediodía") OR ("tarde") OR ("por la mañana") OR ("por la tarde") OR ("por la noche"));
+SELECT:la_una N IF (0 ("la una")) (0* ("mañana") OR ("madrugada") OR ("noche") OR ("mediodía") OR ("tarde") OR ("por la mañana") OR ("por la tarde") OR ("por la noche"));
+SELECT:la_una N IF (0 ("la una")) (-1 Copula);
 REMOVE:la_una N IF (0 ("la una"));
 
 # prn + verbo/nombre
