@@ -220,6 +220,9 @@ SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
 SECTION
 
+# PREFIJOS AÑADIDOS
+REMOVE:prefixes ("_prefix_.*"r) IF (0 ("_prefix_.*"r));
+
 #Palabras sueltas: Nombre, Rojo, etc.
 SELECT:sustantivo N IF (0 N) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
 SELECT:adjetivo   A IF (0 A) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));

@@ -21,6 +21,10 @@ TARGETS_COMMON =			\
 ## Spanish transducer
 ###############################################################################
 
+$(BASENAME).$(LANG1).dix: $(BASENAME).$(LANG1).metadix 
+	apertium-validate-dictionary $<
+	python3 convert-metadix-dix.py $< $@ 
+
 $(LANG1).autogen.bin: $(BASENAME).$(LANG1).dix
 	apertium-validate-dictionary $<
 	lt-comp rl $< $@
