@@ -220,6 +220,12 @@ SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
 SECTION
 
+# Multipalabras
+REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 A + FemPl) ;
+REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 Adv OR PreAdv) (2 A + FemPl) ;
+REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C Rel) ;
+SELECT:en_ocasiones Adv IF (0 ("en ocasiones")) ;
+
 #Palabras sueltas: Nombre, Rojo, etc.
 SELECT:sustantivo N IF (0 N) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
 SELECT:adjetivo   A IF (0 A) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
