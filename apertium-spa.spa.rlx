@@ -605,7 +605,7 @@ SELECT:parecer_nom N IF (0 ("parecer")) (-1 Pos);
 # AMBIGÜEDAD NOMBRE PROPIO - COMÚN
 #
 
-SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero") OR ("Planes") OR ("Más");
+SET NomProCom = ("Paz") OR ("Guerra") OR ("Fuentes") OR ("Caballero") OR ("Planes") OR ("Más") OR ("Reyes");
 
 
 SELECT:planes_np NP IF (0 ("Planes")) (-2 ("ayuntamiento") OR ("alcalde") OR ("concejal") OR ("municipio") OR ("vecino") OR ("valle")) (-1 ("de"));
