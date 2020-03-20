@@ -1223,6 +1223,8 @@ SELECT:pase_n N IF (0 ("<pase>"i)) (1 ("corto") OR ("larg")) (1 MascSg);
 SELECT:pases_n N IF (0 ("<pases>"i)) (1 ("corto") OR ("larg")) (1 MascPl);
 SELECT:pase_v Verb IF (0 ("<pase>"i)) (NOT -1 Det + MascSg) (NOT -1 Pos + MascSg);
 SELECT:pase_v Verb IF (0 ("<pases>"i)) (NOT -1 Det + MascPl) (NOT -1 Pos + MascPl) (NOT -1 A + MascPl) (NOT -1 ("entregar") OR ("comprar") OR ("vender")); # Pero "cuando los pases" podría ser verbo
+#cebada
+REMOVE:cebada_v N IF (0 ("cebada")) (-1 ("estar") OR ("seguir") or ("continuar"));
 
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
