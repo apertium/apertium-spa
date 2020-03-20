@@ -449,7 +449,7 @@ SELECT:tanto_adj_n N IF (-1 ("<tanto>"i)) (0 N + MascSg) (NOT 0 ("mayor") OR ("m
 
 # seguir, estar + ger
 SELECT:ger Ger IF (-1 ("estar"i) OR ("seguir"i) OR ("continuar"i) OR ("acabar"i)) (0 Ger) ;
-SELECT:preciso A IF (0 ("preciso")) (-1 Ser OR ("resultar"));
+SELECT:preciso A IF (0 ("preciso")) (-1 Ser OR ("resultar") OR ("hacer"));
 SELECT:preciso Vblex IF (1 ("preciso")) (0 ("resultar"));
 SELECT:precisar Vblex IF (0 ("precisar")) (1 Inf);
 SELECT:ir_a Ir IF (0 Ir) (1 ("a")) (2/* Inf);
@@ -1225,6 +1225,8 @@ SELECT:pase_v Verb IF (0 ("<pase>"i)) (NOT -1 Det + MascSg) (NOT -1 Pos + MascSg
 SELECT:pase_v Verb IF (0 ("<pases>"i)) (NOT -1 Det + MascPl) (NOT -1 Pos + MascPl) (NOT -1 A + MascPl) (NOT -1 ("entregar") OR ("comprar") OR ("vender")); # Pero "cuando los pases" podría ser verbo
 #cebada
 REMOVE:cebada_v N IF (0 ("cebada")) (-1 ("estar") OR ("seguir") or ("continuar"));
+#proceder
+REMOVE:proceder_n N IF (0 ("proceder")) (1 ("a"));
 
 #efecto
 SELECT:efecto_ N IF (-1 ("efecto")) (0 N) (0 (vblex pri p1 sg));
