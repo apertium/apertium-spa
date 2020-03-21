@@ -223,7 +223,10 @@ SECTION
 # Multipalabras
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 A + FemPl) (NOT 2C N OR A OR CnjSub) ;
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 Adv OR PreAdv) (2 A + FemPl) (NOT 3C N OR A OR CnjSub) ;
-REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C Rel OR ("de")) ;
+REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C Rel);
+REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C ("de")) (2 ("fiesta") OR ("celebración") OR ("ceremonia") OR ("jubileo") OR ("gala") OR 
+("evento") OR ("solemnidad"));
+REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C ("de")) (2 A) (3 ("fiesta") OR ("celebración") OR ("ceremonia") OR ("jubileo") OR ("gala") OR ("evento") OR ("solemnidad"));
 SELECT:en_ocasiones Adv IF (0 ("en ocasiones")) ;
 
 #Palabras sueltas: Nombre, Rojo, etc.
