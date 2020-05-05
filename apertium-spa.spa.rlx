@@ -1579,8 +1579,8 @@ SELECT:r_na_13_fs N IF (-3 Barrera_Inicial_SN LINK NOT 0 Verb) (-2C Det + $$FemS
 SELECT:r_na_13_mp N IF (-3 Barrera_Inicial_SN LINK NOT 0 Verb) (-2C Det + $$MascPl) (-1C A + $$MascPl) (0 Noun_Adj_PP + $$MascPl LINK 0 N OR NP) (1 Barrera_Final_Estrict_SN) ;
 SELECT:r_na_13_fp N IF (-3 Barrera_Inicial_SN LINK NOT 0 Verb) (-2C Det + $$FemPl) (-1C A + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 0 N OR NP) (1 Barrera_Final_Estrict_SN) ;
 
-# mal (adj): mal arranque, mal hecho
-SELECT:mal_adj A IF (0 ("mal") + MascSg) (1 N + MascSg) (NOT 1 Adj_PP);
+# mal (adj): mal arranque, mal hecho  
+SELECT:mal_adj A IF (0 ("mal") + MascSg) (1 N + MascSg) (NOT 1 Adj_PP) (NOT 1 Det);
 
 # NOM ADJ
 
