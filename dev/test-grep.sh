@@ -4,7 +4,7 @@
 #set -o pipefail
 echo "Grep tests"
 {
-for file in ../*.dix
+for file in ../apertium-spa.spa.dix
 do 
     grep -H "<i> " $file
     grep -H " </i>" $file
@@ -18,9 +18,9 @@ do
     grep -H "<b/><g>" $file
 
     #Poden ser correctes
-    grep -H "<b/></l>" $file #| sed -E '/n="(~|cont)/d'
-    grep -H "<b/></r>" $file #| sed -E '/n="(~|cont)/d'
-    grep -H "<b/></i>" $file #| sed -E '/n="(~|cont|romana|.*el_qual__rel|.*el_seu__relecho "")/d' 
+    grep -H "<b/></l>" $file sed -E '/n="cont/d'
+    grep -H "<b/></r>" $file sed -E '/n="cont/d'
+    grep -H "<b/></i>" $file sed -E '/n="cont")/d' 
     
 done
 } > "greptests.txt"

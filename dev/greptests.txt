@@ -1,30 +1,3 @@
-../apertium-spa.post-spa.dix:          <l>el<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>EL<b/></l>
-../apertium-spa.post-spa.dix:          <l>EL<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>de<b/><a/>la<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>a<b/><a/>la<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>la<b/></l>
-../apertium-spa.post-spa.dix:          <l>la<b/></l>
-../apertium-spa.post-spa.dix:          <l>las<b/></l>
-../apertium-spa.post-spa.dix:          <l>lo<b/></l>
-../apertium-spa.post-spa.dix:          <l>los<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>de<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>a<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>DE<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>A<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>le<b/></l>
-../apertium-spa.post-spa.dix:          <l><a/>les<b/></l>
-../apertium-spa.post-spa.dix:          <r>l<b/></r>
-../apertium-spa.post-spa.dix:          <r>L<b/></r>
-../apertium-spa.post-spa.dix:          <r>L<b/></r>
-../apertium-spa.post-spa.dix:          <r>del<b/></r>
-../apertium-spa.post-spa.dix:          <r>al<b/></r>
-../apertium-spa.post-spa.dix:          <r>el<b/></r>
-../apertium-spa.post-spa.dix:          <r>se<b/>la<b/></r>
-../apertium-spa.post-spa.dix:          <r>se<b/>las<b/></r>
-../apertium-spa.post-spa.dix:          <r>se<b/>lo<b/></r>
-../apertium-spa.post-spa.dix:          <r>se<b/>los<b/></r>
-../apertium-spa.post-spa.dix:        <i><b/></i>
 ../apertium-spa.spa.dix:  <e>       <p><l>ex<b/></l>    <r>ex<b/></r></p></e>
 ../apertium-spa.spa.dix:  <e>       <p><l>me<b/></l>    <r>me<s n="prn"/><s n="pro"/><s n="p1"/><s n="mf"/><s n="sg"/><j/></r></p></e>
 ../apertium-spa.spa.dix:  <e>       <p><l>te<b/></l>    <r>te<s n="prn"/><s n="pro"/><s n="p2"/><s n="mf"/><s n="sg"/><j/></r></p></e>
