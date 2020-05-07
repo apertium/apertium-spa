@@ -18,9 +18,9 @@ do
     grep -H "<b/><g>" $file
 
     #Poden ser correctes
-    grep -H "<b/></l>" $file sed -E '/n="cont/d'
-    grep -H "<b/></r>" $file sed -E '/n="cont/d'
-    grep -H "<b/></i>" $file sed -E '/n="cont")/d' 
+    grep -H "<b/></l>" $file | sed -E '/n="cont/d'
+    grep -H "<b/></r>" $file | sed -E '/n="cont/d'
+    grep -H "<b/></i>" $file | sed -E '/n="cont")/d' 
     
 done
 } > "greptests.txt"
