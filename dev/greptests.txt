@@ -1,8 +1,3 @@
-../apertium-spa.spa.dix:<e lm="Catalunya Caixa" a="prompsit"><i>Catalunya Caixa</i><par n="ABC__np"/></e>
-../apertium-spa.spa.dix:<e lm="Rolls Royce" a="prompsit"><i>Rolls Royce</i><par n="ABC__np"/></e>
-../apertium-spa.spa.dix:<e lm="Tommy Hilfiger" a="prompsit"><i>Tommy Hilfiger</i><par n="ABC__np"/></e>
-../apertium-spa.spa.dix:<e lm="Casole Bruzio"><i>Casole Bruzio</i><par n="Afganistán__np"/></e>
-../apertium-spa.spa.dix:<e lm="Roccella Ionica"><i>Roccella Ionica</i><par n="Afganistán__np"/></e>
 ../apertium-spa.spa.dix:  <e>       <p><l>ex<b/></l>    <r>ex<b/></r></p></e>
 ../apertium-spa.spa.dix:  <e>       <p><l>me<b/></l>    <r>me<s n="prn"/><s n="pro"/><s n="p1"/><s n="mf"/><s n="sg"/><j/></r></p></e>
 ../apertium-spa.spa.dix:  <e>       <p><l>te<b/></l>    <r>te<s n="prn"/><s n="pro"/><s n="p2"/><s n="mf"/><s n="sg"/><j/></r></p></e>
