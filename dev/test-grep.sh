@@ -4,7 +4,7 @@
 #set -o pipefail
 echo "Grep tests"
 {
-for file in ../apertium-spa.spa.dix
+for file in apertium-spa.spa.dix
 do 
     grep -H "<i> " $file
     grep -H " </i>" $file
@@ -26,7 +26,7 @@ do
     grep -H "<b/></i>" $file | sed -E '/n="cont/d' 
     
 done
-} > "greptests.txt"
+} > "dev/greptests.txt"
 
 echo "Checking for differences"
 git diff --exit-code
