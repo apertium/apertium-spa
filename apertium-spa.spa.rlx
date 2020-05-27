@@ -972,6 +972,8 @@ SET DiasSemana = ("lunes") OR ("martes") OR ("miércoles") OR ("jueves") OR ("vi
 SELECT:fuera Ser IF (0 ("<fuera>"i)) (1 DiasSemana);
 SELECT:fuera Ser IF (0 ("<fuera>"i)) (-1 ("este") + Sg) (1* Det OR N OR Adj_PP BARRIER NOT_Adv);
 SELECT:fuera Ser IF (0 ("fuera")) (1 Adj_PP) (-1 CnjAdv OR CnjSub OR Rel);
+SELECT:fuera Ser IF (0 ("fuera")) (1 PreAdv) (2 Adj_PP) (-1 CnjAdv OR CnjSub OR Rel OR CM); 
+SELECT:fuera Ser IF (0 ("fuera")) (1 PreAdv) (2 PreAdv) (3 Adj_PP) (-1 CnjAdv OR CnjSub OR Rel OR CM); 
 
 SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pasar/tirar adelante 
 
