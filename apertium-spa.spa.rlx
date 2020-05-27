@@ -761,7 +761,7 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 # PALABRAS PARTICULARES
 #
 
-REMOVE:ruego N (0 ("ruego")) (NOT -1 Det + MascSg);
+REMOVE:ruego N (0 ("ruego")) (NOT -1 MascSg) (NOT 1 MascSg);
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
@@ -1468,7 +1468,8 @@ REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
 
 # VERB / ADJ
 #No afecta
-SELECT:afecta_verb Verb IF (0 Verb) (-1 ("no")) (-2 >>> OR CM);
+REMOVE:contento Verb IF (0 ("contento")) (-1 ("no")) (1 ("con"));
+SELECT:afecta_verb Verb IF (0 Verb) (-1 ("no")) (-2 >>> OR CM) (NOT 0 ("como"));
 
 ## Desambiguación ADJ (+PP) - NOMBRE
 #
