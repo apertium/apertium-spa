@@ -498,7 +498,7 @@ SELECT:tanto_adj A IF (0 ("tanto") + FemPl) (1 FemPl) (NOT -1 Det);
 SELECT:bastante_preadv PreAdv IF (0 ("bastante")) (1 ("más") OR ("menos")) (1 A);
 SELECT:una_vez_mas_adj A IF (0 ("más")) (-1 ("vez")) (-2 ("<una>"i));
 SELECT:mas_menos_adv Adv IF (0 ("más") OR ("menos")) (1 A);
-REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo"));
+REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo") OR ("pronto"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb) (NOT 1 Prep) ;
 REMOVE:adj_adv_3 Adv (-1C A) (0 A LINK 0 Adv) (NOT 1 Verb) ;
 SELECT:adj_adv_4_ms Adv (-1C N + $$MascSg) (0 A LINK 0 Adv) (1C A + $$MascSg) ;
@@ -760,6 +760,8 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 #
 # PALABRAS PARTICULARES
 #
+
+REMOVE:ruego N (0 ("ruego")) (NOT -1 Det + MascSg);
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
