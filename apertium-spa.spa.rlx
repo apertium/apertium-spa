@@ -1464,6 +1464,9 @@ SELECT:nom_alguno N IF (0 N + MascSg) (1C ("alguno_negativo") + MascSg) (NOT 0 A
 
 REMOVE:alguno_negativo ("alguno_negativo") IF (0 ("alguno_negativo"));
 
+# VERB / ADJ
+#No afecta
+SELECT:afecta_verb Verb IF (0 Verb) (-1 ("no")) (-2 >>> OR CM);
 
 ## Desambiguación ADJ (+PP) - NOMBRE
 #
