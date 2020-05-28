@@ -301,7 +301,7 @@ SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-3 Det + MascSg) (-2 Adj_PP + MascSg OR PreAdv) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Adj_PP + MascSg) (1 <<<);
-REMOVE:ruego N (0 ("ruego") OR ("deseo")) (NOT -1 Prep OR ("dicho") OR ("cuyo") OR ("tanto")) (NOT 1 ("alguno"));
+REMOVE:ruego N (0 ("ruego") OR ("deseo")) (NOT -1 Prep OR ("dicho") OR ("cuyo") OR ("tanto")) (NOT 1 ("alguno")) (NOT 1 Adj_PP + MascSg);
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
