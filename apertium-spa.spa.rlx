@@ -284,6 +284,13 @@ SELECT:este_2 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 A + $$MascSg) (2 N + $$
 SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 	# Este estado
 
+# son
+SELECT:son_verb Copula IF (0 ("<son>"i)) (1 (pl));
+SELECT:son_verb Copula IF (0 ("<son>"i)) (1 PreAdv) (2 (pl));
+
+REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
+SELECT:son_verb Copula IF (0 ("<Son>"i)) (-1 >>>);
+
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-3 Det + MascSg) (-2 Adj_PP + MascSg OR PreAdv) (-1 Adj_PP + MascSg);
@@ -1267,9 +1274,7 @@ SELECT:qué PreAdv IF (0 ("qué")) (1C PP);
 SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 A);
 SELECT:qué PreAdv IF (0 ("qué")) (1 Adv) (2 PP);
 REMOVE:qué PreAdv IF (0 ("qué"));
-# son
-REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT 1 ("cubano"));
-SELECT:son_verb Copula IF (0 ("<Son>"i)) (-1 >>>);
+
 #frontero
 REMOVE:frontero A IF (0 ("frontero") + Fem) (-1C N + Fem);
 #médico
