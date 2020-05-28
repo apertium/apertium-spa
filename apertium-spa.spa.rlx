@@ -288,7 +288,7 @@ SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-3 Det + MascSg) (-2 Adj_PP + MascSg OR PreAdv) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 MascSg) (1 <<<);
-REMOVE:ruego N (0 ("ruego") OR ("deseo"));
+REMOVE:ruego N (0 ("ruego") OR ("deseo")) (NOT -1 Prep);
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
@@ -1829,6 +1829,6 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 
 #ruego me perdonen
 SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 (p2) OR (p3)) (1 (prs) OR (pis)) (NOT 1 Pron OR Prep OR N OR Adj_PP) (NOT -1* ("si")) (NOT 0 (META:/[-–—−]/r));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 (p2) OR (p3) OR (p1 pl)) (1 (prs) OR (pis)) (NOT 1 Pron OR Prep OR N OR Adj_PP) (NOT -1* ("si")) (NOT 0 (META:/[-–—−]/r));
 ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 (p2) OR (p3)) (2 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
 ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 Pro) (3 (p2) OR (p3)) (3 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
