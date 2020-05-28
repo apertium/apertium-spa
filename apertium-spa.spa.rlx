@@ -287,9 +287,9 @@ SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 #ruego me perdonen
 
 SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Vblex + Pers) (NOT 1 Pron);
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 Vblex + Pers);
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 Pro) (3 Vblex + Pers);
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 (p2) OR (p3)) (1 (prs) OR (pis)) (NOT 1 Pron);
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 (p2) OR (p3)) (2 (prs) OR (pis));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 Pro) (3 (p2) OR (p3)) (3 (prs) OR (pis));
 
 SELECT:ruego N (0 ("ruego")) (-1 Det + MascSg);
 SELECT:ruego N (0 ("ruego")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
