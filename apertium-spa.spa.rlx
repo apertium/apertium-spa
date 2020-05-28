@@ -284,12 +284,6 @@ SELECT:este_2 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 A + $$MascSg) (2 N + $$
 SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 	# Este estado
 
-#ruego me perdonen
-
-SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 (p2) OR (p3)) (1 (prs) OR (pis)) (NOT 1 Pron);
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 (p2) OR (p3)) (2 (prs) OR (pis));
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 Pro) (3 (p2) OR (p3)) (3 (prs) OR (pis));
 
 SELECT:ruego N (0 ("ruego")) (-1 Det + MascSg);
 SELECT:ruego N (0 ("ruego")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
@@ -332,6 +326,7 @@ REMOVE:querido_adj Verb IF (0 ("querido"i)) (NOT -1 Ser OR Haber OR Adv) (1 N);
 #desear
 SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
 SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
+SELECT:desear Vblex IF (0 ("desear")) (-1 ("que"));
 
 #la una (hora)
 SELECT:la_una N IF (0 ("la una")) (0* ("mañana") OR ("madrugada") OR ("noche") OR ("mediodía") OR ("tarde") OR ("por la mañana") OR ("por la tarde") OR ("por la noche"));
@@ -1833,3 +1828,9 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser
 #TODO: y en que ; también en que
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
+
+#ruego me perdonen
+SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 (p2) OR (p3)) (1 (prs) OR (pis)) (NOT 1 Pron OR Prep OR N OR Adj_PP) (NOT -1* ("si")) (NOT 0 (META:/[-–—−]/r));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 (p2) OR (p3)) (2 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) (0 VerbsRogar) (0 (p1)) (1 Pro) (2 Pro) (3 (p2) OR (p3)) (3 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
