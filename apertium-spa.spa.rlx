@@ -284,13 +284,11 @@ SELECT:este_2 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 A + $$MascSg) (2 N + $$
 SELECT:este_1 Det IF (0 ("Este") + $$MascSg) (-1 >>>) (1 N + $$MascSg) ;
 	# Este estado
 
-
-SELECT:ruego N (0 ("ruego")) (-1 Det + MascSg);
-SELECT:ruego N (0 ("ruego")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
-SELECT:ruego N (0 ("ruego")) (-3 Det + MascSg) (-2 Adj_PP + MascSg OR PreAdv) (-1 Adj_PP + MascSg);
-REMOVE:ruego N (0 ("ruego"));
-
-
+SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg);
+SELECT:ruego N (0 ("ruego") OR ("deseo")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
+SELECT:ruego N (0 ("ruego") OR ("deseo")) (-3 Det + MascSg) (-2 Adj_PP + MascSg OR PreAdv) (-1 Adj_PP + MascSg);
+SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 MascSg) (1 <<<);
+REMOVE:ruego N (0 ("ruego") OR ("deseo"));
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
