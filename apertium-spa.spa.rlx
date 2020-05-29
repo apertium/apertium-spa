@@ -296,7 +296,7 @@ REMOVE:cuyo_verbnom Verb IF (0 Verb) (0 Adj_PP OR N) (-1 ("cuyo"));
 
 #desear
 SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
-SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
+SELECT:desear Vblex IF (0 ("desear")) (1/* Inf);   #como deseo precisar
 SELECT:desear Vblex IF (0 ("desear")) (-1 ("que"));
 
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg OR ("dicho") + MascSg);
@@ -305,10 +305,13 @@ SELECT:ruego N (0 ("ruego") OR ("deseo")) (-3 Det + MascSg) (-2 Adj_PP + MascSg 
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Adj_PP + MascSg) (1 <<<);
 REMOVE:ruego N (0 ("ruego")) (NOT -1 Prep OR ("tanto")) (NOT 1 ("alguno"));
 
-REMOVE:deseo N (0 ("deseo")) (1 ("que") OR Adv);
+REMOVE:deseo N (0 ("deseo")) (1 ("que") OR Adv OR ("lo"));
+REMOVE:deseo N (0 ("deseo")) (-1 ("no"));
 REMOVE:deseo N (0 ("deseo")) (-1 >>>);
-REMOVE:deseo N (0 ("deseo")) (-1 CnjCoo) (-2 >>>);
-
+REMOVE:deseo N (0 ("deseo")) (-1 CnjCoo) (NOT 1 MascSg OR Pers OR <<<) (NOT -2 N);
+REMOVE:deseo N (0 ("deseo")) (-1 ("pero")) (NOT 1 MascSg OR Pers OR <<<);
+REMOVE:deseo N (0 ("deseo")) (1 CM) (NOT 2 N) (NOT -1 CnjCoo);
+REMOVE:deseo N (0 ("deseo")) (1 CnjCoo) (2 Pers);
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
@@ -355,6 +358,7 @@ SELECT:prn_vb_n Verb IF (0C Verb + (p3 pl) OR N) (-1C (prn tn p3 pl));
 # prep + verbo/nombre > nombre: (ej. transmite al vino, del anillo ciclista)
 REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (-1C/* Prep) (NOT -1 ("hasta"i) OR Rel OR CnjSub);
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascSg) (0 MascSg); 
+REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-1 ("<al>") OR ("<del>")) (0 MascSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + MascPl) (0 MascPl); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemSg) (0 FemSg); 
 REMOVE:prep_det_VbN Verb + Pers IF (0 Verb + Pers) (-2C Prep) (-1 Det + FemPl) (0 FemPl); 
@@ -1843,6 +1847,6 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en"));
 
 #ruego me perdonen
 SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 VerbsRogar) (0 (p1)) (0 (pri) OR (cni)) (1 (p2) OR (p3) OR (p1 pl)) (1 (prs) OR (pis)) (NOT 1 Pron OR Prep OR N OR Adj_PP) (NOT -1* ("si")) (NOT 0 (META:/[-–—−]/r));
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 VerbsRogar) (0 (p1)) (0 (pri) OR (cni)) (1 Pro) (2 (p2) OR (p3)) (2 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
-ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 (p1)) (0 (pri) OR (cni)) (1 Pro) (2 Pro) (3 (p2) OR (p3)) (3 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 VerbsRogar) (0 (p1)) (0 (pri) OR (cni) OR (pii)) (1 (p2) OR (p3) OR (p1 pl)) (1 (prs) OR (pis)) (NOT 1 Pron OR Prep OR N OR Adj_PP) (NOT -1* ("si")) (NOT 0 (META:/[-–—−]/r));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 VerbsRogar) (0 (p1)) (0 (pri) OR (cni) OR (pii)) (1 Pro) (2 (p2) OR (p3)) (2 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
+ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 (p1)) (0 (pri) OR (cni) OR (pii)) (1 Pro) (2 Pro) (3 (p2) OR (p3)) (3 (prs) OR (pis)) (NOT 0 (META:/[-–—−]/r));
