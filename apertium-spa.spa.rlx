@@ -840,7 +840,7 @@ SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1/* Inf OR (cm));
 SELECT ("con el objeto de") IF (0 ("con el objeto de")) (1 ("no")) (2/* Inf);
 REMOVE ("con el objeto de") IF (0 ("con el objeto de")) (NOT 1/* Inf);
 
-SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("desear") OR ("comprender") OR ("hacer") OR ("agradecer") OR ("estimar") OR ("considerar") OR ("permitir") OR ("hablar");
+SET VerbsLoNeutro = ("ser") OR ("impedir") OR ("decir") OR ("entender") OR ("desear") OR ("comprender") OR ("hacer") OR ("agradecer") OR ("estimar") OR ("considerar") OR ("permitir") OR ("hablar") OR ("saber") OR ("decir");
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 VerbsLoNeutro + Verb + Pers);
 SELECT:lo_neutro1 (nt) IF (0 ("<lo>"i)) (1 Vbhaver) (2 VerbsLoNeutro + Verb + PP + MascSg);
 SELECT:lo_neutro2 (nt) IF (0 ("<lo>"i)) (1 ("estar")) (NOT 2 Ger);
