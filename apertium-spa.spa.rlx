@@ -291,17 +291,24 @@ SELECT:son_verb Copula IF (0 ("<son>"i)) (1 PreAdv) (2 (pl));
 REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT -1 Prep) (NOT 1 ("cubano"));
 SELECT:son_verb Copula IF (0 ("<Son>"i)) (-1 >>>);
 
+#cuyo + nom
+REMOVE:cuyo_verbnom Verb IF (0 Verb) (0 Adj_PP OR N) (-1 ("cuyo"));
 
 #desear
 SELECT:deseo N IF (0 ("deseo")) (-1 Det OR Pos) (-1 MascSg); #el deseo, mi deseo
 SELECT:desear Vblex IF (0 ("desear")) (1 Inf);   #como deseo precisar
 SELECT:desear Vblex IF (0 ("desear")) (-1 ("que"));
 
-SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg);
+SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Det + MascSg OR ("dicho") + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-2 Det + MascSg) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-3 Det + MascSg) (-2 Adj_PP + MascSg OR PreAdv) (-1 Adj_PP + MascSg);
 SELECT:ruego N (0 ("ruego") OR ("deseo")) (-1 Adj_PP + MascSg) (1 <<<);
-REMOVE:ruego N (0 ("ruego") OR ("deseo")) (NOT -1 Prep OR ("dicho") OR ("cuyo") OR ("tanto")) (NOT 1 ("alguno")) (NOT 1 Adj_PP + MascSg);
+REMOVE:ruego N (0 ("ruego")) (NOT -1 Prep OR ("tanto")) (NOT 1 ("alguno"));
+
+REMOVE:deseo N (0 ("deseo")) (1 ("que") OR Adv);
+REMOVE:deseo N (0 ("deseo")) (-1 >>>);
+REMOVE:deseo N (0 ("deseo")) (-1 CnjCoo) (-2 >>>);
+
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
