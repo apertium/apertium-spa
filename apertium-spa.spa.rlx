@@ -313,7 +313,7 @@ REMOVE:deseo N (0 ("deseo")) (-1 ("pero")) (NOT 1 MascSg OR Pers OR <<<);
 REMOVE:deseo N (0 ("deseo")) (1 CM) (NOT 2 N) (NOT -1 CnjCoo);
 REMOVE:deseo N (0 ("deseo")) (1 CnjCoo) (2 Pers);
 
-REMOVE:avnce N (0 ("avance")) (-1 ("que"));
+REMOVE:avance N (0 ("avance")) (-1 ("que"));
 
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
