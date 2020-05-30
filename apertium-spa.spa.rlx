@@ -313,6 +313,8 @@ REMOVE:deseo N (0 ("deseo")) (-1 ("pero")) (NOT 1 MascSg OR Pers OR <<<);
 REMOVE:deseo N (0 ("deseo")) (1 CM) (NOT 2 N) (NOT -1 CnjCoo);
 REMOVE:deseo N (0 ("deseo")) (1 CnjCoo) (2 Pers);
 
+REMOVE:avnce N (0 ("avance")) (-1 ("que"));
+
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
 REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (NOT -1 PuntosCardinals) (NOT -2 PuntosCardinals) (NOT 0 MajIni2);
@@ -786,6 +788,8 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 #
 # PALABRAS PARTICULARES
 #
+
+SELECT:golfo_n N IF (0 ("golfo")) (1 ("de"));
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
