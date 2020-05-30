@@ -790,7 +790,10 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 #
 
 SELECT:golfo_n N IF (0 ("golfo")) (1 ("de"));
-REMOVE:vaya_adj A IF (0 ("vaya")) (NOT 1 N);
+
+REMOVE:vaya_adj A IF (0 ("vaya")) (NOT 1 N); # ¡Vaya hombre!
+SELECT:vaya_ij Interj IF (0 ("vaya")) (1 CM OR <<<) (-1 CM OR >>>);
+REMOVE:vaya_ij Interj IF (0 ("vaya"));
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
@@ -1413,6 +1416,7 @@ SELECT:sentar Sentar (0 Sentar) (1* ("rodilla") LINK 1 ("doblar"));
 SELECT:sentar_a Sentar (0 Sentar) (1 ("a")) (2 Inf);
 REMOVE:sentir_sentar Sentar (0 Sentar) (0 Sentir);
 
+REMOVE:salir_salar ("salar") IF (0 ("salir")) (0 ("salar")) (-1 (p1) OR (p2));
 
 REMOVE:creer_crear_0 Crear (0 Crear) (1 Adv) (2 ("en"));
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
