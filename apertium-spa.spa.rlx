@@ -795,6 +795,11 @@ REMOVE:vaya_adj A IF (0 ("vaya")) (NOT 1 N); # ¡Vaya hombre!
 SELECT:vaya_ij Interj IF (0 ("vaya")) (1 CM OR <<<) (-1 CM OR >>>);
 REMOVE:vaya_ij Interj IF (0 ("vaya"));
 
+SELECT:cuidado_ij Interj IF (0 ("cuidado")) (1 CM OR <<<) (-1 CM OR >>>);
+REMOVE:cuidado_ij Interj IF (0 ("cuidado"));
+SELECT:cuidado_n N IF (0 ("cuidado")) (-1 ("más") OR ("menos"));
+SELECT:cuidado_n N IF (0 ("cuidado")) (NOT -1 Haber) (1 ("con"));
+
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
 REMOVE:este_año_n Adv (0 ("este año")) (1/* ("de"));
