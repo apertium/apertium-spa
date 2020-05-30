@@ -790,6 +790,7 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 #
 
 SELECT:golfo_n N IF (0 ("golfo")) (1 ("de"));
+REMOVE:vaya_adj A IF (0 ("vaya")) (NOT 1 N);
 
 REMOVE:este_año_n Adv (0 ("este año")) (1 Num OR ("bisagra") OR ("bisiesto") OR Adj_PP + MascSg);
 REMOVE:este_año_n Adv (0 ("este año")) (-1 ("durante") OR ("en") OR ("por"));
