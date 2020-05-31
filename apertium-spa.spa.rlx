@@ -1867,7 +1867,7 @@ SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR (
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
 #1 o 3 persona: esté yo
-SELECT:1p (p1) IF (0 (p1)) (0 (p3)) (1 ("<yo>"));
+SELECT:1p (p1) IF (0 (p1)) (0 (p3)) (NOT 0 N) (1 ("<yo>"));
 
 #ruego me perdonen
 SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
