@@ -1866,6 +1866,9 @@ REMOVE:no_relativo Rel IF (0 ("que")) (-1 ("con"))           (-2 Adj_PP) (-4 Ser
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("con") OR ("en") OR ("a") OR ("de")) (-2 N OR Num OR Adj_PP); 
 SELECT:relativo Rel IF (0 ("que")) (-1 Prep) (-1 ("en")); 
 
+#1 o 3 persona: esté yo
+SELECT:1p (p1) IF (0 (p1)) (0 (p3)) (1 ("<yo>"));
+
 #ruego me perdonen
 SET VerbsRogar = ("rogar") OR ("esperar") OR ("desear") OR ("solicitar") OR ("querer");
 ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 VerbsRogar) (0 (p1)) (0 (pri) OR (cni) OR (pii)) (1 (p2) OR (p3) OR (p1 pl)) (1 (prs) OR (pis)) (NOT 1 Pron OR Prep OR N OR Adj_PP) (NOT -1* ("si")) (NOT 0 (META:/[-–—−]/r));
