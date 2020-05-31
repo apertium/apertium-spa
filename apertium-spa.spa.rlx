@@ -791,9 +791,11 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 
 SELECT:golfo_n N IF (0 ("golfo")) (1 ("de"));
 
-REMOVE:vaya_adj A IF (0 ("vaya")) (NOT 1 N); # ¡Vaya hombre!
+SELECT:vaya_adj A IF (0 ("vaya")) (1 N); # ¡Vaya hombre!
+REMOVE:vaya_adj A IF (0 ("vaya"));
 SELECT:vaya_ij Interj IF (0 ("vaya")) (1 CM OR <<<) (-1 CM OR >>>);
 REMOVE:vaya_ij Interj IF (0 ("vaya"));
+
 
 SELECT:cuidado_ij Interj IF (0 ("cuidado")) (1 CM OR <<<) (-1 CM OR >>>);
 REMOVE:cuidado_ij Interj IF (0 ("cuidado"));
@@ -838,7 +840,7 @@ SELECT:promedio_n N (0 ("promedio"i)) (-1 Prep OR Pos OR Det);
 REMOVE:cultivar_v N (0 ("<cultivar>"i)) (NOT -1 Det OR Pos);
 
 REMOVE:presente_n Vblex IF (0 ("presente")) (-1 SerEstarParecer);
-
+REMOVE:presente_n Vblex IF (0 ("presente")) (-2 SerEstarParecer) (-1 Adv);
 
 #demos
 SELECT:demos_n ("demos"i) (0 ("demos"i)) (-1 Det + MascSg);
@@ -1261,6 +1263,7 @@ SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 # falta
 SELECT:falta Verb IF (0 ("falta")) (-1 Rel OR ("aún") OR ("todavía")) (NOT -1 ("cuyo"));
+SELECT:falta Verb IF (0 ("falta")) (1 ("aún") OR ("todavía") OR ("mucho"));
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 #pase
 SELECT:pase_n N IF (0 ("<pase>"i)) (1 ("corto") OR ("larg")) (1 MascSg);
@@ -1374,6 +1377,7 @@ SELECT:pronombre_verbo Verb IF (-1 ("se"i)) (-1 (prn pro)) (0 (vblex p3)); #se i
 #en cuanto
 SELECT:en_cuanto_prep Prep IF (0 ("en cuanto")) (1 ("tal")); 
 REMOVE:en_cuanto_rel Prep IF (0 ("en cuanto")) (1 Verb + Pers) (NOT 1 N);
+REMOVE:en_cuanto_rel Prep IF (0 ("en cuanto")) (1 Det);
 
 # vía pr/n
 REMOVE:via1 Prep IF (-1 Det + $$FemSg) (0 ("vía") + $$FemSg) ;
