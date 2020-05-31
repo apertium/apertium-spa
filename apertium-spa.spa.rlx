@@ -791,7 +791,7 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 
 SELECT:golfo_n N IF (0 ("golfo")) (1 ("de"));
 
-SELECT:vaya_adj A IF (0 ("vaya")) (1 N); # ¡Vaya hombre!
+SELECT:vaya_adj A IF (0 ("vaya")) (1 N) (NOT -1 Pron) (NOT 1 Adv OR Prep); # ¡Vaya hombre!
 REMOVE:vaya_adj A IF (0 ("vaya"));
 SELECT:vaya_ij Interj IF (0 ("vaya")) (1 CM OR <<<) (-1 CM OR >>>);
 REMOVE:vaya_ij Interj IF (0 ("vaya"));
