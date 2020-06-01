@@ -1450,6 +1450,8 @@ SELECT:ser_ir_1b Ser (0 Ser LINK 0 Ir) (1 Adv) (2C PP) ; # no sempre funciona, p
 SELECT:ser_ir_2 Ir (0 Ser LINK 0 Ir) (-1 ("<se>"i));
 SELECT:ser_ir_3 Ir (0 Ser LINK 0 Ir) (1 Ger) ;
 SELECT:ser_ir_3 Ser (0 Ser LINK 0 Ir) (1 ("<lo>")) ;
+SELECT:ser_ir_4 Ser (0 Ser LINK 0 Ir) (1C Adj_PP) (-1 Adv);
+SELECT:ser_ir_4 Ser (0 Ser LINK 0 Ir) (1 Adv) (2C Adj_PP) (-1 Adv);
 SELECT:ser_ir_4 Ser (0 Ser LINK 0 Ir) (1 Det) (NOT 1/* Prep) (NOT 3 ("a")) (NOT 4 ("a")); # fueron los últimos
 SELECT:ser_ir_5 Ser (0 Ser LINK 0 Ir) (-1 ("<lo>"i));
 SELECT:fundar_fundir_1 Fundar (0 Fundar) (-1C Ref) ; # se non è vero...
