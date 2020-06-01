@@ -73,21 +73,14 @@ EXTRA_DIST=$(BASENAME).$(LANG1).dix		\
 apertium_spadir=$(prefix)/share/apertium/$(BASENAME)/
 apertium_spa_srcdir=$(prefix)/share/apertium/$(BASENAME)/
 
-apertium_spa_DATA=$(TARGETS_COMMON) $(LANG1).prob
+apertium_spa_DATA=$(TARGETS_COMMON) $(LANG1).prob $(BASENAME).$(LANG1).acx
 
 pkgconfigdir = $(prefix)/share/pkgconfig
 pkgconfig_DATA = $(BASENAME).pc
 
-# Modes are not installed since they're all just "debug modes". All
-# modes are created by this goal.
-modes/$(LANG1)-morph.mode: modes.xml
-	apertium-validate-modes modes.xml
-	apertium-gen-modes modes.xml
-
 noinst_DATA=modes/$(LANG1)-morph.mode
 
 install-data-local: install-modes
-	test -d $(DESTDIR)$(apertium_spa_srcdir) || mkdir -p $(DESTDIR)$(apertium_spa_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).dix $(DESTDIR)$(apertium_spa_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).rlx $(DESTDIR)$(apertium_spa_srcdir)
 
