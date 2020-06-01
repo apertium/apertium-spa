@@ -63,6 +63,5 @@ apertium-spa.spa.dix:<e lm="no obstante el/la/los/las"><p><l>no<b/>obstante<b/><
 apertium-spa.spa.dix:  <e>       <p><l>ex<b/></l>    <r>ex<b/></r></p></e>
 apertium-spa.spa.dix:  <e r="LR"><p><l>ex</l>        <r>ex<b/></r></p></e>
 apertium-spa.spa.dix:  <e r="LR"><p><l>ex-</l>       <r>ex<b/></r></p></e>
-apertium-spa.spa.dix:<e lm="que ">            <i>que<b/></i><par n="que__cnjsub"/></e> <!-- added in: ruego me perdonen-->
 apertium-spa.spa.dix:<e a="prompsit" lm="dentro del qual"><i>dentro<b/></i><par n="/del_cual__rel"/></e>
 apertium-spa.spa.dix:<e a="prompsit" lm="cuál de"><i>cuál<b/>de<b/></i><par n="cuál_de_/__prn"/></e>
