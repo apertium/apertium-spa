@@ -579,7 +579,7 @@ SELECT:subj5 PRS (*-1 ("ser") LINK 1 Adv_PreAdv LINK 1 A LINK 1 ("que")) (0C Ver
 
 SELECT:desmentido PP IF (0 ("desmentido")) (1 ("por"));
 SELECT:vertido N IF (0 ("vertido")) (1 ("de"));
-SELECT:n_pp N IF (-1/* ("ver")) (0 ("medida") OR ("propuesta"));
+SELECT:n_pp N IF (-1/* ("ver") OR ("presentar") OR ("proponer")) (0 ("medida") OR ("propuesta"));
 SELECT:n_pp N IF (-1/* ("quedar")) (0 ("medida") OR ("presupuesto"));
 SELECT:pp_1 PP IF (-1/* ("ver") OR ("quedar")) (0 PP) (NOT 0 A);
 SELECT:pp_1 PP IF (-1/* Haber) (0 PP) ;
@@ -1524,6 +1524,12 @@ SELECT:afecta_verb Verb IF (0 Verb) (-1 ("no")) (-2 >>> OR CM) (NOT 0 ("como"));
 #
 
 # NOM / ADJ
+
+
+# mal (adj): mal arranque, mal hecho  
+SELECT:mal_adj A IF (0 ("mal") + MascSg) (1 N + MascSg) (NOT 1 Adj_PP) (NOT 1 Det);
+SELECT:mal_n A IF (0 ("mal") + MascSg) (NOT 1 N + MascSg) (NOT 1 Adj_PP) (-1 Det + MascSg);
+
 REMOVE:r_na_4 A OR PP IF (-1 Prep) (0 Noun_Adj_PP LINK 0 N OR NP) (1 <<< OR Prep OR Det OR CnjSub) ;
 REMOVE:r_na_4c A OR PP IF (-1 Prep) (0 Noun_Adj_PP LINK 0 N OR NP) (1 CM OR CnjCoo) (2 CnjSub) ;
 
@@ -1636,8 +1642,7 @@ SELECT:r_na_13_fs N IF (-3 Barrera_Inicial_SN LINK NOT 0 Verb) (-2C Det + $$FemS
 SELECT:r_na_13_mp N IF (-3 Barrera_Inicial_SN LINK NOT 0 Verb) (-2C Det + $$MascPl) (-1C A + $$MascPl) (0 Noun_Adj_PP + $$MascPl LINK 0 N OR NP) (1 Barrera_Final_Estrict_SN) ;
 SELECT:r_na_13_fp N IF (-3 Barrera_Inicial_SN LINK NOT 0 Verb) (-2C Det + $$FemPl) (-1C A + $$FemPl) (0 Noun_Adj_PP + $$FemPl LINK 0 N OR NP) (1 Barrera_Final_Estrict_SN) ;
 
-# mal (adj): mal arranque, mal hecho  
-SELECT:mal_adj A IF (0 ("mal") + MascSg) (1 N + MascSg) (NOT 1 Adj_PP) (NOT 1 Det);
+
 
 # NOM ADJ
 
