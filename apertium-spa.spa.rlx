@@ -351,6 +351,9 @@ SELECT:la_una N IF (0 ("la una")) (0* ("mañana") OR ("madrugada") OR ("noche") 
 SELECT:la_una N IF (0 ("la una")) (-1 Copula);
 REMOVE:la_una N IF (0 ("la una"));
 
+#contra
+REMOVE:contra N IF (0 ("<contra>")) (NOT -1 ("<la>") OR ("<una>") OR Prep);
+
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
 SELECT:prn_vb_n Verb IF (0C Verb + (p1 sg) OR N) (-1C ("yo"i));
