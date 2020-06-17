@@ -291,6 +291,9 @@ SELECT:son_verb Copula IF (0 ("<son>"i)) (1 PreAdv) (2 (pl));
 REMOVE:son_verb N IF (0 ("<son>"i)) (NOT -1 Det + MascSg) (NOT -1 Prep) (NOT 1 ("cubano"));
 SELECT:son_verb Copula IF (0 ("<Son>"i)) (-1 >>>);
 
+#persona: solo verbo reflexivo
+SELECT:persona N IF (0 ("persona")) (NOT -1 ("<se>") OR ("<te>"));
+
 #cuyo + nom
 REMOVE:cuyo_verbnom Verb IF (0 Verb) (0 Adj_PP OR N) (-1 ("cuyo"));
 
@@ -352,11 +355,16 @@ SELECT:la_una N IF (0 ("la una")) (-1 Copula);
 REMOVE:la_una N IF (0 ("la una"));
 
 #contra
-REMOVE:contra N IF (0 ("<contra>")) (NOT -1 ("<la>") OR ("<una>") OR Prep);
-
+REMOVE:contra N IF (0 ("<contra>")) (NOT -1 ("<la>") OR ("<una>") OR Prep OR Pos);
+#piloto: proyecto piloto, piso pilot, vivienda piloto...
+SELECT:piloto N IF (0 ("piloto")) (NOT -1 ("yo") OR Pron);
+#duro
+SELECT:duro Adv IF (0 ("duro")) (-1 ("trabajar") OR ("luchar") OR ("esforzar") OR ("pegar") OR ("dar") OR ("golpear"));
+REMOVE:duro Adv IF (0 ("duro"));
+SELECT:duro A IF (0 ("duro")) (1 ("y")) (2 Adj_PP);
 #viva
 SELECT:viva (ij) IF (0 ("viva")) (-1 ("<¡>"));
-REMOVE:viva (ij) IF (0 ("viva")) 
+REMOVE:viva (ij) IF (0 ("viva")); 
 
 
 # prn + verbo/nombre
@@ -1300,9 +1308,11 @@ SELECT:mejor3 A IF (-1 Det + MascSg) (0 ("mejor") + MascSg) (1 N + MascSg);
 # qué sentido
 SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
+SELECT:qué A IF (0 ("qué")) (1 ("razón") OR ("motivo")); #it is also verb
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (NOT 1 N);
-SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("demonio") OR ("cojón") OR ("nariz") OR ("diablo") OR Det OR Verb);
+SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("demonio") OR ("cojón") OR ("nariz") OR ("diablo") OR Det);
+SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 Pers);
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (-2 ("comprender") OR ("entender") OR ("preguntar") OR ("ver") OR ("saber"));
 SELECT:qué A IF (0 ("qué")) (1 N OR NP) (NOT 1 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascSg) (2 N + MascSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
