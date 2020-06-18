@@ -189,8 +189,8 @@ SET AleroTejadoWords = ("ventana"i) OR ("balcón"i) OR ("tejado"i) OR ("teja"i) 
 
 SET VelaCirioWords =  ("encender"i) OR ("cera"i) OR ("estearina"i) OR ("consumir"i) OR ("mecha"i) OR ("pabilo"i) OR ("pábilo") OR ("cerilla"i) OR ("trémulo"i) OR ("tembloroso"i) OR ("quemar"i) OR ("cuarto"i) OR ("llama"i) OR ("dormitorio"i) OR ("luz"i) OR ("sebo"i) OR ("yedra"i) OR ("habitación"i) OR ("candelabro"i) OR ("apagar"i) OR ("cama"i) OR ("iluminar"i) OR ("lámpara"i) OR ("celda"i) OR ("sala"i) OR ("palmatoria"i) OR ("gastar"i) OR ("altar"i) OR ("pascual"i) OR ("resplendecer"i) OR ("candelero"i) OR ("penumbra"i) OR ("mesa"i) OR ("parpadear"i) OR ("escritorio"i) OR ("leer"i) OR ("iglesia"i) OR ("derretir"i) OR ("cumpleaños"i) OR ("pastel"i) OR ("soplar"i);
 
-SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i) OR ("bolsa");
-SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("estado miembro"i) OR ("región"i) OR ("comunidad"i) OR ("provincia"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i);
+SET EmpleoOcupacionLeftWords = ("tasa"i) OR ("política"i) OR ("pleno"i) OR ("creación"i) OR ("situación"i) OR ("estrategia"i) OR ("crecer"i) OR ("crear"i) OR ("crecimiento"i) OR ("aumento"i) OR ("descenso"i) OR ("destruir"i) OR ("destrucción"i) OR ("perder"i) OR ("recuperar"i) OR ("bolsa") OR ("informe");
+SET EmpleoOcupacionRightWords = ("país"i) OR ("estado"i) OR ("estado miembro"i) OR ("región"i) OR ("comunidad"i) OR ("provincia"i) OR ("comarca"i) OR ("trabajador"i) OR ("calidad"i) OR ("hombre") OR ("mujer") OR ("ciudadano") OR ("trabajador") OR ("obrero") OR ("persona");
 
 SET ColaSustanciaWords = ("pegar"i) OR ("adherir"i) OR ("encuadernar"i) OR ("esnifar"i) OR ("encolar"i) OR ("celo"i) OR ("resutante"i) OR ("remojar"i) OR ("laca"i) OR ("barniz"i) OR ("emulsión"i) OR ("inhalar"i) OR ("pegamento"i)  OR ("tijera"i) OR ("tijeras"i) OR ("papel"i) OR ("cartón"i) OR ("light"i) OR ("chocolate"i) OR ("vodka"i) OR ("whisky"i) OR ("ácido"i) OR ("químico"i) OR ("vodka"i) OR ("botella"i) OR ("vaso"i) OR ("refresco"i) OR ("lata"i) OR ("vodka"i) OR ("jarabe"i) OR ("<Pepsi>") OR ("<Fanta>") OR ("bebida"i) OR ("ron"i) OR ("frío"i) OR ("beber"i);
 SET ColaExtremidadWords = ("pelo"i);
@@ -398,6 +398,7 @@ REMOVE:ser_verbnom Verb + Pers IF (0 Verb + Pers) (0 A OR N) (-2 Copula) (-1 Adv
 
 # "como base": generalitza? base, model, falta, tema 
 # ("base") OR ("modelo") OR ("tema") OR ("fecha") OR ("programa") OR ("alimento") OR ("apoyo") OR ("medio") OR ("fundamento") OR ("cultivo") OR("destino") pregunta, potencia
+SELECT:como_pasa Vblex IF (0 ("pasa") OR ("falta") OR ("resulta") OR ("llama") OR ("trata")) (-1 ("como"));
 REMOVE:prep_VbN Verb + Pers IF (0 Verb + Pers) (0 N) (-1C/* ("<como>"i)) (NOT 0 Copula OR Vbmod OR Vbhaver OR ("pasar") OR ("llamar") OR ("tratar"));
 
 #como resultado
@@ -1320,6 +1321,7 @@ SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("demonio") OR ("co
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 Pers);
 SELECT:qué Vblex IF (-2 ("por") OR ("para")) (-1 ("qué")) (0 ("saco") OR ("apoyo"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (-2 ("comprender") OR ("entender") OR ("preguntar") OR ("ver") OR ("saber"));
+REMOVE:qué A IF (0 ("qué")) (1 ("falta")); # ambiguous
 SELECT:qué A IF (0 ("qué")) (1 N OR NP) (NOT 1 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascSg) (2 N + MascSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascPl) (2 N + MascPl) (NOT 2 Copula OR Vbmod OR Vbhaver);
@@ -1365,7 +1367,7 @@ SELECT:medida N IF (0 ("medida")) (-1 ("tal") OR ("mayor") OR ("menor"));
 SELECT:medida N IF (0 ("medida") + FemSg) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemSg); #excepciones?
 SELECT:medida N IF (0 ("medida") + FemPl) (NOT -1 Adv OR PreAdv) (NOT -1 N + FemPl);
 # ceniza
-SELECT:ceniza N IF (0 ("ceniza")); 
+SELECT:ceniza N IF (0 ("ceniza"));
 # pasa
 SELECT:pasa_v Vblex IF (0 ("pasar")) (-1 ("no"));
 SELECT:pasa_n N IF (0 ("pasa")) (1 ("de")) (2 ("Corinto") OR ("Málaga") OR ("Denia"));
