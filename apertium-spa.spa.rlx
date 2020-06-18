@@ -293,6 +293,8 @@ SELECT:son_verb Copula IF (0 ("<Son>"i)) (-1 >>>);
 
 #persona: solo verbo reflexivo
 SELECT:persona N IF (0 ("persona")) (NOT -1 ("<se>") OR ("<te>"));
+#cobijo 
+REMOVE:cobijo Vblex IF (0 ("cobijo")) (NOT -1 Pron);
 
 #cuyo + nom
 REMOVE:cuyo_verbnom Verb IF (0 Verb) (0 Adj_PP OR N) (-1 ("cuyo"));
@@ -358,7 +360,9 @@ REMOVE:la_una N IF (0 ("la una"));
 REMOVE:contra N IF (0 ("<contra>")) (NOT -1 ("<la>") OR ("<una>") OR Prep OR Pos);
 #piloto: proyecto piloto, piso pilot, vivienda piloto...
 SELECT:piloto N IF (0 ("piloto")) (NOT -1 ("yo") OR Pron);
+SELECT:piloto N IF (0 N) (1 ("piloto"));
 #duro
+SELECT:duro A IF (0 ("duro")) (-1 N OR A);
 SELECT:duro Adv IF (0 ("duro")) (-1 ("trabajar") OR ("luchar") OR ("esforzar") OR ("pegar") OR ("dar") OR ("golpear"));
 REMOVE:duro Adv IF (0 ("duro"));
 SELECT:duro A IF (0 ("duro")) (1 ("y")) (2 Adj_PP);
@@ -1280,9 +1284,10 @@ SELECT:solo_adj A IF (0 ("solo")) (-2 ("por")) (-1 ("sí"));
 # distingo
 REMOVE:distingo N IF (0 ("distingo")) (NOT -1 Det);
 # falta
-SELECT:falta Verb IF (0 ("falta")) (-1 Rel OR ("aún") OR ("todavía")) (NOT -1 ("cuyo"));
+SELECT:falta Verb IF (0 ("falta")) (-1 CnjAdv OR CnjSub OR Rel OR ("aún") OR ("todavía")) (NOT -1 ("cuyo"));
 SELECT:falta Verb IF (0 ("falta")) (1 ("aún") OR ("todavía") OR ("mucho"));
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
+REMOVE:falta A IF (0 ("falta")); # very unusual as adjective feminine (falto -a)
 #pase
 SELECT:pase_n N IF (0 ("<pase>"i)) (1 ("corto") OR ("larg")) (1 MascSg);
 SELECT:pases_n N IF (0 ("<pases>"i)) (1 ("corto") OR ("larg")) (1 MascPl);
@@ -1308,11 +1313,12 @@ SELECT:mejor3 A IF (-1 Det + MascSg) (0 ("mejor") + MascSg) (1 N + MascSg);
 # qué sentido
 SELECT:qué Pron IF (0 ("qué")) (1/* Inf);
 SELECT:qué PreAdv IF (0 ("qué")) (1 ("poco"));
-SELECT:qué A IF (0 ("qué")) (1 ("razón") OR ("motivo")); #it is also verb
+SELECT:qué A IF (0 ("qué")) (1 ("razón") OR ("motivo") OR ("causa")); #it is also verb
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("tanto"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (NOT 1 N);
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 ("demonio") OR ("cojón") OR ("nariz") OR ("diablo") OR Det);
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (1 Pers);
+SELECT:qué Vblex IF (-2 ("por") OR ("para")) (-1 ("qué")) (0 ("saco") OR ("apoyo"));
 SELECT:qué Pron IF (-1 ("por") OR ("para")) (0 ("qué")) (-2 ("comprender") OR ("entender") OR ("preguntar") OR ("ver") OR ("saber"));
 SELECT:qué A IF (0 ("qué")) (1 N OR NP) (NOT 1 Copula OR Vbmod OR Vbhaver);
 SELECT:qué A IF (0 ("qué")) (1 A OR PP) (1 MascSg) (2 N + MascSg) (NOT 2 Copula OR Vbmod OR Vbhaver);
