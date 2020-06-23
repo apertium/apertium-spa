@@ -21,13 +21,17 @@ TARGETS_COMMON =			\
 ## Spanish transducer
 ###############################################################################
 
-$(LANG1).autogen.bin: $(BASENAME).$(LANG1).dix
+.deps/$(BASENAME).$(LANG1).dix: $(BASENAME).$(LANG1).metadix .deps/.d
+	python3 convert-metadix-dix.py $< $@ 
+	apertium-validate-dictionary $@
+
+$(LANG1).autogen.bin: .deps/$(BASENAME).$(LANG1).dix
 	apertium-validate-dictionary $<
 	lt-comp rl $< $@
 
-$(LANG1).automorf.bin: $(BASENAME).$(LANG1).dix $(BASENAME).$(LANG1).acx
+$(LANG1).automorf.bin: .deps/$(BASENAME).$(LANG1).dix $(BASENAME).$(LANG1).acx
 	apertium-validate-dictionary $<
-	lt-comp lr $(BASENAME).$(LANG1).dix $@ $(BASENAME).$(LANG1).acx
+	lt-comp lr .deps/$(BASENAME).$(LANG1).dix $@ $(BASENAME).$(LANG1).acx
 
 $(LANG1).autogen.att.gz: $(LANG1).autogen.bin
 	lt-print $< | gzip -9 -c -n > $@
@@ -55,7 +59,7 @@ $(LANG1).rlx.bin: $(BASENAME).$(LANG1).rlx
 ###############################################################################
 ## Distribution
 ###############################################################################
-EXTRA_DIST=$(BASENAME).$(LANG1).dix		\
+EXTRA_DIST=$(BASENAME).$(LANG1).metadix		\
 	   $(BASENAME).post-$(LANG1).dix	\
 	   $(BASENAME).$(LANG1).acx		\
 	   $(BASENAME).$(LANG1).rlx		\
@@ -81,7 +85,7 @@ pkgconfig_DATA = $(BASENAME).pc
 noinst_DATA=modes/$(LANG1)-morph.mode
 
 install-data-local: install-modes
-	$(INSTALL_DATA) $(BASENAME).$(LANG1).dix $(DESTDIR)$(apertium_spa_srcdir)
+	$(INSTALL_DATA) $(BASENAME).$(LANG1).metadix $(DESTDIR)$(apertium_spa_srcdir)
 	$(INSTALL_DATA) $(BASENAME).$(LANG1).rlx $(DESTDIR)$(apertium_spa_srcdir)
 
 CLEANFILES = $(TARGETS_COMMON)

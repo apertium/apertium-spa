@@ -220,6 +220,9 @@ SELECT:velar ("velar") IF (0 ("<vele>"i)) (1 ("por que") OR ("por"));
 
 SECTION
 
+# PREFIJOS AÑADIDOS
+REMOVE:prefixes ("_prefix_.*"r) IF (0 ("_prefix_.*"r));
+
 # Multipalabras
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 A + FemPl) (NOT 2C N OR A OR CnjSub) ;
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 Adv OR PreAdv) (2 A + FemPl) (NOT 3C N OR A OR CnjSub) ;
