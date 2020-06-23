@@ -4,7 +4,7 @@
 #set -o pipefail
 echo "Grep tests"
 {
-for file in apertium-spa.spa.dix
+for file in apertium-spa.spa.metadix
 do 
     grep -H "<i> " $file
     grep -H " </i>" $file
