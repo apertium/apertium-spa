@@ -60,12 +60,16 @@ for e in mainsection.iter(tag='e'):
     par = e.find('par')
     if par is None:
         continue
+    wordStr = word(e)
+    if len(wordStr)<5 or '<b/>' in wordStr or '_' in wordStr:
+        continue
     parname = par.get("n")
     for prefix in prefixes.keys():
         if parname.endswith("__"+prefix):
             new = ET.Element('par')
             prefixtoadd = prefixes[prefix]
-            if word(e).startswith("r"):
+            
+            if wordStr.startswith("r"):
                 prefixtoadd = prefixtoadd + ("_r")
             new.set('n', prefixtoadd)
             e.insert(0, new)
