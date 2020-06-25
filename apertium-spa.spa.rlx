@@ -222,6 +222,7 @@ SECTION
 
 # PREFIJOS AÑADIDOS
 REMOVE:prefixes ("_prefix_.*"r) IF (0 ("_prefix_.*"r));
+REMOVE:prefixes_1 Pron IF (0/* ("_prefix_.*"r)); # remove interpretation of "revele" as prefix
 
 # Multipalabras
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 A + FemPl) (NOT 2C N OR A OR CnjSub) ;
