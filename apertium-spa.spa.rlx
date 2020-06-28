@@ -222,6 +222,7 @@ SECTION
 
 # PREFIJOS AÑADIDOS
 REMOVE:prefixes ("_prefix_.*"r) IF (0 ("_prefix_.*"r));
+REMOVE:prefixes_1 Pron IF (0/* ("_prefix_.*"r)); # remove interpretation of "revele" as prefix
 
 # Multipalabras
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1 A + FemPl) (NOT 2C N OR A OR CnjSub) ;
@@ -1403,6 +1404,7 @@ SELECT:amigo4 N IF (0 ("amigo") + FemPl) (-1 A + FemPl);
 #medio
 SELECT:medio_adj A IF (0 ("medio") + &&GN) (-1 ("importe") OR ("tamaño")) (-1 &&GN);
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
+
 #supuesto
 SELECT:supuesto N IF (0 ("supuesto")) (1 ("contencioso"));
 # pronombre + verbo
@@ -1428,6 +1430,8 @@ SELECT:medio_nom N IF (0 ("medio"i)) (-1 ("mejor") OR ("peor"));
 # dos veces y media; dos años y medio
 SELECT:y_medio_adj A IF (-2 (n f)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj f sg));
 SELECT:y_media_adj A IF (-2 (n m)) (-1 CnjCoo) (0 ("medio"i)) (0 (adj m sg));
+
+SELECT:y_medio_adj A IF (-2 (num)) (-1 CnjCoo) (0 ("medio"i)) (0 (sg));
 
 #medio ciegas
 SELECT:medio_adv PreAdv IF (0 ("<medio>"i)) (1 A) (NOT -1 Det);
