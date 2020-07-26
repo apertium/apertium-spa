@@ -362,6 +362,7 @@ REMOVE:la_una N IF (0 ("la una"));
 
 #contra
 REMOVE:contra N IF (0 ("<contra>")) (NOT -1 ("<la>") OR ("<una>") OR Prep OR Pos);
+SELECT:atentar Vblex IF (0 ("atentar")) (1 ("contra"));
 #piloto: proyecto piloto, piso pilot, vivienda piloto...
 SELECT:piloto N IF (0 ("piloto")) (NOT -1 ("yo") OR Pron);
 SELECT:piloto N IF (0 N) (1 ("piloto"));
