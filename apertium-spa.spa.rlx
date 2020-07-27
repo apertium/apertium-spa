@@ -1468,6 +1468,8 @@ REMOVE:sentir_sentar Sentar (0 Sentar) (0 Sentir);
 
 REMOVE:salir_salar ("salar") IF (0 ("salir")) (0 ("salar")) (-1 (p1) OR (p2));
 
+REMOVE:rayar_raer ("raer") IF (0 ("rayar")) (0 ("raer"));
+
 REMOVE:creer_crear_0 Crear (0 Crear) (-1 ("lo que")) (-2 ("en"));
 REMOVE:creer_crear_0 Crear (0 Crear) (1 Adv) (2 ("en"));
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
