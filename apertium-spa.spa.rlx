@@ -1092,6 +1092,7 @@ REMOVE:llamada N IF (0 ("llamada") + FemPl) (-1 ("<las>"i)) (1 A + FemPl OR Num)
 SELECT:ave_tren (acr) IF (0 ("AVE") OR ("IBAN"));
 
 SELECT:rellena ("rellenar") IF (0 ("rellenar"i)) (1 Det); # Rellena el formulario.
+SELECT:rellena ("llenar") IF (0 ("llenar"i)) (1 Det); # Rellena el formulario.
 
 REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (NOT -1 Det + (m)) (NOT -1 ("número"i)); # uno (no es sustantivo si no está determinado)
 REMOVE:uno_no_subst N + Masc IF (0 ("uno"i)) (1 ("de")) (2 MascPl);
