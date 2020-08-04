@@ -422,9 +422,11 @@ REMOVE:detpl_vb_adjsg A IF (0 Vblex) (0 (adj sg)) (-1 (prn pro pl)) (NOT 0 (pp))
 REMOVE:detpl_vb_nm N IF (0 Vblex) (0 N + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp)); #la motivo
 REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 A + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp));
 
-SELECT:encontrado_adj A IF (0 ("encontrado")) (-1 ("posición") OR ("opinión"));
-SELECT:encontrado_adj A IF (0 ("encontrado")) (-2 ("posición") OR ("opinión")) (-1 Adv);
+SET EncontradoWords = ("posición") OR ("opinión") OR ("punto de vista") OR ("interés") OR ("sentimiento") OR ("interpretación") OR ("estrategia") OR ("versión");
+SELECT:encontrado_adj A IF (0 ("encontrado")) (-1 EncontradoWords);
+SELECT:encontrado_adj A IF (0 ("encontrado")) (-2 EncontradoWords) (-1 Adv OR Adj_PP);
 REMOVE:encontrado_adj A IF (0 ("encontrado"));
+REMOVE:encuentro_v N IF (0 ("encuentro")) (-1 ("no"));
 
 #como (no preposición en: como el que, como los que...)
 SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel); 
