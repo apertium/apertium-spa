@@ -779,6 +779,9 @@ SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo")
 
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
 SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
+SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
+SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
+REMOVE:seguro_adv N (0 ("seguro") + MascSg) (NOT -1 Det) (NOT -2 Det); 
 
 SELECT:charla_N N IF (0 ("charla")) (1 ("taller") OR ("presentación") OR ("debate"));
 
@@ -867,8 +870,6 @@ REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-1 Det OR Pos) (-1 MascSg);
 REMOVE:puesto_n CnjAdv (0 ("puesto que")) (-2 Det OR Pos) (-2 MascSg) (-1 Adj_PP + MascSg);
 SELECT:puesto_que CnjAdv (0 ("puesto que"));
 SELECT:n_tales_como N IF (0 N) (1 ("<tales como>")) (NOT -1 N);
-SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
-SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
 REMOVE:informe_n Vblex (0 ("informe")) (-1C Det OR Pos OR Prep);
 SELECT:expresa_v Vblex (0 ("expresar")) (1 N) (NOT 1 Vblex + Pers OR Prep) (-1 N) (NOT -1 Vblex + Pers OR ("forma") OR ("manera"));
 SELECT:escriba_v Vblex (0 ("<escriba>"i)) (NOT -1 Det OR Prep OR MajIni) (NOT 1 MajIni); #escriba con letra clara
