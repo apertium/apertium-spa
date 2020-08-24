@@ -775,13 +775,19 @@ SELECT:np_no_adj NP IF (0 NP) (0 A) (-1 (ant) OR (cog) OR unknownMajIni);
 
 SELECT:estilo_n N IF (0 ("<estilo>"i));
 #SELECT:estilo_n N IF (-1 ("<estilo>"i)) (0 N);
-SELECT:marco_n N IF (1 ("marco")) (0 ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
+SELECT:marco_n N IF (1 ("marco")) (0 ("compañía") OR ("programa") OR ("convenio") OR ("acuerdo") OR ("contrato") OR ("política") OR ("sistema") OR ("documento") OR ("proyecto"));
 
-SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución"));
-SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio"));
+SELECT:seguro_n N IF (0 ("seguro")) (1 ("de")) (2 ("renta") OR ("cobertura") OR ("responsabilidad") OR ("accidente") OR ("vida") OR ("caución") OR ("servicio") OR ("recogida") OR ("daño") OR ("explotación") OR ("indemnización") OR ("enfermedad"));
+SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("obligatorio") OR ("colectivo") OR ("privado"));
+SELECT:seguro_n N IF (0 ("seguro")) (-1 ("de")) (-2 ("política") OR ("anualidad") OR ("cobertura") OR ("declaración") OR ("certificado"));
 SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
 SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
-REMOVE:seguro_adv N (0 ("seguro") + MascSg) (NOT -1 Det) (NOT -2 Det); 
+SELECT:seguro_adj A IF (0 ("seguro")) (-1 ("por") OR ("como")) (-2 ("tener") OR ("considerar") OR ("donar"));
+SELECT:seguro_adv Adv IF (0 ("seguro")) (1 ("que"));
+SELECT:seguro_adj A IF (0 ("seguro")) (-1 Adv OR PreAdv);
+SELECT:seguro_adj A IF (0 ("seguro") + MascSg) (-1 Adj_PP + MascSg) (-2 N + MascSg);
+SELECT:seguro_adj A IF (0 ("seguro") + MascPl) (-1 Adj_PP + MascPl) (-2 N + MascPl);
+REMOVE:seguro_adj N IF (0 ("seguro")) (-1 ("absoluto")) (-2 ("en")); 
 
 SELECT:charla_N N IF (0 ("charla")) (1 ("taller") OR ("presentación") OR ("debate"));
 
