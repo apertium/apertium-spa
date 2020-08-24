@@ -423,8 +423,8 @@ REMOVE:detpl_vb_nm N IF (0 Vblex) (0 N + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT
 REMOVE:detpl_vb_adjm A IF (0 Vblex) (0 A + Masc) (NOT 0 Fem) (-1 (prn pro f)) (NOT 0 (pp));
 
 SET EncontradoWords = ("prioridad") OR ("postura") OR ("enfoque") OR ("posición") OR ("opinión") OR ("punto# de vista") OR ("interés") OR ("sentimiento") OR ("interpretación") OR ("estrategia") OR ("versión");
-SELECT:encontrado_adj A IF (0 ("encontrado")) (-1 EncontradoWords);
-SELECT:encontrado_adj A IF (0 ("encontrado")) (1 EncontradoWords);
+SELECT:encontrado_adj A IF (0 ("encontrado") + &&GN) (-1 EncontradoWords + &&GN);
+SELECT:encontrado_adj A IF (0 ("encontrado") + &&GN) (1 EncontradoWords  + &&GN) (NOT -1 Vbhaver);
 SELECT:encontrado_adj A IF (0 ("encontrado")) (-2 EncontradoWords) (-1 Adv OR Adj_PP OR PreAdv);
 SELECT:encontrado_adj A IF (0 ("encontrado")) (-2 ("diferente") OR ("distinto")) (-1 CnjCoo);
 REMOVE:encontrado_adj A IF (0 ("encontrado"));
@@ -783,8 +783,9 @@ SELECT:seguro_n N IF (0 ("seguro")) (-1 ("de")) (-2 ("política") OR ("anualidad
 SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
 SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
 SELECT:seguro_adj A IF (0 ("seguro")) (-1 ("por") OR ("como")) (-2 ("tener") OR ("considerar") OR ("donar"));
-SELECT:seguro_adv Adv IF (0 ("seguro")) (1 ("que"));
-SELECT:seguro_adj A IF (0 ("seguro")) (-1 Adv OR PreAdv);
+SELECT:seguro_adv Adv IF (0 ("seguro")) (1 ("que")) (NOT -1C Prep) (NOT -1C Det);
+SELECT:seguro_adv Adv IF (0 ("seguro")) (1 ("que")) (-1 ("como"));
+SELECT:seguro_adj A IF (0 ("seguro")) (-1C Adv OR PreAdv);
 SELECT:seguro_adj A IF (0 ("seguro") + MascSg) (-1 Adj_PP + MascSg) (-2 N + MascSg);
 SELECT:seguro_adj A IF (0 ("seguro") + MascPl) (-1 Adj_PP + MascPl) (-2 N + MascPl);
 REMOVE:seguro_adj N IF (0 ("seguro")) (-1 ("absoluto")) (-2 ("en")); 
@@ -1373,6 +1374,7 @@ REMOVE:familiar N IF (0 ("familiar") + Sg) (-1 N OR A) (-1 Sg);
 REMOVE:familiar N IF (0 ("familiar") + Pl) (-1 N OR A) (-1 Pl);
 #solo
 SELECT:solo Adv IF (0 ("solo")) (-1 Copula) (1 A);
+SELECT:solo Adv IF (0 ("solo")) (1 ("para") OR ("por"));
 #reciclados
 SELECT:reciclado PP IF (0 ("reciclado") + MascPl) (NOT -1 Det + MascPl);
 #objetivo
