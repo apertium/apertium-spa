@@ -782,6 +782,7 @@ SELECT:seguro_n N IF (0 ("seguro")) (1 ("médico") OR ("profesional") OR ("oblig
 SELECT:seguro_n N IF (0 ("seguro")) (-1 ("de")) (-2 ("política") OR ("anualidad") OR ("cobertura") OR ("declaración") OR ("certificado"));
 SELECT:vender_vendar ("vender") (0 ("vender")) (1 N + Pl); # venden seguros
 SELECT:seguro_n N (0 ("seguro")) (-1 ("comprar") OR ("vender") OR ("negociar")) (NOT -1 N);
+SELECT:seguro_n N (0 ("seguro")) (-2 ("cubrir")) (-1 ("con") OR ("por"));
 
 SELECT:seguro_adv Adv IF (0 ("seguro")) (1 ("que")) (-1 ("como"));
 SELECT:seguro_adj A IF (0 ("seguro")) (-1 ("por") OR ("como") OR ("algo") OR ("<poco>") OR ("<demasiado>"));
