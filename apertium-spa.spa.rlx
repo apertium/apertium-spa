@@ -247,6 +247,8 @@ SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META
 SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (3 (META:/[-–—−]/r));
 SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("aún") OR ("todavía")) (3 ("más")) (4 Adj_PP) (4 (META:/[-–—−]/r));
 SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (4 ("aún") OR ("todavía")) (4 (META:/[-–—−]/r));
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("significar") + (p3) + (sg));
+SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 ("no")) (2 ("significar") + (p3) + (sg));
 REMOVE:lo_que_es ("lo_que2") IF (0 ("lo_que2"));
 
 REMOVE:tenerque_vblex Vbmod IF (0 ("tener# que")) (1 Inf + ("ver"i)) (*2 ("con"));
