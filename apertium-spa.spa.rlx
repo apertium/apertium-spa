@@ -438,7 +438,7 @@ SELECT:como_no_prep Adv IF (0 ("como")) (1 Rel);
 
 #alcanzar a + inf
 SELECT:alcanzar ("alcanzar") IF (0 ("alcanzar")) (1 ("a")) (2 Inf); 
-SELECT:alcanzar ("alcanzar") IF (0 ("alcanzar")) (-1 Adj_PP) (NOT -2 Det OR Prep);
+SELECT:alcanzar ("alcanzar") IF (0 ("alcanzar")) (-1 Adj_PP) (-2 N) (NOT -1 ("corto") OR ("largo") OR ("mayor") OR ("menor") OR ("suficiente") OR ("amplio"));
 
 # consumir / consumar
 SET ConsumirWords = ("combustible") OR ("gasolina") OR ("gasóleo") OR ("gasoil") OR ("queroseno") OR ("alimento") OR ("carne") OR ("huevo");
