@@ -1320,6 +1320,8 @@ SELECT:falta Verb IF (0 ("falta")) (-1 CnjAdv OR CnjSub OR Rel OR ("aún") OR ("
 SELECT:falta Verb IF (0 ("falta")) (1 ("aún") OR ("todavía") OR ("mucho"));
 SELECT:falta Verb IF (0 ("falta")) (1/* Inf);
 REMOVE:falta A IF (0 ("falta")); # very unusual as adjective feminine (falto -a)
+#funda
+REMOVE:funda Verb IF (0 ("funda")) (1 ("de")); 
 #pase
 SELECT:pase_n N IF (0 ("<pase>"i)) (1 ("corto") OR ("larg")) (1 MascSg);
 SELECT:pases_n N IF (0 ("<pases>"i)) (1 ("corto") OR ("larg")) (1 MascPl);
