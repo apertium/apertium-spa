@@ -569,7 +569,7 @@ SELECT:bastante_preadv PreAdv IF (0 ("bastante")) (1 ("más") OR ("menos")) (1 A
 SELECT:una_vez_mas_adj A IF (0 ("más")) (-1 ("vez")) (-2 ("<una>"i));
 SELECT:mas_menos_adv Adv IF (0 ("más") OR ("menos")) (1 A);
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo") OR ("pronto"));
-REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb OR (pro)) (NOT 1 Prep) ;
+REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb OR (pro)) (NOT 1 Prep) (NOT 0 ("pronto"));
 REMOVE:adj_adv_3 Adv (-1C A) (0 A LINK 0 Adv) (NOT 1 Verb) ;
 SELECT:adj_adv_4_ms Adv (-1C N + $$MascSg) (0 A LINK 0 Adv) (1C A + $$MascSg) ;
 SELECT:adj_adv_4_fs Adv (-1C N + $$FemSg) (0 A LINK 0 Adv) (1C A + $$FemSg) ;
