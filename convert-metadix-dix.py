@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (C) 2020 Jaume Orotlà <jaume.ortola@gmail.com>
+# Copyright (C) 2020 Jaume Ortolà <jaume.ortola@gmail.com>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -59,7 +59,24 @@ mainsection = tree.find('.//section[@id="main"]')
 for e in mainsection.iter(tag='e'):
     par = e.find('par')
     if par is None:
-        continue
+        p = e.find('p')
+        if p:
+            par = p.find('r').find('s')
+        if par is None:
+            i = e.find('i')
+            if i:
+                par = i.find('s')
+        if par is None:
+            continue
+        parname = par.get("n")
+        for prefix in prefixes.keys():
+            if parname == prefix:
+                new = ET.Element('par')
+                prefixtoadd = prefixes[prefix]
+                if word(e).startswith("r"):
+                    prefixtoadd = prefixtoadd + ("_r")
+                new.set('n', prefixtoadd)
+                e.insert(0, new)
     parname = par.get("n")
     for prefix in prefixes.keys():
         if parname.endswith("__"+prefix):
