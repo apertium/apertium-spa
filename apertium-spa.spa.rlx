@@ -1144,6 +1144,8 @@ SELECT:uno_o_dos Det IF (0 ("uno") + Sg) (1 CnjCoo) (2 Num); # una o dos
 
 #SELECT:una_prn Pron IF (0 ("<una>"i)) (1C A OR PP) (1 FemSg) (2 ("<.>"));
 
+REMOVE:entorno Vblex IF (0 ("entorno")); #verb unusual
+
 SELECT:nada_v Verb IF (0 ("nada")) (-1 ("no"));
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (NOT 1 Adj_PP);
 REMOVE:nada_0 Adv IF (0 ("nada"i)) (1 NadaPronWords2);
