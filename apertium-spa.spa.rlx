@@ -451,7 +451,8 @@ SELECT:consumo N IF (0 ("consumo")) (-1 N) ; #infrecuente: yo consumo
 # no tratamos "cabo" porque es muy infrecuente (+ nombre!, como "bajo", que también es adj)
 REMOVE:r_como_1 Vblex (0 ("como") OR ("Como")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 #REMOVE:r_como_2 Vblex (0 ("como") OR ("Como")) (*1 Vblex BARRIER Cnj_Rel) ;
-SELECT:r_parar_de ("parar") (0 ("para")) (1 ("de")) (2 Inf);
+SELECT:r_parar_de ("parar") (0 ("para") OR ("paro")) (1 ("de")) (2 Inf);
+REMOVE:r_paro ("parir") (0 ("paro"));
 REMOVE:r_para_1 Vblex (0 ("para") OR ("Para")) (*-1 Vblex BARRIER Cnj_Rel) ;  # no funciona sempre
 REMOVE:r_para_4 Vblex (0 ("para") OR ("Para")) (*-1 Copula BARRIER Cnj_Rel);
 REMOVE:r_para_2 Vblex (0 ("para") OR ("Para")) (*1 Vblex BARRIER Cnj_Rel) ;
