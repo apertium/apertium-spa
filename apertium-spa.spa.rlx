@@ -380,6 +380,9 @@ SELECT:duro A IF (0 ("duro")) (1 ("y")) (2 Adj_PP);
 SELECT:viva (ij) IF (0 ("viva")) (-1 ("<¡>"));
 REMOVE:viva (ij) IF (0 ("viva")); 
 
+#cejar en / ceja (noun)
+REMOVE:cejar_en Verb IF (0 ("cejar# en")) (NOT -1 ("no"));
+
 
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
