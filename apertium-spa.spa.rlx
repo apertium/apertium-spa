@@ -1503,7 +1503,10 @@ SELECT:sentar Sentar (0 Sentar) (1* ("rodilla") LINK 1 ("doblar"));
 SELECT:sentar_a Sentar (0 Sentar) (1 ("a")) (2 Inf);
 REMOVE:sentir_sentar Sentar (0 Sentar) (0 Sentir);
 
+
+SELECT:sal ("sal") IF (0 ("sal") + &&GN) (-1 Det + &&GN);
 REMOVE:salir_salar ("salar") IF (0 ("salir")) (0 ("salar")) (-1 (p1) OR (p2));
+SELECT:salir_salar ("salir") IF (0 ("salir")) (0 ("salar")) (1/* ("de") OR ("a"));
 
 REMOVE:rayar_raer ("raer") IF (0 ("rayar")) (0 ("raer"));
 SELECT:rayar Vblex IF (0 ("raya")) (NOT -1 Det OR Vblex) (1 ("en") OR ("el"));
