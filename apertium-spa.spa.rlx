@@ -327,6 +327,11 @@ REMOVE:deseo N (0 ("deseo")) (1 CnjCoo) (2 Pers);
 
 REMOVE:avance N (0 ("avance")) (-1 ("que"));
 
+#uds.
+SELECT:uds_n N (0 ("uds.")) (-1 Num);
+SELECT:uds_n Pron (0 ("uds.")) (NOT -1 Num);
+
+
 SET PuntosCardinals = ("oeste") OR ("sur") OR ("norte");
 REMOVE:este N IF (0 ("este")) (-1 Prep) (NOT 2 ("oeste"i)) (NOT -2 ("oeste"i));	
 REMOVE:este N IF (0 ("este")) (1 Verb) (1 (p3)) (NOT -1 PuntosCardinals) (NOT -2 PuntosCardinals) (NOT 0 MajIni2);
