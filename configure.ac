@@ -1,8 +1,7 @@
 AC_PREREQ(2.52)
 
-AC_INIT([Apertium Spanish], [1.2.1], [apertium-stuff@lists.sourceforge.net], [apertium-spa], [https://wiki.apertium.org/wiki/Apertium-spa])
+AC_INIT([Apertium Spanish], [1.2.2], [apertium-stuff@lists.sourceforge.net], [apertium-spa], [https://wiki.apertium.org/wiki/Apertium-spa])
 AM_INIT_AUTOMAKE
-
 AC_PROG_AWK
 
 PKG_CHECK_MODULES(APERTIUM, apertium >= 3.7.1)
