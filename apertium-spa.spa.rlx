@@ -1561,8 +1561,8 @@ SET MarcaPasado = ("ayer") OR ("anteayer");
 LIST LemmaPasado = (".*pasado.*"r) ;
 REMOVE:presente_pasado1 (pri) IF (0 (pri)) (0 (ifi)) (-1*/* MarcaPasado OR LemmaPasado OR ("pasado") BARRIER Verb OR Cnj_Rel_End); #El año pasado creamos
 REMOVE:presente_pasado2 (pri) IF (0 (pri)) (0 (ifi)) (1 MarcaPasado OR LemmaPasado) (NOT 1 ("pasado")); 
-REMOVE:presente_pasado3 (pri) IF (0 (pri)) (0 (ifi)) (-1*C (ifi)) ;	# vimos la película y salimos
-REMOVE:presente_pasado4 (pri) IF (0 (pri)) (0 (ifi)) (1*C (ifi)) ;	# salimos a pasear y vimos unos niños
+#REMOVE:presente_pasado3 (pri) IF (0 (pri)) (0 (ifi)) (-1*C (ifi)) ;	# vimos la película y salimos
+#REMOVE:presente_pasado4 (pri) IF (0 (pri)) (0 (ifi)) (1*C (ifi)) ;	# salimos a pasear y vimos unos niños
 REMOVE:presente_pasado0 (ifi) IF (0 (pri)) (0 (ifi));
 
 SET Presente = (prs) OR (pri);
