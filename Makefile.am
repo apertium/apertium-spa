@@ -99,8 +99,4 @@ clean-local:
 ###############################################################################
 
 test: all
-	echo "frase de prueba" | apertium -d . spa-tagger | tee .test-mt
-	@echo '^frase<n><f><sg>$$ ^de<pr>$$ ^prueba<n><f><sg>$$^.<sent>$$' > .test-ref
-	@diff .test-ref .test-mt
-	@rm .test-ref .test-mt
-	bash -x dev/test-grep.sh
+	apertium-regtest test

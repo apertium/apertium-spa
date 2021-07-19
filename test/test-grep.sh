@@ -26,7 +26,4 @@ do
     grep -H "<b/></i>" $file | sed -E '/n="cont/d' 
     
 done
-} > "dev/greptests.txt"
-
-echo "Checking for differences"
-git diff --exit-code
+}

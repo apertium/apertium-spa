@@ -1,3 +1,4 @@
+[47DEQpj8HBSa#0] Grep tests
 apertium-spa.spa.metadix:  <e>       <p><l>ex<b/></l>    <r>ex<b/></r></p></e>
 apertium-spa.spa.metadix:  <e>       <p><l>me<b/></l>    <r>me<s n="prn"/><s n="pro"/><s n="p1"/><s n="mf"/><s n="sg"/><j/></r></p></e>
 apertium-spa.spa.metadix:  <e>       <p><l>te<b/></l>    <r>te<s n="prn"/><s n="pro"/><s n="p2"/><s n="mf"/><s n="sg"/><j/></r></p></e>
@@ -65,3 +66,4 @@ apertium-spa.spa.metadix:  <e r="LR"><p><l>ex</l>        <r>ex<b/></r></p></e>
 apertium-spa.spa.metadix:  <e r="LR"><p><l>ex-</l>       <r>ex<b/></r></p></e>
 apertium-spa.spa.metadix:<e a="prompsit" lm="dentro del qual"><i>dentro<b/></i><par n="/del_cual__rel"/></e>
 apertium-spa.spa.metadix:<e a="prompsit" lm="cuál de"><i>cuál<b/>de<b/></i><par n="cuál_de_/__prn"/></e>
+[/47DEQpj8HBSa]
