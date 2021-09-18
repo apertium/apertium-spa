@@ -24,12 +24,9 @@ LIST Prep = (pr) ;
 LIST CnjCoo = (cnjcoo) ;
 LIST Ord = (ord) ;
 LIST PreDet = (predet);
-# quantes vegades s'executa cada regla?
-# había sido inventado por los griegos mientras que los españoles aseguraban
-# elimina españoles adj, però no griegos adj; si se suprimeix la segona part de la frase, sí se suprimeix griegos adj
 LIST CnjSub = (cnjsub) ;
 LIST CnjAdv = (cnjadv) ;
-LIST Rel = (rel) ;		# PROBLEMA: està malparit en eo-es i eo-ca: prn.rel i rel.adv (es-ca: rel.adv, rel.an, rel.nn, rel.aa)
+LIST Rel = (rel) ;
 LIST Interj = (ij) ;
 
 SET CM = (cm) OR (lpar) OR (rpar) OR ("<;>") ;
