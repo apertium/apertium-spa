@@ -596,6 +596,10 @@ SELECT:adj_adv_5_fp A (-2C N + $$FemPl) (-1C Adv) (0 A + $$FemPl) ;
 #REMOVE:np_a_fp A IF (0 NP LINK 0 (adj f pl)) (-1 Prep) (1C N) (NOT 1 FemPl) ;
 	# asignaba a Armenia territorios
 
+#Imperativo: ven y...
+SELECT:ven_y Imp IF (0 Imp) (1 CnjCoo OR CM ) (2 Imp);   
+SELECT:ven_y Imp IF (-2 Imp) (-1 CnjCoo OR CM) (0 Imp);
+
 # eliminación del imperativo en competición con el presente del indicativo
 REMOVE:imp_1 Imp IF (0 (vblex pri p3 sg) LINK 0 (vblex imp p2 sg)) ;
 REMOVE:imp_2 Imp IF (-1 ("que")) (0 Verb) ;
