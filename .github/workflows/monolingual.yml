@@ -1,0 +1,11 @@
+name: Apertium Monolingual CI/CD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  call-workflow:
+    uses: apertium/github-actions/.github/workflows/monolingual-build.yml@master
