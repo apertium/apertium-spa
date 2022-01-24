@@ -603,8 +603,8 @@ SELECT:salir_salar ("salir") IF (0 ("salir")) (0 ("salar")) (1/* ("de") OR ("a")
 SELECT:salir_salar ("salir") IF (-2 ("entrar")) (-1 CnjCoo) (0 ("salir")) (0 ("salar"));
 
 #Imperativo: ven y...
-SELECT:ven_y Imp IF (0 Imp + ("venir") OR ("ir") OR ("entrar")) (1 CnjCoo) (2 Imp);   
-SELECT:ven_y Imp IF (-2 Imp + ("venir") OR ("ir") OR ("entrar")) (-1 CnjCoo) (0 Imp);
+SELECT:ven_y Imp IF (0 Imp) (0 ("venir") OR ("ir") OR ("entrar")) (1 CnjCoo) (2 Imp);   
+SELECT:ven_y Imp IF (-2 Imp) (-2 ("venir") OR ("ir") OR ("entrar")) (-1 CnjCoo) (0 Imp);
 
 # eliminación del imperativo en competición con el presente del indicativo
 REMOVE:imp_1 Imp IF (0 (vblex pri p3 sg) LINK 0 (vblex imp p2 sg)) ;
