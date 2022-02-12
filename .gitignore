@@ -24,3 +24,4 @@
 /config.in
 /config
 /test/*-output.txt
+/dev/testvoc/testvoc-errors.*.txt
