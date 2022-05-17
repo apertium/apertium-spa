@@ -1453,7 +1453,8 @@ SELECT:amigo1 N IF (0 ("amigo") + MascSg) (-1 A + MascSg);
 SELECT:amigo2 N IF (0 ("amigo") + FemSg) (-1 A + FemSg);
 SELECT:amigo3 N IF (0 ("amigo") + MascPl) (-1 A + MascPl);
 SELECT:amigo4 N IF (0 ("amigo") + FemPl) (-1 A + FemPl);
-
+#cuanto: unusual as noun, exceptions?
+REMOVE:cuanto N IF (0 ("cuanto"));
 #medio
 SELECT:medio_adj A IF (0 ("medio") + &&GN) (-1 ("importe") OR ("tamaño")) (-1 &&GN);
 REMOVE:medio Vblex IF (0 ("<medio>"i)) (1 N + MascSg);
