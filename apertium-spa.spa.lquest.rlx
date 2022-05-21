@@ -1,0 +1,15 @@
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>" "<:>";
+SOFT-DELIMITERS = "<,>" "<;>";
+
+SETS
+
+LIST >>> = >>> ;
+LIST <<< = <<< ;
+SET BOS = >>> ;
+SET EOS = <<< ;
+
+SECTION
+
+ADDCOHORT ("<¿>" "¿") BEFORE (".*"r) (-1 BOS) (*1 ("?")) ;
+ADDCOHORT ("<¡>" "¡") BEFORE (".*"r) (-1 BOS) (*1 ("!")) ;
+

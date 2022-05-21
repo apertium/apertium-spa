@@ -12,6 +12,7 @@ TARGETS_COMMON =			\
 	$(LANG1).autogen.att.gz		\
 	$(LANG1).autopgen.bin		\
 	$(LANG1).rlx.bin		\
+	$(LANG1).lquest.rlx.bin		\
 	$(LANG1).lrx.bin
 
 # Use this goal for creating .deps, otherwise make -j2 will give problems:
@@ -57,12 +58,20 @@ $(LANG1).rlx.bin: $(BASENAME).$(LANG1).rlx
 	cg-comp $< $@
 
 ###############################################################################
+## Opening question/exclamation mark rules
+###############################################################################
+
+$(LANG1).lquest.rlx.bin: $(BASENAME).$(LANG1).lquest.rlx
+	cg-comp $< $@
+
+###############################################################################
 ## Distribution
 ###############################################################################
 EXTRA_DIST=$(BASENAME).$(LANG1).metadix		\
 	   $(BASENAME).post-$(LANG1).dix	\
 	   $(BASENAME).$(LANG1).acx		\
 	   $(BASENAME).$(LANG1).rlx		\
+	   $(BASENAME).$(LANG1).lquest.rlx	\
 	   $(BASENAME).$(LANG1).lrx		\
            $(LANG1).prob			\
 	   modes.xml
