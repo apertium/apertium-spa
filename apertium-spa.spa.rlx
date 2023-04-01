@@ -237,6 +237,12 @@ SELECT:adjetivo   A IF (0 A) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
 #fallo
 SELECT:fallo_n N (0 ("fallo")) (-1 ("sentencia") OR ("parte dispositiva") OR ("dispositva"));
 
+#charla conferencia
+SELECT:charla_n N (0 ("charla")) (1 ("conferencia"));
+SELECT:charla_n N (0 ("charla")) (1 ("-")) (2 ("conferencia"));
+SELECT:charla_n N (-1 ("charla")) (0 ("conferencia"));
+SELECT:charla_n N (-2 ("charla")) (-1 ("-")) (0 ("conferencia"));
+
 # para traducir spa>cat: lo que es > cosa que és
 SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("más")) (3 Adj_PP) (4 CM OR <<<);
 SELECT:lo_que_es ("lo_que2") IF (0 ("lo_que2")) (-1 CnjCoo OR CM OR >>> OR (META:/[-–—−]/r)) (1 Ser + (p3) + (sg)) (2 ("aún") OR ("todavía")) (3 ("más")) (4 Adj_PP) (5 CM OR <<<);
