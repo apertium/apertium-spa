@@ -869,6 +869,9 @@ SELECT:que_afecta Vblex (0 ("afectar") OR ("presentar")) (-1 CnjAdv OR CnjSub OR
 SELECT:decir_dar ("decir") IF (0 ("decir")) (1 ("adiós") OR ("hola"));
 REMOVE:vacuna A IF (0 ("vacuna")) (NOT -1 N);
 
+SELECT:gafa_n N IF (0 ("gafa")) (1 ("de") OR ("natación") OR ("buceo") OR ("nadar") OR ("bucear") OR ("nado"));
+SELECT:gafa_n N IF (-1 ("gafa")) (0 ("buceo"));
+
 SELECT:golfo_n N IF (0 ("golfo") OR ("empleado")) (1 ("de"));
 
 SELECT:vaya_adj A IF (0 ("vaya")) (1 N) (NOT -1 Pron) (NOT 1 Adv OR Prep); # ¡Vaya hombre!
