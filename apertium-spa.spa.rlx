@@ -1101,6 +1101,7 @@ SELECT:adelante_adv Adv IF (0 ("adelante"i)) (-1 Vblex OR ("paso")); #seguir/pas
 SELECT:vela_n N IF (0 ("vela"i)); #vela (nombre), raro: ve + la (pron.)
 
 SELECT:cual_rel (rel an mf sg) IF (0 ("cual"i)) (-1 (det def m sg)) ; #del cual (relativo)
+SELECT:cual_itg (prn itg mf sg) IF (0 ("cuál"i)) (1 ("de"i) + Prep) ; #cuál (pronombre interrogativo, error ortográfico frecuente)
 
 SELECT:vengar_1 ("vengar") IF (-1 ("<se>"i)) (0 ("<venga>") OR ("<vengan>")) ; #no infalible, pero más frecuente
 
