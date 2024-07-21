@@ -230,6 +230,9 @@ REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C ("de")) (2 ("fiesta") OR ("c
 REMOVE:en_ocasiones Adv IF (0 ("en ocasiones")) (1C ("de")) (2 A) (3 ("fiesta") OR ("celebración") OR ("ceremonia") OR ("jubileo") OR ("gala") OR ("evento") OR ("solemnidad"));
 SELECT:en_ocasiones Adv IF (0 ("en ocasiones")) ;
 
+# por la presente
+SELECT:por_la_presente Adv IF (0 ("por la presente")) (1 CM);
+
 #Palabras sueltas: Nombre, Rojo, etc.
 SELECT:sustantivo N IF (0 N) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
 SELECT:adjetivo   A IF (0 A) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
@@ -390,7 +393,6 @@ REMOVE:viva (ij) IF (0 ("viva"));
 
 #cejar en / ceja (noun)
 REMOVE:cejar_en Verb IF (0 ("cejar# en")) (NOT -1 ("no"));
-
 
 # prn + verbo/nombre
 #SELECT:prn_vb_n Vblex IF (0C Vblex OR N) (-1C PrnTnPrs) ;
