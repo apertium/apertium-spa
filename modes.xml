@@ -35,7 +35,7 @@
       <program name="lt-proc -w">
         <file name="spa.automorf.bin"/>
       </program>
-      <program name="cg-proc">
+      <program name="cg-proc -w">
         <file name="spa.rlx.bin"/>
       </program>
       <program name="apertium-tagger -g">
