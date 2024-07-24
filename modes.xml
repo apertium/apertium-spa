@@ -11,7 +11,7 @@
 
   <mode name="spa-gener" install="yes">
     <pipeline>
-      <program name="lt-proc -b">
+      <program name="lt-proc -g">
         <file name="spa.autogen.bin"/>
       </program>
     </pipeline>
@@ -38,14 +38,36 @@
       <program name="cg-proc">
         <file name="spa.rlx.bin"/>
       </program>
-      <program name="apertium-tagger -g $2 -p">
+      <program name="apertium-tagger -g">
         <file name="spa.prob"/>
       </program>
-      <program name="apertium-extract-caps"/>
     </pipeline>
   </mode>
 
-  <mode name="spa-tagger" install="yes" gendebug="yes">
+  <mode name="spa-tagger" install="yes">
+    <pipeline>
+      <program name="lt-proc -w">
+        <file name="spa.automorf.bin"/>
+      </program>
+      <program name="apertium-tagger -g">
+        <file name="spa.prob"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <mode name="spa-disam-debug">
+    <pipeline>
+      <program name="lt-proc -w">
+        <file name="spa.automorf.bin"/>
+      </program>
+      <program name="cg-conv -a -l" />
+      <program name="vislcg3 --trace -g">
+        <file name="apertium-spa.spa.rlx"/>
+      </program>
+    </pipeline>
+  </mode>
+
+  <mode name="spa-caps" install="yes">
     <pipeline>
       <program name="lt-proc -w">
         <file name="spa.automorf.bin"/>
@@ -59,18 +81,6 @@
       </program>
       <program name="apertium-restore-caps">
         <file name="spa.crx.bin"/>
-      </program>
-    </pipeline>
-  </mode>
-
-  <mode name="spa-disam-debug">
-    <pipeline>
-      <program name="lt-proc -w">
-        <file name="spa.automorf.bin"/>
-      </program>
-      <program name="cg-conv -a -l" />
-      <program name="vislcg3 --trace -g">
-        <file name="apertium-spa.spa.rlx"/>
       </program>
     </pipeline>
   </mode>
