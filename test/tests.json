@@ -1,0 +1,10 @@
+{
+    "spa": {
+        "input": "spa-input.txt",
+        "mode": "spa-tagger"
+    },
+    "grep": {
+        "input": null,
+        "command": "bash -x test/test-grep.sh"
+    }
+}

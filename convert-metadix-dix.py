@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright (C) 2020 Jaume Orotlà <jaume.ortola@gmail.com>
+# Copyright (C) 2020 Jaume Ortolà <jaume.ortola@gmail.com>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -31,12 +31,38 @@ def word(e):
             word = part.text
     if word is None:
         p = e.find("p")
-        if p:
+        if p is not None:
             l = p.find("l")
             word = l.text
     if word is None:
         word = ""
     return word
+
+def isMultiword(e):
+    for part in e:
+        if part.tag == "i":
+            b = part.find("b")
+            if b is not None:
+                return True
+    p = e.find("p")
+    if p is not None:
+        l=p.find("l")
+        if l is not None:
+            g = l.find("g")
+            if g is not None:
+                return True
+            b = l.find("b")
+            if b is not None:
+                return True
+        r=p.find("r")
+        if r is not None:
+            g = r.find("g")
+            if g is not None:
+                return True
+            b = r.find("b")
+            if b is not None:
+                return True
+    return False
 
 source = sys.argv[1]
 target = sys.argv[2]
@@ -57,9 +83,28 @@ for pardef in pardefs.iter(tag='pardef'):
 mainsection = tree.find('.//section[@id="main"]')
 
 for e in mainsection.iter(tag='e'):
+    if isMultiword(e):
+        continue
     par = e.find('par')
     if par is None:
-        continue
+        p = e.find('p')
+        if p is not None:
+            par = p.find('r').find('s')
+        if par is None:
+            i = e.find('i')
+            if i is not None:
+                par = i.find('s')
+        if par is None:
+            continue
+        parname = par.get("n")
+        for prefix in prefixes.keys():
+            if parname == prefix:
+                new = ET.Element('par')
+                prefixtoadd = prefixes[prefix]
+                if word(e).startswith("r"):
+                    prefixtoadd = prefixtoadd + ("_r")
+                new.set('n', prefixtoadd)
+                e.insert(0, new)
     parname = par.get("n")
     for prefix in prefixes.keys():
         if parname.endswith("__"+prefix):

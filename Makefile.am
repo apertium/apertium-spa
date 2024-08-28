@@ -77,7 +77,11 @@ EXTRA_DIST=$(BASENAME).$(LANG1).metadix		\
 apertium_spadir=$(prefix)/share/apertium/$(BASENAME)/
 apertium_spa_srcdir=$(prefix)/share/apertium/$(BASENAME)/
 
-apertium_spa_DATA=$(TARGETS_COMMON) $(LANG1).prob $(BASENAME).$(LANG1).acx
+apertium_spa_DATA=$(TARGETS_COMMON) \
+	$(LANG1).prob \
+	$(BASENAME).$(LANG1).acx \
+	$(BASENAME).$(LANG1).metadix \
+	$(BASENAME).$(LANG1).rlx
 
 pkgconfigdir = $(prefix)/share/pkgconfig
 pkgconfig_DATA = $(BASENAME).pc
@@ -85,21 +89,14 @@ pkgconfig_DATA = $(BASENAME).pc
 noinst_DATA=modes/$(LANG1)-morph.mode
 
 install-data-local: install-modes
-	$(INSTALL_DATA) $(BASENAME).$(LANG1).metadix $(DESTDIR)$(apertium_spa_srcdir)
-	$(INSTALL_DATA) $(BASENAME).$(LANG1).rlx $(DESTDIR)$(apertium_spa_srcdir)
 
 CLEANFILES = $(TARGETS_COMMON)
 clean-local:
 	-rm -rf .deps modes
-
 
 ###############################################################################
 ## Test
 ###############################################################################
 
 test: all
-	echo "frase de prueba" | apertium -d . spa-tagger | tee .test-mt
-	@echo '^frase<n><f><sg>$$ ^de<pr>$$ ^prueba<n><f><sg>$$^.<sent>$$' > .test-ref
-	@diff .test-ref .test-mt
-	@rm .test-ref .test-mt
-	bash -x dev/test-grep.sh
+	apertium-regtest test
