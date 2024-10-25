@@ -1537,7 +1537,7 @@ SELECT:rayar Vblex IF (0 ("raya")) (NOT -1 Det OR Vblex) (1 ("en") OR ("el"));
 
 REMOVE:creer_crear_0 Crear (0 Crear) (-1 ("lo que")) (-2 ("en"));
 REMOVE:creer_crear_0 Crear (0 Crear) (1 Adv) (2 ("en"));
-REMOVE:creer_crear_0 Crear (0 Crear) (1 ("en"));
+REMOVE:creer_crear_0 Crear (0 Crear) (1 ("en")) (NOT -1 ("se")); # TODO: exception: en + place name
 REMOVE:creer_crear_1 Crear (0 Crear) (1C Inf OR Enc) ;
 REMOVE:creer_crear_2 Crear (0 Crear) (1C ("que"));
 REMOVE:creer_crear_3 Crear (0 Crear) (1C A + Sg) (NOT 1 ("dicho")); # creer necesario/oportuno...
