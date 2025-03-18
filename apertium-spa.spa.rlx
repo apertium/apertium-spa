@@ -233,6 +233,15 @@ SELECT:en_ocasiones Adv IF (0 ("en ocasiones")) ;
 # por la presente
 SELECT:por_la_presente Adv IF (0 ("por la presente")) (1 CM);
 
+# Expresiones con horas (las dos, las tres, etc.)
+SELECT:horas Num IF (0 N + $$FemPl) (0 Num) (0/-1 DetDef + $$FemPl) (1 N + $$FemPl);
+SELECT:horas Num IF (0 N + $$FemPl) (0 Num) (0/-1 DetDef + $$FemPl) (1 A + $$FemPl) (2 N + $$FemPl);
+SELECT:horas N IF (0 N + $$FemPl) (0 Num) (0/-1 DetDef + $$FemPl) (-1 Ser);
+REMOVE:horas N IF (0 N + $$FemPl) (0 Num) (0/-1 DetDef + $$FemPl);
+SELECT:horas Num IF (0 Adv) (0 Num) (0/-1 ("a")) (0/-2 DetDef + $$FemPl) (1 N + $$FemPl);
+SELECT:horas Num IF (0 Adv) (0 Num) (0/-1 ("a")) (0/-2 DetDef + $$FemPl) (1 A + $$FemPl) (2 N + $$FemPl);
+REMOVE:horas Adv IF (0 Adv) (0 Num) (0/-1 ("a")) (0/-2 DetDef + $$FemPl);
+
 #Palabras sueltas: Nombre, Rojo, etc.
 SELECT:sustantivo N IF (0 N) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
 SELECT:adjetivo   A IF (0 A) (-1 >>>) (1 <<<) (NOT 0 (loc) OR (ij));
