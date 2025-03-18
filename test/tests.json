@@ -3,6 +3,10 @@
         "input": "spa-input.txt",
         "mode": "spa-tagger"
     },
+    "spa-caps": {
+        "input": "spa-caps-input.txt",
+        "mode": "spa-caps"
+    },
     "grep": {
         "input": null,
         "command": "bash -x test/test-grep.sh"
