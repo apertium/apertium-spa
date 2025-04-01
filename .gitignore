@@ -25,3 +25,11 @@
 /config
 /test/*-output.txt
 /dev/testvoc/duplicates.*.txt
+/tagger-data/spa.tagged
+/tagger-data/spa.tagged.txt
+/tagger-data/spa.untagged
+/tagger-data/spa.dic
+/tagger-data/spa.dic.expanded
+/tagger-data/spa.crp
+/tagger-data/spa.crp.txt
+
