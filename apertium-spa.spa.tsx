@@ -22,7 +22,6 @@
   <def-label name="SOBREPR" closed="true">
     <tags-item lemma="sobre" tags="pr"/>
   </def-label>
-
   <def-label name="COMOREL" closed="true">
     <tags-item lemma="como" tags="rel.adv"/>
   </def-label>
@@ -271,16 +270,21 @@
    <tags-item tags="adj.f.*"/>
    <tags-item tags="adj.ind.f.*"/>
    <tags-item tags="adj.sup.f.*"/>
+   <tags-item tags="adj.ord.f.*"/>
+   <tags-item tags="adj.ord.sup.f.*"/>
  </def-label>
  <def-label name="ADJM">
    <tags-item tags="adj.m.*"/>
    <tags-item tags="adj.ind.m.*"/>
    <tags-item tags="adj.sup.m.*"/>
+   <tags-item tags="adj.ord.m.*"/>
+   <tags-item tags="adj.ord.sup.m.*"/>
  </def-label>
  <def-label name="ADJMF">
    <tags-item tags="adj.mf.*"/>
    <tags-item tags="adj.ind.mf.*"/>
    <tags-item tags="adj.sup.mf.*"/>
+   <tags-item tags="adj.ord.mf.*"/>
  </def-label> 
  <def-label name="ADJINT" closed="true">
     <tags-item tags="adj.itg.*"/>
@@ -304,6 +308,20 @@
       <tags-item tags="det.def.m.sg"/>
     </sequence>
   </def-mult>
+  <def-mult name="DETNOM" closed="true">
+    <sequence>
+      <label-item label="DETM"/>
+      <label-item label="NOMM"/>
+    </sequence>
+    <sequence>
+      <label-item label="DETF"/>
+      <label-item label="NOMF"/>
+    </sequence>
+    <sequence>
+      <label-item label="DETMF"/>
+      <label-item label="NOMMF"/>
+    </sequence>
+  </def-mult>
   <def-mult name="PRCNJ" closed="true">
     <sequence>
       <label-item label="PREP"/>
@@ -322,6 +340,12 @@
     <sequence>
       <label-item label="PREP"/>
       <label-item label="RELN"/>
+    </sequence>
+  </def-mult>
+  <def-mult name="NOMMQUEREL" closed="true">
+    <sequence>
+      <label-item label="NOMM"/>
+      <label-item label="QUEREL"/>
     </sequence>
   </def-mult>
   <def-mult name="INFLEXPRNENC">
@@ -443,6 +467,32 @@
       <label-item label="VMODALIMP"/>
       <label-item label="PRNENC"/>
       <label-item label="PRNENC"/>
+    </sequence>
+  </def-mult>
+  <def-mult name="VLEXQUECNJ" closed="true">
+    <sequence>
+      <label-item label="VLEXPFCI"/>
+      <label-item label="QUECNJ"/>
+    </sequence>
+    <sequence>
+      <label-item label="VLEXIPI"/>
+      <label-item label="QUECNJ"/>
+    </sequence>
+    <sequence>
+      <label-item label="VLEXSUBJ"/>
+      <label-item label="QUECNJ"/>
+    </sequence>
+    <sequence>
+      <label-item label="VLEXSUBJ"/>
+      <label-item label="QUECNJ"/>
+    </sequence>
+    <sequence>
+      <label-item label="VLEXIMP"/>
+      <label-item label="QUECNJ"/>
+    </sequence>
+    <sequence>
+      <label-item label="VLEXPARTPI"/>
+      <label-item label="QUECNJ"/>
     </sequence>
   </def-mult>
 </tagset>

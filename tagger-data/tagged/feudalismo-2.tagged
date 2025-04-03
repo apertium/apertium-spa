@@ -231,7 +231,8 @@
 ^preindustrial/preindustrial<adj><mf><sg>$
 ^no/no<adv>$
 ^esclavista/esclavista<adj><mf><sg>$
-^, puesto que/,<cm>+puesto que<cnjadv>$
+^,/,<cm>$
+^puesto que/puesto que<cnjadv>$
 ^a lo largo de/a lo largo de<pr>$
 ^la/el<det><def><f><sg>$
 ^historia/historia<n><f><sg>$

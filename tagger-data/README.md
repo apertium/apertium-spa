@@ -1,4 +1,4 @@
-[En castellano](README_cat.md)
+[En castellano](README_spa.md)
 
 # Corpora for tagger training
 

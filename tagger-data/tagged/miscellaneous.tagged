@@ -694,7 +694,8 @@
 ^de/de<pr>$
 ^Euskadi/Euskadi<np><loc>$
 ^en/en<pr>$
-^la Unión Europea/la Unión Europea<n><f><sg>$
+^la/el<det><def><f><sg>$
+^Unión Europea/Unión Europea<np><loc>$
 ^;/;<sent>$
 ^consultas/consulta<n><f><pl>$
 ^similares/similar<adj><mf><pl>$
@@ -4030,7 +4031,8 @@
 ^tantos/tanto<adj><m><pl>$
 ^como/como<pr>$
 ^lugares/lugar<n><m><pl>$
-^en que/en<pr>+que<rel><an><mf><sp>$
+^en/en<pr>$
+^que/que<rel><an><mf><sp>$
 ^se/se<prn><pro><ref><p3><mf><sp>$
 ^habla/hablar<vblex><pri><p3><sg>$
 ^español/español<n><m><sg>$
@@ -5703,7 +5705,8 @@
 ^límite/límite<n><m><sg>$
 ^recomendado/recomendar<vblex><pp><m><sg>$
 ^por/por<pr>$
-^la Unión Europea/la Unión Europea<n><f><sg>$
+^la/el<det><def><f><sg>$
+^Unión Europea/Unión Europea<np><loc>$
 ^es/ser<vbser><pri><p3><sg>$
 ^de/de<pr>$
 ^52/52<num>$
@@ -6299,7 +6302,8 @@
 ^consiguiésemos/conseguir<vblex><pis><p1><pl>$
 ^convocar/convocar<vblex><inf>$
 ^a/a<pr>$
-^miles de/miles de<pr>$
+^miles/mil<n><m><pl>$
+^de/de<pr>$
 ^personas/persona<n><f><pl>$
 ^,/,<cm>$
 ^hubiéramos/haber<vbhaver><pis><p1><pl>$
@@ -6419,7 +6423,8 @@
 ^intento/intento<n><m><sg>$
 ^es/ser<vbser><pri><p3><sg>$
 ^ambicioso/ambicioso<adj><m><sg>$
-^, puesto que/,<cm>+puesto que<cnjadv>$
+^,/,<cm>$
+^puesto que/puesto que<cnjadv>$
 ^se/se<prn><pro><ref><p3><mf><sp>$
 ^trata/tratar<vblex><pri><p3><sg>$
 ^no/no<adv>$
@@ -8877,7 +8882,8 @@
 
 ^Cada/Cada<det><ind><mf><sp>$
 ^día/día<n><m><sg>$
-^miles de/miles de<pr>$
+^miles/mil<n><m><pl>$
+^de/de<pr>$
 ^malagueños/malagueño<adj><m><pl>$
 ^despiertan/despertar<vblex><pri><p3><pl>$
 ^con/con<pr>$
