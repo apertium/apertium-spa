@@ -22262,30 +22262,35 @@
 ^./.<sent>$
 
 ^Confío/Confiar<vblex><pri><p1><sg>$
-^en que/en<pr>+que<cnjsub>$
+^en/en<pr>$
+^que/que<cnjsub>$
 ^vengas/venir<vblex><prs><p2><sg>$
 ^a/a<pr>$
 ^la/el<det><def><f><sg>$
 ^casa/casa<n><f><sg>$
-^en que/en<pr>+que<rel><an><mf><sp>$
+^en/en<pr>$
+^que/que<rel><an><mf><sp>$
 ^vivo/vivir<vblex><pri><p1><sg>$
 ^./.<sent>$
 
 ^Verás/Ver<vblex><fti><p2><sg>$
 ^las/el<det><def><f><pl>$
 ^casas/casa<n><f><pl>$
-^en que/en<pr>+que<rel><an><mf><sp>$
+^en/en<pr>$
+^que/que<rel><an><mf><sp>$
 ^viví/vivir<vblex><ifi><p1><sg>$
 ^y/y<cnjcoo>$
 ^el/el<det><def><m><sg>$
 ^documento/documento<n><m><sg>$
-^en que/en<pr>+que<rel><an><mf><sp>$
+^en/en<pr>$
+^que/que<rel><an><mf><sp>$
 ^me/me<prn><pro><p1><mf><sg>$
 ^basé/basar<vblex><ifi><p1><sg>$
 ^y/y<cnjcoo>$
 ^los/el<det><def><m><pl>$
 ^edificios/edificio<n><m><pl>$
-^en que/en<pr>+que<rel><an><mf><sp>$
+^en/en<pr>$
+^que/que<rel><an><mf><sp>$
 ^trabajé/trabajar<vblex><ifi><p1><sg>$
 ^./.<sent>$
 
