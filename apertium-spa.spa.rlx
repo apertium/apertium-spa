@@ -205,6 +205,8 @@ SET Cargos = ("monseñor") OR ("señor") OR ("presidente") OR ("ministro") OR ("
 SET VerbosRigenEn = ("insistir") OR ("resultar") OR ("insistencia") OR ("coincidir") OR ("distinguir") OR ("diferenciar") OR ("confiar") OR ("concordar") OR ("pensar") OR ("consistir") OR ("empeñar") OR ("obstinar") OR ("estribar") OR ("radicar") OR ("amparar") OR ("soñar") OR ("basar") OR ("convertir");
 SET VerbosRigenCon = ("conformar") OR ("amenazar") OR ("contar") OR ("soñar");
 
+SET AdvMente = (".+mente"r) + Adv ;
+
 ### Muy improbables
 
 REMOVE:exento_adj Vblex IF (0 ("exento"));
@@ -595,10 +597,10 @@ SELECT:mas_menos_adv Adv IF (0 ("más") OR ("menos")) (1 A);
 REMOVE:adj_adv_1 Adv (-1 Copula) (0 A LINK 0 Adv) (NOT 1 A) (NOT 0 ("solo") OR ("pronto"));
 REMOVE:adj_adv_2 Adv (-1C N) (0 A LINK 0 Adv) (NOT 1 A) (NOT 1 Verb OR (pro)) (NOT 1 Prep) (NOT 0 ("pronto"));
 REMOVE:adj_adv_3 Adv (-1C A) (0 A LINK 0 Adv) (NOT 1 Verb) ;
-SELECT:adj_adv_4_ms Adv (-1C N + $$MascSg) (0 A LINK 0 Adv) (1C A + $$MascSg) ;
-SELECT:adj_adv_4_fs Adv (-1C N + $$FemSg) (0 A LINK 0 Adv) (1C A + $$FemSg) ;
-SELECT:adj_adv_4_mp Adv (-1C N + $$MascPl) (0 A LINK 0 Adv) (1C A + $$MascPl) ;
-SELECT:adj_adv_4_fp Adv (-1C N + $$FemPl) (0 A LINK 0 Adv) (1C A + $$FemPl) ;
+SELECT:adj_adv_4_ms Adv (-1C N + $$MascSg) (0 A LINK 0 Adv) (1C A + $$MascSg) (NOT 0 AdvMente) ;
+SELECT:adj_adv_4_fs Adv (-1C N + $$FemSg) (0 A LINK 0 Adv) (1C A + $$FemSg) (NOT 0 AdvMente) ;
+SELECT:adj_adv_4_mp Adv (-1C N + $$MascPl) (0 A LINK 0 Adv) (1C A + $$MascPl) (NOT 0 AdvMente) ;
+SELECT:adj_adv_4_fp Adv (-1C N + $$FemPl) (0 A LINK 0 Adv) (1C A + $$FemPl) (NOT 0 AdvMente) ;
 SELECT:adj_adv_4b_ms Adv (-1C N + $$MascSg) (0 ("poco")) (1 A + $$MascSg) ;
 SELECT:adj_adv_4b_fs Adv (-1C N + $$FemSg) (0 ("poco")) (1 A + $$FemSg) ;
 SELECT:adj_adv_4b_mp Adv (-1C N + $$MascPl) (0 ("poco")) (1 A + $$MascPl) ;
@@ -1837,6 +1839,12 @@ SELECT:n_adv_a_2_ms A IF (-3 Barrera_Inicial_SN) (-2 N + $$FemPl) (-1C Adv) (0 A
 # ". Civiles étnicamente croatas"
 
 # COORDINACIÓN
+
+# Adverbios que terminan en -mente en forma abreviada ("cualitativa y razonadamente")
+SELECT:adv_mente Adv IF (0 AdvMente) (1 CnjCoo) (2C AdvMente);
+SELECT:adv_mente Adv IF (-1 Adv OR PreAdv) (0 AdvMente) (1 CnjSub OR CnjAdv) (2C AdvMente);
+SELECT:adv_mente Adv IF (0 AdvMente) (1 CM) (2C AdvMente);
+REMOVE:adv_mente Adv IF (0 AdvMente) (NOT 2 AdvMente);
 
 # NOM CONJ NOM
 
