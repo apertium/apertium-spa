@@ -1,0 +1,12 @@
+[5UFZV9O4uqpz#0] [[c:Aa/aa]]^mío<det><pos><mf><sg>$ [[c:aa/aa]]^amigo<n><m><sg>$ [[c:aa/aa]]^escribir<vblex><pri><p3><sg>$ [[c:aa/aa]]^carta<n><f><pl>$ [[c:aa/aa]]^todo<predet><m><pl>$ [[c:aa/aa]]^el<det><def><m><pl>$ [[c:aa/aa]]^día<n><m><pl>$[[c:aa/aa]]^.<sent>$
+[/5UFZV9O4uqpz]
+[Bz-zHO_KBjFw#0] [[c:aa/aa]]^iPhone<np><al>$ [[c:aa/aa]]^ser<vbser><pri><p3><sg>$ [[c:aa/aa]]^uno<det><ind><m><sg>$ [[c:aa/aa]]^dispositivo<n><m><sg>$ [[c:aa/aa]]^popular<adj><mf><sg>$[[c:aa/aa]]^.<sent>$
+[/Bz-zHO_KBjFw]
+[P8Lww91E9w3h#0] [[c:Aa/Aa]]^Maria<np><ant>$ [[c:aa/aa]]^visitar<vblex><pri><p3><sg>$ [[c:Aa/Aa]]^Ana<np><ant>$ [[c:aa/aa]]^todo<predet><m><pl>$ [[c:aa/aa]]^el<det><def><m><pl>$ [[c:aa/aa]]^fin<n><m><pl># de semana$[[c:aa/aa]]^.<sent>$
+[/P8Lww91E9w3h]
+[kevUt7u2wQI4#0] [[c:Aa/Aa]]^YouTube<np><al>$ [[c:aa/aa]]^permitir<vblex><pri><p3><sg>$ [[c:aa/aa]]^compartir<vblex><inf>$ [[c:aa/aa]]^video<n><m><pl>$[[c:aa/aa]]^.<sent>$
+[/kevUt7u2wQI4]
+[ssK-AMO_ymJ3#0] [[c:Aa/Aa]]^Linkedin<np><al>$ [[c:aa/aa]]^ser<vbser><pri><p3><sg>$ [[c:aa/aa]]^unir<vblex><imp><p3><sg>$ [[c:aa/aa]]^red<n><f><sg>$ [[c:aa/aa]]^social<adj><mf><sg>$[[c:aa/aa]]^.<sent>$
+[/ssK-AMO_ymJ3]
+[xKcQ6y3roz0V#0] [[c:Aa/aa]]^el<det><def><f><sg>$ [[c:AA/AA]]^OMS<n><acr><f><sg>$ [[c:aa/aa]]^haber<vbhaver><pri><p3><sg>$ [[c:aa/aa]]^lanzar<vblex><pp><m><sg>$ [[c:aa/aa]]^unir<vblex><imp><p3><sg>$ [[c:aa/aa]]^nuevo<adj><f><sg>$ [[c:aa/aa]]^campaña<n><f><sg>$[[c:aa/aa]]^.<sent>$
+[/xKcQ6y3roz0V]
