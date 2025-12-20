@@ -873,7 +873,7 @@ SELECT:París NP IF (0 ("<París>"));
 SELECT:acronim (acr) IF (0 AllUpper);
 
 #aunque no encaje #TODO:, si no completo,  aunque no libertad para (NOT 1 CM)
-SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor")) (NOT -2 ("como"));
+SELECT:aunque_no_verb Verb IF (0 Verb + Pers) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel) (NOT 0 Det) (NOT 0 ("así") OR ("como") OR ("sobre") OR ("mejor") OR ("igual")) (NOT -2 ("como"));
 SELECT:aunque_no_verb Ser IF (0 Ser) (0 Ir) (-1 ("<no>")) (-2 CnjAdv OR CnjSub OR Rel);
 
 #que afecta, que presente
