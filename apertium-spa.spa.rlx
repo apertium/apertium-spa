@@ -1607,7 +1607,12 @@ REMOVE:presente_pasado0 (ifi) IF (0 (pri)) (0 (ifi));
 SET Presente = (prs) OR (pri);
 REMOVE:verb_presente1 (ifi) IF (0 Presente LINK 0 (ifi)) (1 CnjCoo OR CM) (2 Presente LINK NOT 0 (ifi));
 REMOVE:verb_presente2 (ifi) IF (0 Presente LINK 0 (ifi)) (-1 CnjCoo OR CM) (-2 Presente LINK NOT 0 (ifi));
-REMOVE:creamos_presente (imp) IF (0 ("<creamos>"i)); #imperativo poco común. 
+REMOVE:creamos_presente (imp) IF (0 ("<creamos>"i)); #imperativo poco común.
+
+# tener presente
+
+SELECT:tener_presente A IF (0 Vblex + ("presentar")) (-1 Vblex + ("tener"));
+SELECT:tener_presente A IF (0 Vblex + ("presentar")) (-1/1 ("tener")) (-1/1 Vblex) (-1/0 Pron + Enc);
 
 # Cambio de género
 SET ANouns = ("aura") OR ("ágata") OR ("ágora") OR ("águila") OR ("álgebra") OR ("áncora") OR ("ánfora") OR ("ánima") OR ("área") OR ("árnica") OR ("acta") OR ("afta") OR ("agua") OR ("aguasal") OR ("aguaviva") OR ("ala") OR ("alba") OR ("alga") OR ("algia") OR ("alma") OR ("alza") OR ("ama") OR ("anca") OR ("ancla") OR ("ansia") OR ("ara") OR ("arca") OR ("archa") OR ("aria") OR ("arma") OR ("arpa") OR ("arria") OR ("asa") OR ("ascua") OR ("asma") OR ("aspa") OR ("asta") OR ("aula") OR ("ave") OR ("aya") OR ("haba") OR ("habla") OR ("hacha") OR ("hada") OR ("hambre") OR ("hampa") OR ("haya"); # OR ("arte")
