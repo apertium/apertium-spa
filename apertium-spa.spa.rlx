@@ -645,6 +645,7 @@ SELECT:subj5 PRS (*-1 ("ser") LINK 1 Adv_PreAdv LINK 1 A LINK 1 ("que")) (0C Ver
 	# es común que la persona sienta la certeza
 	# es posible que vengas.
 	# es bueno que vengas
+SELECT:subj6 Vblex (0 N OR Vblex + PRS) (-1 CnjSub OR Rel);
 
 #
 # reflexivo
