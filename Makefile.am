@@ -12,7 +12,8 @@ TARGETS_COMMON =			\
 	$(LANG1).autogen.att.gz		\
 	$(LANG1).autopgen.bin		\
 	$(LANG1).rlx.bin		\
-	$(LANG1).lrx.bin
+	$(LANG1).lrx.bin		\
+	$(LANG1).crx.bin 
 
 # Use this goal for creating .deps, otherwise make -j2 will give problems:
 @ap_include@
@@ -41,6 +42,10 @@ $(LANG1).automorf.att.gz: $(LANG1).automorf.bin
 
 $(LANG1).autopgen.bin: $(BASENAME).post-$(LANG1).dix
 	lt-comp lr $< $@
+
+$(LANG1).crx.bin: $(BASENAME).$(LANG1).crx
+	apertium-validate-crx $<
+	apertium-compile-caps $< $@
 
 ###############################################################################
 ## Morph disambiguation rules

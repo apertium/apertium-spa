@@ -1,0 +1,12 @@
+[5UFZV9O4uqpz#0] ^Mi/mío<det><pos><mf><sg>$ ^amigo/amigo<adj><m><sg>/amigo<n><m><sg>/amigar<vblex><pri><p1><sg>$ ^escribe/escribir<vblex><pri><p3><sg>/escribir<vblex><imp><p2><sg>$ ^cartas/carta<n><f><pl>$ ^todos/todo<predet><m><pl>/todo<prn><tn><m><pl>$ ^los/el<det><def><m><pl>/lo<prn><pro><p3><m><pl>$ ^días/día<n><m><pl>$^./.<sent>$
+[/5UFZV9O4uqpz]
+[Bz-zHO_KBjFw#0] ^iPhone/iPhone<np><al>$ ^es/ser<vbser><pri><p3><sg>$ ^un/uno<det><ind><m><sg>$ ^dispositivo/dispositivo<adj><m><sg>/dispositivo<n><m><sg>$ ^popular/popular<adj><mf><sg>$^./.<sent>$
+[/Bz-zHO_KBjFw]
+[P8Lww91E9w3h#0] ^Maria/Maria<np><ant>/Maria<np><loc>$ ^visita/visita<n><f><sg>/visitar<vblex><pri><p3><sg>/visitar<vblex><imp><p2><sg>$ ^Ana/Ana<np><ant>$ ^todos/todo<predet><m><pl>/todo<prn><tn><m><pl>$ ^los/el<det><def><m><pl>/lo<prn><pro><p3><m><pl>$ ^fines de semana/fin<n><m><pl># de semana$^./.<sent>$
+[/P8Lww91E9w3h]
+[kevUt7u2wQI4#0] ^YouTube/YouTube<np><al>$ ^permite/permitir<vblex><pri><p3><sg>/permitir<vblex><imp><p2><sg>$ ^compartir/compartir<vblex><inf>$ ^videos/video<n><m><pl>$^./.<sent>$
+[/kevUt7u2wQI4]
+[ssK-AMO_ymJ3#0] ^LinkedIn/Linkedin<np><al>$ ^es/ser<vbser><pri><p3><sg>$ ^una/uno<num><f><sp>/uno<prn><tn><f><sg>/uno<det><ind><f><sg>/unir<vblex><prs><p3><sg>/unir<vblex><prs><p1><sg>/unir<vblex><imp><p3><sg>$ ^red/red<n><f><sg>/_prefix_re_d<n><f><sg>$ ^social/social<adj><mf><sg>$^./.<sent>$
+[/ssK-AMO_ymJ3]
+[xKcQ6y3roz0V#0] ^La/el<det><def><f><sg>/lo<prn><pro><p3><f><sg>$ ^OMS/OMS<n><acr><f><sg>$ ^ha/haber<vbhaver><pri><p3><sg>$ ^lanzado/lanzado<adj><m><sg>/lanzar<vblex><pp><m><sg>$ ^una/uno<num><f><sp>/uno<prn><tn><f><sg>/uno<det><ind><f><sg>/unir<vblex><prs><p3><sg>/unir<vblex><prs><p1><sg>/unir<vblex><imp><p3><sg>$ ^nueva/nuevo<adj><f><sg>$ ^campaña/campaña<n><f><sg>$^./.<sent>$
+[/xKcQ6y3roz0V]
