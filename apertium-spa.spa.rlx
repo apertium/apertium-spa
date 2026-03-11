@@ -295,6 +295,9 @@ SELECT:r_deber_vbmod_1 Vbmod IF (0 Deber) (1/* Inf) (1 ("ser"));
 SELECT:r_deber_vblex_1 Vblex IF (0 Deber) (NOT 1/* Inf);
 SELECT:deberde_vbmod Vbmod IF (0 ("deber# de")) (-1 ("a")) (-2 ("ir")) (1/* Inf);
 
+SELECT:r_caber_vbmod_1 Vbmod IF (0 ("caber")) (1/* Inf);
+SELECT:r_caber_vblex_1 Vblex IF (0 ("caber")) (NOT 1/* Inf);
+
 REMOVE:r_cog_1 Cog IF (-1 &&GN) (-1 Det OR Pos) (0 &&GN);
 #REMOVE:r_cog_1 Cog IF (-2 &&GN) (-2 Det OR Pos) (-1 Adj_PP + &&GN) (0 &&GN);
 REMOVE:r_ant_1 Ant IF (-1 &&GN) (-1 Det OR Pos) (0 &&GN) (NOT 0 ("Cenicienta")) ; #más excepciones?
