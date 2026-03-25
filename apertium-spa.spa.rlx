@@ -2026,3 +2026,6 @@ ADDCOHORT:ruego_que ("<que>" "que " cnjsub) AFTER (vblex) OR (vbmod) (0 (p1)) (0
 # apartado correos / apdo. correos
 SELECT:apartado_correos N IF (0 ("correo")) (-1 ("apartado") + N); 
 SELECT:apartado_correos N IF (0 ("correo")) (-1 ("apdo.") + N); 
+
+# asomar/asomarse
+SELECT:asomarse ("asomarse") IF (0 ("asomar")) (0 ("asomarse"));
