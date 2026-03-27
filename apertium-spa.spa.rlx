@@ -2028,4 +2028,4 @@ SELECT:apartado_correos N IF (0 ("correo")) (-1 ("apartado") + N);
 SELECT:apartado_correos N IF (0 ("correo")) (-1 ("apdo.") + N); 
 
 # asomar/asomarse
-SELECT:asomarse ("asomarse") IF (0 ("asomar")) (0 ("asomarse"));
+SELECT:asomarse SUB:1 ("asomarse") IF (0/1 ("asomar")) (0/1 ("asomarse"));
