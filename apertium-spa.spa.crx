@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<capitalization>
+  <rules>
+    <rule weight="2.0">
+      <or>
+        <begin/>
+        <match tags="sent"/>
+      </or>
+      <match select="Aa"/>
+    </rule>
+    <rule weight="0.5">
+      <match tags="np.*" select="Aa"/>
+    </rule> 
+    <rule weight="3.0">
+      <or>
+        <match trglem="aA*" select="dix"/>
+        <match trglem="*aA*" select="dix"/>
+        <match trglem="AA" select="dix"/>
+      </or>
+    </rule> 
+    <rule weight="0.1">
+      <match select="aa"/>
+    </rule>
+  </rules>
+</capitalization>
